@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dominions Armor Moding Assistant</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--
+        <link rel="stylesheet" href="">
+        -->
+        <script type="text/javascript" src="assets/checkers_and_getters.js">
+
+        </script>
+        <script type="text/javascript" src="assets/armor_script.js">
+
+        </script>
+        <link rel="stylesheet" href="assets/mod_styling.css">
+
+    </head>
+    <body>
+        <header>
+            <a href="armor_helper.html">Armor</a>
+            <a href="weapon_helper.html">Weapons</a>
+            <a href="item_helper.html">Magic Items</a>
+            <a href="spell_helper.html">Magic Spells</a>
+            <a href="monster_helper.html">Monsters</a>
+            <a href="nation_helper.html">Nations</a>
+            <a href="site_helper.html">Magic Sites</a>
+        </header>
+        <main>
+        <h1>Armor Modding</h1>
+          <!-- <form id="createArm" > onclick="createArmor()" -->
+            <fieldset>
+              <legend>New</legend>
+
+              <label for="is-armor-new">Armor is New</label>
+              <input type="checkbox" id="is-armor-new" value="is-armor-new"
+              onchange="enableOrDisable(document.getElementById('is-armor-new').checked, 'new', 'old')"
+              checked>
+              <br>
+              <label for="#selectarmor">Select an Armor Piece</label>
+              <select id="#selectarmor" name="#selectarmor" class="old" disabled>
+                <option value="20">Iron Cap</option>
+                <option value="21">Full Helmet</option>
+                <option value="5">Leather Cuirass</option>
+                <option value="6">Ring Mail Cuirass</option>
+                <option value="7">Scale Mail Cuirass</option>
+                <option value="8">Chain Mail Cuirass</option>
+                <option value="9">Plate Cuirass</option>
+                <option value="10">Leather Hauberk</option>
+                <option value="11">Ring Mail Hauberk</option>
+                <option value="12">Scale Mail Hauberk</option>
+                <option value="13">Chain Mail Hauberk</option>
+                <option value="14">Plate Hauberk</option>
+                <option value="15">Full Leather Armor</option>
+                <option value="16">Full Ring Mail</option>
+                <option value="17">Full Scale Mail</option>
+                <option value="18">Full Chain Mail</option>
+                <option value="19">Full Plate Mail</option>
+                <option value="1">Buckler</option>
+                <option value="2">Round Shield</option>
+                <option value="3">Kite Shield</option>
+                <option value="4">Tower Shield</option>
+              </select>
+              <br>
+              <label for="new-a-num">New Armor Number:</label>
+              <input type="number" name="new-a-num" id="new-a-num" min="250" max="999" value="250" class="new">
+              <br>
+            <label for="a-name">New Armor Name:</label>
+            <input type="text" name="a-name" id="a-name" maxlength="16" value="" class="new">
+          </fieldset>
+            <fieldset>
+              <legend>Type:</legend>
+
+            <label for="#type">Armor Type:</label>
+            <select  name="#type" id="#type">
+              <option value="4">Shield</option>
+              <option value="5" selected>Body Armor</option>
+              <option value="6">Helmet</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Basic Values</legend>
+            <div>
+            <label for="#prot">Protection:</label>
+            <input type="number" name="#prot" id="#prot" class="baseValues" value="0">
+            <p>Shields should have a positive defence, other armors should have a value of zero or negitive.</p>
+            <label for="#def">Defence:</label>
+            <input type="number" name="#def" id="#def" class="baseValues" value="0">
+            <br>
+            <label for="#enc">Enumberance:</label>
+            <input type="number" name="#enc" id="#enc" class="baseValues" value="0">
+            <br>
+            <label for="#rcost">Cost in Resources:</label>
+            <input type="number" name="#rcost" id="#rcost" class="baseValues" min="1" value="1">
+            </div>
+            <br>
+            <label for="#magicarmor">Armor is Magic</label>
+            <input type="checkbox" name="#magicarmor" id="#magicarmor" value="#magicarmor">
+          </fieldset>
+          <fieldset>
+            <legend>Armor Material</legend>
+            <div >
+              <input type="radio"  id="#normalarmor" class="mr-mat"
+              name="mr-mat" value="#normalarmor" >
+              <label for="#normalarmor">N/A</label>
+              <br>
+              <input type="radio" id="#ironarmor" class="mr-mat"
+              name="mr-mat" value="#ironarmor" checked>
+              <label for="#ironarmor">Iron</label>
+              <br>
+              <input type="radio" id="#woodenarmor" class="mr-mat"
+              name="mr-mat" value="#woodenarmor">
+              <label for="#woodenarmor">Wood</label>
+          </div>
+          </fieldset>
+          <!--
+          <button onclick="document.result.innerHTML=createArmor()">Create Armor</button>
+        -->
+          <button onclick="document.getElementById('result').innerText = createArmor()">Create Armor</button>
+
+          <br>
+
+          <!--
+          <output name="result" id="result">Result</output>
+        -->
+
+          <p id="result" name="result">Result</p>
+
+
+          <!--</form> -->
+        </main>
+    </body>
+</html>

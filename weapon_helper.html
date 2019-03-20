@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dominions Mod Assistant</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="">-->
+        <script type="text/javascript" src="assets/checkers_and_getters.js">
+
+        </script>
+        <script type="text/javascript" src="assets/weapon_script.js">
+
+/*
+1	Spear
+2	Pike
+5	Halberd
+4	Lance
+9	Dagger
+6	Short Sword
+8	Broad Sword
+11	Great Sword
+12	Mace
+13	Hammer
+14	Maul
+15	Morning Star
+16	Flail
+17	Axe
+18	Battle Axe
+7	Quarterstaff
+40	Whip
+22	Sling
+21	Javelin
+23	Short Bow
+24	Long Bow
+264	Composite Bow
+25	Crossbow
+26	Arbalest
+257	Bardiche
+256	Kryss
+253	Hatchet
+258	Claymore
+259	Executioner’s Axe
+153	Stick
+252	Club
+265	Spiked Club
+165	Great Club
+267	Pick Axe
+263	Net
+260	Throwing Axe
+266	Great Bow
+*/
+        </script>
+        <link rel="stylesheet" href="assets/mod_styling.css">
+    </head>
+    <body>
+        <header>
+                <a href="armor_helper.html">Armor</a>
+                <a href="weapon_helper.html">Weapons</a>
+                <a href="item_helper.html">Magic Items</a>
+                <a href="spell_helper.html">Magic Spells</a>
+                <a href="monster_helper.html">Monsters</a>
+                <a href="nation_helper.html">Nations</a>
+                <a href="site_helper.html">Magic Sites</a>
+        </header>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <main>
+            <h1>Weapon Modding</h1>
+
+            <h3>Basic Atrubutes</h3>
+            <fieldset>
+                <legend>New Weapon</legend>
+                <input type="checkbox" name="is-wep-new" id="is-wep-new"
+                onchange="enableOrDisable(document.getElementById('is-wep-new').checked, 'new', 'old')" checked>
+                <label for="is-wep-new">Is Weapon New</label>
+                <br>
+                <label for="#selectweapon">Select a Weapon:</label>
+                <select id="#selectweapon" class="old" disabled>
+                    <option value="1" selected>Spear</option>
+                    <option value="2">Pike</option>
+                    <option value="4">Lance</option>
+                    <option value="5">Halberd</option>
+
+                    <option value="9">Dagger</option>
+                    <option value="256">Kryss</option>
+
+                    <option value="6">Short Sword</option>
+                    <option value="8">Broad Sword</option>
+                    <option value="11">Great Sword</option>
+                    <option value="258">Claymore</option>
+
+                    <option value="252">Club</option>
+                    <option value="265">Spiked Club</option>
+                    <option value="165">Great Club</option>
+                    <option value="12">Mace</option>
+                    <option value="13">Hammer</option>
+                    <option value="14">Maul</option>
+                    <option value="15">Morning Star</option>
+                    <option value="16">Flail</option>
+
+                    <option value="17">Axe</option>
+                    <option value="18">Battle Axe</option>
+                    <option value="7">Quarterstaff</option>
+                    <option value="40">Whip</option>
+                    <option value="22">Sling</option>
+
+                    <option value="21">Javelin</option>
+                    <option value="23">Short Bow</option>
+                    <option value="24">Long Bow</option>
+                    <option value="264">Composite Bow</option>
+                    <option value="25">Crossbow</option>
+                    <option value="26">Arbalest</option>
+
+                    <option value="253">Hatchet</option>
+                    <option value="259">Executioner’s Axe</option>
+                    <option value="267">Pick Axe</option>
+                    <option value="257">Bardiche</option>
+                    <option value="153">Stick</option>
+
+                    <option value="263">Net</option>
+                    <option value="260">Throwing Axe</option>
+                    <option value="266">Great Bow</option>
+                    <optgroup label="Natural Weapons">
+                        <option value="92">Fist</option>
+                        <option value="29">Claw</option>
+                        <option value="33">Claws</option>
+                        <option value="20">Bite</option>
+                        <option value="235">Pincer</option>
+                        <option value="85">Tentacle</option>
+                        <option value="55">Hoof</option>
+                        <option value="56">Hoof (used for knights and other cavaliry)</option>
+                        <option value="127">Venomous Bite (weak poison)</option>
+                        <option value="239">Venomous Fangs (strong poison)</option>
+                        <option value="65">Venomous Fangs (death poison)</option>
+                        <option value="251">Venomous Fangs (paralyzing poison)</option>
+                        <option value="248">Venomous Claw (weak poison)</option>
+                        <option value="249">Venomous Claw (strong poison)</option>
+                        <option value="146">Venomous Claw (death poison)</option>
+                        <option value="250">Poisoned Claw (weak paralyzing poison)</option>
+                        <option value="43">Poisoned Claw (paralyzing poison)</option>
+                    </optgroup>
+                    <optgroup label="Supernatural Weapons">
+                        <option value="185">Lightning Swarm</option>
+                        <option value="63">Life Drain</option>
+                        <option value="142">Touch of Leprosy</option>
+                        <option value="261">Web</option>
+                        <option value="225">Fire Breath</option>
+                        <option value="93">Cold Breath</option>
+                        <option value="62">Bile</option>
+                        <option value="224">Poisoned Spit</option>
+                        <option value="262">Web Spit</option>
+                    </optgroup>
+                </select>
+                <br>
+                <label for="#newweapon">New Weapon Number:</label>
+                <input type="number" name="#newweapon" id="#newweapon" min="700" max="1999" value="700" class="new">
+            </fieldset>
+
+            <label for="#name">Weapon Name:</label>
+            <input type="text" name="#name" id="#name" maxlength="16" value="">
+            <br>
+            <label for="#dmg">Damage</label>
+            <input type="number" name="#dmg" id="#dmg" value="0" class="base-values">
+            <br>
+            <label for="#nratt">Number of Attacks:</label>
+            <input type="number" name="#nratt" id="#nratt" value="0" class="base-values">
+            <br>
+            <label for="#att">Attack Value:</label>
+            <input type="number" name="#att" id="#att" value="0" class="base-values">
+            <br>
+            <label for="#def">Defence Value:</label>
+            <input type="number" name="#def" id="#def" value="0" class="base-values">
+            <br>
+            <label for="#len">Weapon Length:</label>
+            <input type="number" name="#len" id="#len" value="0" min="0" max="5" class="base-values">
+            <br>
+            <input type="checkbox" id="#twohanded" value="#twohanded">
+            <label for="#twohanded">Is Two Handed</label>
+
+            <fieldset>
+                <legend>Sound Effects</legend>
+
+                <label for="w-custom-sound">Has Custom Sound Effect:</label>
+                <input type="checkbox" name="w-custom-sound" id="w-custom-sound"
+                onchange="enableOrDisable(document.getElementById('w-custom-sound').checked, 'customSound', 'noCustomSound')">
+                <br>
+                <label for="#sound">Weapon Sound:</label>
+                <select name="#sound" id="#sound" class="noCustomSound">
+                    <option value="7" selected>Dagger</option>
+                    <option value="8">Sword</option>
+                    <option value="9">Whip</option>
+                    <option value="10">Clup/Axe</option>
+                    <option value="11">Flail/Morning Star</option>
+
+                    <option value="12">Spear/Pike</option>
+                    <option value="13">Crossbow/arbalest</option>
+                    <option value="14">Bow</option>
+                    <option value="15">Sling</option>
+                    <option value="16">Fire Flare</option>
+                    <option value="18">Life Drain</option>
+                    <option value="19">Javelin</option>
+
+                    <option value="20">Banshee</option>
+                    <option value="21">Frost Blast</option>
+                    <option value="22">Mind Blast</option>
+                    <option value="24">Electricity</option>
+                    <option value="29">Elf shot</option>
+                    <option value="38">Claw/bite/kick</option>
+                    <option value="46">Blow pipe</option>
+
+                    <option value="50">Serpent</option>
+                    <option value="78">Lion</option>
+                    <option value="79">Lion</option>
+                    <option value="87">Whip</option>
+                    <option value="89">Explosion</option>
+
+                </select>
+                <br>
+                <label for="#sample">Custom Sound Effect:</label>
+                <input type="text" name="#sample" id="#sample" class="customSound">
+            </fieldset>
+            <label for="#rcost">Cost in Resources:</label>
+            <input type="number" name="#rcost" id="#rcost" min="0" value="0">
+            <br>
+            <input type="checkbox" name="#natural" id="#natural">
+            <label for="#natural">Is Weapon Natural</label>
+            <br>
+            <input type="checkbox" name="is-ranged" id="is-ranged"
+                onchange="enableOrDisable(document.getElementById('is-ranged').checked, 'ranged', 'melee')">
+            <label for="is-ranged">Is Weapon Ranged</label>
+            <br>
+            <label for="#range">Max Range</label>
+            <input type="number" name="#range" id="#range" value="0" min="0" class="rangeammo ranged" disabled>
+            <br>
+            <label for="#ammo">Max Amno</label>
+            <input type="number" name="#ammo" id="#ammo" min="1" max="30" value="1" class="rangeammo ranged" disabled>
+
+            <h3>Weapon Damage Types</h3>
+
+            <fieldset>
+                <legend>Damage Type</legend>
+
+                <label for="dam-type">Weapon Damage Type:</label>
+                <select name="dam-type" id="dam-type"
+                onchange="enableOrDisable(grabSelectedValue('dam-type')=='#dt_aff', 'aw', '')">
+                    <option value="#dt_normal" selected>Normal</option>
+                    <option value="#dt_poison">Poison</option>
+                    <option value="#dt_demon">Extra damage against demons</option>
+                    <option value="#dt_small">Extra damage against smaller foes</option>
+                    <option value="#dt_magic">Extra damage against magic beings</option>
+
+                    <option value="#dt_large">Extra damage against larger foes</option>
+                    <option value="#dt_constructonly">Only harms constructs</option>
+                    <option value="#dt_raise">Raises slain enemies as zombies</option>
+
+                    <option value="#dt_cap">Cap damage at 1</option>
+                    <option value="#dt_weakness">Drains strength</option>
+                    <option value="#dt_holy">Holy</option>
+                    <option value="#dt_drain">Drain life</option>
+                    <option value="#dt_sizestun">Stun (fatigue damage, less efective aginst larger foes)</option>
+                    <option value="#dt_weapondrain">Drain life (Max 5 HP can be drained)</option>
+                    <option value="#dt_stun">Stun (fatigue damage)</option>
+                    <option value="#dt_realstun">Stun</option>
+                    <option value="#dt_interrupt">Interupt spellcasters</option>
+                    <option value="#dt_bouncekill">Chain damage</option>
+                    <option value="#dt_paralyze">Paralyze</option>
+                    <option value="#dt_aff">Other</option>
+                </select>
+
+                <table>
+                    <!-- todo: finish later-->
+                    <thead>
+                        <tr>
+                            <th>Special Damage Attributes</th>
+                        </tr>
+                    </thead>
+                    <!--
+                        aw-disease aw-curse aw-plague aw-stone-curse
+                        aw-entangle aw-rage aw-decay aw-burn
+                    -->
+                    <tbody>
+                        <tr>
+                            <td>
+                              <input type="checkbox" id="aw0" class="aw" value="0" disabled>
+                                <label for="aw0">Causes Disease</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw1" class="aw" value="1" disabled>
+                                <label for="aw1">Curses Foes</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw3" class="aw" value="3" disabled>
+                                <label for="aw3">Inflicts Plague</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw5" class="aw" value="5" disabled>
+                                <label for="aw5">Inflicts Curse of Stones</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              <input type="checkbox" id="aw6" class="aw" value="6" disabled>
+                                <label for="aw6">Entangles Foes</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw7" class="aw" value="7" disabled>
+                                <label for="aw7">Enrages Foes</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw8" class="aw" value="8" disabled>
+                                <label for="aw8">Inflicts Decay</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw9" class="aw" value="9" disabled>
+                                <label for="aw9">Inflicts Burn</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              <input type="checkbox" id="aw10" class="aw" value="10" disabled>
+                                <label for="aw10">Sleep</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw11" class="aw" value="11" disabled>
+                                <label for="aw11">Rust Armor</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw12" class="aw" value="12" disabled>
+                                <label for="aw12">Inflicts Blind</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw13" class="aw" value="13" disabled>
+                                <label for="aw13">Inflicts Bleeding</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              <input type="checkbox" id="aw14" class="aw" value="14" disabled>
+                                <label for="aw14">Earth Grip</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw16" class="aw" value="16" disabled>
+                                <label for="aw16">Fire Bonds</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw17" class="aw" value="17" disabled>
+                                <label for="aw17">Inflicts False Fetters</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw18" class="aw" value="18" disabled>
+                                <label for="aw18">Inflicts Limp</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              <input type="checkbox" id="aw19" class="aw" value="19" disabled>
+                                <label for="aw19">Lost Eye</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw20" class="aw" value="20" disabled>
+                                <label for="aw20">Weakness</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw21" class="aw" value="21" disabled>
+                                <label for="aw21">Inflicts Battle Fright</label>
+                            </td>
+                            <td>
+                              <input type="checkbox" id="aw22" class="aw" id="22" value="22" disabled>
+                              <label for="aw22">Inflicts Mute</label>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" id="aw23" class="aw" value="23" disabled>
+                            <label for="aw23">Inflicts Chest Wound</label>
+                          </td>
+
+                          <td>
+                            <input type="checkbox" id="aw24" class="aw" value="24" disabled>
+                            <label for="aw24">Cripples Victim</label>
+                          </td>
+
+                          <td>
+                            <input type="checkbox" id="aw25" class="aw" value="25" disabled>
+                            <label for="aw25">Inflicts Feeblemind</label>
+                          </td>
+
+                          <td>
+                            <input type="checkbox" id="aw26" class="aw" value="26" disabled>
+                            <label for="aw26">Inflicts Never Healing Wound</label>
+                          </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+
+            <h3>Damage Qualifiers</h3>
+
+            <fieldset>
+              <legend>Damage Qualifiers:</legend>
+              <input type="checkbox" name="#slash"  id="#slash" class="dq">
+              <label for="#slash">Slashing Damage</label>
+                    <br>
+                    <input type="checkbox" name="#pierce"  id="#pierce" class="dq">
+                    <label for="#pierce">Piercing Damage</label>
+                    <br>
+                    <input type="checkbox" name="#blunt"  id="#blunt" class="dq">
+                    <label for="#blunt">Blunt Damage</label>
+                    <br>
+                    <input type="checkbox" name="#fire"  id="#fire" class="dq">
+                    <label for="#fire">Fire Damage</label>
+                    <br>
+                    <input type="checkbox" name="#cold"  id="#cold" class="dq">
+                    <label for="#cold">Cold Damage</label>
+                    <br>
+                    <input type="checkbox" name="#shock"  id="#shock" class="dq">
+                    <label for="#shock">Shock Damage</label>
+                    <br>
+                    <input type="checkbox" name="#poison"  id="#poison" class="dq">
+                    <label for="#poison">Poison Damage</label>
+                    <br>
+                    <input type="checkbox" name="#magic"  id="#magic" class="dq">
+                    <label for="#magic">Magic Weapon</label>
+              </fieldset>
+              <fieldset>
+                <legend>Armor Piercing/Negating</legend>
+                    <input type="radio" id="ae-none"
+                    name="armor-effect" value="ae-none" class="armor-effect" checked>
+                    <label for="ae-none">Standard</label>
+                    <br>
+                    <input type="radio" id="#armorpiercing"
+                    name="armor-effect" value="#armorpiercing" class="armor-effect">
+                    <label for="#armorpiercing">Armor Piercing</label>
+                    <br>
+                    <input type="radio" id="#armornegating"
+                    name="armor-effect" value="#armornegating" class="armor-effect">
+                    <label for="#armornegating">Armor Negating</label>
+              </fieldset>
+              <fieldset>
+                <legend>Amount of Strength to add to Damage</legend>
+                    <input type="radio" id="#nostr" name="strength-amount" class="strength-amount"
+                    class="strength-amount" value="#nostr">
+                    <label for="#nostr">None (used for hooves/claws of caverly mounts)</label>
+                    <br>
+                    <input type="radio" id="#bowstr" name="strength-amount" class="strength-amount"
+                    class="strength-amount" value="#bowstr">
+                    <label for="#bowstr">One Third (used for bows)</label>
+                    <br>
+                    <input type="radio" id="#halfstr" name="strength-amount" class="strength-amount"
+                    class="strength-amount" value="#halfstr">
+                    <label for="#halfstr">One Half (used for breath weapons)</label>
+                    <br>
+                    <input type="radio" id="#fullstr" name="strength-amount" class="strength-amount"
+                    class="strength-amount" value="#fullstr" checked>
+                    <label for="#fullstr">Full (default)</label>
+              </fieldset>
+              <fieldset>
+                <legend>Difficulty to Resist Effect</legend>
+
+                    <input type="radio" id="#mrnegateseasily" name="mr-difficulty"
+                    class="mr-difficulty" value="#mrnegateseasily">
+                    <label for="#mrnegateseasily">Easy</label>
+                    <br>
+                    <input type="radio" id="#mrnegates" name="mr-difficulty"
+                    class="mr-difficulty" value="#mrnegates" checked>
+                    <label for="#mrnegates">Standard</label>
+                    <br>
+                    <input type="radio" id="#hardmrneg" name="mr-difficulty"
+                    class="mr-difficulty" value="#hardmrneg">
+                    <label for="#hardmrneg">Hard</label>
+                    <br>
+                    <input type="radio" id="#sizeresist" name="mr-difficulty"
+                    class="mr-difficulty" value="#sizeresist">
+                    <label for="#sizeresist">Size Dependant</label>
+              </fieldset>
+              <fieldset>
+                <legend>Creatures Immune to this Weapon:</legend>
+
+                    <label for="#mind"><input type="checkbox" id="#mind" class ="immune" value="#mind">Mindless Units</label>
+                    <br>
+                    <label for="#undeadimmune"><input type="checkbox" id="#undeadimmune" class ="immune" value="#undeadimmune">Undead Units</label>
+                    <br>
+                    <label for="#inanimateimmune"><input type="checkbox" id="#inanimateimmune" class ="immune" value="#inanimateimmune">Lifeless Units</label>
+                    <br>
+                    <label for="#flyingimmune"><input type="checkbox" id="#flyingimmune" class ="immune" value="#flyingimmune">Flying Units</label>
+                    <br>
+                    <label for="#enemyimmune"><input type="checkbox" id="#enemyimmune" class ="immune" value="#enemyimmune">Enemy Units</label>
+                    <br>
+                    <label for="#friendlyimmune"><input type="checkbox" id="#friendlyimmune" class ="immune" value="#friendlyimmune">Friendly Units</label>
+              </fieldset>
+              <fieldset>
+                <legend>Weapon Only Affects Creatures of this Type:</legend>
+
+                  <input type="radio" id="#undeadonly"
+                  name="w-only-affect" value="#undeadonly">
+                  <label for="#undeadonly">Undead</label>
+                    <br>
+                    <input type="radio" id="#demononly"
+                    name="w-only-affect" value="#demononly">
+                    <label for="#demononly">Demons</label>
+                    <br>
+                    <input type="radio" id="#demonundead"
+                    name="w-only-affect" value="#demonundead">
+                    <label for="#demonundead">Undead and Demons</label>
+                    <br>
+                    <input type="radio" id="#sacredonly"
+                    name="w-only-affect" value="#sacredonly">
+                    <label for="#sacredonly">Sacred Units</label>
+                    <br>
+                    <input type="radio" id="#none"
+                    name="w-only-affect" value="#none" checked>
+                    <label for="#none">N/A</label>
+              </fieldset>
+                <input type="checkbox" name="#internal" id="#internal">
+                <label for="#internal">Weapon Inflicts Internal Damage (bypasses mist form, mossbody, ect)</label>
+                <h3>Other Weapon Properties</h3>
+                <div>
+                <label for="#aoe">Area of Effect:</label>
+                <input type="number" name="#aoe" id="#aoe" min="0" value="0">
+                <p>
+                    This weapon will not incur a multiple weapon penalty.
+                    <br>
+                        <input type="checkbox" name="#bonus" id="#bonus">
+                        <label for="#bonus">Intrinsic Bonus</label>
+                </p>
+                <p>This will affect anyone harmed by this weapon.
+                    <br>
+                <label for="#secondaryeffect">Secondary Effect ():</label>
+                <select id="#secondaryeffect">
+                  <option value="-1" selected>None</option>
+                    <option value="50">Weak Poison</option>
+                    <option value="51">Strong Poison</option>
+                    <option value="52">Death Poison</option>
+                    <option value="53">Debilitative Poison</option>
+                    <option value="54">Paralyzing Poison</option>
+                    <option value="64">Decay</option>
+                    <option value="104">Area Petrification</option>
+                    <option value="114">Small Area Shock</option>
+                    <option value="137">Entanglement</option>
+                    <option value="143">Disease (non resistable)</option>
+                    <option value="171">Small Area Fire</option>
+                    <option value="216">Fire (AP 8)</option>
+                    <option value="216">Fire (AP 8)</option>
+                    <option value="221">Fire (AP 12)</option>
+                    <option value="222">Cold (AP 12)</option>
+                    <option value="232">Shock (AN 10)</option>
+                    <option value="255">Area Fear</option>
+                    <option value="276">Small Area Holy Fire</option>
+                    <option value="306">Weakness</option>
+                    <option value="342">Poison Ink</option>
+                    <option value="409">Small Area Cold</option>
+                </select>
+                </p>
+                <p>
+                        This will affect anyone attacked by the weapon.
+                <br>
+                <label for="#secondaryeffectalways">Secondary Effect Allways:</label>
+                <select id="#secondaryeffectalways">
+                    <option value="-1" selected>None</option>
+                    <option value="50">Weak Poison</option>
+                    <option value="51">Strong Poison</option>
+                    <option value="52">Death Poison</option>
+                    <option value="53">Debilitative Poison</option>
+                    <option value="54">Paralyzing Poison</option>
+                    <option value="64">Decay</option>
+                    <option value="104">Area Petrification</option>
+                    <option value="114">Small Area Shock</option>
+                    <option value="137">Entanglement</option>
+                    <option value="143">Disease (non resistable)</option>
+                    <option value="171">Small Area Fire</option>
+                    <option value="216">Fire (AP 8)</option>
+
+                    <option value="221">Fire (AP 12)</option>
+                    <option value="222">Cold (AP 12)</option>
+                    <option value="232">Shock (AN 10)</option>
+                    <option value="255">Area Fear</option>
+                    <option value="276">Small Area Holy Fire</option>
+
+                    <option value="306">Weakness</option>
+                    <option value="342">Poison Ink</option>
+                    <option value="409">Small Area Cold</option>
+                </select>
+                </p>
+                </div>
+                <fieldset>
+                    <legend>Material</legend>
+                    <p>Note: Iron weapons are damaged by some spells. 
+                        Ice weapons become more powerful when in colder provences</p>
+                    <input type="radio" id="#ironweapon"
+                    name="mr-mat" value="#ironweapon">
+                    <label for="#ironweapon">Iron</label>
+                    <br>
+                    <input type="radio" id="#woodenweapon"
+                    name="mr-mat" value="#woodenweapon">
+                    <label for="#woodenweapon">Wood</label>
+                    <br>
+                    <input type="radio" id="#iceweapon"
+                    name="mr-mat" value="#iceweapon">
+                    <label for="#iceweapon">Ice</label>
+                    <br>
+                    <input type="radio" id="#nonemat"
+                    name="mr-mat" value="#none" checked>
+                    <label for="#none">Other</label>
+              </fieldset>
+              <table>
+                <thead>
+                    <tr>
+                        <th>Other Atributes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="#charge" id="#charge" value="#charge" class="otherAtri">
+                            <label for="#charge">Charge Bonus</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="#flail" id="#flail" value="#flail" class="otherAtri">
+                            <label for="#flail">Bonus Vs Shields (Flails)</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="#norepel" id="#norepel" value="#norepel" class="otherAtri">
+                            <label for="#norepel">Cannot Repel Attacks</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="#unrepel" id="#unrepel" value="#unrepel" class="otherAtri">
+                            <label for="#unrepel">Attack Cannot be Repelled</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="#beam" id="#beam" value="#beam" class="otherAtri">
+                            <label for="#beam">Beam Attack</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                                (Ranged Weapons Only)
+                                <br>
+                            <input type="checkbox" name="#range050" id="#range050" value="#range050" class="rangeFactor ranged">
+                            <label for="#range050">50% Chance of Being Used in Melee</label>
+                        </td>
+                        <td>
+                                (Ranged Weapons Only)
+                                <br>
+                            <input type="checkbox" name="#range0" id="#range0" value="#range0" class="rangeFactor ranged">
+                            <label for="#range0">Can Also be Used in Melee</label>
+                        </td>
+                        <td>
+                                (Melee Weapons Only)
+                                <br>
+                            <input type="checkbox" name="#melee50" id="#melee50" value="#melee50" class="rangeFactor melee">
+                            <label for="#melee50">50% Chance of Being Used</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            After this weapon is wsed, skip the next weapon
+                            <br>
+                            <input type="checkbox" name="#skip" value="#skip" class="skipWeapon">
+                            <label for="#skip">Skip the next weapon</label>
+                        </td>
+                        <td>
+                            After this weapon is used, skip the next two weapons
+                            <br>
+                            <input type="checkbox" name="#skip2"  value="#skip2" class="skipWeapon">
+                            <label for="#skip2">Skip the next two weapons</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <fieldset>
+                <legend>Other Atributes:</legend>
+                <input type="radio" id="#uwok"
+                name="w-underwater" value="#uwok">
+                <label for="#uwok">Weapon Can be Used Underwater</label>
+                <br>
+                <input type="radio" id="#nouw"
+                name="w-underwater" value="#nouw" checked>
+                <label for="#nouw">Weapon Cannot be Used Underwater</label>
+            </fieldset>
+            <label for="#explspr">Explosion effect:</label>
+            <select name="#explspr" id="#explspr" onchange="explosionEffect()">
+                <option value="10001">Falling shimmering colors</option>
+                <option value="10002">Falling white</option>
+                <option value="10003">Falling red</option>
+                <option value="10004">Falling green</option>
+                <option value="10005">Falling blue</option>
+                <option value="10006">Falling light red</option>
+                <option value="10007">Falling light green</option>
+                <option value="10008">Falling light blue</option>
+                <option value="10009">Falling purple</option>
+                <option value="10010">Falling yellow</option>
+                <option value="10011">Falling orange</option>
+                <option value="10012">Falling cyan</option>
+                <!--
+                <option value="misc">Misc (seel bellow)</option>
+                -->
+                <option value="10021-10039">Few falling colors</option>
+                <option value="10041-10069">Rising mists</option>
+                <option value="10101-10119">Explosion</option>
+                <option value="10121-10139">Exploding gas</option>
+
+                <option value="10108">Cold blast</option>
+                <option value="10113">Fireball</option>
+                <option value="10141">Rising purple</option>
+                <option value="10200">Curse</option>
+                <option value="10206">Soul slay</option>
+                <option value="10108">Lightning</option>
+            </select>
+            <br>
+            <p id="changemiscsprite">Note: This will produce a few falling colors. Acceptable values are from 10021 to 10039.</p>
+            <label for="miscexplodesprite">Misc explosion effect</label>
+            <input type="number" name="miscexplodesprite" id="miscexplodesprite" value="10021" min="10021" max="10139" disabled>
+            <br>
+            <select name="#flightspr" id="#flightspr" 
+            onchange="enableOrDisable(grabSelectedValue('#flightspr') == 'sprite', 'partballsp', '')">
+                <option value="100" selected>Boulder</option>
+                <option value="109">Arrow</option>
+                <option value="110">Javlin</option>
+                <option value="111">Sling stone</option>
+                <option value="133">Fire swirl</option>
+                <option value="137">Frost swirl</option>
+                <option value="141">Multi colored swirl</option>
+                <option value="210">Lightning bolt</option>
+                <option value="274">Banefire arrow</option>
+                <option value="304">Blade wind missle</option>
+                <option value="313">Sticky goo</option>
+                <option value="339">Evil death thingy</option>
+                <option value="350">Fire arrow</option>
+                <option value="354">Fire javlin</option>
+                <option value="162">Fire boulder</option>
+                <option value="395">Elf shot</option>
+                <option value="403">Blow gun needle</option>
+                <option value="404">Green gooey missle</option>
+                <option value="411">Throwing axe</option>
+                <option value="416">Web</option>
+                <!--
+                <option value="10061-10080">Particle ball</option>
+                <option value="10080-10100">Small particle ball</option>
+                -->
+                <option value="sprite">Particle ball/Small particle ball</option>
+                <option value="10179">Acid</option>
+                <option value="10278">Web ball</option>
+                <option value="10287">Dragonfire</option>
+                <option value="10290">Dragonfrost</option>
+                <option value="10292">Dragongas</option>
+                <option value="10295">Petrafying gas</option>
+                <option value="10307">Lightning particles</option>
+            </select>
+            <br>
+            <p>Note: Value from 10061 to 10080 will result in the spell using a standard 
+                animated sprite. Values from 10081 to 10100 will result in a smaller sprite.</p>
+            <label for="partball">Number of particle ball/small particle ball sprite to use</label>
+            <input type="number" name="partball" id="partball" value="10061" min="10061" max="10100" class="partballsp" disabled>
+                <!-- todo: flysprite-->
+                <br>
+                <button onclick="document.getElementById('result').innerText=createWeapon()">Create Weapon</button>
+                <br>
+                <p id="result">Result</p>
+            </main>
+    </body>
+</html>

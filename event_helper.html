@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dominions Event Moding Assistant</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="assets/checkers_and_getters.js">
+        </script>
+        <script type="text/javascript" src="assets/mod_script.js">
+        </script>
+        <link rel="stylesheet" href="assets/mod_styling.css">
+    </head>
+    <body>
+        <h3>Basic Event Modding</h3>
+
+        <input type="checkbox" name="#newevent" id="#newevent" value="#newevent">
+        <label for="#newevent">New Event</label>
+        <br>
+
+        <select name="#rarity" id="#rarity">
+            <option value="0">Always</option>
+            <option value="1">Common Bad</option>
+            <option value="2">Uncommon Bad</option>
+            <option value="5">Always (unlimited)</option>
+            <option value="-1">Common Good</option>
+            <option value="-2">Uncommon Good</option>
+            <option value="10">Always Global</option>
+            <option value="11">Common Global</option>
+            <option value="12">Uncommon Global</option>
+            <option value="13">Always Immediate Global</option>
+        </select>
+
+        <h3>Event Requirements</h3>
+
+        <p>
+            Some events are extra rare. When they are normaly rolled, a d100 is rolled to 
+            determine the chance theevent happening.
+            <br>
+            if this is left at 0, then the d100 is not rolled.
+            <br>
+            <label for="#req_rare">Chance of happening:</label>
+            <input type="number" name="#req_rare" id="#req_rare" value="0" min="0" max="100">
+        </p>
+        <p>
+            Note: A value of zero means that the event can happen unlimited times.
+            <br>
+            <label for="#req_unique">Events per Game:</label>
+            <input type="number" name="#req_unique" id="#req_unique" value="0" min="0">
+        </p>
+
+        <fieldset>
+            <legend>Required Era</legend>
+            <input type="radio" name="era" id="re1" value="1" class="#req_era">
+            <label for="re1"></label>
+            <br>
+        </fieldset>
+
+        req_ench
+        req_myench
+        req_hostileench 1
+        req_friendlyench 1
+        req_enchdom 1
+        
+        req_rare 1
+        req_commander 1
+        req_monster 1
+        req_nositenbr 1
+        req_capital 1
+        req_owncapital 1
+        req_fornation 1
+        req_capital 1
+        req_targpath1 1
+        req_targmnr 1
+        req_poptype 1
+        
+        req_targnoitem 1
+        req_minunrest 1
+        req_domchance 1
+        req_land 1
+        req_mountain 1
+        req_forest
+        req_cold 1
+        req_heat 1
+        req_permonth 1
+        req_researcher
+        req_maxunrest 1
+        req_maxtroops 1
+        req_temple 1
+        req_pop0ok
+        req_permonth 1
+        req_nomnr 1
+        nation -1
+        req_indepok 1
+        req_nomnr
+
+        <h3>Event Effects</h3>
+
+        <input type="radio" name="temple" id="#temple 1">
+        <label for="#temple">Give Temple</label>
+        <br>
+        <input type="radio" name="temple" id="temple">
+        <label for="temple">Don't afftect Temple</label>
+        <br>
+        <input type="radio" name="temple" id="#temple 0">
+        <label for="#temple 0">Destroy Temple</label>
+            newevent
+
+
+            rarity 1
+
+            msg
+
+            nolog
+            notext
+
+            kill 4
+            addequip 1
+            unrest 1
+            incscale 1
+            taxboost 1
+            magicitem 1
+            gold 1
+            worldincscale 1
+            temple 1
+            lab 1
+            incdom 1
+            removesite 1
+            killcom 1
+            revolt
+            gainaff 1
+            nationench 1
+            assassin 1
+            tempunits 1
+            1com
+            1unit
+            1d3units
+            1d6units
+            2d6units
+            10d6units
+            
+            1d3vis
+            1d6vis
+            2d4vis
+            decscale2

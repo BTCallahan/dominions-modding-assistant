@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dominions Magic Item Moding Assistant</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="assets/checkers_and_getters.js">
+        </script>
+        <script type="text/javascript" src="assets/item_script.js">
+        </script>
+        <link rel="stylesheet" href="assets/mod_styling.css">
+    </head>
+    <body>
+        <header>
+            <a href="armor_helper.html">Armor</a>
+            <a href="weapon_helper.html">Weapons</a>
+            <a href="item_helper.html">Magic Items</a>
+            <a href="spell_helper.html">Magic Spells</a>
+            <a href="monster_helper.html">Monsters</a>
+            <a href="nation_helper.html">Nations</a>
+            <a href="site_helper.html">Magic Sites</a>
+        </header>
+        <main>
+            <h1>Magic Item Modding</h1>
+            <input type="checkbox" name="#clearallitems" id="#clearallitems" value="#clearallitems">
+            <label for="#clearallitems">Clear all item</label>
+            <fieldset>
+                    <legend>New</legend>
+                    <input type="checkbox" name="is-item-new" id="is-item-new" value="is-item-new" checked
+                    onchange="enableOrDisable(document.getElementById('is-item-new').checked, 'new', 'old')">
+                    <label for="is-item-new">Item is new</label>
+                    <br>
+                    <input type="number" name="#newitem" id="#newitem" min="500" value="500" max="999" class="new">
+                    <label for="#newitem">New item number:</label>
+                    <br>
+                    <label for="#selectitem">ID of item to be altered:</label>
+                    <input type="number" name="#selectitem" id="#selectitem" value="0" min="0" max="499" class="old" disabled>
+                    <br>
+
+                    <input type="checkbox" name="#clear" id="#clear" value="#clear" class="old" disabled>
+                    <label for="#clear">Clears current item</label>
+                </fieldset>
+
+                <label for="#constlevel">Construction Level Required:</label>
+                <select name="#constlevel" id="#constlevel">
+                    <option value="0" selected>Level 0</option>
+                    <option value="2">Level 2</option>
+                    <option value="4">Level 4</option>
+                    <option value="6">Level 6</option>
+                    <option value="8">Level 8</option>
+                    <option value="12">Level 12 (Unforageable)</option>
+                </select>
+
+                <fieldset>
+                    <legend>Required Magic Path</legend>
+                    <label for="#mainlevel">Required Magic Path Level:</label>
+                    <input type="number" name="#mainlevel" id="#mainlevel" value="1" min="1" max="8">
+                    <br>
+            <label for="#mainpath">Magic Path Required:</label>
+            <select class="#mainpath" id="#mainpath">
+            <option value="0">Fire</option>
+            <option value="1">Air</option>
+            <option value="2">Water</option>
+            <option value="3">Earth</option>
+            <option value="4" selected>Astral</option>
+            <option value="5">Death</option>
+            <option value="6">Nature</option>
+            <option value="7">Blood</option>
+            </select>
+            <br>
+            <input type="checkbox" name="needsecondary" id="needsecondary" value="needsecondary" 
+            onchange="enableOrDisable(document.getElementById('needsecondary').checked, 'secpath', '')">
+            <label for="needsecondary">Item requires secondary magic path</label>
+            <br>
+            <label for="#secondarylevel">2nd Required Magic Path Level:</label>
+            <input type="number" name="#secondarylevel" id="#secondarylevel" value="1" min="1" max="8" 
+                    class="secpath" disabled>
+            <br>
+            <label for="#secondarypath">Secondary Magic Path Required:</label>
+            <select class="secpath" id="#secondarypath" disabled>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" selected>Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+            </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Copying</legend>
+                    <p>
+                        Note: A value of zero will disable this.
+                        <br>
+                        <label for="#copyitem">ID of item to copy stats from:</label>
+                        <input type="number" name="#copyitem" id="#copyitem" value="0" min="0">
+                    </p>
+                    <input type="checkbox" name="newsprite" id="newsprite" value="newsprite" checked
+                    onchange="enableOrDisable(document.getElementById('newsprite').checked, 'nsprite', 'osprite')">
+                    <label for="newsprite">Item uses new sprite</label>
+                    <br>
+                    <label for="#copyspr">ID of item to copy sprite from:</label>
+                    <input type="number" name="#copyitem" id="#copyspr" value="0" min="0" class="osprite" disabled>
+                    <br>
+                    <label for="#spr">Name of sprite filename:</label>
+                    <input type="text" id="#spr" class="nsprite">
+                </fieldset>
+                <!--onChange-->
+                <label for="#type">Item Type:</label>
+        <select class="#type" id="#type" onchange="isWeaponOrArmor()">
+            <option value="1">One handed weapon</option>
+            <option value="2">Two handed weapon</option>
+            <option value="3">Missle weapon</option>
+            <option value="4" >Shield</option>
+            <option value="5">Body armor</option>
+            <option value="6">Helmet</option>
+            <option value="7">Boots</option>
+            <option value="8" selected>Misc Item</option>
+            <option value="9">Crown</option>
+        </select>
+        <br>
+        <label for="#name">Name of item:</label>
+        <input type="text" id="#name">
+        <br>
+        <label for="#descr">Description:</label>
+        <input type="text" id="#descr" class="desc">
+        <p>
+            This is only used if item is a weapon. If this is set to, say 15, 
+            then the commander wielding this item will be treated as if he 
+            had a Morning Star in place of his default weapon.
+            <br>
+            <label for="#weapon">ID of weapon:</label>
+            <input type="number" name="#weapon" id="#weapon" value="1" min="1" disabled>
+        </p>
+        <p>
+            This is only used if item is armor.If this is set to, say 9, 
+            then the commander wielding this item will bew treated as if he 
+            were a Plate Cuirass instead of his default armor.
+            <br>
+            <label for="#armor">ID of armor:</label>
+            <input type="number" name="#armor" id="#armor" value="1" min="1" disabled>
+        </p>
+        <!---->
+        <h3>Magic & Spells</h3>
+        <fieldset>
+            <legend>Magic Boosters</legend>
+            <input type="number" id="#magiclevel1" value="0" min="0" max="10">
+            <label for="#magiclevel1">Base Magic Level:</label>
+            <br>
+            <label for="magicskill1">Base Magic Path:</label>
+            <select class="magicskill1" id="magicskill1">
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" selected>Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+                <option value="50">Random</option>
+                <option value="51">Elemental</option>
+                <option value="52">Sorcery</option>
+                <option value="53">All except Priest</option>
+            </select>
+        </fieldset>
+        <br>
+        <p>
+            <input type="number" name="#pen" id="#pen" value="0">
+            <label for="#pen">Spell Penitration:</label>
+        </p>
+        <p>
+            Name of spell that item allows user to cast
+            <br>
+            <input type="text" name="#spell" id="#spell">
+            <label for="#spell">Allowed Spell:</label>
+        </p>
+        <p>
+            Name of spell that will automaticly be cast in battle. Spell 
+            will only be cast once unless auto spell repeat is greater then zero.
+            <br>
+            <input type="text" id="#autospell">
+            <label for="#autospell">Autocast spell</label>
+        </p>
+        <p>
+            Number of time per round that the autospell will be cast.
+            <br>
+            <input type="number" name="#autospellrepeat" id="#autospellrepeat" value="0" min="0">
+            <label for="#autospellrepeat">Spells per Round:</label>
+        </p>
+        <p>
+            <input type="number" name="#randomspell" id="#randomspell" value="0" min="0" max="100">
+            <label for="#randomspell">Chance of casting a random spell:</label>
+        </p>
+        <!--
+    UNCATEGORIZED MISC
+    #speciallook
+    #singlebattle
+    #chaosrec
+    #stonebeing
+
+    MOVEMENT
+    #noriverpass
+    #giftofwater
+    #nomovepen
+
+    STEALTH
+    #scalewalls
+    
+    HEALING & DISEASE
+    #healer
+    #autohealer
+    #autodishealer
+    #autodisgrinder
+    #diseaseres
+    #homesick
+    #uwdamage
+    #regeneration
+    #reinvigoration
+    #woundfend
+    #hpoverflow
+    #hpoverslow
+    #deadhp
+    
+    SEASONAL POWERS
+    #springpower
+    #summerpower
+    #fallpower
+    #winterpower
+    
+    ELEMENTAL & SCALES
+    #chaospower
+    #firepower
+    #coldpower
+    #magicpower
+    #stormpower
+    #darkpower
+    #slothpower
+    
+    COMBAT AURAS
+    #curseluckshield
+    #sunawe
+
+    #damagerev
+    #bloodvengeance
+    #slimer
+    #deathcurse
+    #deathdisease
+    #deathfire
+    #deathparalyze
+    #mindslime
+    #overcharged
+    #eyeloss
+
+    OTHER COMBAT ABILITIES
+    #ambidextrous
+    #berserk
+    #blessbers
+    #blessfly
+    #darkvision
+    #trample
+    #trampswallow
+    #digest
+    #aciddigest
+    #incorporate
+    #raiseonkill
+    #raiseshape
+    #unsurr
+
+    NON-COMBAT ABILITIES
+    #castledef
+    #siegebonus
+    #patrolbonus
+    #pillagebonus
+    #supplybonus
+    #iceforging
+    #nobadevents
+    #incprovdef
+    #incunrest
+    #leper
+    #popkill
+    #insanify
+    #inquisitor
+    #heretic
+    #elegist
+    #spreaddom
+    #shatteredsoul
+    #taxcollector
+    #gold
+    #addupkeep
+    #xploss
+    #alchemy
+    #mason 
+    
+    LEADERSHIP
+    #inspirational
+    #beastmaster
+    #taskmaster
+    #undisciplined
+    #formationfighter
+    #bodyguard
+    #standard
+    #command
+    #magiccommand
+    #undcommand
+    #skirmisher
+    #warning
+    
+    MAGIC ABILITIES
+    #douse
+    #researchbonus
+    #slothresearch
+    #inspiringres
+    #divineins
+    #drainimmune
+    #magicimmune
+    #forgebonus
+    #fixforgebonus
+    #crossbreeder
+    #bonusspells
+    #comslave
+    #commaster
+    #deathbanish
+    #kokytosret
+    #infernoret
+    #voidret
+    #allret
+    
+    RITUAL RANGE BOOST
+    #firerange
+    #airrange
+    #waterrange
+    #earthrange
+    #astralrange
+    #deathrange
+    #naturerange
+    #bloodrange
+    #elementrange
+    #sorceryrange
+    #allrange
+    
+    GEM PRODUCTION
+    #makepearls
+    #tmpfiregems
+    #tmpairgems
+    #tmpwatergems
+    #tmpearthgems
+    #tmpastralgems
+    #tmpdeathgems
+    #tmpnaturegems
+    #tmpbloodslaves
+    #carcasscollector
+    
+    MONSTER SUMMONING
+    #domsummon
+    #domsummon2
+    #domsummon20
+    #raredomsummon
+    #templetrainer
+    #summon1
+    #summon2
+    #summon3
+    #summon4
+    #summon5
+    #makemonsters1
+    #makemonsters2
+    #makemonsters3
+    #makemonsters4
+    #makemonsters5
+    #battlesum1
+    #battlesum2
+    #battlesum3
+    #battlesum4
+    #battlesum5
+    #batstartsum1
+    #batstartsum2
+    #batstartsum3
+    #batstartsum4
+    #batstartsum5
+    #batstartsum1d6
+    #batstartsum2d6
+    #batstartsum3d6
+    #batstartsum4d6
+    #batstartsum5d6
+    #ivylord
+    #dragonlord
+    #lamialord
+    #corpselord
+    #onisummon
+        -->
+        <h3>Attributes & Resistances</h3>
+        <input type="number" name="#hp" id="#hp" value="0" class="attresnum">
+        <label for="#hp">Bonus to Hit Points:</label>
+        <br>
+        <input type="number" name="#str" id="#str" value="0" class="attresnum">
+        <label for="#str">Bonus to Strength:</label>
+        <br>
+        <input type="number" name="#att" id="#att" value="0" class="attresnum">
+        <label for="#att">Bonus to Attack:</label>
+        <br>
+        <input type="number" name="#def" id="#def" value="0" class="attresnum">
+        <label for="#def">Bonus to Defence:</label>
+        <br>
+        <input type="number" name="#prec" id="#prec" value="0" class="attresnum">
+        <label for="#prec">Bonus to Precision:</label>
+        <br>
+        <input type="number" name="#mr" id="#mr" value="0" class="attresnum">
+        <label for="#mr">Bonus to Magic Resistance:</label>
+        <br>
+        <input type="number" name="#morale" id="#morale" value="0" class="attresnum">
+        <label for="#morale">Bonus to Morale:</label>
+        <br>
+        <input type="number" name="#voidsanity" id="#voidsanity" value="0" class="attresnum">
+        <label for="#voidsanity">Bonus to Void Sanity:</label>
+        <br>
+        <label for="#luck">Luck</label>
+        <input type="checkbox" name="#luck" id="#luck" value="#luck" class="attresbool">
+        <br>
+        <label for="#quickness">Quickness</label>
+        <input type="checkbox" name="#quickness" id="#quickness" value="#quickness" class="attresbool">
+        <br>
+        <label for="#bless">Blesses user</label>
+        <input type="checkbox" name="#bless" id="#bless" class="attresbool">
+        <fieldset>
+            <legend>Resistances</legend>
+            <input type="number" name="#fireres" id="#fireres" value="0" class="attresnum">
+            <label for="#fireres">Fire:</label>
+            <br>
+            <input type="number" name="#coldres" id="#coldres" value="0" class="attresnum">
+            <label for="#coldres">Cold:</label>
+            <br>
+            <input type="number" name="#shockres" id="#shockres" value="0" class="attresnum">
+            <label for="#shockres">Shock:</label>
+            <br>
+            <input type="number" name="#poisonres" id="#poisonres" value="0" class="attresnum">
+            <label for="#poisonres">Poison:</label>
+            <br>
+            <label for="#barkskin">Barkskin:</label>
+            <input type="checkbox" name="#barkskin" id="#barkskin" class="attresbool">
+            <br>
+            <label for="#stoneskin">Stoneskin:</label>
+            <input type="checkbox" name="#stoneskin" id="#stoneskin" class="attresbool">
+            <br>
+            <label for="#ironskin">Ironskin:</label>
+            <input type="checkbox" name="#ironskin" id="#ironskin" class="attresbool">
+        </fieldset>
+        <label for="#bers">Bezerks at start of battle</label>
+        <input type="checkbox" name="#bers" id="#bers" value="#bers" class="attresbool">
+        <br>
+        <label for="#extralife">Resarected if killed in battle</label>
+        <input type="checkbox" name="#extralife" id="#extralife" value="#extralife" class="attresbool">
+        <br>
+        <input type="number" name="#guardspiritbonus" id="#guardspiritbonus" value="0" min="0" max="100" class="attresnum">
+        <label for="#guardspiritbonus">Chance of Guardian Spirit:</label>
+        <h3>Movement & Combat</h3>
+        <input type="number" name="#mapspeed" id="#mapspeed" value="0" class="attresnum">
+        <label for="#mapspeed">Map movement bonus:</label>
+        <br>
+        <label for="#float">Grants ability to float</label>
+        <input type="checkbox" name="#float" id="#float" value="#float" class="attresbool">
+        <br>
+        <label for="#fly">Grants ability to fly</label>
+        <input type="checkbox" name="#fly" id="#fly" value="#fly" class="attresbool" 
+        onchange="enableOrDisable(document.getElementById('#fly').checked, 'storm', '')">
+        <br>
+        <label for="#stormimmune">User can fly durring storm</label>
+        <input type="checkbox" name="#stormimmune" id="#stormimmune" value="#stormimmune" class="attresbool storm" disabled>
+        <br>
+        <label for="#run">User can run</label>
+        <input type="checkbox" name="#run" id="#run" value="#run" class="attresbool">
+        <br>
+        <p>
+            Unit can only teleport using Stygian Paths and Faery Trod.
+            <br>
+            <input type="checkbox" name="teleport" id="#unteleportable" value="#unteleportable" class="attresnum">
+            <label for="#unteleportable">No teleport</label>
+        </p>
+        <p>
+            Max number of extra provences that this unit can sail.
+            <br>
+            <label for="#farsail">Sail Distance:</label>
+            <input type="number" id="#farsail" value="0" min="0" max="10" class="sail" disabled>
+        </p>
+        <input type="number" name="#sneakunit" id="#sneakunit" value="0" class="attresnum">
+        <label for="#sneakunit">Stealth bonus:</label>
+        <p>
+            Note: This will have no effect if the unit is not already stealthy.
+            <br>
+            <input type="number" name="#stealthboost" id="#stealthboost" value="0" class="attresnum">
+            <label for="#stealthboost">Extra Stealth bonus:</label>
+        </p>
+        <p>
+            If the unit suceeds in seducing an enemy commander, then it and the commander will flee to 
+            a nearby friendly provence.
+            <br>
+            <label for="#seduce">Seduction ability:</label>
+            <input type="number" id="#seduce" name="#seduce" min="0" value="0" class="reqStealth" disabled>
+        </p>
+        <p>
+            If the unit suceeds in seducing an enemy commander, then it and the commander will be transported to 
+            the nations capitol.
+            <br>                    
+            <label for="#succubus">Seduction ability:</label>
+            <input type="number" id="#succubus" name="#succubus" min="0" value="0" class="reqStealth" disabled>
+        </p>
+        <p>
+                Ability of monster lure enemy commanders to their death when in a costal provence
+                <br>
+                <label for="#beckon">Costal Lure:</label>
+                <input type="number" id="#beckon" name="#beckon" min="0" value="0" class="reqStealth" disabled>
+        </p>
+        <p>
+            This is the ability decive enemy scouts into thinking
+            that the army is bigger.
+            <br>
+            <label for="#falsearmy">False Army:</label>
+            <input type="number" id="#falsearmy" name="#falsearmy" min="0" value="0" class="camo">
+        </p>
+        <p>
+            A value of 1 or greater means that the unit can decive enemy scouts into
+            thinking that the army contains only one kind of unit.
+            <br>
+            <label for="#foolscouts">Fools Scouts:</label>
+            <input type="number" id="#foolscouts" name="#foolscouts" min="0" value="0" class="camo">
+        </p>
+        <h3>Arena Deathmatch</h3>
+        <p>
+                The item is given as prize to the champion of an arena deathmatch.
+                <br>
+                <label for="#champprize">Arena Prize</label>
+                <input type="checkbox" name="#champprize" id="#champprize" value="#champprize" class="resbool">
+        </p>
+        <p>
+            Holder will automaticly complete in arena deathmatch.
+            <br>
+            <label for="#autocompete">Auto deathmatch compete</label>
+            <input type="checkbox" name="#autocompete" id="#autocompete" value="#autocompete" class="resbool">
+        </p>
+        <h3>Restrictions</h3>
+        <label for="#reqeyes">Requires user to have eyes</label>
+        <input type="checkbox" name="#reqeyes" id="#reqeyes" value="#reqeyes" class="resbool">
+        <br>
+        <input type="number" name="#restricted" id="#restricted" value="0" min="0" class="resnum">
+        <label for="#restricted">ID of nations this item is restricted to:</label>
+        <br>
+        <label for="#nofind">Item cannot be found after battle</label>
+        <input type="checkbox" name="#nofind" id="#nofind" value="#nofind" class="resbool">
+        <p>
+            Only monster with the #userestricteditem value of this will be able to use this item.
+            <br>
+            <input type="number" name="#restricteditem" id="#restricteditem" value="0" min="0" class="resnum">
+            <label for="#restricteditem">Restricted item value:</label>
+        </p>
+        <p>
+            This nation will automaticly gets a %20 forge bonus when forging this item.
+            <br>
+            <input type="number" name="#nationrebate" id="#nationrebate" value="0" min="0" class="resnum">
+            <label for="#nationrebate">ID of nation that gets a forge bonus:</label>
+        </p>
+        <p>
+            Dwarven hammers and other forge items/abilites will not provide any bonus 
+            in the creation of this item.
+            <br>
+            <label for="#noforgebonus">No forge bonus</label>
+            <input type="checkbox" name="#noforgebonus" id="#noforgebonus" value="#noforgebonus" class="resbool">
+        </p>
+        <h3>Curses & Afflictions</h3>
+        <input type="number" name="#tainted" id="#tainted" value="0" min="0" max="100" class="cursenum">
+        <label for="#tainted">Chance of being horrormarked:</label>
+        <br>
+        <label for="#cursed">Item cannot be dropped</label>
+            <input type="checkbox" name="#cursed" id="#cursed" value="#cursed" class="cursebool">
+            <br>
+            
+            <label for="#curse">Wielder is cursed</label>
+            <input type="checkbox" name="#curse" id="#curse" value="#curse" class="cursebool">
+            <br>
+            
+            <fieldset>
+                <legend>Inflictons</legend>
+                <label for="#disease">Diseases wielder</label>
+                <input type="checkbox" name="#disease" id="#disease" value="#disease" class="cursebool">
+                <br>
+                <label for="#chestwound">Inflicts chest wound</label>
+                <input type="checkbox" name="#chestwound" id="#chestwound" value="#chestwound" class="cursebool">
+                <br>
+                <label for="#mute">Inflicts muteness</label>
+                <input type="checkbox" name="#mute" id="#mute" value="#mute" class="cursebool">
+                <br>
+                <label for="#nhwound">Inflicts never healing wound</label>
+                <input type="checkbox" name="#nhwound" id="#nhwound" value="#nhwound" class="cursebool">
+                <br>
+                <label for="#crippled">Cripples user</label>
+                <input type="checkbox" name="#crippled" id="#crippled" value="#crippled" class="cursebool">
+                <br>
+                <label for="#loseeye">Inflicts eyeloss</label>
+                <input type="checkbox" name="#loseeye" id="#loseeye" value="#loseeye" class="cursebool">
+            </fieldset>            
+            <label for="#noforgebonus">No forge bonus</label>
+            <input type="checkbox" name="#noforgebonus" id="#noforgebonus" value="#noforgebonus" class="cursebool">
+            <fieldset>
+                <legend>Usability Restrictions</legend>
+                Some items can only be used by certain types of units.
+                <p>
+                    <label for="#nomounted">No mounted units</label>
+                    <input type="radio" name="#anymount" id="#nomounted" value="#nomounted" class="anymount">
+                    <br>
+                    <label for="#okmount">No mounted restrictons</label>
+                    <input type="radio" name="#anymount" id="#okmount" value="#okmount" class="anymount" checked>
+                    <br>
+                    <label for="#onlymounted">Only mounted units</label>
+                    <input type="radio" name="#anymount" id="#onlymounted" value="#onlymounted" class="anymount">
+                </p>
+                <p>
+                    <label for="#nocoldblood">No cold blooded units</label>
+                    <input type="radio" name="#anycoldblood" id="#nocoldblood" value="#nocoldblood" class="anycoldblood">
+                    <br>
+                    <label for="#okcoldblood">No cold blooded restrictons</label>
+                    <input type="radio" name="#anycoldblood" id="#okcoldblood" value="#okcoldblood" class="anycoldblood" checked>
+                    <br>
+                    <label for="#onlycoldblood">Only cold blooded units</label>
+                    <input type="radio" name="#anycoldblood" id="#onlycoldblood" value="#onlycoldblood" class="anycoldblood">
+                </p>
+                <p>
+                    <label for="#nodemon">No demons</label>
+                    <input type="radio" name="#anydemon" id="#nodemon" value="#nodemon" class="anydemon">
+                    <br>
+                    <label for="#okdemon">No demonic restrictons</label>
+                    <input type="radio" name="#anydemon" id="#okdemon" value="#okdemon" class="anydemon" checked>
+                    <br>
+                    <label for="#onlydemon">Only demons</label>
+                    <input type="radio" name="#anydemon" id="#onlydemon" value="#onlydemon" class="anydemon">
+                </p>
+                <p>
+                    <label for="#noundead">No undead units</label>
+                    <input type="radio" name="#anyundead" id="#noundead" value="#noundead" class="anyundead">
+                    <br>
+                    <label for="#okundead">No undeadblooded restrictons</label>
+                    <input type="radio" name="#anyundead" id="#okundead" value="#okundead" class="anyundead" checked>
+                    <br>
+                    <label for="#onlyundead">Only undead units</label>
+                    <input type="radio" name="#anyundead" id="#onlyundead" value="#onlyundead" class="anyundead">
+                </p>
+                <p>
+                    <label for="#noinanim">No inanimate units</label>
+                    <input type="radio" name="#anyinanim" id="#noinanim" value="#noinanim" class="anyinanim">
+                    <br>
+                    <label for="#okinanim">No inanimate restrictons</label>
+                    <input type="radio" name="#anyinanim" id="#okinanim" value="#okinanim" class="anyinanim" checked>
+                    <br>
+                    <label for="#onlyinanim">Only inanimate units</label>
+                    <input type="radio" name="#anyinanim" id="#onlyinanim" value="#onlyinanim" class="anyinanim">
+                </p>
+                <p>
+                    <label for="#noimmobile">No noimmobile units</label>
+                    <input type="radio" name="#anyimmobile" id="#noimmobile" value="#noimmobile" class="anyimmobile">
+                    <br>
+                    <label for="#okimmobile">No noimmobile restrictons</label>
+                    <input type="radio" name="#anyimmobile" id="#okimmobile" value="#okimmobile" class="anyimmobile" checked>
+                    <br>
+                    <label for="#onlyimmobile">Only noimmobile units</label>
+                    <input type="radio" name="#anyimmobile" id="#onlyimmobile" value="#onlyimmobile" class="anyimmobile">
+                </p>
+            </fieldset>
+            <label for="#recuperation">Grants repuperation</label>
+            <input type="checkbox" name="#recuperation" id="#recuperation" value="#recuperation" class="cursebool">
+            <br>
+            <label for="#yearaging">Extra aging</label>
+            <input type="checkbox" name="#yearaging" id="#yearaging" value="#yearaging" 
+            onchange="deactivateIfChecked('#yearaging', '#noaging')" class="cursebool">
+            <br>
+            <label for="#noaging">Unaging</label>
+            <input type="checkbox" name="#noaging" id="#noaging" value="#noaging" 
+            onchange="deactivateIfChecked('#noaging', '#yearaging')" class="cursebool">
+            <br>
+            <p>
+                Any friendly units in same provence don't age.
+                <br>
+                <label for="#noagingland">Stop aging</label>
+                <input type="checkbox" name="#noagingland" id="#noagingland" value="#noagingland" class="cursebool">
+            </p>
+            <h3>Monster Modding Commands</h3>
+            <fieldset>
+                <legend>Non Elemental Resistance</legend>
+                <input type="checkbox" name="#bluntres" id="#bluntres" value="#bluntres" class="resbool">
+                <label for="#bluntres">Blunt Resistance</label>
+                <br>
+                <input type="checkbox" name="#pierceres" id="#pierceres" value="#pierceres" class="resbool">
+                <label for="#pierceres">Piercing Resistance</label>
+                <br>
+                <input type="checkbox" name="#slashres" id="#slashres" value="#slashres" class="resbool">
+                <label for="#slashres">Slashing Resistance</label>
+            </fieldset>
+            <label for="#iceprot">Extra protection basied on cold scale:</label>
+            <input type="number" name="#iceprot" value="0" min="0" class="resnum">
+            <p>
+                Non magical weapons have only a 25% chance of hitting an ethereal monster but ingore armor when they do.
+                <br>
+                <input type="checkbox" name="#ethereal" id="#ethereal" value="#ethereal" class="resbool">
+                <label for="#ethereal">Ethereal </label>
+            </p>
+            <label for="#heat">Heat Aura:</label>
+            <input type="number" name="#heat" id="#heat" value="0" min="0" class="auranum">
+            <br>
+            <label for="#cold">Cold Aura:</label>
+            <input type="number" name="#cold" id="#cold" value="0" min="0" class="auranum">
+            <br>
+            <label for="#uwheat">Underwater Heat Aura:</label>
+            <input type="number" name="#uwheat" id="#uwheat" value="0" min="0" max="100" class="auranum">
+            <br>
+            <label for="#poisonskin">Poison Skin:</label>
+            <input type="number" name="#poisonskin" id="#poisonskin" value="0" min="0" max="500" class="auranum">
+            <br>
+            <label for="#poisoncloud">Poison Cloud Size:</label>
+            <input type="number" name="#poisoncloud" id="#poisoncloud" value="0" min="0"  class="auranum">
+            <br>
+            <label for="#diseasecloud">Disease Cloud Size:</label>
+            <input type="number" name="#diseasecloud" id="#diseasecloud" value="0" min="0" class="auranum">
+            <br>
+            <label for="#awe">Awe:</label>
+            <input type="number" name="#awe" id="#awe" value="0" min="0" class="auranum">
+            <br>
+            <label for="#animalawe">Animal Awe:</label>
+            <input type="number" name="#animalawe" id="#animalawe" value="0" min="0" class="auranum">
+            <br>
+            <label for="#fear">Fear:</label>
+            <input type="number" name="#fear" id="#fear" value="0" min="0" class="auranum">
+            <br>
+            <label for="#airshield">Air Shield:</label>
+            <input type="number" name="#airshield" id="#airshield" value="0" min="0" max="100" class="auranum">
+            <br>
+            <label for="#fireshield">Fire Shield:</label>
+            <input type="number" name="#fireshield" id="#fireshield" value="0" min="0" class="auranum">
+            <br>
+            <label for="#uwfireshield">Underwater Fire Shield:</label>
+            <input type="number" name="#uwfireshield" id="#uwfireshield" value="0" min="0" class="auranum">
+            <br>
+            <label for="#banefireshield">Banefire Shield:</label>
+            <input type="number" name="#banefireshield" id="#banefireshield" value="0" min="0" class="auranum">
+            <br>
+            <label for="#acidshield">Acid Shield:</label>
+            <input type="number" name="#acidshield" id="#acidshield" value="0" min="0" class="auranum">
+            <br>
+            <p>
+                Monster takes less damage from nonmagic weapons.
+                <br>
+                <label for="#invulnerable">Invulnerability:</label>
+                <input type="number" name="#invulnerable" id="#invulnerable" value="0" min="0" class="resnum">
+            </p>
+            <!--to do -->
+            <button onclick="document.getElementById('result').innerText = createItem()">Create Spell</button>
+            <br>
+            <p id="result" name="result">Result</p>
+        </main>
+    </body>
+</html>

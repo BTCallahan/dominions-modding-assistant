@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dominions Spell Moding Assistant</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="assets/checkers_and_getters.js">
+        </script>
+        <script type="text/javascript" src="assets/nation_script.js">
+        </script>
+        <link rel="stylesheet" href="assets/mod_styling.css">
+    </head>
+    <body>
+        <header>
+            <a href="armor_helper.html">Armor</a>
+            <a href="weapon_helper.html">Weapons</a>
+            <a href="item_helper.html">Magic Items</a>
+            <a href="spell_helper.html">Magic Spells</a>
+            <a href="monster_helper.html">Monsters</a>
+            <a href="nation_helper.html">Nations</a>
+            <a href="site_helper.html">Magic Sites</a>
+        </header>
+        <main>
+            <h1>Nation Modding</h1>
+            <h3>Name, Era & General</h3>
+
+            <label for="#indepflag">Indpendant Flag:</label>
+            <input type="text" id="#indepflag" name="#indepflag">
+            <fieldset>
+                <legend>New</legend>
+                <input type="checkbox" name="#newnation" id="#newnation" value="#newnation" checked
+                onchange="newVsOld()">
+                <label for="#newnation">Nation is New</label>
+                <br>
+                <input type="checkbox" name="#clearnation" id="#clearnation" class="old">
+                <label for="#clearnation">Clears data from imported nation</label>
+                <br>
+                <input type="radio" name="era" id="earlyera" value="1" class="#era" 
+                onchange="handleAges()">
+                <label for="earlyera">Early Era</label>
+                <br>
+                <input type="radio" name="era" id="middleera" value="2" class="#era" checked
+                onchange="handleAges()">
+                <label for="middleera">Middle Era</label>
+                <br>
+                <input type="radio" name="era" id="lateera" value="3" class="#era"
+                onchange="handleAges()">
+                <label for="lateera">Late Era</label>
+                <fieldset>
+                    <label for="earlyselect">Early Nation:</label>
+                    <select name="earlyselect" id="earlyselect" class="nationeras old" disabled>
+                        <option value="5" selected>Arcoscephale, Golden Era</option>
+                        <option value="6">Ermor, New Faith</option>
+                        <option value="7">Ulm, Enigma of Steel</option>
+                        <option value="8">Marverni, Time of Druids</option>
+                        <option value="9">Sauromatia, Amazon Queens</option>
+                        <option value="10">T’ien Ch’i, Spring and Autumn</option>
+                        <option value="11">Machaka, Lion Kings</option>
+                        <option value="12">Mictlan, Reign of Blood</option>
+                        <option value="13">Abysia, Children of Flame</option>
+                        <option value="14">Caelum, Eagle Kings</option>
+                        <option value="15">C’tis, Lizard Kings</option>
+                        <option value="16">Pangaea, Age of Revelry</option>
+                        <option value="17">Agartha, Pale Ones</option>
+                        <option value="18">Tir na n’Og, Land of the Ever Young</option>
+                        <option value="19">Fomoria, The Cursed Ones</option>
+                        <option value="20">Vanheim, Age of Vanir</option>
+                        <option value="21">Helheim, Dusk and Death</option>
+                        <option value="22">Niefelheim, Sons of Winter</option>
+                        <option value="24">Rus, Sons of Heaven</option>
+                        <option value="25">Kailasa, Rise of the Ape Kings</option>
+                        <option value="26">Lanka, Land of Demons</option>
+                        <option value="27">Yomi, Oni Kings</option>
+                        <option value="28">Hinnom, Sons of the Fallen</option>
+                        <option value="29">Ur, The First City</option>
+                        <option value="30">Berytos, Phoenix Empire</option>
+                        <option value="31">Xibalba, Vigil of the Sun</option>
+                        <option value="32">Mekone, Brazen Giants</option>
+                        <option value="36">Atlantis, Emergence of the Deep Ones</option>
+                        <option value="37">R’lyeh, Time of Aboleths</option>
+                        <option value="38">Pelagia, Pearl Kings</option>
+                        <option value="39">Oceania, Coming of the Capricorns</option>
+                        <option value="40">Therodos, Telkhine Spectre</option>
+                    </select>
+                    <br>
+                    <label for="middleselect">Middle Nation:</label>
+                    <select name="middleselect" id="middleselect" class="nationeras old">
+                        <option value="43" selected>Arcoscephale, The Old Kingdom</option>
+                        <option value="44">Ermor, Ashen Empire</option>
+                        <option value="45">Sceleria, Reformed Empire</option>
+                        <option value="46">Pythium, Emerald Empire</option>
+                        <option value="47">Man, Tower of Avalon</option>
+                        <option value="48">Eriu, Last of the Tuatha</option>
+                        <option value="49">Ulm, Forges of Ulm</option>
+                        <option value="50">Marignon, Fiery Justice</option>
+                        <option value="51">Mictlan, Reign of the Lawgiver</option>
+                        <option value="52">T’ien Ch’i, Imperial Bureaucracy</option>
+                        <option value="53">Machaka, Reign of Sorcerors</option>
+                        <option value="54">Agartha, Golem Cult</option>
+                        <option value="55">Abysia, Blood and Fire</option>
+                        <option value="56">Caelum, Reign of the Seraphim</option>
+                        <option value="57">C’tis, Miasma</option>
+                        <option value="58">Pangaea, Age of Bronze</option>
+                        <option value="59">Asphodel, Carrion Woods</option>
+                        <option value="60">Vanheim, Arrival of Man</option>
+                        <option value="61">Jotunheim, Iron Woods</option>
+                        <option value="62">Vanarus, Land of the Chuds</option>
+                        <option value="63">Bandar Log, Land of the Apes</option>
+                        <option value="64">Shinuyama, Land of the Bakemono</option>
+                        <option value="65">Ashdod, Reign of the Anakim</option>
+                        <option value="66">Uruk, City States</option>
+                        <option value="67">Nazca, Kingdom of the Sun</option>
+                        <option value="68">Xibalba, Flooded Caves</option>
+                        <option value="69">Phlegra, Deformed Giants</option>
+                        <option value="70">Phaeacia, Isle of the Dark Ships</option>
+                        <option value="73">Atlantis, Kings of the Deep</option>
+                        <option value="74">R’lyeh, Fallen Star</option>
+                        <option value="75">Pelagia, Triton Kings</option>
+                        <option value="76">Oceania, Mermidons</option>
+                        <option value="77">Ys, Morgen Queens</option>
+                    </select>
+                    <br>
+                    <label for="lateselect">Late Nation</label>
+                    <select name="lateselect" id="lateselect" class="nationeras old" disabled>
+                        <option value="80">Arcoscephale, Sibylline Guidance</option>
+                        <option value="81">Pythium, Serpent Cult</option>
+                        <option value="82">Lemuria, Soul Gate</option>
+                        <option value="83">Man, Towers of Chelms</option>
+                        <option value="84">Ulm, Black Forest</option>
+                        <option value="85">Marignon, Conquerors of the Sea</option>
+                        <option value="86">Mictlan, Blood and Rain</option>
+                        <option value="87">T’ien Ch’i, Barbarian Kings</option>
+                        <option value="89">Jomon, Human Daimyos</option>
+                        <option value="90">Agartha, Ktonian Dead</option>
+                        <option value="91">Abysia, Blood of Humans</option>
+                        <option value="92">Caelum, Return of the Raptors</option>
+                        <option value="93">C’tis, Desert Tombs</option>
+                        <option value="94">Pangaea, New Era</option>
+                        <option value="95">Midgård, Age of Men</option>
+                        <option value="96">Utgård, Well of Urd</option>
+                        <option value="97">Bogarus, Age of Heroes</option>
+                        <option value="98">Patala, Reign of the Nagas</option>
+                        <option value="99">Gath, Last of the Giants</option>
+                        <option value="100">Ragha, Dual Kingdom</option>
+                        <option value="101">Xibalba, Return of the Zotz</option>
+                        <option value="102">Phlegra, Sleeping Giants</option>
+                        <option value="106">Atlantis, Frozen Sea</option>
+                        <option value="107">R’lyeh, Dreamlands</option>
+                        <option value="108">Erytheia, Kingdom of Two Worlds</option>
+                    </select>
+                </fieldset>
+            </fieldset>
+
+            <label for="#name">Nation Name:</label>
+            <input type="text" name="#name" id="#name" class="nationinfo">
+            <br>
+            <label for="#epithet">Nation Epithet:</label>
+            <input type="text" name="#epithet" id="#epithet" class="nationinfo">
+            <br>
+            <label for="#descr">Nation Description:</label>
+            <input type="text" name="#descr" id="#descr" class="nationinfo desc">
+            <br>
+            <label for="#summary">Nation Summary:</label>
+            <input type="text" name="#summary" id="#summary" class="nationinfo">
+            <br>
+            <label for="#brief">Brief Nation Description:</label>
+            <input type="text" name="#brief" id="#brief" class="nationinfo">
+            <br>
+            <input type="color" name="#color" id="#color" value="ffffff">
+            <label for="#color">Nation Color</label>
+            <br>
+            <input type="color" name="#secondarycolor" id="#secondarycolor" value="#ff00ff">
+            <label for="#secondarycolor">Secondary Nation Color</label>
+            <br>
+            <label for="#flag">Flag filename:</label>
+            <input type="text" name="#flag" id="#flag">
+            <br>
+            <input type="checkbox" name="#disableoldnations" id="#disableoldnations" value="#disableoldnations">
+            <label for="#disableoldnations">Disable old nations</label>
+            <h3>Sites, Terrain, Temperature</h3>
+            <input type="checkbox" name="#clearsites" id="#clearsites" class="old">
+            <label for="#clearsites">Clears all start sites</label>
+            <fieldset>
+                <legend>Start Sites</legend>
+                <label for="startsite1">Name of first Start Site:</label>
+                <input type="text" name="startsite1" id="startsite1" class="startsites">
+                <br>
+                <label for="startsite2">Name of first Start Site:</label>
+                <input type="text" name="startsite2" id="startsite2" class="startsites">
+                <br>
+                <label for="startsite3">Name of first Start Site:</label>
+                <input type="text" name="startsite3" id="startsite3" class="startsites">
+                <br>
+                <label for="startsite4">Name of first Start Site:</label>
+                <input type="text" name="startsite4" id="startsite4" class="startsites">
+                <p>Note: The island start site will only be used if the nation starts on an island</p>
+                <label for="islandsite1">Name of first Start Site:</label>
+                <input type="text" name="islandsite1" id="islandsite1" class="islandsites">
+                <br>
+                <label for="islandsite2">Name of first Start Site:</label>
+                <input type="text" name="islandsite2" id="islandsite2" class="islandsites">
+                <br>
+                <label for="islandsite3">Name of first Start Site:</label>
+                <input type="text" name="islandsite3" id="islandsite3" class="islandsites">
+                <br>
+                <label for="islandsite4">Name of first Start Site:</label>
+                <input type="text" name="islandsite4" id="islandsite4" class="islandsites">
+            </fieldset>
+            <fieldset>
+                <legend>Preffered Terrain</legend>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Liked Terrain:
+                            </th>
+        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="likesterr-" id="likesterr-" value="0" class="likesterr ritual">
+                                <label for="likesterr0">Plains</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr0" id="likesterr0" value="1" class="likesterr ritual">
+                                <label for="likesterr0">Small Provence</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr1" id="likesterr1" value="2" class="likesterr ritual">
+                                <label for="likesterr1">Large Provence</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr2" id="likesterr2" value="4" class="likesterr ritual">
+                                <label for="likesterr2">Sea</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr3" id="likesterr3" value="8" class="likesterr ritual">
+                                <label for="likesterr3">Freshwater</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="likesterr4" id="likesterr4" value="16" class="likesterr ritual">
+                                <label for="likesterr4">Mountain</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr5" id="likesterr5" value="32" class="likesterr ritual">
+                                <label for="likesterr5">Swamp</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr6" id="likesterr6" value="64" class="likesterr ritual">
+                                <label for="likesterr6">Wasteland</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr7" id="likesterr7" value="128" class="likesterr ritual">
+                                <label for="likesterr7">Forest</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr8" id="likesterr8" value="256" class="likesterr ritual">
+                                <label for="likesterr8">Farm</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="likesterr9" id="likesterr9" value="512" class="likesterr ritual">
+                                <label for="likesterr9">Non Starting Provence</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr10" id="likesterr10" value="1024" class="likesterr ritual">
+                                <label for="likesterr10">Many Sites</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr11" id="likesterr11" value="2048" class="likesterr ritual">
+                                <label for="likesterr11">Deep Sea</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr12" id="likesterr12" value="4096" class="likesterr ritual">
+                                <label for="likesterr12">Cave</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="likesterr22" id="likesterr22" value="4194304" class="likesterr ritual">
+                                <label for="likesterr22">Border Mountain</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </fieldset>
+            <fieldset>
+                <legend>Unfavored Terrain</legend>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Disklied Terrain:
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="hatesterr-" id="hatesterr-" value="0" class="hatesterr ritual">
+                                <label for="hatesterr0">Plains</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr0" id="hatesterr0" value="1" class="hatesterr ritual">
+                                <label for="hatesterr0">Small Provence</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr1" id="hatesterr1" value="2" class="hatesterr ritual">
+                                <label for="hatesterr1">Large Provence</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr2" id="hatesterr2" value="4" class="hatesterr ritual">
+                                <label for="hatesterr2">Sea</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr3" id="hatesterr3" value="8" class="hatesterr ritual">
+                                <label for="hatesterr3">Freshwater</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="hatesterr4" id="hatesterr4" value="16" class="hatesterr ritual">
+                                <label for="hatesterr4">Mountain</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr5" id="hatesterr5" value="32" class="hatesterr ritual">
+                                <label for="hatesterr5">Swamp</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr6" id="hatesterr6" value="64" class="hatesterr ritual">
+                                <label for="hatesterr6">Wasteland</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr7" id="hatesterr7" value="128" class="hatesterr ritual">
+                                <label for="hatesterr7">Forest</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr8" id="hatesterr8" value="256" class="hatesterr ritual">
+                                <label for="hatesterr8">Farm</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="hatesterr9" id="hatesterr9" value="512" class="hatesterr ritual">
+                                <label for="hatesterr9">Non Starting Provence</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr10" id="hatesterr10" value="1024" class="hatesterr ritual">
+                                <label for="hatesterr10">Many Sites</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr11" id="hatesterr11" value="2048" class="hatesterr ritual">
+                                <label for="hatesterr11">Deep Sea</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr12" id="hatesterr12" value="4096" class="hatesterr ritual">
+                                <label for="hatesterr12">Cave</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="hatesterr22" id="hatesterr22" value="4194304" class="hatesterr ritual">
+                                <label for="hatesterr22">Border Mountain</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+            <label for="#idealcold">Preffered Tempriture</label>
+            <select name="#idealcold" id="#idealcold">
+                <option value="-3">Very hot</option>
+                <option value="-2">Hot</option>
+                <option value="-1">Slightly hot</option>
+                <option value="0" selected>Temprite</option>
+                <option value="1">Slightly cold</option>
+                <option value="2">Cold</option>
+                <option value="3">Very cold</option>
+            </select>
+            <p>
+                <input type="radio" name="#watervsland" id="#uwnation" value="#uwnation" class="watervsland">
+                <label for="#uwnation">Nation starts underwater</label>
+                <br>
+                <input type="radio" name="#watervsland" id="#coastnation" value="#coastnation" class="watervsland"
+                onchange="enableOrDisable(document.getElementById('#coastnation').checked, 'island', '')">
+                <label for="#coastnation">Nation starts on coast</label>
+                <br>
+                <input type="radio" name="#watervsland" id="#landnation" value="#coastnation" class="watervsland" checked
+                onchange="enableOrDisable(document.getElementById('#landnation').checked, 'cave', '')">
+                <label for="#coastnation">Nation starts on mainland</label>
+                <br>
+                <p>
+                    If no sutible island can be found, then this nation prefers to start on a coast.
+                    <br>
+                    <input type="checkbox" name="#islandnation" id="#islandnation" class="island" disabled>
+                    <label for="#islandnation">Nation prefers to start on an island</label>    
+                </p>
+            </p>
+            <p>
+                <input type="radio" name="#cave" id="#cavenation 0" value="0" class="cave" checked>
+                <label for="#cavenation 0">Nation never starts in cave provence</label>
+                <br>
+                <input type="radio" name="#cave" id="#cavenation 1" value="1" class="cave">
+                <label for="#cavenation 1">Nation may start in cave provence</label>
+                <br>
+                <input type="radio" name="#cave" id="#cavenation 2" value="2" class="cave">
+                <label for="#cavenation 2">Nation never starts in cave provence</label>
+            </p>
+            <label for="#killcappop">Percentage of capital's population to kill at the begining of the game</label>
+            <input type="number" name="#killcappop" id="#killcappop" min="-100" max="100" value="0">
+            <h3>AI Hints</h3>
+            <p>
+                    Instructs AI to never leave the home province with the pretender
+                    <br>
+                <input type="checkbox" name="#aiholdgod" id="#aiholdgod">
+                <label for="#aiholdgod">Stay in Home</label>
+            </p>
+
+            
+            <p>
+                    Extra chance of AI choosing awake pretender
+                    <br>
+
+                    <label for="#aiawake">Awake chance:</label>
+                    <input type="number" name="#aiawake" id="#aiawake" min="0" max="100" value="0">
+            
+            </p>
+            <fieldset>
+                <legend>Magic Used by Nation</legend>
+                <p>
+                    This tells the AI what kind of magic the nation will use, and what kind of pretender it should try to build
+                </p>
+                <input type="checkbox" name="#aifirenation" id="#aifirenation" class="magicnation">
+                <label for="#aifirenation">Fire</label>
+                <br>
+                <input type="checkbox" name="#aiairnation" id="#aiairnation" class="magicnation">
+                <label for="#aiairnation">Air</label>
+                <br>
+                <input type="checkbox" name="#aiwaternation" id="#aiwaternation" class="magicnation">
+                <label for="#aiwaternation">Water</label>
+                <br>
+                <input type="checkbox" name="#aiearthnation" id="#aiearthnation" class="magicnation">
+                <label for="#aiearthnation">Earth</label>
+                <br>
+                <input type="checkbox" name="#ainaturenation" id="#ainaturenation" class="magicnation">
+                <label for="#ainaturenation">Nature</label>
+                <br>
+                <input type="checkbox" name="#aiastralnation" id="#aiastralnation" class="magicnation">
+                <label for="#aiastralnation">Astral</label>
+                <br>
+                <input type="checkbox" name="#aideathnation" id="#aideathnation" class="magicnation">
+                <label for="#aideathnation">Death</label>
+                <br>
+                <input type="checkbox" name="#aibloodnation" id="#aibloodnation" class="magicnation">
+                <label for="#aibloodnation">Blood</label>
+                <br>
+            </fieldset>
+            <input type="checkbox" name="#bloodnation" id="#bloodnation" class="magicnation">
+            <label for="#bloodnation">Blood Enconmy</label>
+            <br>
+            <fieldset>
+                <legend>Required Magic Path</legend>
+                <p>If this is checked, then the AI will ensure that its pretender will have at 
+                    least three levels in the elsected magic path</p>
+                    <label for="#aimusthavemag">Site Path:</label>
+                    <select class="attunment" id="#aimusthavemag">
+                        <option value="-1" selected>No rquired path</option>
+                        <option value="0">Air</option>
+                        <option value="1">Water</option>
+                        <option value="2">Earth</option>
+                        <option value="3">Fire</option>
+                        <option value="4">Astral</option>
+                        <option value="5">Nature</option>
+                        <option value="6">Death</option>
+                        <option value="7">Blood</option>
+                    </select>
+            </fieldset>
+            <fieldset>
+                <legend>Blessing Instructions</legend>
+                <p>
+                    Chance of AI building to create more bowerful bless
+                    <br>
+                    <input type="number" name="#aigoodbless" id="#aigoodbless" min="0" max="100" value="0">
+                    <label for="#aigoodbless">Bless Nation</label>
+                </p>
+                <p>
+                    Tells AI the nations sacred units are inexpenisve and expentable.
+                    <br>
+                    <input type="checkbox" name="#aicheapholy" id="#aicheapholy" class="magicnation">
+                    <label for="#aicheapholy">Cheap Sacreds</label>
+                </p>
+                <p>
+                    Tells AI the nations sacred units have ranged attacks.
+                    <br>
+                    <input type="checkbox" name="#aiholyranged" id="#aiholyranged" class="magicnation">
+                    <label for="#aiholyranged">Ranged Sacreds</label>
+                </p>
+            </fieldset>
+            <h3>Unit Lists & Recruitment</h3>
+
+            <input type="checkbox" name="#clearrec" id="#clearrec" class="old">
+            <label for="#clearrec">Clears list of recruitable units and commanders</label>
+            <br>
+            <br>
+            <fieldset>
+                <legend>Starting Units and Commanders</legend>
+                <p>The nation will begin the game with this unit as it's commander. This should be 
+                    a unit with a leadership value of at least 40, prefrabably 80.
+                    <br>
+                    <label for="#startcom">ID of starting commander:</label>
+                    <input type="number" name="#startcom" id="#startcom" min="1" max="8900" value="1" class="recritables">
+                </p>
+                <p>The commander will begin with two squads of units under its command.
+                    <br>
+                    <label for="#startunittype1">ID of unit in first squad:</label>
+                    <input type="number" name="#startunittype1" id="#startunittype1" min="1" max="8900" value="1" class="recritables">
+                    <br>
+                    <label for="#startunitnbrs1">Number of units in first squad</label>
+                    <input type="number" name="startunitnbrs1" id="startunitnbrs1" min="1" max="80" value="20" class="recritables">
+                    <br>
+                    <label for="#startunittype2">ID of unit in second squad:</label>
+                    <input type="number" name="#startunittype2" id="#startunittype2" min="1" max="8900" value="1" class="recritables">
+                    <br>
+                    <label for="#startunitnbrs2">Number of units in second squad</label>
+                    <input type="number" name="startunitnbrs2" id="startunitnbrs2" min="1" max="80" value="20" class="recritables">
+                </p>
+                <p>The nation will begin the game with this init as a scout. This should be a unit
+                    with a stealth value of at least 10.
+                    <br>
+                    <label for="#startscout">ID of starting scout:</label>
+                    <input type="text" name="#startscout" id="#startscout" min="1" max="8900" value="1" class="recritables">
+                </p>
+            </fieldset>
+
+            <p>If the nation can recruit specific commanders from costal forts, enter their ID below.
+                <br>
+                <label for="#coastcom1">ID of coastal fort commander:</label>
+                <input type="number" name="#coastcom1" id="#coastcom1" min="1" max="8900" value="1" class="recritables">
+                <br>
+                <label for="#coastcom2">ID of coastal fort commander:</label>
+                <input type="number" name="#coastcom2" id="#coastcom2" min="1" max="8900" value="1" class="recritables">
+            </p>
+            <p>If the nation can recruit specific units from costal forts, enter their ID below.
+                <br>
+                <label for="#coastunit1">ID of coastal fort unit:</label>
+                <input type="number" name="#coastunit1" id="#coastunit1" min="1" max="8900" value="1" class="recritables">
+                <br>
+                <label for="#coastunit2">ID of coastal fort unit:</label>
+                <input type="number" name="#coastunit2" id="#coastunit2" min="1" max="8900" value="1" class="recritables">
+                <br>
+                <label for="#coastunit3">ID of coastal fort unit:</label>
+                <input type="number" name="#coastunit3" id="#coastunit3" min="1" max="8900" value="1" class="recritables">
+            </p>
+            <p>If the nation can recruit a unit from any provence that does not have a fort, enter its ID below.
+                <br>
+                <label for="#addforeignunit">ID of non fort unit:</label>
+                <input type="number" name="#addforeignunit" id="#addforeignunit" min="1" max="8900" value="1" class="recritables">
+            </p>
+            <p>If the nation can recruit a commander from any provence that does not have a fort enter its ID below.
+                <br>
+                <label for="#addforeigncom">ID of non fort unit:</label>
+                <input type="number" name="#addforeigncom" id="#addforeigncom" min="1" max="8900" value="1" class="recritables">
+            </p>
+            <fieldset>
+                <legend>Terrain Specific Recruitment</legend>
+                <p>Some nations can only recruit specific units from a provence if that provence is of a specific
+                    terrain type. To set this, select which terrain the and is to be recruited from, and enter 
+                    its ID in the following field.
+                    <br>
+                    <label for="terrainrec1">Terrain Type:</label>
+                    <select name="terrainrec1" id="terrainrec1" class="terrainrec">
+                        <option value="na" selected>N/A</option>
+                        <option value="forestrec">Forest</option>
+                        <option value="mountainrec">Mountain</option>
+                        <option value="swamprec">Swamp</option>
+                        <option value="wasterec">Waste</option>
+                        <option value="caverec">Cave</option>
+                    </select>
+                    <br>
+                    <label for="terrainrecid1">Unit ID:</label>
+                    <input type="text" name="terrainrecid1" id="terrainrecid1" min="1" max="8999" value="1" class="terrainrecid">
+                </p>
+                <p>
+                    <label for="terrainrec2">Terrain Type:</label>
+                    <select name="terrainrec2" id="terrainrec2" class="terrainrec">
+                        <option value="na" selected>N/A</option>
+                        <option value="forestrec">Forest</option>
+                        <option value="mountainrec">Mountain</option>
+                        <option value="swamprec">Swamp</option>
+                        <option value="wasterec">Waste</option>
+                        <option value="caverec">Cave</option>
+                    </select>
+                    <br>
+                    <label for="terrainrecid2">Unit ID:</label>
+                    <input type="text" name="terrainrecid2" id="terrainrecid2" min="1" max="8999" value="1" class="terrainrecid">
+                </p>
+                <p>
+                    <label for="terrainrec3">Terrain Type:</label>
+                    <select name="terrainrec3" id="terrainrec3" class="terrainrec">
+                        <option value="na" selected>N/A</option>
+                        <option value="forestrec">Forest</option>
+                        <option value="mountainrec">Mountain</option>
+                        <option value="swamprec">Swamp</option>
+                        <option value="wasterec">Waste</option>
+                        <option value="caverec">Cave</option>
+                    </select>
+                    <br>
+                    <label for="terrainrecid3">Unit ID:</label>
+                    <input type="text" name="terrainrecid3" id="terrainrecid3" min="1" max="8999" value="1" class="terrainrecid">
+                </p>
+                <p>
+                    <label for="terrainrec4">Terrain Type:</label>
+                    <select name="terrainrec4" id="terrainrec4" class="terrainrec">
+                        <option value="na" selected>N/A</option>
+                        <option value="forestrec">Forest</option>
+                        <option value="mountainrec">Mountain</option>
+                        <option value="swamprec">Swamp</option>
+                        <option value="wasterec">Waste</option>
+                        <option value="caverec">Cave</option>
+                    </select>
+                    <br>
+                    <label for="terrainrecid4">Unit ID:</label>
+                    <input type="text" name="terrainrecid4" id="terrainrecid4" min="1" max="8999" value="1" class="terrainrecid">
+                </p>
+                <p>
+                    <label for="terrainrec5">Terrain Type:</label>
+                    <select name="terrainrec5" id="terrainrec5" class="terrainrec">
+                        <option value="na" selected>N/A</option>
+                        <option value="forestrec">Forest</option>
+                        <option value="mountainrec">Mountain</option>
+                        <option value="swamprec">Swamp</option>
+                        <option value="wasterec">Waste</option>
+                        <option value="caverec">Cave</option>
+                    </select>
+                    <br>
+                    <label for="terrainrecid5">Unit ID:</label>
+                    <input type="text" name="terrainrecid5" id="terrainrecid5" min="1" max="8999" value="1" class="terrainrecid">
+                </p>
+                <br>
+                <p>Like the prevous, but for commanders.
+                    <br>
+                    <label for="terraincom1">Terrain Type:</label>
+                    <select name="terraincom1" id="terraincom1" class="terraincom">
+                        <option value="na" selected>N/A</option>
+                        <option value="forestcom">Forest</option>
+                        <option value="mountaincom">Mountain</option>
+                        <option value="swampcom">Swamp</option>
+                        <option value="wastecom">Waste</option>
+                        <option value="cavecom">Cave</option>
+                    </select>
+                    <label for="terraincomid1">Commander ID:</label>
+                    <input type="text" name="terraincomid1" id="terraincomid1" min="1" max="8999" value="1" class="terraincomid">
+                </p>
+                <p>
+                    <label for="terraincom2">Terrain Type:</label>
+                    <select name="terraincom2" id="terraincom2" class="terraincom">
+                        <option value="na" selected>N/A</option>
+                        <option value="forestcom">Forest</option>
+                        <option value="mountaincom">Mountain</option>
+                        <option value="swampcom">Swamp</option>
+                        <option value="wastecom">Waste</option>
+                        <option value="cavecom">Cave</option>
+                    </select>
+                    <label for="terraincomid2">Commander ID:</label>
+                    <input type="text" name="terraincomid2" id="terraincomid2" min="1" max="8999" value="1" class="terraincomid">
+                </p>
+                <p>
+                    <label for="terraincom3">Terrain Type:</label>
+                    <select name="terraincom3" id="terraincom3" class="terraincom">
+                        <option value="na" selected>N/A</option>
+                        <option value="forestcom">Forest</option>
+                        <option value="mountaincom">Mountain</option>
+                        <option value="swampcom">Swamp</option>
+                        <option value="wastecom">Waste</option>
+                        <option value="cavecom">Cave</option>
+                    </select>
+                    <label for="terraincomid3">Commander ID:</label>
+                    <input type="text" name="terraincomid3" id="terraincomid3" min="1" max="8999" value="1" class="terraincomid">
+                </p>
+                <p>
+                        <label for="terraincom4">Terrain Type:</label>
+                        <select name="terraincom4" id="terraincom4" class="terraincom">
+                            <option value="na" selected>N/A</option>
+                            <option value="forestcom">Forest</option>
+                            <option value="mountaincom">Mountain</option>
+                            <option value="swampcom">Swamp</option>
+                            <option value="wastecom">Waste</option>
+                            <option value="cavecom">Cave</option>
+                        </select>
+                        <label for="terraincomid4">Commander ID:</label>
+                        <input type="text" name="terraincomid4" id="terraincomid4" min="1" max="8999" value="1" class="terraincomid">
+                </p>
+                <p>
+                        <label for="terraincom5">Terrain Type:</label>
+                        <select name="terraincom5" id="terraincom5" class="terraincom">
+                            <option value="na" selected>N/A</option>
+                            <option value="forestcom">Forest</option>
+                            <option value="mountaincom">Mountain</option>
+                            <option value="swampcom">Swamp</option>
+                            <option value="wastecom">Waste</option>
+                            <option value="cavecom">Cave</option>
+                        </select>
+                        <label for="terraincomid5">Commander ID:</label>
+                        <input type="text" name="terraincomid5" id="terraincomid5" min="1" max="8999" value="1" class="terraincomid">
+                </p>
+                <p>
+                        <label for="terraincom6">Terrain Type:</label>
+                        <select name="terraincom6" id="terraincom6" class="terraincom">
+                            <option value="na" selected>N/A</option>
+                            <option value="forestcom">Forest</option>
+                            <option value="mountaincom">Mountain</option>
+                            <option value="swampcom">Swamp</option>
+                            <option value="wastecom">Waste</option>
+                            <option value="cavecom">Cave</option>
+                        </select>
+                        <label for="terraincomid6">Commander ID:</label>
+                        <input type="text" name="terraincomid6" id="terraincomid6" min="1" max="8999" value="1" class="terraincomid">
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Fort Recruitment</legend>
+                <p>Recruitable Units
+                    <br>
+                    <label for="#addrecunit1">ID of recruitable unit:</label>
+                    <input type="number" name="#addrecunit1" id="#addrecunit1" min="0" max="8999" value="0" class="#addrecunit">
+                    <br>
+                    <label for="#addrecunit2">ID of recruitable unit:</label>
+                    <input type="number" name="#addrecunit2" id="#addrecunit2" min="0" max="8999" value="0" class="#addrecunit">
+                    <br>
+                    <label for="#addrecunit3">ID of recruitable unit:</label>
+                    <input type="number" name="#addrecunit3" id="#addrecunit3" min="0" max="8999" value="0" class="#addrecunit">
+                    <br>
+                    <label for="#addrecunit4">ID of recruitable unit:</label>
+                    <input type="number" name="#addrecunit4" id="#addrecunit4" min="0" max="8999" value="0" class="#addrecunit">
+                    <br>
+                    <label for="#addrecunit5">ID of recruitable unit:</label>
+                    <input type="number" name="#addrecunit5" id="#addrecunit5" min="0" max="8999" value="0" class="#addrecunit">
+                    <br>
+                    <label for="#addrecunit6">ID of recruitable unit:</label>
+                    <input type="number" name="#addrecunit6" id="#addrecunit6" min="0" max="8999" value="0" class="#addrecunit">
+                    <br>
+                    <label for="#addrecunit7">ID of recruitable unit:</label>
+                    <input type="number" name="#addrecunit7" id="#addrecunit7" min="0" max="8999" value="0" class="#addrecunit">
+                    <br>
+                    <label for="#addrecunit8">ID of recruitable unit:</label>
+                    <input type="number" name="#addrecunit8" id="#addrecunit8" min="0" max="8999" value="0" class="#addrecunit">
+                </p>
+                
+                <p>Recruitable Commanders
+                    <br>
+                    <label for="#addreccom1">ID of recruitable commander:</label>
+                    <input type="number" name="#addreccom1" id="#addreccom1" min="0" max="8999" value="0" class="#addreccom">
+                    <br>
+                    <label for="#addreccom2">ID of recruitable commander:</label>
+                    <input type="number" name="#addreccom2" id="#addreccom2" min="0" max="8999" value="0" class="#addreccom">
+                    <br>
+                    <label for="#addreccom3">ID of recruitable commander:</label>
+                    <input type="number" name="#addreccom3" id="#addreccom3" min="0" max="8999" value="0" class="#addreccom">
+                    <br>
+                    <label for="#addreccom4">ID of recruitable commander:</label>
+                    <input type="number" name="#addreccom4" id="#addreccom4" min="0" max="8999" value="0" class="#addreccom">
+                    <br>
+                    <label for="#addreccom5">ID of recruitable commander:</label>
+                    <input type="number" name="#addreccom5" id="#addreccom5" min="0" max="8999" value="0" class="#addreccom">
+                    <br>
+                    <label for="#addreccom6">ID of recruitable commander:</label>
+                    <input type="number" name="#addreccom6" id="#addreccom6" min="0" max="8999" value="0" class="#addreccom">
+                    <br>
+                    <label for="#addreccom7">ID of recruitable commander:</label>
+                    <input type="number" name="#addreccom7" id="#addreccom7" min="0" max="8999" value="0" class="#addreccom">
+                    <br>
+                    <label for="#addreccom8">ID of recruitable commander:</label>
+                    <input type="number" name="#addreccom8" id="#addreccom8" min="0" max="8999" value="0" class="#addreccom">
+                </p>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Underwater Recruitment (Overwater Nations Only)</legend>
+                <p>Note: These units can be recruited by a ground based nation from an 
+                    underwater fortress.</p>
+                <p>
+                    Recruitable Commanders
+                    <br>
+                    <label for="#uwcom1">ID of recruitable commander:</label>
+                    <input type="number" name="#uwcom1" id="#uwcom1" min="0" max="8999" value="0" class="#uwcom">
+                    <br>
+                    <label for="#uwcom2">ID of recruitable commander:</label>
+                    <input type="number" name="#uwcom2" id="#uwcom2" min="0" max="8999" value="0" class="#uwcom">
+                    <br>
+                    <label for="#uwcom3">ID of recruitable commander:</label>
+                    <input type="number" name="#uwcom3" id="#uwcom3" min="0" max="8999" value="0" class="#uwcom">
+                    <br>
+                    <label for="#uwcom4">ID of recruitable commander:</label>
+                    <input type="number" name="#uwcom4" id="#uwcom4" min="0" max="8999" value="0" class="#uwcom">
+                    <br>
+                    <label for="#uwcom5">ID of recruitable commander:</label>
+                    <input type="number" name="#uwcom5" id="#uwcom5" min="0" max="8999" value="0" class="#uwcom">
+                    <br>
+                    <label for="#uwcom6">ID of recruitable commander:</label>
+                    <input type="number" name="#uwcom6" id="#uwcom6" min="0" max="8999" value="0" class="#uwcom">
+                    <br>
+                    <label for="#uwcom7">ID of recruitable commander:</label>
+                    <input type="number" name="#uwcom7" id="#uwcom7" min="0" max="8999" value="0" class="#uwcom">
+                    <br>
+                    <label for="#uwcom8">ID of recruitable commander:</label>
+                    <input type="number" name="#uwcom8" id="#uwcom8" min="0" max="8999" value="0" class="#uwcom">
+                </p>
+                <p>Recruitable Units
+                    <br>
+                        <label for="#uwrec1">ID of recruitable unit:</label>
+                        <input type="number" name="#uwrec1" id="#uwrec1" min="0" max="8999" value="0" class="#uwrec">
+                        <br>
+                        <label for="#uwrec2">ID of recruitable unit:</label>
+                        <input type="number" name="#uwrec2" id="#uwrec2" min="0" max="8999" value="0" class="#uwrec">
+                        <br>
+                        <label for="#uwrec3">ID of recruitable unit:</label>
+                        <input type="number" name="#uwrec3" id="#uwrec3" min="0" max="8999" value="0" class="#uwrec">
+                        <br>
+                        <label for="#uwrec4">ID of recruitable unit:</label>
+                        <input type="number" name="#uwrec4" id="#uwrec4" min="0" max="8999" value="0" class="#uwrec">
+                        <br>
+                        <label for="#uwrec5">ID of recruitable unit:</label>
+                        <input type="number" name="#uwrec5" id="#uwrec5" min="0" max="8999" value="0" class="#uwrec">
+                        <br>
+                        <label for="#uwrec6">ID of recruitable unit:</label>
+                        <input type="number" name="#uwrec6" id="#uwrec6" min="0" max="8999" value="0" class="#uwrec">
+                        <br>
+                        <label for="#uwrec7">ID of recruitable unit:</label>
+                        <input type="number" name="#uwrec7" id="#uwrec7" min="0" max="8999" value="0" class="#uwrec">
+                        <br>
+                        <label for="#uwrec8">ID of recruitable unit:</label>
+                        <input type="number" name="#uwrec8" id="#uwrec8" min="0" max="8999" value="0" class="#uwrec">
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>Overwater Recruitment (Underwater Nations Only)</legend>
+                <p>Note: These units can be recruited by a water based nation from an 
+                    land fortress</p>
+                    <p>Recruitable Commanders
+                        <br>
+                            <label for="#landcom1">ID of recruitable commander:</label>
+                            <input type="number" name="#landcom1" id="#landcom1" min="0" max="8999" value="0" class="#landcom">
+                            <br>
+                            <label for="#landcom2">ID of recruitable commander:</label>
+                            <input type="number" name="#landcom2" id="#landcom2" min="0" max="8999" value="0" class="#landcom">
+                            <br>
+                            <label for="#landcom3">ID of recruitable commander:</label>
+                            <input type="number" name="#landcom3" id="#landcom3" min="0" max="8999" value="0" class="#landcom">
+                            <br>
+                            <label for="#landcom4">ID of recruitable commander:</label>
+                            <input type="number" name="#landcom4" id="#landcom4" min="0" max="8999" value="0" class="#landcom">
+                            <br>
+                            <label for="#landcom5">ID of recruitable commander:</label>
+                            <input type="number" name="#landcom5" id="#landcom5" min="0" max="8999" value="0" class="#landcom">
+                            <br>
+                            <label for="#landcom6">ID of recruitable commander:</label>
+                            <input type="number" name="#landcom6" id="#landcom6" min="0" max="8999" value="0" class="#landcom">
+                            <br>
+                            <label for="#landcom7">ID of recruitable commander:</label>
+                            <input type="number" name="#landcom7" id="#landcom7" min="0" max="8999" value="0" class="#landcom">
+                            <br>
+                            <label for="#landcom8">ID of recruitable commander:</label>
+                            <input type="number" name="#landcom8" id="#landcom8" min="0" max="8999" value="0" class="#landcom">
+                        </p>
+                        <p>Recruitable Units
+                            <br>
+                                <label for="#landrec1">ID of recruitable unit:</label>
+                                <input type="number" name="#landrec1" id="#landrec1" min="0" max="8999" value="0" class="#landrec">
+                                <br>
+                                <label for="#landrec2">ID of recruitable unit:</label>
+                                <input type="number" name="#landrec2" id="#landrec2" min="0" max="8999" value="0" class="#landrec">
+                                <br>
+                                <label for="#landrec3">ID of recruitable unit:</label>
+                                <input type="number" name="#landrec3" id="#landrec3" min="0" max="8999" value="0" class="#landrec">
+                                <br>
+                                <label for="#landrec4">ID of recruitable unit:</label>
+                                <input type="number" name="#landrec4" id="#landrec4" min="0" max="8999" value="0" class="#landrec">
+                                <br>
+                                <label for="#landrec5">ID of recruitable unit:</label>
+                                <input type="number" name="#landrec5" id="#landrec5" min="0" max="8999" value="0" class="#landrec">
+                                <br>
+                                <label for="#landrec6">ID of recruitable unit:</label>
+                                <input type="number" name="#landrec6" id="#landrec6" min="0" max="8999" value="0" class="#landrec">
+                                <br>
+                                <label for="#landrec7">ID of recruitable unit:</label>
+                                <input type="number" name="#landrec7" id="#landrec7" min="0" max="8999" value="0" class="#landrec">
+                                <br>
+                                <label for="#landrec8">ID of recruitable unit:</label>
+                                <input type="number" name="#landrec8" id="#landrec8" min="0" max="8999" value="0" class="#landrec">
+                        </p>
+            </fieldset>
+
+            <label for="#merccost">Mercanery Cost Ajustment:</label>
+            <input type="number" name="#merccost" id="#merccost" min="-99" value="0">
+            <br>
+            <fieldset>
+                <legend>Heros and Multi-heros</legend>
+                <p>A hero is a commander that can randomly appear to fight for a nation. 
+                    Each hero is unique. Each nation can have up to 10 heroes.
+                    <br>
+                    <label for="#hero1">ID of hero:</label>
+                    <input type="number" name="#hero1" id="#hero1" min="0" max="8999" value="0" class="hero">
+                    <br>
+                    <label for="#hero2">ID of hero:</label>
+                    <input type="number" name="#hero2" id="#hero2" min="0" max="8999" value="0" class="hero">
+                    <br>
+                    <label for="#hero3">ID of hero:</label>
+                    <input type="number" name="#hero3" id="#hero3" min="0" max="8999" value="0" class="hero">
+                    <br>
+                    <label for="#hero4">ID of hero:</label>
+                    <input type="number" name="#hero4" id="#hero4" min="0" max="8999" value="0" class="hero">
+                    <br>
+                    <label for="#hero5">ID of hero:</label>
+                    <input type="number" name="#hero5" id="#hero5" min="0" max="8999" value="0" class="hero">
+                    <br>
+                    <label for="#hero6">ID of hero:</label>
+                    <input type="number" name="#hero6" id="#hero6" min="0" max="8999" value="0" class="hero">
+                    <br>
+                    <label for="#hero7">ID of hero:</label>
+                    <input type="number" name="#hero7" id="#hero7" min="0" max="8999" value="0" class="hero">
+                    <br>
+                    <label for="#hero8">ID of hero:</label>
+                    <input type="number" name="#hero8" id="#hero8" min="0" max="8999" value="0" class="hero">
+                    <br>
+                    <label for="#hero9">ID of hero:</label>
+                    <input type="number" name="#hero9" id="#hero9" min="0" max="8999" value="0" class="hero">
+                    <br>
+                    <label for="#hero10">ID of hero:</label>
+                    <input type="number" name="#hero10" id="#hero10" min="0" max="8999" value="0" class="hero">
+                </p>
+                <p>Multi-heros are like heros, but they can appear multiple times per game.
+                    <br>
+                    <label for="#multihero1">ID of multihero:</label>
+                    <input type="number" name="#multihero1" id="#multihero1" min="0" max="8999" value="0" class="multihero">
+                    <br>
+                    <label for="#multihero2">ID of multihero:</label>
+                    <input type="number" name="#multihero2" id="#multihero2" min="0" max="8999" value="0" class="multihero">
+                    <br>
+                    <label for="#multihero3">ID of multihero:</label>
+                    <input type="number" name="#multihero3" id="#multihero3" min="0" max="8999" value="0" class="multihero">
+                    <br>
+                    <label for="#multihero4">ID of multihero:</label>
+                    <input type="number" name="#multihero4" id="#multihero4" min="0" max="8999" value="0" class="multihero">
+                    <br>
+                    <label for="#multihero5">ID of multihero:</label>
+                    <input type="number" name="#multihero5" id="#multihero5" min="0" max="8999" value="0" class="multihero">
+                    <br>
+                    <label for="#multihero6">ID of multihero:</label>
+                    <input type="number" name="#multihero6" id="#multihero6" min="0" max="8999" value="0" class="multihero">
+                    <br>
+                    <label for="#multihero7">ID of multihero:</label>
+                    <input type="number" name="#multihero7" id="#multihero7" min="0" max="8999" value="0" class="multihero">
+                </p>
+
+            </fieldset>
+            <h3>Province Defense</h3>
+
+            <label for="#defcom1">ID of basic PD commander:</label>
+            <input type="number" name="#defcom1" id="#defcom1" min="1" max="8999" value="1" class="pd">
+            <p>When PD is at least 20, an extra commander will be added.
+                <br>
+                <label for="#defcom2">ID of extra PD commander:</label>
+                <input type="number" name="#defcom2" id="#defcom2" min="1" max="8999" value="1" class="pd">
+            </p>
+            <p>Standard unit for PD in provences with a fort. In provences that lack a fort, they
+                appear once DP is greater then 20.
+                <br>
+                <label for="#defunit1">ID of basic PD unit:</label>
+                <input type="number" name="#defunit1" id="#defunit1" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#defmult1">Number of units for 10 points of PD:</label>
+                <input type="number" name="#defmult1" id="#defmult1" min="1" value="10" class="pd">
+            </p>
+
+
+            <p>Second unit for PD in provences with a fort. In provences that lack a fort, they
+                appear once DP is greater then 20.
+                <br>
+                <label for="#defunit1b">ID of second PD unit:</label>
+                <input type="number" name="#defunit1b" id="#defunit1b" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#defmult1b">Number of units for 10 points of PD:</label>
+                <input type="number" name="#defmult1b" id="#defmult1b" min="1" value="10" class="pd">
+            </p>
+            <p>Third unit for PD in provences with a fort. In provences that lack a fort, they
+                appear once DP is greater then 20. Not often used.
+                <br>
+                <label for="#defunit1c">ID of third PD unit:</label>
+                <input type="number" name="#defunit1c" id="#defunit1c" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#defmult1c">Number of units for 10 points of PD:</label>
+                <input type="number" name="#defmult1c" id="#defmult1c" min="1" value="10" class="pd">
+            </p>
+            <p>Fourth unit for PD in provences with a fort. In provences that lack a fort, they
+                appear once DP is greater then 20. Not often used.
+                <br>
+                <label for="#defunit1d">ID of fourth PD unit:</label>
+                <input type="number" name="#defunit1d" id="#defunit1d" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#defmult1d">Number of units for 10 points of PD:</label>
+                <input type="number" name="#defmult1d" id="#defmult1d" min="1" value="10" class="pd">
+            </p>
+            <p>Standard unit for DP in provences with both a fortress and a PD value of over 20.
+                <br>
+                <label for="#defunit2">ID of fortress PD unit:</label>
+                <input type="number" name="#defunit2" id="#defunit2" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#defmult2">Number of units for 10 points of PD:</label>
+                <input type="number" name="#defmult2" id="#defmult2" min="1" value="10" class="pd">
+            </p>
+            <p>Second unit for DP in provences with both a fortress and a PD value of over 20.
+                <br>
+                <label for="#defunit2b">ID of second fortress PD unit:</label>
+                <input type="number" name="#defunit2b" id="#defunit2b" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#defmult2b">Number of units per 10 points of PD:</label>
+                <input type="number" name="#defmult2b" id="#defmult2b" min="1" value="10" class="pd">
+            </p>
+            <fieldset>
+                <legend>Wall Defense</legend>
+                <label for="#wallcom">ID of wall commander:</label>
+                <input type="number" name="#wallcom" id="#wallcom" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="wallunit">ID of wall defending unit:</label>
+                <input type="number" name="#wallunit" id="#wallunit" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#wallmult">Number of wall defending units per 10 points of PD:</label>
+                <input type="number" name="#wallmult" id="#wallmult" min="1" value="10">
+            </fieldset>
+            <h3>Underwater Province Defense</h3>
+            <label for="#uwdefcom1">ID of basic PD commander:</label>
+            <input type="number" name="#uwdefcom1" id="#uwdefcom1" min="1" max="8999" value="1" class="pd">
+            <p>When PD is at least 20, an extra commander will be added.
+                <br>
+                <label for="#uwdefcom2">ID of extra PD commander:</label>
+                <input type="number" name="#uwdefcom2" id="#uwdefcom2" min="1" max="8999" value="1" class="pd">
+            </p>
+            <p>Standard unit for PD in provences with a fort. In provences that lack a fort, they
+                appear once DP is greater then 20.
+                <br>
+                <label for="#uwdefunit1">ID of basic PD unit:</label>
+                <input type="number" name="#uwdefunit1" id="#uwdefunit1" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#uwdefmult1">Number of units for 10 points of PD:</label>
+                <input type="number" name="#uwdefmult1" id="#uwdefmult1" min="1" value="20" class="pd">
+            </p>
+            <p>Second unit for PD in provences with a fort. In provences that lack a fort, they
+                appear once DP is greater then 20.
+                <br>
+                <label for="#uwdefunit1b">ID of second PD unit:</label>
+                <input type="number" name="#uwdefunit1b" id="#uwdefunit1b" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#uwdefmult1b">Number of units for 10 points of PD:</label>
+                <input type="number" name="#uwdefmult1b" id="#uwdefmult1b" min="1" value="20" class="pd">
+            </p>
+            <p>Third unit for PD in provences with a fort. In provences that lack a fort, they
+                appear once DP is greater then 20. Not often used.
+                <br>
+                <label for="#uwdefunit1c">ID of third PD unit:</label>
+                <input type="number" name="#uwdefunit1c" id="#uwdefunit1c" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#uwdefmult1c">Number of units for 10 points of PD:</label>
+                <input type="number" name="#uwdefmult1c" id="#uwdefmult1c" min="1" value="20" class="pd">
+            </p>
+            <p>Fourth unit for PD in provences with a fort. In provences that lack a fort, they
+                appear once DP is greater then 20. Not often used.
+                <br>
+                <label for="#uwdefunit1d">ID of fourth PD unit:</label>
+                <input type="number" name="#uwdefunit1d" id="#uwdefunit1d" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#uwdefmult1d">Number of units for 10 points of PD:</label>
+                <input type="number" name="#uwdefmult1d" id="#uwdefmult1d" min="1" value="20" class="pd">
+            </p>
+            <p>Standard unit for DP in provences with both a fortress and a PD value of over 20.
+                <br>
+                <label for="#uwdefunit2">ID of fortress PD unit:</label>
+                <input type="number" name="#uwdefunit2" id="#uwdefunit2" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#uwdefmult2">Number of units for 10 points of PD:</label>
+                <input type="number" name="#uwdefmult2" id="#uwdefmult2" min="1" value="20" class="pd">
+            </p>
+            <p>Second unit for DP in provences with both a fortress and a PD value of over 20.
+                <br>
+                <label for="#uwdefunit2b">ID of second fortress PD unit:</label>
+                <input type="number" name="#uwdefunit2b" id="#uwdefunit2b" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#uwdefmult2b">Number of units per 10 points of PD:</label>
+                <input type="number" name="#uwdefmult2b" id="#uwdefmult2b" min="1" value="20" class="pd">
+            </p>
+            <fieldset>
+                <legend>Wall Defense</legend>
+                <label for="#uwwallcom">ID of wall commander:</label>
+                <input type="number" name="#uwwallcom" id="#uwwallcom" min="1" max="8999" value="1"class="pd">
+                <br>
+                <label for="uwwallunit">ID of wall defending unit:</label>
+                <input type="number" name="#uwwallunit" id="#uwwallunit" min="1" max="8999" value="1" class="pd">
+                <br>
+                <label for="#uwwallmult">Number of wall defending units per 10 points of PD:</label>
+                <input type="number" name="#uwwallmult" id="#uwwallmult" min="1" value="20" class="pd">
+            </fieldset>
+            <h3>Gods</h3>
+            <input type="checkbox" name="#cleargods" id="#cleargods" class="old">
+            <label for="#cleargods">Clears all gods</label>
+            <br>
+            <label for="#homerealm">Home Realm:</label>
+            <select id="#homerealm" name="#homerealm" class="pretender" disabled>
+                <option value="1">North</option>
+                <option value="2">Celtic</option>
+                <option value="3">Mediterranean</option>
+                <option value="4">Far East</option>
+                <option value="5">Middle East</option>
+                <option value="6">Middle America</option>
+                <option value="7">Africa</option>
+                <option value="8">India</option>
+                <option value="9">Deeps</option>
+                <option value="10" selected>Default</option>
+            </select>
+            <br>
+            <fieldset>
+                <legend>Gods Avaliable</legend>
+                <p>This command allows the nation to have pretenders that are not from its home realm.</p>
+                <label for="#addgod1">ID of god to add:</label>
+                <input type="number" name="#addgod1" id="#addgod1" class="addgod" min="0" value="0" max="8999" class="#addgod">
+                <br>
+                <label for="#addgod2">ID of god to add:</label>
+                <input type="number" name="#addgod2" id="#addgod2" class="addgod" min="0" value="0" max="8999" class="#addgod">
+                <br>
+                <label for="#addgod3">ID of god to add:</label>
+                <input type="number" name="#addgod3" id="#addgod3" class="addgod" min="0" value="0" max="8999" class="#addgod">
+                <br>
+                <label for="#addgod4">ID of god to add:</label>
+                <input type="number" name="#addgod4" id="#addgod4" class="addgod" min="0" value="0" max="8999" class="#addgod">
+                <br>
+                <label for="#addgod5">ID of god to add:</label>
+                <input type="number" name="#addgod5" id="#addgod5" class="addgod" min="0" value="0" max="8999" class="#addgod">
+                <!--todo: finish and add mroe-->
+                <br>
+                <p>These commands allow the nation to remove pretenders that it would normaly have.</p>
+                <label for="#delgod1">ID of god to remove:</label>
+                <input type="number" name="#delgod1" id="#delgod1" class="delgod" min="0" value="0" max="8999" class="#delgod">
+                <br>
+                <label for="#delgod2">ID of god to remove:</label>
+                <input type="number" name="#delgod2" id="#delgod2" class="delgod" min="0" value="0" max="8999" class="#delgod">
+                <br>
+                <label for="#delgod3">ID of god to remove:</label>
+                <input type="number" name="#delgod3" id="#delgod3" class="delgod" min="0" value="0" max="8999" class="#delgod">
+                <br>
+                <label for="#delgod4">ID of god to remove:</label>
+                <input type="number" name="#delgod4" id="#delgod4" class="delgod" min="0" value="0" max="8999" class="#delgod">
+                <br>
+                <label for="#delgod5">ID of god to remove:</label>
+                <input type="number" name="#delgod5" id="#delgod5" class="delgod" min="0" value="0" max="8999" class="#delgod">
+            </fieldset>
+            <input type="checkbox" name="#noundeadgods" id="#noundeadgods" value="#noundeadgods" class="misc">
+            <label for="#noundeadgods">Nation cannot have undead pretenders</label>
+            <br>
+            <p>
+                Pretender does not lose any spell levels when called back.
+                <br>
+                <input type="checkbox" name="#godrebirth" id="#godrebirth" value="#godrebirth" class="misc">
+                <label for="#godrebirth">No magic loss</label>
+            
+            </p>
+            <input type="checkbox" name="#uwbuild" id="#uwbuild 1" value="#uwbuild 1" class="misc">
+            <label for="#uwbuild 1">Nation can build underwater forts</label>
+            <br>
+            <label for="#likespop">Nation gets cheaper PD from this poptype:</label>
+            <!--
+            <input type="number" name="#likespop" id="#likespop" min="25" max="98" value="25">
+    -->
+            <select name="#likespop" id="#likespop">
+                <option value="-1" selected>N\A</option>
+
+                <option value="39">Militia, Archers, Lt Inf</option>
+                <option value="59">Militia, Archers, Lt Inf</option>
+                <option value="60">Militia, Archers, Lt Inf</option>
+
+                <option value="27">Militia, Archers, Hvy Inf</option>
+                <option value="28">Militia, Archers, Hvy Inf</option>
+                <option value="29">Militia, Archers, Hvy Inf</option>
+                <option value="30">Militia, Longbow, Knight</option>
+                <option value="48">Militia, Lt Inf, Hvy Inf</option>
+                <option value="49">Militia, Lt Inf, Hvy Inf</option>
+                <option value="50">Militia, Lt Inf, Hvy Inf</option>
+                <option value="51">Militia, Lt Cav, Hvy Cav</option>
+                <option value="52">Militia, Lt Cav, Hvy Cav</option>
+                <option value="53">Militia, Lt Cav, Hvy Cav</option>
+                <option value="32">Lt Inf, Hvy Inf, X-Bow</option>
+                <option value="33">Lt Inf, Hvy Inf, X-Bow</option>
+                <option value="58">Lt Inf, Hvy Inf, X-Bow</option>
+                <option value="74">Lt Inf, Lt Cav, Cataphracts</option>
+
+                <option value="54">Hvy Inf, Hvy Cav</option>
+                <option value="55">Hvy Inf, Hvy Cav</option>
+                <option value="56">Hvy Inf, Hvy Cav</option>
+
+                <option value="35">Slingers</option>
+                <option value="68">Slingers, Hvy Inf, Elephants</option>
+
+                <option value="47">X-Bow, Hvy Cavalry</option>
+
+                <option value="25">Barbarians</option>
+                <option value="37">Woodsmen</option>
+                <option value="26">Horse Tribe</option>
+                <option value="62">Deer Tribe </option>
+                <option value="78">Wolf Tribe</option>
+                <option value="79">Bear Tribe</option>
+                <option value="80">Lion Tribe</option>
+                <option value="82">Jaguar Tribe</option>
+                <option value="83">Toad Tribe</option>
+                <option value="96">Bone Tribe</option>
+
+                <option value="31">Tritons</option>
+                <option value="63">Tritons</option>
+                <option value="64">Tritons</option>
+                <option value="45">Tritons, Shark Knights</option>
+                <option value="46">Amber Clan Tritons</option>
+                <option value="73">Tritons, Triton Knights</option>
+                <option value="90">Turtle Tribe Tritons</option>
+                <option value="91">Shark Tribe Tritons</option>
+                <option value="92">Shark Tribe, Shark Riders</option>
+
+                <option value="34">Raptors</option>
+                <option value="36">Lizards</option>
+
+                <option value="76">Hoburg, EA</option>
+                <option value="38">Hoburg</option>
+                <option value="75">Hoburg, LA</option>
+
+                <option value="40">Amazon, Crystal</option>
+                <option value="41">Amazon, Garnet</option>
+                <option value="42">Amazon, Jade</option>
+                <option value="43">Amazon, Onyx</option>
+
+                <option value="44">Troglodytes</option>
+                <option value="57">Shamblers</option>
+                <option value="72">Mermen</option>
+                <option value="65">Ichtyids</option>
+                <option value="95">Ichtyids with Shaman</option>
+
+                <option value="61">Vaettir, Trolls</option>
+                <option value="66">Vaettir</option>
+                <option value="67">Vaettir, Dwarven Smith</option>
+                <option value="70">Vaettir, Svartalf</option>
+
+                <option value="69">Asmeg</option>
+                <option value="71">Trolls</option>
+                <option value="77">Atavi Apes</option>
+                <option value="81">Pale Ones</option>
+
+                <option value="84">Cavemen</option>
+
+                <option value="85">Kappa</option>
+                <option value="86">Bakemono</option>
+                <option value="87">Bakemono</option>
+                <option value="88">Ko-Oni</option>
+
+                <option value="89">Fir Bolg</option>
+                <option value="93">Zotz</option>
+                <option value="94">Lava-born</option>
+                <option value="97">Merrow</option>
+                <option value="98">Kulullu</option>
+            </select>
+            <br>
+            <br>
+
+            <fieldset>
+                <legend>Cheap Gods</legend>
+                <p>
+                    Some nations will recive a point discount when choosing a "theamatic" pretender. 
+                    For example, the Father of Monster can be chosen as a pretender by 12 nations, but 
+                    only Early Era and Middle Era Oceania will recive a 20-point discount when picking 
+                    him.
+                </p>
+                <p>20 point discount:
+                    <br>
+                    <label for="#cheapgod201">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod201" id="#cheapgod201" min="0" max="8999" value="0" class="#cheapgod20">
+                    <br>
+                    <label for="#cheapgod202">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod202" id="#cheapgod202" min="0" max="8999" value="0" class="#cheapgod20">
+                    <br>
+                    <label for="#cheapgod203">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod203" id="#cheapgod203" min="0" max="8999" value="0" class="#cheapgod20">
+                    <br>
+                    <label for="#cheapgod204">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod204" id="#cheapgod204" min="0" max="8999" value="0" class="#cheapgod20">
+                    <br>
+                    <label for="#cheapgod205">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod205" id="#cheapgod205" min="0" max="8999" value="0" class="#cheapgod20">
+                </p>
+                <p>40 point discount:
+                    <br>
+                    <label for="#cheapgod401">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod401" id="#cheapgod401" min="0" max="8999" value="0" class="#cheapgod40">
+                    <br>
+                    <label for="#cheapgod402">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod402" id="#cheapgod402" min="0" max="8999" value="0" class="#cheapgod40">
+                    <br>
+                    <label for="#cheapgod403">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod403" id="#cheapgod403" min="0" max="8999" value="0" class="#cheapgod40">
+                    <br>
+                    <label for="#cheapgod404">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod404" id="#cheapgod404" min="0" max="8999" value="0" class="#cheapgod40">
+                    <br>
+                    <label for="#cheapgod405">ID of discounted pretender:</label>
+                    <input type="number" name="#cheapgod405" id="#cheapgod405" min="0" max="8999" value="0" class="#cheapgod40">
+                </p>
+                <!--todo finish-->
+            </fieldset>
+            <fieldset>
+                <legend>Bless Bonuses</legend>
+                <label for="#fireblessbonus">Fire Bless Bonus:</label>
+                <input type="number" name="#fireblessbonus" id="#fireblessbonus" min="0" max="9" value="0" class="blessbonus">
+                <br>
+                <label for="#airblessbonus">Air Bless Bonus:</label>
+                <input type="number" name="#airblessbonus" id="#airblessbonus" min="0" max="9" value="0" class="blessbonus">
+                <br>
+                <label for="#waterblessbonus">Water Bless Bonus:</label>
+                <input type="number" name="#waterblessbonus" id="#waterblessbonus" min="0" max="9" value="0" class="blessbonus">
+                <br>
+                <label for="#earthlessbonus">Earth Bless Bonus:</label>
+                <input type="number" name="#earthlessbonus" id="#earthlessbonus" min="0" max="9" value="0" class="blessbonus">
+                <br>
+                <label for="#astralblessbonus">Astral Bless Bonus:</label>
+                <input type="number" name="#astralblessbonus" id="#astralblessbonus" min="0" max="9" value="0" class="blessbonus">
+                <br>
+                <label for="#deathblessbonus">Death Bless Bonus:</label>
+                <input type="number" name="#deathblessbonus" id="#deathblessbonus" min="0" max="9" value="0" class="blessbonus">
+                <br>
+                <label for="#natureblessbonus">Nature Bless Bonus:</label>
+                <input type="number" name="#natureblessbonus" id="#natureblessbonus" min="0" max="9" value="0" class="blessbonus">
+                <br>
+                <label for="#bloodblessbonus">Blood Bless Bonus:</label>
+                <input type="number" name="#bloodblessbonus" id="#bloodblessbonus" min="0" max="9" value="0" class="blessbonus">
+            </fieldset>
+            <h3>Forts & Buildings</h3>
+            <label for="#fortera">Buildable Fort Level</label>
+            <select name="#fortera" id="#fortera">
+                <option value="0">Palisades only</option>
+                <option value="1">Standard forts for early era</option>
+                <option value="2" selected>Standard forts for middle era</option>
+                <option value="3">Standard forts for late era</option>
+                <option value="4">Better then standard forts for late era</option>
+            </select>
+            <br>
+            <label for="#fortcost">Extra Fort Construction Cost:</label>
+            <input type="number" name="#fortcost" id="#fortcost" value="0">
+            <br>
+            <label for="#labcost">Lab Cost:</label>
+            <input type="number" name="#labcost" id="#labcost" min="1" value="500">
+            <br>
+            <label for="#templecost">Ajusted Temple Cost:</label>
+            <input type="number" name="#templecost" id="#templecost" min="1" value="400">
+            <br>
+            <label for="#forestlabcost">Ajusted Forest Lab Cost</label>
+            <input type="number" name="#forestlabcost" id="#forestlabcost" min="1" value="500">
+            <br>
+            <label for="#foresttemplecost">Ajusted Forest Temple Cost</label>
+            <input type="number" name="#foresttemplecost" id="#foresttemplecost" min="" value="400">
+            <br>
+            <label for="#templepic">Temple Graphic:</label>
+            <select name="#templepic" id="#templepic">
+                <option value="0">Temple pyramid</option>
+                <option value="1">Underwater</option>
+                <option value="2">Greek</option>
+                <option value="3">Irish monastery</option>
+                <option value="4" selected>Mountain castle</option>
+                <option value="5">Indian</option>
+                <option value="6">Greek</option>
+                <option value="7">Southeast Indian</option>
+                <option value="8">Temple ruins</option>
+                <option value="9">Cathedral</option>
+                <option value="10">Forest</option>
+                <option value="11">Norse</option>
+                <option value="13">Eye of the void</option>
+                <option value="14">Mayan</option>
+                <option value="15">Far East 1</option>
+                <option value="16">South Indian</option>
+                <option value="17">Crystal</option>
+                <option value="18">Far East 2</option>
+                <option value="30">Forest gate</option>
+                <option value="31">Cave temple</option>
+                <option value="32">Opulent hall</option>
+            </select>
+            <br>
+            <p>Some nations have temples that provide them with gems based on the dominion 
+                strength in the porvence that the temple is located in.
+                <br>
+            <label for="#templegems">Gem Type to generate:</label>
+            <select class="attunment" id="#templegems">
+                <option value="0">Air</option>
+                <option value="1">Water</option>
+                <option value="2">Earth</option>
+                <option value="3">Fire</option>
+                <option value="4">Astral</option>
+                <option value="5">Nature</option>
+                <option value="6">Death</option>
+                <option value="7">Blood</option>
+                <option value="-1" selected>N/A</option>
+            </select>
+            </p>
+            <p>The nation will build this fort on their home province instead of the defualt fort for the era.
+                <br>
+                <label for="#homefort">Starting Fort:</label>
+                <select name="homefort" id="#homefort">
+                    <option value="0" selected>Use default fort</option>
+                    <option value="1">Palisades</option>
+                    <option value="2">(Early Era) Fortress</option>
+                    <option value="3">(Middle Era) Castle</option>
+                    <option value="4" >(Late Era) Citadel</option>
+                    <option value="5">Rock Walls</option>
+                    <option value="6">(Early Era) Underwater Fortress</option>
+                    <option value="7">(Middle-Late Era) Underwater Castle</option>
+                    <option value="8">(Underwater?) Castle of Bronze and Crystal</option>
+                    <option value="9">(Underwater) Fort of Kelp and Coral</option>
+                    <option value="10">Bramble Fort</option>
+                    <option value="11">City Palisades</option>
+                    <option value="12">Walled City</option>
+                    <option value="13">Fortified City</option>
+                    <option value="14">Great Walled City</option>
+                    <option value="15">Giant Palisades</option>
+                    <option value="16">Giant Fortress</option>
+                    <option value="17">Giant Castle</option>
+                    <option value="18">Giant Citadel</option>
+                    <option value="19">Grand Citadel</option>
+                    <option value="20">Ice Walls</option>
+                    <option value="21">Ice Fortress</option>
+                    <option value="22">Ice Castle</option>
+                    <option value="23">Ice Citadel</option>
+                    <option value="23">Wizard’s Tower</option>
+                    <option value="23">Citadel of Power</option>
+                    <option value="23">Half Melted Fort</option>
+                    <option value="23">Fortified village</option>
+                    <option value="23">Wooden Fort</option>
+                    <option value="23">Crystal Citadel</option>
+                    <option value="23">(Underwater) Kelp Fort</option>
+                </select>
+            </p>
+            
+            <p>The nartion will build this fort instead of the default fort for the era.
+                <br>
+                <label for="#buildfort">Default fort:</label>
+                <select name="buildfort" id="#buildfort">
+                    <option value="0" selected>Use default fort</option>
+                    <option value="1">Palisades</option>
+                    <option value="2">(Early Era) Fortress</option>
+                    <option value="3">(Middle Era) Castle</option>
+                    <option value="4" >(Late Era) Citadel</option>
+                    <option value="5">Rock Walls</option>
+                    <option value="6">(Early Era) Underwater Fortress</option>
+                    <option value="7">(Middle-Late Era) Underwater Castle</option>
+                    <option value="8">(Underwater?) Castle of Bronze and Crystal</option>
+                    <option value="9">(Underwater) Fort of Kelp and Coral</option>
+                    <option value="10">Bramble Fort</option>
+                    <option value="11">City Palisades</option>
+                    <option value="12">Walled City</option>
+                    <option value="13">Fortified City</option>
+                    <option value="14">Great Walled City</option>
+                    <option value="15">Giant Palisades</option>
+                    <option value="16">Giant Fortress</option>
+                    <option value="17">Giant Castle</option>
+                    <option value="18">Giant Citadel</option>
+                    <option value="19">Grand Citadel</option>
+                    <option value="20">Ice Walls</option>
+                    <option value="21">Ice Fortress</option>
+                    <option value="22">Ice Castle</option>
+                    <option value="23">Ice Citadel</option>
+                    <option value="23">Wizard’s Tower</option>
+                    <option value="23">Citadel of Power</option>
+                    <option value="23">Half Melted Fort</option>
+                    <option value="23">Fortified village</option>
+                    <option value="23">Wooden Fort</option>
+                    <option value="23">Crystal Citadel</option>
+                    <option value="23">(Underwater) Kelp Fort</option>
+                </select>
+            </p>
+            <p>The nation will build this fort underwater instead of the default fort for the era.
+                <br>
+                <label for="#builduwfort">Default Underwater Fort:</label>
+                <select name="builduwfort" id="#builduwfort">
+                    <option value="0" selected>No fort</option>
+                    <option value="1">Palisades</option>
+                    <option value="2">(Early Era) Fortress</option>
+                    <option value="3">(Middle Era) Castle</option>
+                    <option value="4" >(Late Era) Citadel</option>
+                    <option value="5">Rock Walls</option>
+                    <option value="6">(Early Era) Underwater Fortress</option>
+                    <option value="7">(Middle-Late Era) Underwater Castle</option>
+                    <option value="8">(Underwater?) Castle of Bronze and Crystal</option>
+                    <option value="9">(Underwater) Fort of Kelp and Coral</option>
+                    <option value="10">Bramble Fort</option>
+                    <option value="11">City Palisades</option>
+                    <option value="12">Walled City</option>
+                    <option value="13">Fortified City</option>
+                    <option value="14">Great Walled City</option>
+                    <option value="15">Giant Palisades</option>
+                    <option value="16">Giant Fortress</option>
+                    <option value="17">Giant Castle</option>
+                    <option value="18">Giant Citadel</option>
+                    <option value="19">Grand Citadel</option>
+                    <option value="20">Ice Walls</option>
+                    <option value="21">Ice Fortress</option>
+                    <option value="22">Ice Castle</option>
+                    <option value="23">Ice Citadel</option>
+                    <option value="23">Wizard’s Tower</option>
+                    <option value="23">Citadel of Power</option>
+                    <option value="23">Half Melted Fort</option>
+                    <option value="23">Fortified village</option>
+                    <option value="23">Wooden Fort</option>
+                    <option value="23">Crystal Citadel</option>
+                    <option value="23">(Underwater) Kelp Fort</option>
+                </select>
+            </p>
+            <p>The nation will build this fort on a costal provence instead of the default fort for the era.
+                <br>
+                <label for="#buildcoastfort">Default Costal Fort:</label>
+                <select name="buildcoastfort" id="#buildcoastfort">
+                    <option value="0" selected>No fort</option>
+                    <option value="1">Palisades</option>
+                    <option value="2">(Early Era) Fortress</option>
+                    <option value="3">(Middle Era) Castle</option>
+                    <option value="4" >(Late Era) Citadel</option>
+                    <option value="5">Rock Walls</option>
+                    <option value="6">(Early Era) Underwater Fortress</option>
+                    <option value="7">(Middle-Late Era) Underwater Castle</option>
+                    <option value="8">(Underwater?) Castle of Bronze and Crystal</option>
+                    <option value="9">(Underwater) Fort of Kelp and Coral</option>
+                    <option value="10">Bramble Fort</option>
+                    <option value="11">City Palisades</option>
+                    <option value="12">Walled City</option>
+                    <option value="13">Fortified City</option>
+                    <option value="14">Great Walled City</option>
+                    <option value="15">Giant Palisades</option>
+                    <option value="16">Giant Fortress</option>
+                    <option value="17">Giant Castle</option>
+                    <option value="18">Giant Citadel</option>
+                    <option value="19">Grand Citadel</option>
+                    <option value="20">Ice Walls</option>
+                    <option value="21">Ice Fortress</option>
+                    <option value="22">Ice Castle</option>
+                    <option value="23">Ice Citadel</option>
+                    <option value="23">Wizard’s Tower</option>
+                    <option value="23">Citadel of Power</option>
+                    <option value="23">Half Melted Fort</option>
+                    <option value="23">Fortified village</option>
+                    <option value="23">Wooden Fort</option>
+                    <option value="23">Crystal Citadel</option>
+                    <option value="23">(Underwater) Kelp Fort</option>
+                </select>
+            </p>
+            <p>
+                    Increase unrest by 1dX in each provence with a fort.
+                    <br>
+                    <label for="#fortunrest">Dominion Unrest:</label>
+                    <input type="number" name="#fortunrest" id="#fortunrest" value="0" min="0">
+            
+            </p>
+            <h3>Dominion</h3>
+            <input type="checkbox" name="#nodeathsupply" id="#nodeathsupply" value="#nodeathsupply" class="dombool">
+            <label for="#nodeathsupply">Supplies not affect by death scale</label>
+            <br>
+            <p>
+                    Growth/Death scale effect on gold income reduced py 50%.
+                    <br>
+                    <input type="checkbox" name="#halfdeathinc" id="#halfdeathinc" value="#halfdeathinc" class="dombool">
+                    <label for="#halfdeathinc">Half Growth/Death scale effect</label>
+            
+            </p>
+            <p>
+                    Growth/Death scale effect on population growth reduced py 50%.
+                <br>
+                <input type="checkbox" name="#halfdeathpop" id="#halfdeathpop" value="#halfdeathpop" class="dombool">
+                <label for="#halfdeathpop">Half Growth/Death scale effect</label>
+        
+            </p>
+            <p>
+                In areas of friendly dominion, the nation will know the location of unburied corpses.
+                <br>
+                <input type="checkbox" name="#domdeathsense" id="#domdeathsense" value="#domdeathsense" class="dombool">
+                <label for="#domdeathsense">Detect unburied corpses</label>
+            </p>
+            <label for="#nationinc">Extra gold per month:</label>
+            <input type="number" name="#nationinc" id="#nationinc" value="0" class="domnum">
+            <br>
+            <label for="#castleprod">Fort production bonus percent:</label>
+            <input type="number" name="#castleprod" id="#castleprod" value="0" class="domnum">
+            <br>
+            <label for="#tradecoast">Costal fort gold bonus:</label>
+            <input type="number" name="#tradecoast" id="#tradecoast" value="0" class="domnum">
+            <br>
+            <p>Golems and other inanimate units of a percentage based bonues to their hit points.
+                <br>
+                <input type="checkbox" name="#golemhp" id="#golemhp">
+                <label for="#golemhp">Golem HP percent bonus</label>
+            </p>
+
+            <fieldset>
+                <legend>Scales</legend>
+                <p>Some nations' dominion will spread scales to nearbye provences.</p>
+                <!--to do: prevent the user from having both #spreadcold and #spreadheat-->
+                <label for="#spreadcold">Cold spread amount:</label>
+                <input type="number" name="#spreadcold" id="#spreadcold" min="0" max="3" value="0" class="domspread">
+                <br>
+                <label for="#spreadheat">Heat spread amount:</label>
+                <input type="number" name="#spreadheat" id="#spreadheat" min="0" max="3" value="0" class="domspread">
+                <br>
+                <label for="#spreadchaos">Turmoil spread amount:</label>
+                <input type="number" name="#spreadchaos" id="#spreadchaos" min="0" max="3" value="0" class="domspread">
+                <br>
+                <label for="#spreadlazy">Sloth spread amount:</label>
+                <input type="number" name="#spreadlazy" id="#spreadlazy" min="0" max="3" value="0" class="domspread">
+                <br>
+                <label for="#spreaddeath">Death spread amount:</label>
+                <input type="number" name="#spreaddeath" id="#spreaddeath" min="0" max="3" value="0" class="domspread">
+            </fieldset>
+
+            <input type="checkbox" name="#nopreach" id="#nopreach" class="dombool">
+            <label for="#nopreach">Priests cannot preach</label>
+            <br>
+            <input type="checkbox" name="#dyingdom" id="#dyingdom" class="dombool">
+            <label for="#dyingdom">Temples do not spread dominion</label>
+            <p>
+                    Priests can blood sacrifice to spread dominion.
+                <br>
+                <input type="checkbox" name="#sacrificedom" id="#sacrificedom" class="dombool">
+                <label for="#sacrificedom">Blood Sacrifice</label>
+        
+            </p>
+            <p>
+                Nations is better at recalling slain pretenders
+                <br>
+                <label for="#recallgod">Recall Bonus:</label>
+                <input type="number" name="#recallgod" id="#recallgod" min="0" value="0" class="domnum">
+            </p>
+            <p>This kills a percentage of the population in a provence each month based on the nations 
+                dominion strength. The formula is:
+                <br>
+                domkill * 0.1 * dominion strength
+                <br>
+                If this value is 50, and ther are four dominion candles in a provence, then then the 
+                percentage of people it will kill is:
+                <br>
+                50 * 0.1 * 4 = 20%
+                <br>
+                <!-- 0.1 * 1-->
+                <label for="#domkill">Dominion pop kill:</label>
+                <input type="number" name="#domkill" id="#domkill" min="0" max="1000" value="0" class="domnum">
+            </p>
+            
+            <br>
+            <label for="#domunrest">Nations's dominion will cause unrest</label>
+            <input type="number" name="#domunrest" id="#domunrest" value="0" class="domnum">
+            <br>
+            <p>
+                    Nations's dominion will automaticly reanimate undead.
+                    <br>
+                    <input type="checkbox" name="#autoundead" id="#autoundead" value="#autoundead" class="dombool">
+                    <label for="#autoundead">Auto reanimate</label>
+            
+            </p>
+            <p>The priests of some nations have a chance of summoning a guardian spirit when 
+                in combat. A value of zero will deactivate this.
+                <br>
+                <input type="number" name="#guardspirit" id="#guardspirit" value="0" min="0" max="100" class="domnum">
+                <label for="#guardspirit">ID of guardian spirit:</label>
+            </p>
+            <input type="checkbox" name="#syncretism" id="#syncretism 1" value="#syncretism 1" class="dombool">
+            <label for="#syncretism 1">Priests can covert captured temples</label>
+            <br>
+            <input type="checkbox" name="#domwar" id="#domwar" value="#domwar" class="dombool">
+            <label for="#domwar">Dominion conflict bonus</label>
+            <h3>Undead Reanimation</h3>
+            <input type="checkbox" name="#priestreanim" id="#priestreanim" class="">
+            <label for="#priestreanim">All priests can reanimate undead</label>
+            <br>
+            <input type="checkbox" name="#undeadreanim" id="#undeadreanim">
+            <label for="#undeadreanim">Undead priests can reanimate undead</label>
+            <br>
+            <fieldset>
+                <legend>Reanimaiton Specifics</legend>
+                <p>For these to have an effect, the nation must have some type of priest 
+                    (either living or dead) cabable of reanimating undead.</p>
+                <input type="radio" name="#standardreanim" id="#standardreanim" value="#standardreanim" class="reanim" checked
+                onchange="enableOrDisable(document.getElementById('standardreanim').checked, 'standreanim', '')">
+                <label for="#standardreanim">Priests will reanimate standard undead</label>
+                <br>
+                <p>
+                        Priests with 3 levels of holy magic can reanimate longdead horsemen.
+                        <br>
+                        <input type="checkbox" name="#horsereanim" id="#horsereanim" value="#horsereanim" class="reanim standreanim">
+                        <label for="#horsereanim">Longdead horsemen reanimation</label>
+                </p>
+                <p>
+                        Priests with 4 levels of holy magic can reanimate lictors.
+                        <br>
+                        <input type="checkbox" name="#wightreanim" id="#wightreanim" value="#wightreanim" class="reanim standreanim">
+                        <label for="#wightreanim">Lictor reanimation</label>
+            
+                </p>
+                <p>Note: At 2 levels of holy magic, priests can soulless C’tis. At 3 they can 
+                    reanimate longdead C’tis. At higher they can reanimate tomb wyrms and other creatures.
+                    <br>
+                    <input type="radio" name="#standardreanim" id="#tombwyrmreanim" value="#tombwyrmreanim" class="reanim">
+                    <label for="#tombwyrmreanim">Priests will reanimate C’tissian undead</label>
+                </p>
+                <p>Priests will reanimate carrion beasts and manikins. Priests with more holy levels will reanimate 
+                    more powerful monsters.
+                    <br>
+                    <input type="radio" name="#standardreanim" id="#manikinreanim" value="#manikinreanim" class="reanim">
+                    <label for="#manikinreanim">Carrion reanimation</label>
+                </p>
+                <input type="radio" name="#standardreanim" id="#supayareanim" value="#supayareanim" class="reanim">
+                <label for="#supayareanim">Priests will reanimate supayas</label>
+                <br>
+                <input type="radio" name="#standardreanim" id="#greekreanim" value="#greekreanim" class="reanim">
+                <label for="#greekreanim">Priests will reanimate Greek ghosts</label>
+                <br>
+                <input type="radio" name="#standardreanim" id="#ghostreanim" value="#ghostreanim" class="reanim">
+                <label for="#ghostreanim">Priests will reanimate ghosts</label>
+                <!--to do: National Reanimation Lists-->
+            </fieldset>
+            <button onclick="document.getElementById('result').innerText = createNation()">Create Nation</button>
+            <br>
+            <p id="result" name="result">Result</p>
+        </main>
+    </body>
+</html>

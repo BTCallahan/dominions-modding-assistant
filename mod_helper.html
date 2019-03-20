@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dominions Moding Assistant</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="assets/checkers_and_getters.js">
+        </script>
+        <script type="text/javascript" src="assets/mod_script.js">
+        </script>
+        <link rel="stylesheet" href="assets/mod_styling.css">
+    </head>
+    <body>
+        <header>
+            <a href="armor_helper.html">Armor</a>
+            <a href="weapon_helper.html">Weapons</a>
+            <a href="item_helper.html">Magic Items</a>
+            <a href="spell_helper.html">Magic Spells</a>
+            <a href="monster_helper.html">Monsters</a>
+            <a href="nation_helper.html">Nations</a>
+            <a href="site_helper.html">Magic Sites</a>
+        </header>
+        <main>
+        <p>
+            <label for="#modname">Name of Mod:</label>
+            <input type="text" name="#modname" id="#modname" class="mod">
+        </p>
+        <br>
+        <p>
+            <label for="#description">Description:</label>
+            <input type="text" name="#description" id="#description" class="mod desc">
+        </p>
+        <br>
+        <p>
+            <label for="#icon">Icon filename:</label>
+            <input type="text" name="#icon" id="#icon" class="mod">
+        </p>
+        <br>
+        <p>
+            <label for="#version">Mod Version</label>
+            <input type="number" name="#version" id="#version" step="0.01" class="mod">
+        </p>
+        <br>
+        <p>
+            <label for="#domversion">Dominions Version:</label>
+            <input type="text" name="#domversion" id="#domversion" step="0.01" class="mod">
+        </p>
+        <button onclick="document.getElementById('result').innerText = createMod()">Create Mod</button>
+        <p id="result"> </p>
+    </main>
+    </body>
+</html>

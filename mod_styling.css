@@ -1,0 +1,20 @@
+label{
+    width: 250px;
+    float: left;
+}
+
+label.c50{
+    width: 50px !important;
+}
+
+input[type="text"]{
+    width: 200px;
+}
+
+input[type="number"]{
+    width: 50px;
+}
+
+input.desc[type="text"]{
+    height: 4ch;
+}
