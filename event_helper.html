@@ -56,17 +56,369 @@
         <fieldset>
             <legend>Required Era</legend>
             <input type="radio" name="era" id="re1" value="1" class="#req_era">
-            <label for="re1"></label>
+            <label for="re1">Only in Early Era</label>
             <br>
+            <input type="radio" name="era" id="re2" value="2" class="#req_era">
+            <label for="re2">Only in Middle Era</label>
+            <br>
+            <input type="radio" name="era" id="re3" value="3" class="#req_era">
+            <label for="re3">Only in Late Era</label>
+            <br>
+            <input type="radio" name="era" id="re0" value="0" class="#nill">
+            <label for="re0">No Era Requirments</label>
+            <br>
+            <input type="radio" name="era" id="nore1" value="1" class="#req_noera">
+            <label for="nore1">Never in Early Era</label>
+            <br>
+            <input type="radio" name="era" id="nore2" value="2" class="#req_noera">
+            <label for="nore2">Never in Early Era</label>
+            <br>
+            <input type="radio" name="era" id="nore3" value="3" class="#req_noera">
+            <label for="nore3">Never in Early Era</label>
         </fieldset>
 
+        <p>
+            The event will only happen after this turn.
+            <br>
+            <label for="#req_turn">Minimum Turn: </label>
+            <input type="number" name="#req_turn" id="#req_turn" value="0" min="0">
+        </p>
+        <p>
+            The event will only happen before this turn.
+            <br>
+            <label for="#req_maxturn">Minimum Turn: </label>
+            <input type="number" name="#req_maxturn" id="#req_maxturn" value="0" min="0">
+        </p>
+
+        <!--todo: req_pregame-->
+
+        <fieldset>
+            <legend>Required Season</legend>
+            <p>Some events only happen during a specific season.</p>
+            <input type="radio" name="season" id="onlyspring" value="1" class="#req_season">
+            <label for="onlyspring">Only in Spring</label>
+            <br>
+            <input type="radio" name="season" id="onlysummer" value="2" class="#req_season">
+            <label for="onlysummer">Only in Summer</label>
+            <br>
+            <input type="radio" name="season" id="onlyfall" value="3" class="#req_season">
+            <label for="onlyfall">Only in Fall</label>
+            <br>
+            <input type="radio" name="season" id="onlywinter" value="4" class="#req_season">
+            <label for="onlywinter">Only in Winter</label>
+            <br>
+            <input type="radio" name="season" id="only" value="0" class="#req_season">
+            <label for="only">N/A</label>
+
+
+            <!--todo req_noseason-->
+        </fieldset>
+        <h3>Nation Requirement</h3>
+        <p>
+            This nation must be in play for the event to fire. Entering a value of zero
+            will disable this.
+            <br>
+            <label for="#nation">Nation ID:</label>
+            <input type="number" name="#nation" id="#nation" value="0" min="0" max="500">    
+        </p>
+        <p>
+            This nation must not be in play for the event to fire.
+            <br>
+            <label for="#req_nonation">Nation ID:</label>
+            <input type="number" name="#req_nonation" id="#req_nonation" value="0" min="0" max="500">    
+        </p>
+        <p>
+            The event can only fire for this nation.
+            <br>
+            <label for="#req_fornation">Nation ID:</label>
+            <input type="number" name="#req_fornation" id="#req_fornation" value="0" min="0" max="500">    
+        </p>
+        <p>
+            The event can never fire for this nation.
+            <br>
+            <label for="#req_notfornation">Nation ID:</label>
+            <input type="number" name="#req_notfornation" id="#req_notfornation" value="0" min="0" max="500">    
+        </p>
+        <p>
+            The event can never fire for this nation and its allies during a disciples game.
+            <br>
+            <label for="#req_notforally">Nation ID:</label>
+            <input type="number" name="#req_notforally" id="#req_notforally" value="0" min="0" max="500">    
+        </p>
+
+        <h3>Treasury Requirments</h3>
+
+        <p>
+            The nation that this event fires for must have at leas one gem of the specified type(s).
+        </p>
+        <input type="checkbox" name="req_gem0" id="req_gem0" value="#req_gem 0">
+        <label for="req_gem0">Fire Gem</label>
+        <br>
+        <input type="checkbox" name="req_gem1" id="req_gem1" value="#req_gem 1">
+        <label for="req_gem1">Air Gem</label>
+        <br>
+        <input type="checkbox" name="req_gem2" id="req_gem2" value="#req_gem 2">
+        <label for="req_gem2">Water Gem</label>
+        <br>
+        <input type="checkbox" name="req_gem3" id="req_gem3" value="#req_gem 3">
+        <label for="req_gem3">Earth Gem</label>
+        <br>
+        <input type="checkbox" name="req_gem4" id="req_gem4" value="#req_gem 4">
+        <label for="req_gem4">Astral Pearl</label>
+        <br>
+        <input type="checkbox" name="req_gem5" id="req_gem5" value="#req_gem 5">
+        <label for="req_gem5">Death Gem</label>
+        <br>
+        <input type="checkbox" name="req_gem6" id="req_gem6" value="#req_gem 6">
+        <label for="req_gem6">Nature Gem</label>
+        <br>
+        <input type="checkbox" name="req_gem7" id="req_gem7" value="#req_gem 7">
+        <label for="req_gem7">Blood Slave</label>
+        <br>
+        <p>
+            Note: A value of zero will waive this requirement.
+            <br>
+                <label for="#req_gold">Required Gold:</label>
+                <input type="number" name="#req_gold" id="#req_gold">
+        
+        </p>
+        <h3>Province Requirements</h3>
+
+        <p>
+            Determines if the event can happen only in a capital province, never 
+            in a capital province, or anyware.
+            <br>
+            <input type="radio" name="req_capital" id="req_capital1" value="#req_capital 1" class="req_capital">
+            <label for="req_capital1">Only in capital</label>
+            <br>
+            <input type="radio" name="req_capital" id="req_capital" value="#req_capital" class="req_capital">
+            <label for="req_capital">Anyware</label>
+            <br>
+            <input type="radio" name="req_capital" id="req_capital0" value="#req_capital 0" class="req_capital">
+            <label for="req_capital0">Never in capital</label>
+        </p>
+        <p>
+            Determines if the event can happen only in the affected nations capital province, never 
+            in its capital province, or anyware.
+            <br>
+            <input type="radio" name="req_owncapital" id="req_owncapital1" value="#req_owncapital 1" class="req_owncapital">
+            <label for="req_owncapital1">Only in capital</label>
+            <br>
+            <input type="radio" name="req_owncapital" id="req_owncapital" value="#req_owncapital" class="req_owncapital">
+            <label for="req_owncapital">Anyware</label>
+            <br>
+            <input type="radio" name="req_owncapital" id="req_owncapital0" value="#req_owncapital 0" class="req_owncapital">
+            <label for="req_owncapital0">Never in capital</label>
+        </p>
+
+        <label for="#req_poptype">Required Poptype:</label>
+        <select name="#req_poptype" id="#req_poptype">
+            <option value="-1" selected>N\A</option>
+
+            <option value="39">Militia, Archers, Lt Inf</option>
+            <option value="59">Militia, Archers, Lt Inf</option>
+            <option value="60">Militia, Archers, Lt Inf</option>
+
+            <option value="27">Militia, Archers, Hvy Inf</option>
+            <option value="28">Militia, Archers, Hvy Inf</option>
+            <option value="29">Militia, Archers, Hvy Inf</option>
+            <option value="30">Militia, Longbow, Knight</option>
+            <option value="48">Militia, Lt Inf, Hvy Inf</option>
+            <option value="49">Militia, Lt Inf, Hvy Inf</option>
+            <option value="50">Militia, Lt Inf, Hvy Inf</option>
+            <option value="51">Militia, Lt Cav, Hvy Cav</option>
+            <option value="52">Militia, Lt Cav, Hvy Cav</option>
+            <option value="53">Militia, Lt Cav, Hvy Cav</option>
+            <option value="32">Lt Inf, Hvy Inf, X-Bow</option>
+            <option value="33">Lt Inf, Hvy Inf, X-Bow</option>
+            <option value="58">Lt Inf, Hvy Inf, X-Bow</option>
+            <option value="74">Lt Inf, Lt Cav, Cataphracts</option>
+
+            <option value="54">Hvy Inf, Hvy Cav</option>
+            <option value="55">Hvy Inf, Hvy Cav</option>
+            <option value="56">Hvy Inf, Hvy Cav</option>
+
+            <option value="35">Slingers</option>
+            <option value="68">Slingers, Hvy Inf, Elephants</option>
+
+            <option value="47">X-Bow, Hvy Cavalry</option>
+
+            <option value="25">Barbarians</option>
+            <option value="37">Woodsmen</option>
+            <option value="26">Horse Tribe</option>
+            <option value="62">Deer Tribe </option>
+            <option value="78">Wolf Tribe</option>
+            <option value="79">Bear Tribe</option>
+            <option value="80">Lion Tribe</option>
+            <option value="82">Jaguar Tribe</option>
+            <option value="83">Toad Tribe</option>
+            <option value="96">Bone Tribe</option>
+
+            <option value="31">Tritons</option>
+            <option value="63">Tritons</option>
+            <option value="64">Tritons</option>
+            <option value="45">Tritons, Shark Knights</option>
+            <option value="46">Amber Clan Tritons</option>
+            <option value="73">Tritons, Triton Knights</option>
+            <option value="90">Turtle Tribe Tritons</option>
+            <option value="91">Shark Tribe Tritons</option>
+            <option value="92">Shark Tribe, Shark Riders</option>
+
+            <option value="34">Raptors</option>
+            <option value="36">Lizards</option>
+
+            <option value="76">Hoburg, EA</option>
+            <option value="38">Hoburg</option>
+            <option value="75">Hoburg, LA</option>
+
+            <option value="40">Amazon, Crystal</option>
+            <option value="41">Amazon, Garnet</option>
+            <option value="42">Amazon, Jade</option>
+            <option value="43">Amazon, Onyx</option>
+
+            <option value="44">Troglodytes</option>
+            <option value="57">Shamblers</option>
+            <option value="72">Mermen</option>
+            <option value="65">Ichtyids</option>
+            <option value="95">Ichtyids with Shaman</option>
+
+            <option value="61">Vaettir, Trolls</option>
+            <option value="66">Vaettir</option>
+            <option value="67">Vaettir, Dwarven Smith</option>
+            <option value="70">Vaettir, Svartalf</option>
+
+            <option value="69">Asmeg</option>
+            <option value="71">Trolls</option>
+            <option value="77">Atavi Apes</option>
+            <option value="81">Pale Ones</option>
+
+            <option value="84">Cavemen</option>
+
+            <option value="85">Kappa</option>
+            <option value="86">Bakemono</option>
+            <option value="87">Bakemono</option>
+            <option value="88">Ko-Oni</option>
+
+            <option value="89">Fir Bolg</option>
+            <option value="93">Zotz</option>
+            <option value="94">Lava-born</option>
+            <option value="97">Merrow</option>
+            <option value="98">Kulullu</option>
+        </select>
+        <br>
+        <input type="checkbox" name="#req_pop0ok" id="#req_pop0ok">
+        <label for="#req_pop0ok">Event can happen in depopulated areas</label>
+        <br>
+        <p>
+            Sets the minimum population in a province for the event to fire.
+            Note: The actuall value is ten times this number.
+            <br>
+            <label for="#req_minpop">Minimum population:</label>
+            <input type="number" name="#req_minpop" id="#req_minpop" value="0" min="0">
+        </p>
+        <p>
+                Sets the maximum population in a province for the event to fire.
+                Note: The actuall value is ten times this number.
+                <br>
+                <label for="#req_maxpop">Maximum population:</label>
+                <input type="number" name="#req_maxpop" id="#req_maxpop" value="0" min="0">
+    
+        </p>
+        <p>
+                Sets the minimum province defence in a province for the event to fire.
+                <br>
+                <label for="#req_mindef">Minimum PD:</label>
+                <input type="number" name="#req_mindef" id="#req_mindef" value="0" min="0">
+        </p>
+        <p>
+                Sets the maximum province defence in a province for the event to fire.
+                <br>
+                <label for="#req_maxdef">Maximum PD:</label>
+                <input type="number" name="#req_maxdef" id="#req_maxdef" value="0" min="0">
+        </p>
+
+        <p>
+                Sets the minimum unrest in a province for the event to fire.
+                <br>
+                <label for="#req_minunrest">Minimum unrest:</label>
+                <input type="number" name="#req_minunrest" id="#req_minunrest" value="0" min="0">
+        </p>
+        <p>
+                Sets the maximum unrest in a province for the event to fire.
+                <br>
+                <label for="#req_maxunrest">Maximum unrest:</label>
+                <input type="number" name="#req_maxunrest" id="#req_maxunrest" value="0" min="0">
+        </p>
+        <p>
+            <input type="radio" name="req_lab" id="req_lab1" value="#req_lab 1" class="req_lab">
+            <label for="#req_lab1">Lab must be present</label>
+            <br>
+            <input type="radio" name="req_lab" id="req_lab" value="#req_lab" class="req_lab" checked>
+            <label for="#req_lab">No prefrence</label>
+            <br>
+            <input type="radio" name="req_lab" id="req_lab0" value="#req_lab 0" class="req_lab">
+            <label for="#req_lab0">Lab must not be present</label>        
+        </p>
+        <p>
+            <input type="radio" name="req_temple" id="req_temple1" value="#req_temple 1" class="req_temple">
+            <label for="#req_temple1">Temple must be present</label>
+            <br>
+            <input type="radio" name="req_temple" id="req_temple" value="#req_temple" class="req_temple" checked>
+            <label for="#req_temple">No prefrence</label>
+            <br>
+            <input type="radio" name="req_temple" id="req_temple0" value="#req_temple 0" class="req_temple">
+            <label for="#req_temple0">Temple must not be present</label>        
+        </p>
+        <p>
+            <input type="radio" name="req_fort" id="req_fort1" value="#req_fort 1" class="req_fort">
+            <label for="#req_fort1">Fort must be present</label>
+            <br>
+            <input type="radio" name="req_fort" id="req_fort" value="#req_fort" class="req_fort" checked>
+            <label for="#req_fort">No prefrence</label>
+            <br>
+            <input type="radio" name="req_fort" id="req_fort0" value="#req_fort 0" class="req_fort">
+            <label for="#req_fort0">Fort must not be present</label>        
+        </p>
+        <p>
+                <input type="radio" name="req_land" id="req_land1" value="#req_land 1" class="req_land">
+                <label for="#req_land1">Provence must be land</label>
+                <br>
+                <input type="radio" name="req_land" id="req_land" value="#req_land" class="req_land" checked>
+                <label for="#req_land">No prefrence</label>
+                <br>
+                <input type="radio" name="req_land" id="req_land0" value="#req_land 0" class="req_land">
+                <label for="#req_land0">Provence must be sea</label>        
+        </p>
+        <p>
+                <input type="radio" name="req_coast" id="req_coast1" value="#req_coast 1" class="req_coast">
+                <label for="#req_coast1">Provence must be coastal</label>
+                <br>
+                <input type="radio" name="req_coast" id="req_coast" value="#req_coast" class="req_coast" checked>
+                <label for="#req_coast">No prefrence</label>
+                <br>
+                <input type="radio" name="req_coast" id="req_coast0" value="#req_coast 0" class="req_coast">
+                <label for="#req_coast0">Provence cannot be costal</label>        
+        </p>
+        req_mountain
+        <p>
+            Determins if the provence must or must not be mountainous. This 
+                <input type="radio" name="req_coast" id="req_coast1" value="#req_coast 1" class="req_coast">
+                <label for="#req_coast1">Provence must be coastal</label>
+                <br>
+                <input type="radio" name="req_coast" id="req_coast" value="#req_coast" class="req_coast" checked>
+                <label for="#req_coast">No prefrence</label>
+                <br>
+                <input type="radio" name="req_coast" id="req_coast0" value="#req_coast 0" class="req_coast">
+                <label for="#req_coast0">Provence cannot be costal</label>        
+        </p>
+
+<!--
         req_ench
         req_myench
         req_hostileench 1
         req_friendlyench 1
         req_enchdom 1
         
-        req_rare 1
         req_commander 1
         req_monster 1
         req_nositenbr 1
@@ -81,7 +433,6 @@
         req_targnoitem 1
         req_minunrest 1
         req_domchance 1
-        req_land 1
         req_mountain 1
         req_forest
         req_cold 1
@@ -90,13 +441,12 @@
         req_researcher
         req_maxunrest 1
         req_maxtroops 1
-        req_temple 1
-        req_pop0ok
         req_permonth 1
         req_nomnr 1
-        nation -1
         req_indepok 1
         req_nomnr
+
+-->
 
         <h3>Event Effects</h3>
 
@@ -108,11 +458,9 @@
         <br>
         <input type="radio" name="temple" id="#temple 0">
         <label for="#temple 0">Destroy Temple</label>
-            newevent
 
 
-            rarity 1
-
+<!--
             msg
 
             nolog
@@ -147,3 +495,6 @@
             1d6vis
             2d4vis
             decscale2
+-->
+    </body>
+</html>
