@@ -17,6 +17,7 @@
     </head>
     <body>
         <header>
+            <a href="mod_helper.html">Mod</a>
             <a href="armor_helper.html">Armor</a>
             <a href="weapon_helper.html">Weapons</a>
             <a href="item_helper.html">Magic Items</a>
@@ -137,7 +138,7 @@
             had a Morning Star in place of his default weapon.
             <br>
             <label for="#weapon">ID of weapon:</label>
-            <input type="number" name="#weapon" id="#weapon" value="1" min="1" disabled>
+            <input type="number" name="#weapon" id="#weapon" value="1" min="1" max="1999" disabled>
         </p>
         <p>
             This is only used if item is armor.If this is set to, say 9, 
@@ -145,7 +146,7 @@
             were a Plate Cuirass instead of his default armor.
             <br>
             <label for="#armor">ID of armor:</label>
-            <input type="number" name="#armor" id="#armor" value="1" min="1" disabled>
+            <input type="number" name="#armor" id="#armor" value="1" min="1" max="999" disabled>
         </p>
         <!---->
         <h3>Magic & Spells</h3>
@@ -174,10 +175,10 @@
         <br>
         <p>
             <input type="number" name="#pen" id="#pen" value="0">
-            <label for="#pen">Spell Penitration:</label>
+            <label for="#pen">Bonus spell penitration:</label>
         </p>
         <p>
-            Name of spell that item allows user to cast
+            Name of spell that item allows user to cast.
             <br>
             <input type="text" name="#spell" id="#spell">
             <label for="#spell">Allowed Spell:</label>

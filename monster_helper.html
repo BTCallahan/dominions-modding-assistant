@@ -14,17 +14,17 @@
         <script type="text/javascript" src="assets/monster_script.js">
         </script>
         <link rel="stylesheet" href="assets/mod_styling.css">
-
     </head>
     <body>
         <header>
-                <a href="armor_helper.html">Armor</a>
-                <a href="weapon_helper.html">Weapons</a>
-                <a href="item_helper.html">Magic Items</a>
-                <a href="spell_helper.html">Magic Spells</a>
-                <a href="monster_helper.html">Monsters</a>
-                <a href="nation_helper.html">Nations</a>
-                <a href="site_helper.html">Magic Sites</a>
+            <a href="mod_helper.html">Mod</a>
+            <a href="armor_helper.html">Armor</a>
+            <a href="weapon_helper.html">Weapons</a>
+            <a href="item_helper.html">Magic Items</a>
+            <a href="spell_helper.html">Magic Spells</a>
+            <a href="monster_helper.html">Monsters</a>
+            <a href="nation_helper.html">Nations</a>
+            <a href="site_helper.html">Magic Sites</a>
         </header>
         <main>
             <h1>Monster Modding</h1>
@@ -62,11 +62,22 @@
                 <label for="#speciallook">Special Look:</label>
                 <input type="number" name="#speciallook" id="#speciallook" value="0" min="0" max="199">
             </fieldset>
+            <p>
+                Sets the units steal to at least 10 if less then 10, and set's its commanding ability to zero.
+                <br>
+                <button onclick="setAsScout()">Set Unit as Scout</button>
+
+            </p>
             <h3>Clearing & Copying</h3>
             <fieldset>
                 <legend>Clearing Data</legend>
-                <input type="checkbox" name="#clear" id="clear" value="#clear">
-                <label for="#clear">Clear Weapons, Armor, Magic, Special Abilities</label>
+                <p>
+                    Clear Weapons, Armor, Magic, Special Abilities.
+                    <br>
+                    <input type="checkbox" name="#clear" id="clear" value="#clear" 
+                    onchange="enableOrDisable(document.getElementById('#clear').checked, '', 'clearData')">
+                    <label for="#clear">Clear All</label>
+                </p>
                 <br>
                 <input type="checkbox" name="#clearweapons" id="#clearweapons" value="#clearweapons" class="clearData">
                 <label for="#clearweapons">Clear Weapons</label>
@@ -86,7 +97,8 @@
                 <input type="checkbox" name="copystat" id="copystat" 
                 onchange="enableOrDisable(document.getElementById('copystat').checked, 'copystats', '')">
                 <label for="copystat">Copy stats from another monster</label>
-                <p>This can be from another monster in the same mod.
+                <p>
+                    This can be from another monster in the same mod.
                     <br>
                     <label for="#copystats">ID of Monster to Copy Stats from:</label>
                     <input type="number" name="#copystats" id="#copystats" value="1" min="1" max="8999" 
@@ -96,7 +108,8 @@
                 onchange="enableOrDisable(document.getElementById('copysprite').checked, 'copysprites', '')">
                 <label for="copysprite">Copy sprites from another monster</label>
 
-                <p>If this value of this is equal to -1, it will not be used.
+                <p>
+                    If this value of this is equal to -1, it will not be used.
                     <br>
                     <!-- do not use if you are also using the #spr1 command! -->
                     <label for="#copyspr">ID of Monster to Copy Sprite from from:</label>
@@ -142,14 +155,26 @@
                 <label for="#slowrec">Slow Recruitment Time</label>
                 <br>
                 <!-- only use of monstis is modified -->
-                <input type="checkbox" name="#noslowrec" id="#noslowrec" value="#slowrec" class="old" disabled>
-                <label for="#noslowrec">Remove Slow Recruitment from Exhisting Monster</label>
-                <br>
-                <label for="#reclimit">Maximum Recruitable Units Per Month (a value of 0 disables this):</label>
-                <input type="number" name="#reclimit" id="#reclimit" value="0" min="0" class="recrestrict">
+                <p>
+                        Remove slow recruitment from existing monster.
+                        <br>
+                        <input type="checkbox" name="#noslowrec" id="#noslowrec" value="#slowrec" class="old" disabled>
+                        <label for="#noslowrec">Remove Slow Recruitment</label>
+                </p>
+                <p>
+                        Maximum recruitable units per month (a value of 0 disables this)
+                        <br>
+                        <label for="#reclimit">Max Units Per Month:</label>
+                        <input type="number" name="#reclimit" id="#reclimit" value="0" min="0" class="recrestrict">
+                </p>
             </fieldset>
-            <label for="#enchrebate50">Enchantmant No. to Reduce Price by 50 Gold (a value of 0 disables):</label>
-            <input type="number" name="#enchrebate50" id="#enchrebate50" value="0" min="0" class="recrestrict">
+            <p>
+                    Enchantmant numbero. to reduce price by 50 gold (a value of 0 disables).
+                    <br>
+                    <label for="#enchrebate50">Enchantmant ID:</label>
+                    <input type="number" name="#enchrebate50" id="#enchrebate50" value="0" min="0" class="recrestrict">
+        
+            </p>
             <fieldset>
                 <legend>Required Buildings:</legend>
                 <input type="checkbox" name="#reqlab" id="#reqlab" value="#reqlab" class="reqbuildings">
@@ -174,11 +199,18 @@
             </fieldset>
             <fieldset>
                 <legend>AI Recruitment</legend>
-                <input type="checkbox" name="#aisinglerec" id="#aisinglerec" value="#aisinglerec" class="aireq">
-                <label for="#aisinglerec">Tells the AI to Recurit Only One Unit per Batch</label>
-                <br>
-                <input type="checkbox" name="#ainorec" id="#ainorec" value="#ainorec" class="aireq">
-                <label for="#ainorec">Tells the AI to Never Recurit this Unit</label>
+                <p>
+                        Tells the AI to recrute only one unit per batch.
+                        <br>
+                        <input type="checkbox" name="#aisinglerec" id="#aisinglerec" value="#aisinglerec" class="aireq">
+                        <label for="#aisinglerec">Only one per batch</label>
+                </p>
+                <p>
+                        Tells the AI to never recrute this unit.
+                        <br>
+                        <input type="checkbox" name="#ainorec" id="#ainorec" value="#ainorec" class="aireq">
+                        <label for="#ainorec">AI never recrutes unit</label>
+                </p>
             </fieldset>
             <fieldset>
                 <legend>Recruitment Requirements</legend>
@@ -198,17 +230,33 @@
                 </p>
             </fieldset>
             <h3>Desertion</h3>
-            <input type="checkbox" name="#singlebattle" id="#singlebattle" value="#singlebattle" class="desertionbool">
-            <label for="#singlebattle">Monster Fights a Single Battle, then Leaves</label>
-            <br>
-            <label for="#deserter">Chance of Disertion per Month*:</label>
-            <input type="number" name="#deserter" value="0" id="#deserter" min="0" max="100" class="desertionnum">
-            <br>
-            <label for="#horrordeserter">Chance of Disertion per Month when Astral Corruption is Active*:</label>
-            <input type="number" name="#horrordeserter" value="0" id="#horrordeserter" min="0" max="100" class="desertionnum">
-            <br>
-            <label for="#defector">Chance of Becoming Indpentant per Month*:</label>
-            <input type="number" name="#defector" value="0" id="#defector" min="0" max="100" class="desertionnum">
+            <p>
+                    Monster fights a single battle, then leaves.
+                    <br>
+                    <input type="checkbox" name="#singlebattle" id="#singlebattle" value="#singlebattle" class="desertionbool">
+                    <label for="#singlebattle">Single battle</label>
+            </p>
+            <p>
+                    Chance of unit diserting per month.
+                    <br>
+                    <label for="#deserter">Desertion change*:</label>
+                    <input type="number" name="#deserter" value="0" id="#deserter" min="0" max="100" class="desertionnum">
+        
+            </p>
+            <p>
+                    Chance of disertion per month when astral corruption is active.
+                    <br>
+                    <label for="#horrordeserter">Desertion change*:</label>
+                    <input type="number" name="#horrordeserter" value="0" id="#horrordeserter" min="0" max="100" class="desertionnum">
+        
+            </p>
+            <p>
+                    Chance of becoming indpentant per month.
+                    <br>
+                    <label for="#defector">Desertion change*:</label>
+                    <input type="number" name="#defector" value="0" id="#defector" min="0" max="100" class="desertionnum">
+        
+            </p>
             <br>
             <p>* A value of zero will disable this mechanic.</p>
             <input type="checkbox" name="#nowish" id="#nowish" value="#nowish" class="desertionbool">
@@ -334,9 +382,13 @@
                     <label for="#startitem">ID of the Item that this Monster Starts with:</label>
                     <input type="number" id="#startitem" value="-1" min="-1">
                 </p>
-                
-                <label for="#userestricteditem">ID of Restricted Item that this Unit can use:</label>
-                <input type="number" id="#userestricteditem" value="0" min="0" max="10000">
+                <p>
+                        ID of restricted item that this unit can use.
+                        <br>
+                        <label for="#userestricteditem">Item ID:</label>
+                        <input type="number" id="#userestricteditem" value="0" min="0" max="10000">
+        
+                </p>
                 <br>
                 <label for="#noitem">Can Only Use Misc Items:</label>
                 <input type="checkbox" id="#noitem" value="#noitem">
@@ -399,7 +451,6 @@
                     <input type="radio" name="horror" id="#doomhorror" value="#doomhorror" class="horror">
                     <label for="#doomhorror">Doom Horror</label>
                 </fieldset>
-
                 <input type="checkbox" id="#mounted" value="#mounted" class="atributes">
                 <label for="#mounted">Unit is Mounted</label>
                 <br>
@@ -409,27 +460,38 @@
                 <br>
                 <input type="checkbox" id="#animal" value="#animal" class="atributes">
                 <label for="#animal">Unit is an Animal</label>
-                <br>
-                <input type="checkbox" id="#unique" value="#unique" class="atributes">
-                <label for="#unique">Only one of unit can be present in the world</label>
-                <br>
+                <p>
+                    Only one of unit can be present in the world.
+                    <br>
+                    <input type="checkbox" id="#unique" value="#unique" class="atributes">
+                    <label for="#unique">Unit is Unique</label>
+                </p>
                 <input type="checkbox" id="#undead" value="#undead" class="atributes">
                 <label for="#undead">Unit is an Undead</label>
-                <br>
-                <input type="checkbox" id="#bug" value="bug" class="atributes">
-                <label for="#bug">This Unit can be Summoned by the Swarm Spell (land only)</label>
-                <br>
-                <input type="checkbox" id="#uwbug" value="#uwbug" class="atributes">
-                <label for="#uwbug">This Unit can be summoned by the Swarm Spell (underwater only)</label>
-                <br>
+                <p>
+                    This Unit can be Summoned by the Swarm Spell (land only)
+                    <br>
+                    <input type="checkbox" id="#bug" value="bug" class="atributes">
+                    <label for="#bug">Swarm summon</label>
+                </p>
+                <p>
+                    This Unit can be summoned by the Swarm Spell (underwater only)
+                    <br>
+                    <input type="checkbox" id="#uwbug" value="#uwbug" class="atributes">
+                    <label for="#uwbug">UW swarm summon</label>
+                </p>
                 <input type="checkbox" id="#demon" value="#demon" class="atributes">
                 <label for="#demon">Unit is a Demon</label>
                 <br>
                 <input type="checkbox" id="#magicbeing" value="#magicbeing" class="atributes">
                 <label for="#magicbeing">Unit is a Magical Being</label>
                 <br>
-                <input type="checkbox" id="#autocompete" value="#autocompete" class="atributes">
-                <label for="#autocompete">Unit will automaticly compete in the arena deathmatch</label>
+                <p>
+                        Unit will automaticly compete in the arena deathmatch.
+                        <br>
+                        <input type="checkbox" id="#autocompete" value="#autocompete" class="atributes">
+                        <label for="#autocompete">Autocompete</label>
+                </p>
                 <br>
                 <input type="checkbox" id="#stonebeing" value="#stonebeing" class="atributes">
                 <label for="#stonebeing">Unit cannot be Petrified</label>
@@ -463,30 +525,53 @@
                     <label for="#nounderwater">Unit can cannot move underwater</label>
                 </fieldset>
                 <input type="checkbox" name="#snow" id="#snow" value="#snow" >
-                <label for="#snow">Unit is unaffected by Snow</label>
+                <label for="#snow">Unit is unaffected by snow</label>
                 <br>
-                <input type="checkbox" name="#flying" id="#flying" value="#flying"
-                onchange="enableOrDisable(document.getElementById('#flying').checked == true, 'flying', '')">
-                <label for="#flying">Unit can Fly Across Rivers and Mountians</label>
+                <p>
+                        Unit can fly across rivers and mountians.
+                        <br>
+                        <input type="checkbox" name="#flying" id="#flying" value="#flying"
+                        onchange="enableOrDisable(document.getElementById('#flying').checked == true, 'flying', '')">
+                        <label for="#flying">Minor flight</label>
+        
+                </p>
                 <br>
                 <input type="checkbox" name="#stormimmune" id="#stormimmune" value="#stormimmune" class="flying" disabled>
                 <label for="#stormimmune">Unit can fly durring a Storm</label>
                 <fieldset>
                     <legend>Teleportation</legend>
-                    <input type="radio" name="teleport" id="#teleport" value="#teleport" class="teleport">
-                    <label for="#teleport">Unit can teleport without the aid of magic spells/items</label>
-                    <br>
-                    <input type="radio" name="teleport" id="#mapteleport" value="#mapteleport" class="teleport">
-                    <label for="#mapteleport">Unit can teleport across the map without the aid of magic spells/items</label>
-                    <br>
-                    <input type="radio" name="teleport" id="#blink" value="#blink" class="teleport">
-                    <label for="#blink">Unit can teleport durring battle without the aid of magic spells/items</label>
-                    <br>
-                    <input type="radio" name="teleport" id="#noteleport" value="#noteleport" class="teleport" checked>
-                    <label for="#noteleport">Unit requires magic spells/items to teleport</label>
-                    <br>
-                    <input type="radio" name="teleport" id="#unteleportable" value="#unteleportable" class="teleport">
-                    <label for="#unteleportable">Unit can only teleport using Stygian Paths and Faery Trod</label>
+                    <p>
+                        Unit can teleport without the aid of magic spells/items.
+                        <br>
+                        <input type="radio" name="teleport" id="#teleport" value="#teleport" class="teleport">
+                        <label for="#teleport">Unit can teleport</label>
+                    </p>
+                    <p>
+                        <br>
+                        Unit can teleport across the map without the aid of magic spells/items.
+                        <br>
+                        <input type="radio" name="teleport" id="#mapteleport" value="#mapteleport" class="teleport">
+                        <label for="#mapteleport">Map teleport</label>
+        
+                    </p>
+                    <p>
+                            Unit can teleport durring battle without the aid of magic spells/items.
+                            <br>
+                            <input type="radio" name="teleport" id="#blink" value="#blink" class="teleport">
+                            <label for="#blink">Unit can blink</label>
+                    </p>
+                    <p>
+                            Unit requires magic spells/items to teleport.
+                            <br>
+                            <input type="radio" name="teleport" id="#noteleport" value="#noteleport" class="teleport" checked>
+                            <label for="#noteleport">No teleport</label>
+                    </p>
+                    <p>
+                            Unit can only teleport using Stygian Paths and Faery Trod.
+                            <br>
+                            <input type="radio" name="teleport" id="#unteleportable" value="#unteleportable" class="teleport">
+                            <label for="#unteleportable">Unit cannot teleport</label>
+                    </p>
                 </fieldset>
                 Even in winter when the rivers are forzen, this unit will not be able to cross.
                 <br>
@@ -515,27 +600,54 @@
                     <input type="checkbox" id="sailing" value="sailing"
                     onchange="enableOrDisable(document.getElementById('sailing').checked, 'sail', '')">
                     <label for="sailing">Commander can sail across the seas</label>
-                    <br>
-                    <label for="#sailing1">Max number of size points worth of units:</label>
-                    <input type="number" id="#sailing1" value="999" min="1" max="999" class="sail" disabled>
-                    <br>
-                    <label for="#sailing2">Max size of the units that can be transported:</label>
-                    <input type="number" id="#sailing2" value="2" min="1" max="6" class="sail" disabled>
-                    <br>
-                    <label for="#farsail">Max number of extra provences that this unit can sail:</label>
-                    <input type="number" id="#farsail" value="0" min="0" max="10" class="sail" disabled>
+                    <p>
+                            Max number of size points worth of units.
+                            <br>
+                            <label for="#sailing1">Max army size:</label>
+                            <input type="number" id="#sailing1" value="999" min="1" max="999" class="sail" disabled>
+        
+                    </p>
+                    <p>
+                            Max size of the units that can be transported.
+                            <br>
+                        <label for="#sailing2">Max unit size:</label>
+                        <input type="number" id="#sailing2" value="2" min="1" max="6" class="sail" disabled>
+        
+                    </p>
+                    <p>
+                        Max number of extra provences that this unit can sail.
+                        <br>
+                        <label for="#farsail">Max provences:</label>
+                        <input type="number" id="#farsail" value="0" min="0" max="10" class="sail" disabled>
+                    </p>
                 </fieldset>
-                <label for="#giftofwater">Max number of size points worth of units that the commander can take underwater:</label>
-                <input type="number" id="#giftofwater" value="0" min="0" max="999" class="miscMove">
-                <br>
-                <label for="#indepmove">Chance of this monster moving on the map if it is independent:</label>
-                <input type="number" id="#indepmove" value="0" min="0" max="100" class="miscMove">
-                <br>
-                <input type="checkbox" id="#nomovepen" value="#nomovepen" class="movement">
-                <label for="#nomovepen">Monster suffer no move penalties from armor</label>
+                <p>
+                    Max number of size points worth of units that the commander can take underwater.
+                    <br>
+                    <label for="#giftofwater">Army Size:</label>
+                    <input type="number" id="#giftofwater" value="0" min="0" max="999" class="miscMove">
+                </p>
+                <p>
+                    Chance of this monster moving on the map if it is independent.
+                    <br>
+                    <label for="#indepmove">Percent:</label>
+                    <input type="number" id="#indepmove" value="0" min="0" max="100" class="miscMove">
+                </p>
+                <p>
+                    Monster suffer no move penalties from armor.
+                    <br>
+                    <input type="checkbox" id="#nomovepen" value="#nomovepen" class="movement">
+                    <label for="#nomovepen">No armor penalties</label>
+                </p>
                 <h3>Stealth & Assassination</h3>
                 <p>
-                    If a unit has a steal value of at least 10, then the Glamour ability will add 25 to it. Even if it does not have 
+                    A unit with the Glamour ability will have the mirror image spell cast on it at 
+                    the begining of a battle.
+                    <br>
+                    If a unit has a stealth value of at least 10, then the Glamour ability will add 25 to it. 
+                    Even if it does not have a stealth value of at least 10, it will still benifit from 
+                    the mirror image.
+                    <br>
                     <input type="checkbox" id="#illusion" value="#illusion">
                     <label for="#illusion">Monster has Glamour</label>
                 </p>
@@ -844,6 +956,7 @@
                 <br>
                 <p>
                     Monster takes less damage from nonmagic weapons.
+                    <br>
                     <label for="#invulnerable">Invulnerability:</label>
                     <input type="number" name="#invulnerable" id="#invulnerable" value="0" min="0" class="resnum">
                 </p>
@@ -1005,25 +1118,42 @@
                 <fieldset>
                     <legend>Trampeling</legend>
                     <input type="checkbox" name="#trample" value="#trample" onchange="trampleCheck()">
-
                     <label for="#trample">Monster can trample smaller foes</label>
                     <br>
                     <input type="checkbox" name="#trampswallow" value="#trampswallow"
                         onchange="enableOrDisable(document.getElementById('#trampswallow').checked, 'dige', '')">
                     <label for="#trampswallow">Monster can devour trampled foes</label>
                     <br>
-                    <label for="#digest">Monster can digest devoured units:</label>
-                    <input type="number" name="#digest" value="0" min="0"  class="dige">
-                    <br>
-                    <label for="#aciddigest">Monster can digest devoured units and damage their armor:</label>
-                    <input type="number" name="#aciddigest" value="0" min="0"  class="dige">
-                    <br>
-                    <label for="#incorporate">Monster can digest devoured units and gain HP:</label>
-                    <input type="number" name="#incorporate" value="0" min="0"  class="dige">
+                    <p>
+                        This monster can digest devoured units. The number is the amount of damage devored 
+                        units take per turn.
+                        <br>
+                        <label for="#digest">Damage:</label>
+                        <input type="number" name="#digest" value="0" min="0"  class="dige">
+                    </p>
+                    <p>
+                        This monster can digest devoured units and damage their armor. The number is the amount of damage devored 
+                        units take per turn.
+                        <br>
+                        <label for="#aciddigest">Damage:</label>
+                        <input type="number" name="#aciddigest" value="0" min="0"  class="dige">
+    
+                    </p>
+                    <p>
+                        This monster can digest devoured units and use them to heal damage. The number is 
+                        the amount of damage devored units take per turn. Every hit point of damage that 
+                        a devoured unit takes is used to heal the monster.
+                        <br>
+                        <label for="#incorporate">Damage:</label>
+                        <input type="number" name="#incorporate" value="0" min="0"  class="dige">
+                    </p>
                 </fieldset>
-                <label for="#raiseonkill">Chance of raisng slain enemies as soulless:</label>
-                
-                <input type="number" name="#raiseonkill" value="0" min="0" max="100" class="comabilnum">
+                <p>
+                    This monster has a chance of raisng slain enemies as soulless.
+                    <br>
+                    <label for="#raiseonkill">Chance:</label>
+                    <input type="number" name="#raiseonkill" value="0" min="0" max="100" class="comabilnum">
+                </p>
                 <br>
                 <label for="#raiseshape">ID of monster to raise slain enemies as:</label>
                 <input type="number" name="#raiseshape" value="0" max="8999" class="comabilnum">
@@ -1031,7 +1161,6 @@
                 <fieldset>
                     <legend>Magical Tatoos</legend>
                     <label for="#beartattoo">Bear Tattoo</label>
-
                     <input type="number" name="#beartattoo" value="0" min="0"  class="comabilnum">
                     <br>
                     <label for="#horsetattoo">Horse Tattoo</label>
@@ -1050,7 +1179,6 @@
 
                 <h3>Non-Combat Abilities</h3>
                 <label for="#castledef">Castle defence bonus:</label>
-
                 <input type="number" name="#castledef" value="0" min="0" class="noncomnum">
                 <br>
                 <label for="#siegebonus">Siege bonus:</label>
@@ -1062,8 +1190,12 @@
                 <label for="#pillagebonus">Pillage bonus:</label>
                 <input type="number" name="#pillagebonus" value="0" min="0" class="noncomnum">
                 <br>
-                <input type="checkbox" name="#inquisitor" value="#inquisitor" class="noncombool">
-                <label for="#inquisitor">Bonus preaching against enemy dominion</label>
+                <p>
+                    This unit is doubly effective at preaching when inside enemy dominion.
+                    <br>
+                    <input type="checkbox" name="#inquisitor" value="#inquisitor" class="noncombool">
+                    <label for="#inquisitor">Inquisitor</label>
+                </p>
                 <br>
                 <label for="#supplybonus">Generates extra supplies:</label>
                 <input type="number" name="#supplybonus" value="0" class="noncomnum">
@@ -1071,6 +1203,7 @@
                 <input type="checkbox" name="#neednoteat" value="#neednoteat" class="noncombool">
                 <label for="#neednoteat">Unit does not need food</label>
                 <br>
+
                 <label for="#elegist">Extra effectiveness at calling back a slain god:</label>
                 <input type="number" name="#elegist" value="0" class="noncomnum">
                 <br>
@@ -1084,11 +1217,10 @@
                     <legend>Gold and Resources</legend>
                     <p>
                         Collects income in provences that cannot trace a path to a fort.
+                        <br>
                         <label for="#taxcollector">Tax Collector:</label>
                         <input type="number" name="#taxcollector" value="0" max="100" class="noncomnum">
                     </p>
-                    
-                    
                     <label for="#resources">Generates resources:</label>
                     <input type="number" name="#resources" value="0" min="0" class="noncomnum">
                     <br>
@@ -1100,7 +1232,6 @@
                     <br>
                     <label for="#iceforging">Generates resources in ice provences:</label>
                     <input type="number" name="#iceforging" value="0" min="0" class="noncomnum">
-
                 </fieldset>
                 <label for="#nobadevents">Chance of preventing bad events:</label>
                 <input type="number" name="#nobadevents" value="0" min="0" max="100" class="noncomnum">
@@ -1129,69 +1260,115 @@
                 <label for="#alchemy">Unit is more eficent at turniong gems into gold:</label>
                 <input type="number" name="#alchemy" value="0" min="0" max="100" class="noncomnum">
                 <h3>Shapechanging</h3>
-                <label for="#shapechange">ID of monster this Unit can shapechange into:</label>
-                <input type="number" name="#shapechange" value="0" min="0" max="8999" class="shapechange">
-                <br>
-                <label for="#prophetshape">ID of monster this Unit will shapechange into upon become a prophet:</label>
-                <input type="number" name="#prophetshape" value="0" min="0" max="8999" class="shapechange">
-                <br>
-                <label for="#firstshape">ID of monster this Unit will shapechange into when not wounded:</label>
-                <input type="number" name="#firstshape" value="0" min="0" max="8999" class="shapechange">
-                <br>
-                <label for="#secondshape">ID of monster this Unit will shapechange into when serously wounded:</label>
-                <input type="number" name="#secondshape" value="0" min="0" max="8999" class="shapechange">
-                <br>
-                <label for="#secondtmpshape">ID of monster this Unit will shapechange into upon death:</label>
-                <input type="number" name="#secondtmpshape" value="0" min="0" max="8999" class="shapechange">
-                <br>
-                <label for="#forestshape">ID of monster this Unit will shapechange when moving into a forest provence:</label>
-                <input type="number" name="#forestshape" value="0" min="0" max="8999" class="shapechange">
-
-                <br>
-                <label for="#plainshape">ID of monster this Unit will shapechange when moving into a plains provence:</label>
-                <input type="number" name="#plainshape" value="0" min="0" max="8999" class="shapechange">
-                <br>
-                <label for="#foreignshape">ID of monster this Unit will shapechange when moving out of its home provence:</label>
-                <input type="number" name="#foreignshape" value="0" min="0" max="8999" class="shapechange">
-                <br>
-                <label for="#homeshape">ID of monster this Unit will shapechange when moving into its home provence:</label>
-                <input type="number" name="#homeshape" value="0" min="0" max="8999" class="shapechange">
-                <br>
-                <label for="#landshape">ID of monster this Unit will shapechange when moving into a land provence:</label>
-                <input type="number" name="#landshape" value="0" min="0" max="8999" class="shapechange">
-                <br>
-                <label for="#watershape">ID of monster this Unit will shapechange when moving into a water provence:</label>
-                <input type="number" name="#watershape" value="0" min="0" max="8999" class="shapechange">
-
+                <p>
+                    Some units can voluntarly change shape on the map screen. If this unit can, 
+                    enter the ID of the unit that it can turn into.
+                    <br>
+                    <label for="#shapechange">Shapechange target ID:</label>
+                    <input type="number" name="#shapechange" value="0" min="0" max="8999" class="shapechange">
+                </p>
+                <p>
+                    A few units will transform into another when becoming a prophet. If this unit does, 
+                    enter the ID of the unit that it can turn into.
+                    <br>
+                    <label for="#prophetshape">Shapechange target ID:</label>
+                    <input type="number" name="#prophetshape" value="0" min="0" max="8999" class="shapechange">
+                </p>
+                <p>
+                    Same units will transform into another when gravly injured, such as dragons. If this unit does, 
+                    enter the ID of the unit that it can turn into.
+                    <br>
+                    <label for="#secondshape">Shapechange target ID:</label>
+                    <input type="number" name="#secondshape" value="0" min="0" max="8999" class="shapechange">
+                </p>
+                <p>
+                    Same units will transform into another when gravly injured, such as dragons. When they heal, 
+                    they revert to their original form. If another unit transforms into this unit when infured, 
+                    enter the ID of the original unit.
+                    <br>
+                    <label for="#firstshape">Shapechange target ID:</label>
+                    <input type="number" name="#firstshape" value="0" min="0" max="8999" class="shapechange">
+                </p>
+                <p>
+                    Same units will transform into another when reduced to zer0 hit points. If this unit does, 
+                    enter the ID of the unit that it turns into.
+                    <br>
+                    <label for="#secondtmpshape">Shapechange target ID:</label>
+                    <input type="number" name="#secondtmpshape" value="0" min="0" max="8999" class="shapechange">
+                </p>
+                <fieldset>
+                    <legend>Terrain-based Shapeshifting</legend>
+                    <p>
+                        Some monsters will change into another when moving into provences that have specific terrains.
+                        <br>
+                        <label for="#plainshape">ID of plains shapechange:</label>
+                        <input type="number" name="#plainshape" value="0" min="0" max="8999" class="shapechange">
+                        <br>
+                        <label for="#forestshape">ID of forest shapechange:</label>
+                        <input type="number" name="#forestshape" value="0" min="0" max="8999" class="shapechange">
+                        <br>
+                        <label for="#landshape">ID of land shapechange:</label>
+                        <input type="number" name="#landshape" value="0" min="0" max="8999" class="shapechange">
+                        <br>
+                        <label for="#watershape">ID of water shapechange:</label>
+                        <input type="number" name="#watershape" value="0" min="0" max="8999" class="shapechange">
+                    </p>
+                    <p>
+                        Some monsters will change another when moving into or out of their home provence.
+                        <br>
+                        <label for="#foreignshape">ID of foreign provence shapechange:</label>
+                        <input type="number" name="#foreignshape" value="0" min="0" max="8999" class="shapechange">
+                        <br>
+                        <label for="#homeshape">ID of home provence shapechange:</label>
+                        <input type="number" name="#homeshape" value="0" min="0" max="8999" class="shapechange">
+                    </p>
+                </fieldset>
                 <fieldset>
                     <legend>Seasonal Shapechanges</legend>
-                    <label for="#springshape">ID of monster this Unit will shapechange into during spring:</label>
+                    <p>
+                        Some units change shape during a season. Enter the ID of the monster it 
+                        changes into, or leave it at zero. 
+                    </p>
+                    <label for="#springshape">ID of spring shapechange:</label>
                     <input type="number" name="#springshape" value="0" min="0" max="8999" class="shapechange">
                     <br>
-                    <label for="#summershape">ID of monster this Unit will shapechange into during summer:</label>
+                    <label for="#summershape">ID of summer shapechange:</label>
                     <input type="number" name="#summershape" value="0" min="0" max="8999" class="shapechange">
                     <br>
-                    <label for="#autumnshape">ID of monster this Unit will shapechange into during autumn:</label>
+                    <label for="#autumnshape">ID of autumn shapechange:</label>
                     <input type="number" name="#autumnshape" value="0" min="0" max="8999" class="shapechange">
                     <br>
-                    <label for="#wintershape">ID of monster this Unit will shapechange into during winter:</label>
+                    <label for="#wintershape">ID of winter shapechange:</label>
                     <input type="number" name="#wintershape" value="0" min="0" max="8999" class="shapechange">
                 </fieldset>
                 <fieldset>
                     <legend>HP/Exp. Related Shapeshifting</legend>
-                    <label for="#growhp">Monster will shift into next monster once reaching this HP amount:</label>
-                    <input type="number" name="#growhp" value="-1" min="-1" class="hpshapechange">
-                    <br>
-                    <label for="#shrinkhp">Monster will shift into prevous monster once reaching this HP amount:</label>
-                    <input type="number" name="#shrinkhp" value="-1" min="-1"  class="hpshapechange">
-                    <br>
-                    <label for="#xpshape">Monster will shift into next monster once reaching this Exp amount:</label>
-                    <input type="number" name="#xpshape" value="-1" min="-1"  class="hpshapechange">
-
+                    <p>
+                        Upon reaching a certain amount of hit points, a monster will change into the 
+                        next monster in the games list (e.g., a four headed hydra changing into a three 
+                        headed hydra).
+                        <br>
+                        <label for="#growhp">HP amount:</label>
+                        <input type="number" name="#growhp" value="0" min="0" class="hpshapechange">    
+                    </p>
+                    <p>
+                        Upon reaching a certain amount of hit points, a monster will change into the 
+                        prevous monster in the games list (e.g., a four headed hydra changing into a five 
+                        headed hydra).
+                        <br>
+                        <label for="#shrinkhp">HP amount:</label>
+                        <input type="number" name="#shrinkhp" value="0" min="0"  class="hpshapechange">
+                    </p>
+                    <p>
+                        Upon reaching a certian amount of experince points, a monster will change into the 
+                        next monster in the games list.
+                        <br>
+                        <label for="#xpshape">Monster will shift into next monster once reaching this Exp amount:</label>
+                        <input type="number" name="#xpshape" value="0" min="0"  class="hpshapechange">
+                    </p>
                 </fieldset>
                 <label for="#xploss">Percent of Exp lost when changing shape:</label>
                 <input type="number" name="#xploss" value="0" min="0" max="100" class="shapechange">
-
                 <fieldset>
                     <legend>Transformation Target Spell Result</legend>
                     <input type="radio" name="#transformation" id="badresult" value="-1" class="#transformation">
@@ -1210,9 +1387,7 @@
                     <label for="atunmentchance">Atunment Chance:</label>
                     <input type="number" id="atunmentchance" value="0" min="0" max="100" >
                     <br>
-
                     <label for="attuned">Magic Path:</label>
-
                     <select class="attunment" id="attuned">
                         <option value="air">Air</option>
                         <option value="water">Water</option>
@@ -1358,6 +1533,9 @@
             <label for="#montag">Monster Tag (a value of 99 will disable this):</label>
             <fieldset>
                 <legend>Monster Lord</legend>
+                <p>
+                    Some units can summon extra monsters of a specific type when casting a spell to summon them.
+                </p>
                 <input type="number" name="#ivylord" value="0" min="0" class="monlord">
                 <label for="#ivylord">Extra Vine Men per summon:</label>
                 <br>
@@ -1534,7 +1712,7 @@
             <label for="#command">Increase leadership by:</label>
 
             <h3>Magic Leadership</h3>
-
+            <label for="magicleadership">Number of magic beings</label>
             <select class="magicleadership" id="magicleadership">
                 <option value="#nomagicleader" selected>Cannot command magic beings</option>
                 <option value="#poormagicleader">Can command 10 magic beings</option>
@@ -1542,13 +1720,13 @@
                 <option value="#goodmagicleader">Can command magic beings</option>
                 <option value="#expertmagicleader">Can command magic beings</option>
                 <option value="#superiormagicleader">Can command magic beings</option>
-
             </select>
 
             <input type="number" name="#magiccommand" value="0" min="0" class="incleadership">
             <label for="#magiccommand">Increase magic leadership by:</label>
 
             <h3>Undead Leadership</h3>
+            <label for="undeadleadership">Number of undead</label>
 
             <select class="undeadleadership" name="undeadleadership">
                 <option value="#noundeadleader" selected>Cannot lead units</option>
@@ -1861,6 +2039,33 @@
                 <label for="#indepspells">Independent spells levels:</label>
                 <input type="number" id="#indepspells" value="0" class="othermagic">
             </p>
+            <!--
+                #spiritsight 
+      #invisible 
+      #fastcast <-1000 - 1000>
+      #doheal 
+      #undregen <-1000 - 1000>
+      #spellsinger 
+      #magicstudy <-1000 - 1000>
+      #yearturn <-1000 - 1000>
+      #fortkill <-1000 - 1000>
+      #thronekill <-1000 - 1000>
+      #farthronekill <-1000 - 1000>
+      #reanimpriest
+      #norange 
+      #polyimmune
+      #minprison <0 - 2>
+      #startmajoraff <0 - 100>
+      #triplegod <0 - 10>
+      #triplegodmag <-10 - 10>
+      #unify 
+      #triple3mon 
+      #bringeroffortune <-100 - 100>
+      #combatcaster
+      #unsurr <0 - 1000>
+      #skirmisher <-25 - 25>
+      #minsizeleader <0 - 6>
+            -->
             <button onclick="document.getElementById('result').innerText = createMonster()">Create Armor</button>
             <br>
             <p id="result" name="result">Result</p>

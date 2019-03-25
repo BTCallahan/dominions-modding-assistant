@@ -16,6 +16,11 @@
         <link rel="stylesheet" href="assets/mod_styling.css">
     </head>
     <body>
+        <header>
+
+        </header>
+        <main>
+
         <h3>Basic Event Modding</h3>
 
         <input type="checkbox" name="#newevent" id="#newevent" value="#newevent">
@@ -119,67 +124,65 @@
             will disable this.
             <br>
             <label for="#nation">Nation ID:</label>
-            <input type="number" name="#nation" id="#nation" value="0" min="0" max="500">    
+            <input type="number" name="#nation" id="#nation" value="0" min="0" max="249" class="nations">
         </p>
         <p>
             This nation must not be in play for the event to fire.
             <br>
             <label for="#req_nonation">Nation ID:</label>
-            <input type="number" name="#req_nonation" id="#req_nonation" value="0" min="0" max="500">    
+            <input type="number" name="#req_nonation" id="#req_nonation" value="0" min="0" max="249" class="nations">    
         </p>
         <p>
             The event can only fire for this nation.
             <br>
             <label for="#req_fornation">Nation ID:</label>
-            <input type="number" name="#req_fornation" id="#req_fornation" value="0" min="0" max="500">    
+            <input type="number" name="#req_fornation" id="#req_fornation" value="0" min="0" max="249" class="nations">    
         </p>
         <p>
             The event can never fire for this nation.
             <br>
             <label for="#req_notfornation">Nation ID:</label>
-            <input type="number" name="#req_notfornation" id="#req_notfornation" value="0" min="0" max="500">    
+            <input type="number" name="#req_notfornation" id="#req_notfornation" value="0" min="0" max="249" class="nations">    
         </p>
         <p>
             The event can never fire for this nation and its allies during a disciples game.
             <br>
             <label for="#req_notforally">Nation ID:</label>
-            <input type="number" name="#req_notforally" id="#req_notforally" value="0" min="0" max="500">    
+            <input type="number" name="#req_notforally" id="#req_notforally" value="0" min="0" max="249" class="nations">    
         </p>
-
         <h3>Treasury Requirments</h3>
-
         <p>
             The nation that this event fires for must have at leas one gem of the specified type(s).
         </p>
-        <input type="checkbox" name="req_gem0" id="req_gem0" value="#req_gem 0">
+        <input type="checkbox" name="req_gem0" id="req_gem0" value="#req_gem 0" class="gems">
         <label for="req_gem0">Fire Gem</label>
         <br>
-        <input type="checkbox" name="req_gem1" id="req_gem1" value="#req_gem 1">
+        <input type="checkbox" name="req_gem1" id="req_gem1" value="#req_gem 1" class="gems">
         <label for="req_gem1">Air Gem</label>
         <br>
-        <input type="checkbox" name="req_gem2" id="req_gem2" value="#req_gem 2">
+        <input type="checkbox" name="req_gem2" id="req_gem2" value="#req_gem 2" class="gems">
         <label for="req_gem2">Water Gem</label>
         <br>
-        <input type="checkbox" name="req_gem3" id="req_gem3" value="#req_gem 3">
+        <input type="checkbox" name="req_gem3" id="req_gem3" value="#req_gem 3" class="gems">
         <label for="req_gem3">Earth Gem</label>
         <br>
-        <input type="checkbox" name="req_gem4" id="req_gem4" value="#req_gem 4">
+        <input type="checkbox" name="req_gem4" id="req_gem4" value="#req_gem 4" class="gems">
         <label for="req_gem4">Astral Pearl</label>
         <br>
-        <input type="checkbox" name="req_gem5" id="req_gem5" value="#req_gem 5">
+        <input type="checkbox" name="req_gem5" id="req_gem5" value="#req_gem 5" class="gems">
         <label for="req_gem5">Death Gem</label>
         <br>
-        <input type="checkbox" name="req_gem6" id="req_gem6" value="#req_gem 6">
+        <input type="checkbox" name="req_gem6" id="req_gem6" value="#req_gem 6" class="gems">
         <label for="req_gem6">Nature Gem</label>
         <br>
-        <input type="checkbox" name="req_gem7" id="req_gem7" value="#req_gem 7">
+        <input type="checkbox" name="req_gem7" id="req_gem7" value="#req_gem 7" class="gems">
         <label for="req_gem7">Blood Slave</label>
         <br>
         <p>
             Note: A value of zero will waive this requirement.
             <br>
                 <label for="#req_gold">Required Gold:</label>
-                <input type="number" name="#req_gold" id="#req_gold">
+                <input type="number" name="#req_gold" id="#req_gold" min="0" value="0">
         
         </p>
         <h3>Province Requirements</h3>
@@ -314,40 +317,40 @@
             Note: The actuall value is ten times this number.
             <br>
             <label for="#req_minpop">Minimum population:</label>
-            <input type="number" name="#req_minpop" id="#req_minpop" value="0" min="0">
+            <input type="number" name="#req_minpop" id="#req_minpop" value="0" min="0"  class="popnum">
         </p>
         <p>
                 Sets the maximum population in a province for the event to fire.
                 Note: The actuall value is ten times this number.
                 <br>
                 <label for="#req_maxpop">Maximum population:</label>
-                <input type="number" name="#req_maxpop" id="#req_maxpop" value="0" min="0">
+                <input type="number" name="#req_maxpop" id="#req_maxpop" value="0" min="0" class="popnum">
     
         </p>
         <p>
                 Sets the minimum province defence in a province for the event to fire.
                 <br>
                 <label for="#req_mindef">Minimum PD:</label>
-                <input type="number" name="#req_mindef" id="#req_mindef" value="0" min="0">
+                <input type="number" name="#req_mindef" id="#req_mindef" value="0" min="0" class="popnum">
         </p>
         <p>
                 Sets the maximum province defence in a province for the event to fire.
                 <br>
                 <label for="#req_maxdef">Maximum PD:</label>
-                <input type="number" name="#req_maxdef" id="#req_maxdef" value="0" min="0">
+                <input type="number" name="#req_maxdef" id="#req_maxdef" value="0" min="0" class="popnum">
         </p>
 
         <p>
                 Sets the minimum unrest in a province for the event to fire.
                 <br>
                 <label for="#req_minunrest">Minimum unrest:</label>
-                <input type="number" name="#req_minunrest" id="#req_minunrest" value="0" min="0">
+                <input type="number" name="#req_minunrest" id="#req_minunrest" value="0" min="0" class="popnum">
         </p>
         <p>
                 Sets the maximum unrest in a province for the event to fire.
                 <br>
                 <label for="#req_maxunrest">Maximum unrest:</label>
-                <input type="number" name="#req_maxunrest" id="#req_maxunrest" value="0" min="0">
+                <input type="number" name="#req_maxunrest" id="#req_maxunrest" value="0" min="0" class="popnum">
         </p>
         <p>
             <input type="radio" name="req_lab" id="req_lab1" value="#req_lab 1" class="req_lab">
@@ -380,38 +383,699 @@
             <label for="#req_fort0">Fort must not be present</label>        
         </p>
         <p>
-                <input type="radio" name="req_land" id="req_land1" value="#req_land 1" class="req_land">
-                <label for="#req_land1">Provence must be land</label>
-                <br>
-                <input type="radio" name="req_land" id="req_land" value="#req_land" class="req_land" checked>
-                <label for="#req_land">No prefrence</label>
-                <br>
-                <input type="radio" name="req_land" id="req_land0" value="#req_land 0" class="req_land">
-                <label for="#req_land0">Provence must be sea</label>        
+            <input type="radio" name="req_land" id="req_land1" value="#req_land 1" class="req_land">
+            <label for="#req_land1">Provence must be land</label>
+            <br>
+            <input type="radio" name="req_land" id="req_land" value="#req_land" class="req_land" checked>
+            <label for="#req_land">No prefrence</label>
+            <br>
+            <input type="radio" name="req_land" id="req_land0" value="#req_land 0" class="req_land">
+            <label for="#req_land0">Provence must be sea</label>        
         </p>
         <p>
-                <input type="radio" name="req_coast" id="req_coast1" value="#req_coast 1" class="req_coast">
-                <label for="#req_coast1">Provence must be coastal</label>
-                <br>
-                <input type="radio" name="req_coast" id="req_coast" value="#req_coast" class="req_coast" checked>
-                <label for="#req_coast">No prefrence</label>
-                <br>
-                <input type="radio" name="req_coast" id="req_coast0" value="#req_coast 0" class="req_coast">
-                <label for="#req_coast0">Provence cannot be costal</label>        
+            <input type="radio" name="req_coast" id="req_coast1" value="#req_coast 1" class="req_coast">
+            <label for="#req_coast1">Provence must be coastal</label>
+            <br>
+            <input type="radio" name="req_coast" id="req_coast" value="#req_coast" class="req_coast" checked>
+            <label for="#req_coast">No prefrence</label>
+            <br>
+            <input type="radio" name="req_coast" id="req_coast0" value="#req_coast 0" class="req_coast">
+            <label for="#req_coast0">Provence cannot be costal</label>        
         </p>
-        req_mountain
         <p>
-            Determins if the provence must or must not be mountainous. This 
-                <input type="radio" name="req_coast" id="req_coast1" value="#req_coast 1" class="req_coast">
-                <label for="#req_coast1">Provence must be coastal</label>
+            Determins if the provence must or must not be mountainous. A provence is defined as 
+            mountainous if it is on or bordered by a mountain.
+            <br>
+            <input type="radio" name="req_mountain" id="req_mountain1" value="#req_mountain 1" class="req_mountain">
+            <label for="#req_mountain1">Provence must be mountainous</label>
+            <br>
+            <input type="radio" name="req_mountain" id="req_mountain" value="#req_mountain" class="req_mountain" checked>
+            <label for="#req_mountain">No prefrence</label>
+            <br>
+            <input type="radio" name="req_mountain" id="req_mountain0" value="#req_mountain 0" class="req_mountain">
+            <label for="#req_mountain0">Provence cannot be mountainous</label>        
+        </p>
+        <p>
+            <input type="radio" name="req_forest" id="req_forest1" value="#req_forest 1" class="req_forest">
+            <label for="#req_forest1">Provence must be forest</label>
+            <br>
+            <input type="radio" name="req_forest" id="req_forest" value="#req_forest" class="req_forest" checked>
+            <label for="#req_forest">No prefrence</label>
+            <br>
+            <input type="radio" name="req_forest" id="req_forest0" value="#req_forest 0" class="req_forest">
+            <label for="#req_forest0">Provence cannot be forest</label>        
+        </p>
+        <p>
+            <input type="radio" name="req_farm" id="req_farm1" value="#req_farm 1" class="req_farm">
+            <label for="#req_farm1">Provence must be farmland</label>
+            <br>
+            <input type="radio" name="req_farm" id="req_farm" value="#req_farm" class="req_farm" checked>
+            <label for="#req_farm">No prefrence</label>
+            <br>
+            <input type="radio" name="req_farm" id="req_farm0" value="#req_farm 0" class="req_farm">
+            <label for="#req_farm0">Provence cannot be farmland</label>        
+        </p>
+        <p>
+            <input type="radio" name="req_swamp" id="req_swamp1" value="#req_swamp 1" class="req_swamp">
+            <label for="#req_swamp1">Provence must be swamp</label>
+            <br>
+            <input type="radio" name="req_swamp" id="req_swamp" value="#req_swamp" class="req_swamp" checked>
+            <label for="#req_swamp">No prefrence</label>
+            <br>
+            <input type="radio" name="req_swamp" id="req_swamp0" value="#req_swamp 0" class="req_swamp">
+            <label for="#req_swamp0">Provence cannot be swamp</label>        
+        </p>
+        <p>
+            <input type="radio" name="req_waste" id="req_waste1" value="#req_waste 1" class="req_waste">
+            <label for="#req_waste1">Provence must be wasteland</label>
+            <br>
+            <input type="radio" name="req_waste" id="req_waste" value="#req_waste" class="req_waste" checked>
+            <label for="#req_waste">No prefrence</label>
+            <br>
+            <input type="radio" name="req_waste" id="req_waste0" value="#req_waste 0" class="req_waste">
+            <label for="#req_waste0">Provence cannot be wasteland</label>        
+        </p>
+        <p>
+            <input type="radio" name="req_cave" id="req_cave1" value="#req_cave 1" class="req_cave">
+            <label for="#req_cave1">Provence must be a cave</label>
+            <br>
+            <input type="radio" name="req_cave" id="req_cave" value="#req_cave" class="req_cave" checked>
+            <label for="#req_cave">No prefrence</label>
+            <br>
+            <input type="radio" name="req_cave" id="req_cave0" value="#req_cave 0" class="req_cave">
+            <label for="#req_cave0">Provence cannot be a cave</label>        
+        </p>
+        <p>
+            <input type="radio" name="req_freshwater" id="req_freshwater1" value="#req_freshwater 1" class="req_freshwater">
+            <label for="#req_freshwater1">Provence must have fresh water</label>
+            <br>
+            <input type="radio" name="req_freshwater" id="req_freshwater" value="#req_freshwater" class="req_freshwater" checked>
+            <label for="#req_freshwater">No prefrence</label>
+            <br>
+            <input type="radio" name="req_freshwater" id="req_freshwater0" value="#req_freshwater 0" class="req_freshwater">
+            <label for="#req_freshwater0">Provence cannot have fresh water</label>        
+        </p>
+        <h3>Site Requirements</h3>
+        <p>
+            Note: If this event creates a site, then this value should always be at least one.
+            <br>
+            <label for="#req_freesites">Unused site slots required:</label>
+            <input type="number" name="#req_freesites" id="#req_freesites" value="0" min="0" class="site_reqs">
+        </p>
+        <p>
+            This site cannot be present in the provence.
+            <br> 
+            <label for="#req_nositenbr">Site ID:</label>
+            <input type="number" name="#req_nositenbr" id="#req_nositenbr" value="0" min="0" max="1999" class="site_reqs">
+        </p>
+        <p>
+            This site must be present in the provence and discovered.
+            <br>
+            <label for="#req_foundsite">Site name:</label>
+            <input type="text" name="#req_foundsite" id="#req_foundsite" class="site_reqs">
+        </p>
+        <p>
+            This site must be present in the provence and not have been discovered.
+            <br>
+            <label for="#req_hiddensite">Site name:</label>
+            <input type="text" name="#req_hiddensite" id="#req_hiddensite" class="site_reqs">
+        </p>
+        <p>
+            This site must be present in the provence. Wheather is has been discovered or not 
+            does not matter.
+            <br>
+            <label for="#req_site">Site name:</label>
+            <input type="text" name="#req_site" id="#req_site" class="site_reqs">
+        </p>
+        <p>
+            This site must be present in the provence or present in a provence next the provence 
+            the even fires in.
+            <br>
+            <label for="#req_nearbysite">Site name:</label>
+            <input type="text" name="#req_nearbysite" id="#req_nearbysite" class="site_reqs">
+        </p>
+        <p>
+            This throne must have been clamed by someone.
+            <br>
+            <label for="#req_claimedthrone">Throne name:</label>
+            <input type="text" name="#req_claimedthrone" id="#req_claimedthrone" class="site_reqs">
+        </p>
+        <p>
+            This site must be exist in the game and not have been clamed.
+            <br>
+            <label for="#req_unclaimedthrone">Site name:</label>
+            <input type="text" name="#req_unclaimedthrone" id="#req_unclaimedthrone" class="site_reqs">
+        </p>
+        <h3>Dominion Requirements</h3>
+        <p>
+            This nation must control the provence and have positive dominion in the provence.
+            <br>
+            <label for="#req_fullowner">Nation ID:</label>
+            <input type="number" name="#req_fullowner" id="#req_fullowner" value="0" min="0" max="249"  class="site_reqs">    
+        </p>
+        <p>
+            This nation must have positive dominion in the provence.
+            <br>
+            <label for="#req_domowner">Nation ID:</label>
+            <input type="number" name="#req_domowner" id="#req_domowner" value="0" min="0" max="249" class="site_reqs">
+        </p>
+        <p>
+            Determines if the provence must or must not have have the owner's dominion.
+            <br>
+            <input type="radio" name="req_mydominion" id="req_mydominion1" value="#req_mydominion 1" class="req_mydominion">
+            <label for="req_mydominion1">Must have owners dominion</label>
+            <br>
+            <input type="radio" name="req_mydominion" id="req_mydominion" value="#req_mydominion" class="req_mydominion" checked>
+            <label for="req_mydominion">No prefrence</label>
+            <br>
+            <input type="radio" name="req_mydominion" id="req_mydominion0" value="#req_mydominion 0" class="req_mydominion">
+            <label for="req_mydominion0">Must not have owners dominion</label>
+        </p>
+        <p>
+            The minimum provence owner's dominion value for the event to happen.
+            <br>
+            <label for="#req_dominion">Minimum value:</label>
+            <input type="number" name="#req_dominion" id="#req_dominion" value="0" min="0" max="10" class="site_reqs">
+        </p>
+        <p>
+            The maximum provence owner's dominion value for the event to happen.
+            <br>
+            <label for="#req_maxdominion">Maximum value:</label>
+            <input type="number" name="#req_maxdominion" id="#req_maxdominion" value="0" min="-10" max="10" class="site_reqs">
+        </p>
+        <p>
+            Percent per dominion candle for the event to happen. To create an event that fires...
+            <br>
+            <label for="#req_domchance">Percent per chance:</label>
+            <input type="number" name="#req_domchance" id="#req_domchance" value="0" min="0" max="100" class="site_reqs">
+        </p>
+        <h3>Scale Requirements</h3>
+        <p>
+            How this works: If an event has a required Turmoil value of 2, then it will only fire if 
+            that scale in the provence is 2 or 3. If it has required Turmoil value of -1, then it will 
+            fire only if the Order scale is 1, or if the Turmoil scale is 1-3.
+        </p>
+        <label for="#req_order">Order Scale:</label>
+        <input type="number" name="#req_order" id="#req_order" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_chaos">Turmoil Scale:</label>
+        <input type="number" name="#req_chaos" id="#req_chaos" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_prod">Productivity Scale:</label>
+        <input type="number" name="#req_prod" id="#req_prod" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_lazy">Sloth Scale:</label>
+        <input type="number" name="#req_lazy" id="#req_lazy" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_heat">Heat Scale:</label>
+        <input type="number" name="#req_heat" id="#req_heat" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_cold">Cold Scale:</label>
+        <input type="number" name="#req_cold" id="#req_cold" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_growth">Growth Scale:</label>
+        <input type="number" name="#req_growth" id="#req_growth" value="0" min="-3" max="3"  class="scale">
+        <br>
+        <label for="#req_death">Death Scale:</label>
+        <input type="number" name="#req_death" id="#req_death" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_luck">Luck Scale:</label>
+        <input type="number" name="#req_luck" id="#req_luck" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_unluck">Misfortune Scale:</label>
+        <input type="number" name="#req_unluck" id="#req_unluck" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_magic">Magic Scale:</label>
+        <input type="number" name="#req_magic" id="#req_magic" value="0" min="-3" max="3" class="scale">
+        <br>
+        <label for="#req_unmagic">Drain Scale:</label>
+        <input type="number" name="#req_unmagic" id="#req_unmagic" value="0" min="-3" max="3" class="scale">
+        <h3>Monster Requirements</h3>
+        <p>
+            Determins if a commander (not a scout) must be present in the provence to fire.
+            <br>
+            <input type="radio" name="req_commander" id="req_commander1" value="#req_commander 1" class="req_commander">
+            <label for="#req_commander1">Commander must be present</label>
+            <br>
+            <input type="radio" name="req_commander" id="req_commander" value="#req_commander" class="req_commander" checked>
+            <label for="#req_commander">No prefrence</label>
+            <br>
+            <input type="radio" name="req_commander" id="req_commander0" value="#req_commander 0" class="req_commander">
+            <label for="#req_commander0">Commander must not be present</label>        
+        </p>
+        <p>
+            Monster must be present in provence.
+            <br>
+                <label for="#req_monster">ID of monster:</label>
+                <input type="number" name="#req_monster" id="#req_monster" value="0" min="0" max="8999" class="mon_pres">
+        </p>
+        <p>
+            Two monsters of the same type must be present in provence.
+            <br>
+            <label for="#req_2monsters">ID of monster:</label>
+            <input type="number" name="#req_2monsters" id="#req_2monsters" value="0" min="0" max="8999" class="mon_pres">
+        </p>
+        <p>
+            Five monsters of the same type must be present in provence.
+            <br>
+            <label for="#req_5monsters">ID of monster:</label>
+            <input type="number" name="#req_5monsters" id="#req_5monsters" value="0" min="0" max="8999" class="mon_pres">
+        </p>
+        <p>
+            Monster must not be present in the provence.
+            <br>
+            <label for="#req_nomonster">ID of monster:</label>
+            <input type="number" name="#req_nomonster" id="#req_nomonster" value="0" min="0" max="8999" class="mon_pres">
+        </p>
+        <p>
+            Monster must be present somewhere in the world for the event to fire.
+            <br>
+            <label for="#req_mnr">ID of monster:</label>
+            <input type="number" name="#req_mnr" id="#req_mnr" value="0" min="0" max="8999" class="mon_pres">
+        </p>
+        <p>
+                Monster must not be present anywhere in the world for the event to fire.
                 <br>
-                <input type="radio" name="req_coast" id="req_coast" value="#req_coast" class="req_coast" checked>
-                <label for="#req_coast">No prefrence</label>
-                <br>
-                <input type="radio" name="req_coast" id="req_coast0" value="#req_coast 0" class="req_coast">
-                <label for="#req_coast0">Provence cannot be costal</label>        
+                <label for="#req_nomnr">ID of monster:</label>
+                <input type="number" name="#req_nomnr" id="#req_nomnr" value="0" min="0" max="8999" class="mon_pres">
+        </p>
+        <p>
+            Monster must be listed umong the dead. This only applies to monsters with the #unique tag. 
+            <br>
+            <label for="#req_deadmnr">ID of monster:</label>
+            <input type="number" name="#req_deadmnr" id="#req_deadmnr" value="0" min="0" max="8999" class="mon_pres">
+        </p>
+        <p>
+            If fewer troops then the minimum in a provence, or more troops then the maximum, the 
+            event will not affect the provence.
+            <br>
+            <label for="#req_mintroops">Minimum troops present:</label>
+            <input type="number" name="#req_mintroops" id="#req_mintroops" value="0" min="0" class="mon_pres">
+            <br>
+            <label for="#req_maxtroops">Maximum troops present:</label>
+            <input type="number" name="#req_maxtroops" id="#req_maxtroops" value="0" min="0" class="mon_pres">
+        </p>
+        <input type="checkbox" name="#req_humanoidres" id="#req_humanoidres">
+        <label for="#req_humanoidres">Humanoid resercher required</label>
+        <br>
+        <input type="checkbox" name="#req_researcher" id="#req_researcher">
+        <label for="#req_researcher">Resercher required</label>
+        <p>
+            If a priest is present and preaching in a provence, the the event has a chance of 
+            happening based on the priest's holy magic levels.
+            <br>
+            <label for="#req_preach">Chance</label>
+            <input type="number" name="#req_preach" id="#req_preach" value="0" min="0" max="100">
+        </p>
+        <h3>Mage Requirements</h3>
+        <p>
+            These values set the minimum and/or maximum values for the paths that a mage (or 
+            priest) located in the provence for an event to fire.
         </p>
 
+        <label for="#req_pathfire">Min fire path:</label>
+        <input type="number" name="req_pathfire" id="req_pathfire" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathfire">Max fire path:</label>
+        <input type="number" name="req_nopathfire" id="req_nopathfire" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_pathair">Min air path:</label>
+        <input type="number" name="req_pathair" id="req_pathair" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathair">Max air path:</label>
+        <input type="number" name="req_nopathair" id="req_nopathair" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_pathwater">Min water path:</label>
+        <input type="number" name="req_pathwater" id="req_pathwater" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathwater">Max water path:</label>
+        <input type="number" name="req_nopathwater" id="req_nopathwater" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_pathearth">Min earth path:</label>
+        <input type="number" name="req_pathearth" id="req_pathearth" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathearth">Max earth path:</label>
+        <input type="number" name="req_nopathearth" id="req_nopathearth" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_pathastral">Min astral path:</label>
+        <input type="number" name="req_pathastral" id="req_pathastral" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathastral">Max astral path:</label>
+        <input type="number" name="req_nopathastral" id="req_nopathastral" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_pathdeath">Min death path:</label>
+        <input type="number" name="req_pathdeath" id="req_pathdeath" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathdeath">Max death path:</label>
+        <input type="number" name="req_nopathdeath" id="req_nopathdeath" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_pathnature">Min nature path:</label>
+        <input type="number" name="req_pathnature" id="req_pathnature" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathnature">Max nature path:</label>
+        <input type="number" name="req_nopathnature" id="req_nopathnature" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_pathblood">Min blood path:</label>
+        <input type="number" name="req_pathblood" id="req_pathblood" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathblood">Max blood path:</label>
+        <input type="number" name="req_nopathblood" id="req_nopathblood" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_pathholy">Min holy path:</label>
+        <input type="number" name="req_pathholy" id="req_pathholy" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathholy">Max holy path:</label>
+        <input type="number" name="req_nopathholy" id="req_nopathholy" value="0" min="0" class="magepaths">
+        <br>
+        <label for="#req_nopathall">Max level in any path:</label>
+        <input type="number" name="req_nopathall" id="req_nopathall" value="0" min="0" class="magepaths">
+        <h3>Target Requirements</h3>
+
+        <p>
+            If the target is a commander, enter it's number below.
+            <br>
+            <label for="#req_targmnr">Target commander ID:</label>
+            <input type="number" name="req_targmnr" id="req_targmnr" value="0" min="0" class="a">
+        </p>
+        <p>
+            Determins if a the target must (or must not be) a pretender or disciple.
+            <br>
+            <input type="radio" name="req_targgod" id="req_targgod1" value="#req_targgod 1" class="req_targgod">
+            <label for="#req_targgod1">Target must be a god</label>
+            <br>
+            <input type="radio" name="req_targgod" id="req_targgod" value="#req_targgod" class="req_targgod" checked>
+            <label for="#req_targgod">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targgod" id="req_targgod0" value="#req_targgod 0" class="req_targgod">
+            <label for="#req_targgod0">Target must not be a god</label>        
+        </p>
+        <p>
+            Determins if a the target must (or must not have) hands.
+            <br>
+            <input type="radio" name="req_targhumanoid" id="req_targhumanoid1" value="#req_targhumanoid 1" class="req_targhumanoid">
+            <label for="#req_targhumanoid1">Target must have hands</label>
+            <br>
+            <input type="radio" name="req_targhumanoid" id="req_targhumanoid" value="#req_targhumanoid" class="req_targhumanoid" checked>
+            <label for="#req_targhumanoid">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targhumanoid" id="req_targhumanoid0" value="#req_targhumanoid 0" class="req_targhumanoid">
+            <label for="#req_targhumanoid0">Target must not have hands</label>        
+        </p>
+        <p>
+            Determins if a the target must be male or female.
+            <br>
+            <input type="radio" name="req_targmale" id="req_targmale1" value="#req_targmale 1" class="req_targmale">
+            <label for="#req_targmale1">Target must be male</label>
+            <br>
+            <input type="radio" name="req_targmale" id="req_targmale" value="#req_targmale" class="req_targmale" checked>
+            <label for="#req_targmale">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targmale" id="req_targmale0" value="#req_targmale 0" class="req_targmale">
+            <label for="#req_targmale0">Target must be female</label>        
+        </p>
+        <p>
+            Target must have at least one level in this magic path.
+            <br>
+            <label for="#req_targpath1">Magic Path:</label>
+            <select class="#req_targpath1" id="#req_targpath1">
+                <option value="-1" selected>N/A</option>
+
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+                <option value="50">Random</option>
+                <option value="51">Elemental</option>
+                <option value="52">Sorcery</option>
+                <option value="53">All except Priest</option>
+            </select>
+        </p>
+        <p>
+            Target must have at least two levels in this magic path.
+            <br>
+            <label for="#req_targpath2">Magic Path:</label>
+            <select class="#req_targpath2" id="#req_targpath2">
+                    <option value="-1" selected>N/A</option>
+                    <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+                <option value="50">Random</option>
+                <option value="51">Elemental</option>
+                <option value="52">Sorcery</option>
+                <option value="53">All except Priest</option>
+            </select>
+        </p>
+        <p>
+            Target must have at least three levels in this magic path.
+            <br>
+            <label for="#req_targpath3">Magic Path:</label>
+            <select class="#req_targpath3" id="#req_targpath3">
+                    <option value="-1" selected>N/A</option>
+                    <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+                <option value="50">Random</option>
+                <option value="51">Elemental</option>
+                <option value="52">Sorcery</option>
+                <option value="53">All except Priest</option>
+            </select>
+        </p>
+        <p>
+            The target must have this affliction.
+            <br>
+            <label for="#req_targaff">Affliction number:</label>
+            <input type="number" name="#req_targaff" id="#req_targaff" value="0" min="0" class="b">
+        </p>
+        <!--todo: write affliciton number guide-->
+        <p>
+            Target must be carrying out one of the following orders.
+            <label for="#req_targorder">Magic Path:</label>
+            <select class="#req_targorder" id="#req_targorder">
+                <option value="-1" selected>N/A</option>
+                <option value="0">Defend</option>
+                <option value="2">Sneak</option>
+                <option value="3">Patrol</option>
+                <option value="4">Research</option>
+                <option value="6">Preach</option>
+                <option value="7">Site search</option>
+                <option value="8">Blood hunt</option>
+                <option value="14">Call God</option>
+                <option value="17">Summon allies</option>
+                <option value="18">Build lab</option>
+                <option value="19">Build temple</option>
+                <option value="20">Build fort</option>
+                <option value="44">Demolish fort</option>
+                <option value="45">Demolish lab</option>
+                <option value="50">Enter site (except scry)</option>
+                <option value="52">Void Summon</option>
+            </select>
+        </p>
+        <p>
+            The target must have this item.
+            <br>
+            <label for="#req_targitem">Required item ID:</label>
+            <input type="number" name="#req_targitem" id="#req_targitem" value="0" min="0" class="b">    
+        </p>
+        <p>
+            The target must not have this item.
+            <br>
+            <label for="#req_targnoitem">Forbidden item ID:</label>
+            <input type="number" name="#req_targnoitem" id="#req_targnoitem" value="0" min="0" class="b">    
+        </p>
+        <p>
+            Determins if a the target must (or must not be) undead.
+            <br>
+            <input type="radio" name="req_targundead" id="req_targundead1" value="#req_targundead 1" class="req_targundead">
+            <label for="#req_targundead1">Target must be undead</label>
+            <br>
+            <input type="radio" name="req_targundead" id="req_targundead" value="#req_targundead" class="req_targundead" checked>
+            <label for="#req_targundead">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targundead" id="req_targundead0" value="#req_targundead 0" class="req_targundead">
+            <label for="#req_targundead0">Target must not be undead</label>        
+        </p>
+        <p>
+            Determins if a the target must (or must not be) a demon.
+            <br>
+            <input type="radio" name="req_targdemon" id="req_targdemon1" value="#req_targdemon 1" class="req_targdemon">
+            <label for="#req_targdemon1">Target must be a demon</label>
+            <br>
+            <input type="radio" name="req_targdemon" id="req_targdemon" value="#req_targdemon" class="req_targdemon" checked>
+            <label for="#req_targdemon">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targdemon" id="req_targdemon0" value="#req_targdemon 0" class="req_targdemon">
+            <label for="#req_targdemon0">Target must not be a demon</label>        
+        </p>
+        <p>
+            Determins if a the target must (or must not be) an animal.
+            <br>
+            <input type="radio" name="req_targanimal" id="req_targanimal1" value="#req_targanimal 1" class="req_targanimal">
+            <label for="#req_targanimal1">Target must be a demon</label>
+            <br>
+            <input type="radio" name="req_targanimal" id="req_targanimal" value="#req_targanimal" class="req_targanimal" checked>
+            <label for="#req_targanimal">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targanimal" id="req_targanimal0" value="#req_targanimal 0" class="req_targanimal">
+            <label for="#req_targanimal0">Target must not be a demon</label>        
+        </p>
+        <p>
+            Determins if a the target must (or must not be) an inanimate being.
+            <br>
+            <input type="radio" name="req_targinanimate" id="req_targinanimate1" value="#req_targinanimate 1" class="req_targinanimate">
+            <label for="#req_targinanimate1">Target must be inanimate</label>
+            <br>
+            <input type="radio" name="req_targinanimate" id="req_targinanimate" value="#req_targinanimate" class="req_targinanimate" checked>
+            <label for="#req_targinanimate">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targinanimate" id="req_targinanimate0" value="#req_targinanimate 0" class="req_targinanimate">
+            <label for="#req_targinanimate0">Target must not be inanimate</label>        
+        </p>
+        <p>
+            Determins if a the target must (or must not be) mindless.
+            <br>
+            <input type="radio" name="req_targmindless" id="req_targmindless1" value="#req_targmindless 1" class="req_targmindless">
+            <label for="#req_targmindless1">Target must be mindless</label>
+            <br>
+            <input type="radio" name="req_targmindless" id="req_targmindless" value="#req_targmindless" class="req_targmindless" checked>
+            <label for="#req_targmindless">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targmindless" id="req_targmindless0" value="#req_targmindless 0" class="req_targmindless">
+            <label for="#req_targmindless0">Target must not be mindless</label>        
+        </p>
+        <p>
+            Determins if a the target must (or must not be) immobile.
+            <br>
+            <input type="radio" name="req_targimmobile" id="req_targimmobile1" value="#req_targimmobile 1" class="req_targimmobile">
+            <label for="#req_targimmobile1">Target must be immobile</label>
+            <br>
+            <input type="radio" name="req_targimmobile" id="req_targimmobile" value="#req_targimmobile" class="req_targimmobile" checked>
+            <label for="#req_targimmobile">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targimmobile" id="req_targimmobile0" value="#req_targimmobile 0" class="req_targimmobile">
+            <label for="#req_targimmobile0">Target must not be immobile</label>        
+        </p>
+        <p>
+            Determins if a the target must (or must not be) a magic being.
+            <br>
+            <input type="radio" name="req_targmagicbeing" id="req_targmagicbeing1" value="#req_targmagicbeing 1" class="req_targmagicbeing">
+            <label for="#req_targmagicbeing1">Target must be magic</label>
+            <br>
+            <input type="radio" name="req_targmagicbeing" id="req_targmagicbeing" value="#req_targmagicbeing" class="req_targmagicbeing" checked>
+            <label for="#req_targmagicbeing">No prefrence</label>
+            <br>
+            <input type="radio" name="req_targmagicbeing" id="req_targmagicbeing0" value="#req_targmagicbeing 0" class="req_targmagicbeing">
+            <label for="#req_targmagicbeing0">Target must not be magic</label>        
+        </p>
+        <p>
+            The event target must be owned by this nation.
+            <br>
+            <label for="#req_targowner">Nation ID:</label>
+            <input type="number" name="#req_targowner" id="#req_targowner" value="0" min="0" max="249" class="c">    
+        </p>
+        <p>
+            The event target does not need be owned by the ruller of the provence.
+            <br>
+            <input type="checkbox" name="#req_targowner" id="#req_targowner" value="#req_targowner" class="d">
+            <label for="#req_targowner">Target must not be magic</label>
+        </p>
+        <h3>Event Code Requirements</h3>
+
+        <p>
+            The affected provence must have this event code.
+            <br>
+            <label for="#req_code">Event code:</label>
+            <input type="number" name="#req_targowner" id="#req_targowner" value="-301" max="-301" class="code">
+        </p>
+        <p>
+            At least one provence in the world must have this event code.
+            <br>
+            <label for="#req_anycode">Event code:</label>
+            <input type="number" name="#req_anycode" id="#req_anycode" value="-301" max="-301" class="code">
+        </p>
+        <p>
+            No provences in the world can have this event code.
+            <br>
+            <label for="#req_notanycode">Event code:</label>
+            <input type="number" name="#req_notanycode" id="#req_notanycode" value="-301" max="-301" class="code">
+        </p>
+        <p>
+            At least one provence adjacent to the affected one must have this event code.
+            <br>
+            <label for="#req_nearbycode">Event code:</label>
+            <input type="number" name="#req_nearbycode" id="#req_nearbycode" value="-301" max="-301" class="code">
+        </p>
+        <p>
+            At least one provence adjacent to the affected one must have this event code.
+            <br>
+            <label for="#req_nearowncode">Event code:</label>
+            <input type="number" name="#req_nearowncode" id="#req_nearowncode" value="-301" max="-301" class="code">
+        </p>
+        <h3>Enchantment Requirements</h3>
+        <p>The commands are used for the creation of global encantments.</p>
+        <label for="#req_permonth">Max times per month:</label>
+        <input type="number" name="#req_permonth" id="#req_permonth" value="0" min="0">
+        <p>
+            This enchantment cannot be active.
+            <br>
+            <label for="#req_noench">Enchantment ID:</label>
+            <input type="number" name="#req_noench" id="#req_noench" value="0" min="0">
+        </p>
+        <p>
+            This enchantment must be active.
+            <br>
+            <label for="#req_ench">Enchantment ID:</label>
+            <input type="number" name="#req_ench" id="#req_ench" value="0" min="0">
+        </p>
+        <p>
+            This enchantment must be active, and the enchantment must have been cast by a 
+            unit commanded by the nation affected by the event. Example: Maelstrom.
+            <br>
+            <label for="#req_myench">Enchantment ID:</label>
+            <input type="number" name="#req_myench" id="#req_myench" value="0" min="0">
+        </p>
+        <p>
+            This enchantment must be active, and the enchantment must have been cast by a 
+            unit commanded by the nation or an ally of the nation affected by the event. 
+            Example: Gift of Health.
+            <br>
+            <label for="#req_friendlyench">Enchantment ID:</label>
+            <input type="number" name="#req_friendlyench" id="#req_friendlyench" value="0" min="0">
+        </p>
+        <p>
+            This enchantment must be active, and the enchantment must have been cast by an 
+            unit commanded by an enemy of the nation affected by the event. 
+            Example: The Looming Hell.
+            <br>
+            <label for="#req_hostileench">Enchantment ID:</label>
+            <input type="number" name="#req_hostileench" id="#req_hostileench" value="0" min="0">
+        </p>
+        <p>
+            This enchantment must be active, and it will only affect provences with the same 
+            dominion as the own of the casting unit.
+            <br>
+            <label for="#req_enchdom">Enchantment ID:</label>
+            <input type="number" name="#req_enchdom" id="#req_enchdom" value="0" min="0">
+        </p>
+
+        
+        
 <!--
         req_ench
         req_myench
@@ -426,15 +1090,12 @@
         req_owncapital 1
         req_fornation 1
         req_capital 1
-        req_targpath1 1
-        req_targmnr 1
+        #req_targpath1 1
         req_poptype 1
         
         req_targnoitem 1
         req_minunrest 1
         req_domchance 1
-        req_mountain 1
-        req_forest
         req_cold 1
         req_heat 1
         req_permonth 1
@@ -448,41 +1109,559 @@
 
 -->
 
-        <h3>Event Effects</h3>
+        <h1>Event Effects</h1>
+        <h3>Basic Effects</h3>
+        <p>
+            Sets nation owner. Okay, that isn't very helpful. A more indepth explanition is that 
+            this command is used for event that spawn new units. An event that gave a bunch of 
+            free troops would use the "Provence owner" setting, because we want them to have the same 
+            alligence as the nation that they are fighting for. A barbarian attack would use the 
+            defualt "Indpendents" setting, because the barbarians are not loyal to any paticular nation. 
+            If we want to spawn units that are loyal to a specific nation, such as middle age ermor, 
+            then we select "Specific nation" and ender the nation ID below. If we want to spawn units 
+            that are loyal to the nation that cast a specific enchantment, then we select "Global 
+            enchantment owner", and enter the encahntment ID below.
+            <br>
+            <input type="radio" name="nation" id="#nation1" value="#nation -1" class="#nation">
+            <label for="#nation1">Random enemy</label>
+            <br>
+            <input type="radio" name="nation" id="#nation0" value="#nation 0" class="#nation" checked>
+            <label for="#nation0">Indpendents</label>
+            <br>
+            <input type="radio" name="nation" id="#nation2" value="#nation -2" class="#nation">
+            <label for="#nation2">Provence owner</label>
+            <br>
+            <input type="radio" name="nation" id="#nationSp" value="#nation sp" 
+            onchange="enableOrDisable(document.getElementById('#nationSp').checked, 'spnation', '', true)">
+            <label for="#nationSp">Specific nation</label>
+            <br>
+            <label for="spnation">Specific nation ID:</label>
+            <input type="number" name="spnation" id="spnation" value="4" min="4" max="249" disabled>
+            <br>
+            <input type="radio" name="nation" id="#nationenchG" value="#nationenchG" 
+            onchange="enableOrDisable(document.getElementById('#nationSp').checked, '#nationench', '', true)">
+            <label for="#nationenchG">Global enchantment owner</label>
+            <br>
+            <label for="#nationench">Global enchantment ID:</label>
+            <input type="number" name="#nationench" id="#nationench" value="1" min="1" disabled>
+        </p>
 
-        <input type="radio" name="temple" id="#temple 1">
-        <label for="#temple">Give Temple</label>
+        <p>
+            Event does not generate a text message.
+            <br>
+            <input type="checkbox" name="#notext" id="#notext" value="#notext" 
+            onchange="enableOrDisable(document.getElementById('#notext').checked, '', '#msg', true)">
+            <label for="#notext">No text message</label>
+        </p>
+
+        <label for="#msg">Message:</label>
+        <input type="text" name="#msg" id="#msg" class="desc">
+        <!--#notext if no message-->
+        <p>
+            Event does not appear in the event logs.
+            <br>
+            <input type="checkbox" name="#nolog" id="#nolog" value="#nolog">
+            <label for="#nolog">No log</label>
+        </p>
+        <h3>Treasure Effects</h3>
+
+        <p>
+            Gives a rendom magic item based off specific rarity. A specific item can also be specified.
+            <br>
+            <label for="#magicitem">Magic item to give:</label>
+            <select name="#magicitem" id="#magicitem" 
+            onchange="enableOrDisable(document.getElementById('#magicitem').value=='9', 'itemname', '', true)">
+                <option value="0">Rarity 0</option>
+                <option value="1">Rarity 1</option>
+                <option value="2">Rarity 2</option>
+                <option value="3">Rarity 3</option>
+                <option value="4">Rarity 4</option>
+                <option value="9">Specific Item</option>
+            </select>
+            <br>
+            <label for="itemname">Item name:</label>
+            <input type="text" name="itemname" id="itemname" disabled>
+        </p>
+        <p>
+            Gives or takes an amount of gold. A rough amount will randomly vary by 50%. That is to 
+            say, if this is set to 250, then every time the even fires, the affected nation will be 
+            given between 125 and 375 gold. Use exact amount for more precise control.
+            <br>
+            <label for="#gold">Rough amount:</label>
+            <input type="number" name="#gold" id="#gold" value="0">
+            <br>
+            <label for="#exactgold">Exact amount:</label>
+            <input type="number" name="#exactgold" id="#exactgold" value="0">
+        </p>
+        <h3>Scale Effects</h3>
+        <fieldset>
+            <legend>Scales</legend>
+            <p>
+                <input type="radio" name="sc_order" id="#incscale3_0" value="#incscale3 0" class="sc_order">
+                <label for="#incscale3_0">Order +3</label>
+                <br>
+                <input type="radio" name="sc_order" id="#incscale2_0" value="#incscale2 0" class="sc_order">
+                <label for="#incscale2_0">Order +2</label>
+                <br>
+                <input type="radio" name="sc_order" id="#incscale1_0" value="#incscale1 0" class="sc_order">
+                <label for="#incscale1_0">Order +1</label>
+                <br>
+                <input type="radio" name="sc_order" id="#nochange0" value="#nochange 0" class="sc_order" checked>
+                <label for="#nochange0">No change</label>
+                <br>
+                <input type="radio" name="sc_order" id="#decscale1_0" value="#decscale1 0" class="sc_order">
+                <label for="#decscale1_0">Turmoil +1</label>
+                <br>
+                <input type="radio" name="sc_order" id="#decscale2_0" value="#decscale2 0" class="sc_order">
+                <label for="#decscale2_0">Turmoil +2</label>
+                <br>
+                <input type="radio" name="sc_order" id="#decscale3_0" value="#decscale3 0" class="sc_order">
+                <label for="#decscale3_0">Turmoil +3</label>
+            </p>
+            <p>
+                <input type="radio" name="sc_prod" id="#incscale3_1" value="#incscale3 1" class="sc_prod">
+                <label for="#incscale3_1">Productivity +3</label>
+                <br>
+                <input type="radio" name="sc_prod" id="#incscale2_1" value="#incscale2 1" class="sc_prod">
+                <label for="#incscale2_1">Productivity +2</label>
+                <br>
+                <input type="radio" name="sc_prod" id="#incscale1_1" value="#incscale1 1" class="sc_prod">
+                <label for="#incscale1_1">Productivity +1</label>
+                <br>
+                <input type="radio" name="sc_prod" id="#nochange1" value="#nochange 1" class="sc_prod" checked>
+                <label for="#nochange1">No change</label>
+                <br>
+                <input type="radio" name="sc_prod" id="#decscale1_1" value="#decscale1 1" class="sc_prod">
+                <label for="#decscale1_1">Sloth +1</label>
+                <br>
+                <input type="radio" name="sc_prod" id="#decscale2_1" value="#decscale2 1" class="sc_prod">
+                <label for="#decscale2_1">Sloth +2</label>
+                <br>
+                <input type="radio" name="sc_prod" id="#decscale3_1" value="#decscale3 1" class="sc_prod">
+                <label for="#decscale3_1">Sloth +3</label>
+            </p>
+            <p>
+                <input type="radio" name="sc_temp" id="#incscale3_2" value="#incscale3 2" class="sc_temp">
+                <label for="#incscale3_2">Heat +3</label>
+                <br>
+                <input type="radio" name="sc_temp" id="#incscale2_2" value="#incscale2 2" class="sc_temp">
+                <label for="#incscale2_2">Heat +2</label>
+                <br>
+                <input type="radio" name="sc_temp" id="#incscale1_2" value="#incscale1 2" class="sc_temp">
+                <label for="#incscale1_2">Heat +1</label>
+                <br>
+                <input type="radio" name="sc_temp" id="#nochange2" value="#nochange 2" class="sc_temp" checked>
+                <label for="#nochange2">No change</label>
+                <br>
+                <input type="radio" name="sc_temp" id="#decscale1_2" value="#decscale1 2" class="sc_temp">
+                <label for="#decscale1_2">Cold +1</label>
+                <br>
+                <input type="radio" name="sc_temp" id="#decscale2_2" value="#decscale2 2" class="sc_temp">
+                <label for="#decscale2_2">Cold +2</label>
+                <br>
+                <input type="radio" name="sc_temp" id="#decscale3_2" value="#decscale3 2" class="sc_temp">
+                <label for="#decscale3_2">Cold +3</label>
+            </p>
+            <p>
+                <input type="radio" name="sc_grow" id="#incscale3_3" value="#incscale3 3" class="sc_grow">
+                <label for="#incscale3_3">Heat +3</label>
+                <br>
+                <input type="radio" name="sc_grow" id="#incscale2_3" value="#incscale2 3" class="sc_grow">
+                <label for="#incscale2_3">Heat +2</label>
+                <br>
+                <input type="radio" name="sc_grow" id="#incscale1_3" value="#incscale1 3" class="sc_grow">
+                <label for="#incscale1_3">Heat +1</label>
+                <br>
+                <input type="radio" name="sc_grow" id="#nochange3" value="#nochange 3" class="sc_grow" checked>
+                <label for="#nochange3">No change</label>
+                <br>
+                <input type="radio" name="sc_grow" id="#decscale1_3" value="#decscale1 3" class="sc_grow">
+                <label for="#decscale1_3">Cold +1</label>
+                <br>
+                <input type="radio" name="sc_grow" id="#decscale2_3" value="#decscale2 3" class="sc_grow">
+                <label for="#decscale2_3">Cold +2</label>
+                <br>
+                <input type="radio" name="sc_grow" id="#decscale3_3" value="#decscale3 3" class="sc_grow">
+                <label for="#decscale3_3">Cold +3</label>
+            </p>
+            <p>
+                <input type="radio" name="sc_luck" id="#incscale3_4" value="#incscale3 4" class="sc_luck">
+                <label for="#incscale3_4">Luck +3</label>
+                <br>
+                <input type="radio" name="sc_luck" id="#incscale2_4" value="#incscale2 4" class="sc_luck">
+                <label for="#incscale2_4">Luck +2</label>
+                <br>
+                <input type="radio" name="sc_luck" id="#incscale1_4" value="#incscale1 4" class="sc_luck">
+                <label for="#incscale1_4">Luck +1</label>
+                <br>
+                <input type="radio" name="sc_luck" id="#nochange4" value="#nochange 4" class="sc_luck" checked>
+                <label for="#nochange4">No change</label>
+                <br>
+                <input type="radio" name="sc_luck" id="#decscale1_4" value="#decscale1 4" class="sc_luck">
+                <label for="#decscale1_4">Misfortune +1</label>
+                <br>
+                <input type="radio" name="sc_luck" id="#decscale2_4" value="#decscale2 4" class="sc_luck">
+                <label for="#decscale2_4">Misfortune +2</label>
+                <br>
+                <input type="radio" name="sc_luck" id="#decscale3_4" value="#decscale3 4" class="sc_luck">
+                <label for="#decscale3_4">Misfortune +3</label>
+            </p>
+            <p>
+                <input type="radio" name="sc_magic" id="#incscale3_5" value="#incscale3 5" class="sc_magic">
+                <label for="#incscale3_5">Magic +3</label>
+                <br>
+                <input type="radio" name="sc_magic" id="#incscale2_5" value="#incscale2 5" class="sc_magic">
+                <label for="#incscale2_5">Magic +2</label>
+                <br>
+                <input type="radio" name="sc_magic" id="#incscale1_5" value="#incscale1 5" class="sc_magic">
+                <label for="#incscale1_5">Magic +1</label>
+                <br>
+                <input type="radio" name="sc_magic" id="#nochange5" value="#nochange 5" class="sc_magic" checked>
+                <label for="#nochange5">No change</label>
+                <br>
+                <input type="radio" name="sc_magic" id="#decscale1_5" value="#decscale1 5" class="sc_magic">
+                <label for="#decscale1_5">Drain +1</label>
+                <br>
+                <input type="radio" name="sc_magic" id="#decscale2_5" value="#decscale2 5" class="sc_magic">
+                <label for="#decscale2_5">Drain +2</label>
+                <br>
+                <input type="radio" name="sc_magic" id="#decscale3_5" value="#decscale3 5" class="sc_magic">
+                <label for="#decscale3_5">Drain +3</label>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Give Gems</legend>
+            <label for="#1d3vis">1d3 gems</label>
+            <select name="#1d3vis" id="#1d3vis" class="giveGems">
+                <option value="-1" selected>None</option>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+            </select>
+            <br>
+            <label for="#1d6vis">1d6 gems</label>
+            <select name="#1d6vis" id="#1d6vis" class="giveGems">
+                <option value="-1" selected>None</option>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+            </select>
+            <br>
+            <label for="#2d4vis">2d4 gems</label>
+            <select name="#2d4vis" id="#2d4vis" class="giveGems">
+                <option value="-1" selected>None</option>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+            </select>
+            <br>
+            <label for="#2d6vis">2d6 gems</label>
+            <select name="#2d6vis" id="#2d6vis" class="giveGems">
+                <option value="-1" selected>None</option>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+            </select>
+            <br>
+            <label for="#3d6vis">3d6 gems</label>
+            <select name="#3d6vis" id="#3d6vis" class="giveGems">
+                <option value="-1" selected>None</option>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+            </select>
+            <br>
+            <label for="#4d6vis">4d6 gems</label>
+            <select name="#4d6vis" id="#4d6vis" class="giveGems">
+                <option value="-1" selected>None</option>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+            </select>
+            <br>
+            <label for="#gemloss">Lose 3d6 gems</label>
+            <select name="#gemloss" id="#gemloss" class="giveGems">
+                <option value="-1" selected>None</option>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" >Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+            </select>
+        </fieldset>
+        <h3>Province Effects</h3>
+        <label for="#landgold">Permanent gold increase:</label>
+        <input type="number" name="#landgold" id="#landgold" value="0">
         <br>
-        <input type="radio" name="temple" id="temple">
-        <label for="temple">Don't afftect Temple</label>
+        <label for="#landprod">Permanent resources increase:</label>
+        <input type="number" name="#landprod" id="#landprod" value="0">
         <br>
-        <input type="radio" name="temple" id="#temple 0">
-        <label for="#temple 0">Destroy Temple</label>
+        <label for="#taxboost">Tempory tax bonus%:</label>
+        <input type="number" name="#taxboost" id="#taxboost" value="0" min="-100">
+        <br>
+        <label for="#defence">Permanent PD increase:</label>
+        <input type="number" name="#defence" id="#defence" value="0">
+        <br>
+        <label for="#kill">Kill population%:</label>
+        <input type="number" name="#kill" id="#kill" value="0" min="0" max="100">
+        <br>
+                <!--decapop-->
+
+        <p>
+            Kills a specific amount of the population. This number randomly varies by 25%, and the 
+            final amount will be rounded to the tens place, so a value of 300 
+            will result in 225 to 375 dieing. This is then rounded, so a result of 312 
+            would be rounded to 310.
+            <br>
+            <label for="#kill">Kill population amount:</label>
+            <input type="number" name="#kill" id="#kill" value="0" min="0" step="10">    
+        </p>
+        <p>
+            Adds to the population. Like the pervous command, this value also randomly varies 
+            by 25%, and the final result is also rounded.
+            <br>
+            <label for="#incpop">Add population amount:</label>
+            <input type="number" name="#incpop" id="#incpop" value="0" min="0" step="10">    
+        </p>
+        <p>
+            Add or subtract unburied corpses. This number number randomly varies by 25%, but
+            it is not rounded.
+            <br>
+            <label for="#inccorpses">Add corpses:</label>
+            <input type="number" name="#inccorpses" id="#inccorpses" value="0" min="0" >    
+        </p>
+        <label for="#emigration">Emigration population%:</label>
+        <input type="number" name="#emigration" id="#emigration" value="0" min="0" max="100">
+        <br>
+        <label for="#unrest">Increase/decrease unrest:</label>
+        <input type="number" name="#unrest" id="#unrest" value="0" min="0">
+        <br>
+        <label for="#incdom">Increase/decrease domnion:</label>
+        <input type="number" name="#incdom" id="#incdom" value="0" min="-20" max="20">
+        <br>
+        <p>
+                <input type="radio" name="temple" id="#temple 1" value="temple 1">
+                <label for="#temple">Give Temple</label>
+                <br>
+                <input type="radio" name="temple" id="temple" value="temple" checked>
+                <label for="temple">Don't afftect Temple</label>
+                <br>
+                <input type="radio" name="temple" id="#temple 0" value="temple 0">
+                <label for="#temple 0">Destroy Temple</label>
+        </p>
+        <p>
+                <input type="radio" name="lab" id="#lab 1" value="lab 1">
+                <label for="#lab">Give Lab</label>
+                <br>
+                <input type="radio" name="lab" id="lab" value="lab" checked>
+                <label for="lab">Don't afftect Lab</label>
+                <br>
+                <input type="radio" name="lab" id="#lab 0" value="lab 0">
+                <label for="#lab 0">Destroy Lab</label>
+        </p>
+        <label for="#revealsite">Name of site to reveal:</label>
+        <input type="text" name="#revealsite" id="#revealsite">
+        <p>
+            Adds a discovered site to the provence.
+            <br>
+            <label for="#addsite">Site ID:</label>
+            <input type="number" name="#addsite" id="#addsite" value="0" min="0" max="1999">
+        </p>
+        <p>
+            Removes a site from the provence.
+            <br>
+            <label for="#removesite">Site ID:</label>
+            <input type="number" name="#removesite" id="#removesite" value="0" min="0" max="1999">
+        </p>
+        <p>
+            Adds a hidden site to the provence.
+            <br>
+            <label for="#hiddensite">Site ID:</label>
+            <input type="number" name="#hiddensite" id="#hiddensite" value="0" min="0" max="1999">
+        </p>
+        <input type="checkbox" name="#visitors" id="#visitors" value="visitors">
+        <label for="#visitors">Bogus attacks</label>
+        <p>
+            The dominion of the provence changes the that of the even owner, and is set 
+            to this amound.
+            <br>
+            <label for="#newdom">Site ID:</label>
+            <input type="text" name="#newdom" id="#newdom" value="0" min="0" max="10">
+
+        </p>
+        <input type="checkbox" name="#revolt" id="#revolt" value="revolt">
+        <label for="#revolt">Provence revolts</label>
+        <br>
+        <input type="checkbox" name="#revealprov" id="#revealprov" value="revealprov">
+        <label for="#revealprov">Provence name is revealed</label>
+        <p>
+                Any thrones in provence are claimed by the event owner.
+                <br>
+                <input type="checkbox" name="#claimthrone" id="#claimthrone" value="claimthrone">
+                <label for="#claimthrone">Claim thrones</label>
+        </p>
+        <h3>Monster Effects</h3>
+        <p>
+            A ramdomly chosen commander is attacked by an assassin.
+            <br>
+            <label for="#assassin">Unit ID:</label>
+            <input type="number" name="#assassin" id="#assassin" value="0" min="0" max="8999">
+        </p>
+        <p>
+            The event owner is given a stealthy commander in the provence.
+            <br>
+            <label for="#stealthcom">Unit ID:</label>
+            <input type="number" name="#stealthcom" id="#stealthcom" value="0" min="0" max="8999">
+        </p>
+        <fieldset>
+            <legend>Give Commanders</legend>
+            This gives the event owner one or more commanders of the specified ID.
+            <br>
+            <label for="#com">One commander:</label>
+            <input type="number" name="#com" id="#com" value="0" min="0" max="8999">
+            <br>
+            <label for="#2com">Two commanders:</label>
+            <input type="number" name="#2com" id="#2com" value="0" min="0" max="8999">
+            <br>
+            <label for="#3com">Three commanders:</label>
+            <input type="number" name="#3com" id="#3com" value="0" min="0" max="8999">
+            <br>
+            <label for="#4com">Four commanders:</label>
+            <input type="number" name="#4com" id="#4com" value="0" min="0" max="8999">
+            <br>
+            <label for="#5com">Five commanders:</label>
+            <input type="number" name="#5com" id="#5com" value="0" min="0" max="8999">
+        </fieldset>
+        <!-- todo finish later
+        <p>
+                <input type="radio" name="temple" id="#temple 1" value="temple 1">
+                <label for="#temple">Give Temple</label>
+                <br>
+                <input type="radio" name="temple" id="temple" value="temple" checked>
+                <label for="temple">Don't afftect Temple</label>
+                <br>
+                <input type="radio" name="temple" id="#temple 0" value="temple 0">
+                <label for="#temple 0">Destroy Temple</label>
+
+        </p>
+        -->
+        <fieldset>
+            <legend>Give Units</legend>
+            This gives the event owner one or more units of the specified ID.
+            <br>
+            <label for="#1unit">One unit:</label>
+            <input type="number" name="#1unit" id="#1unit" value="0" min="0" max="8999">
+            <br>
+            <label for="#1d3units">1d3 units:</label>
+            <input type="number" name="#1d3units" id="#1d3units" value="0" min="0" max="8999">
+            <br>
+            <label for="#1d6units">1d6 units:</label>
+            <input type="number" name="#1d6units" id="#1d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#2d6units">2d6 units:</label>
+            <input type="number" name="#2d6units" id="#2d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#3d6units">3d6 units:</label>
+            <input type="number" name="#3d6units" id="#3d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#4d6units">4d6 units:</label>
+            <input type="number" name="#4d6units" id="#4d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#5d6units">5d6 units:</label>
+            <input type="number" name="#5d6units" id="#5d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#6d6units">6d6 units:</label>
+            <input type="number" name="#6d6units" id="#6d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#7d6units">7d6 units:</label>
+            <input type="number" name="#7d6units" id="#7d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#8d6units">8d6 units:</label>
+            <input type="number" name="#8d6units" id="#8d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#9d6units">9d6 units:</label>
+            <input type="number" name="#9d6units" id="#9d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#10d6units">10d6 units:</label>
+            <input type="number" name="#10d6units" id="#10d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#11d6units">11d6 units:</label>
+            <input type="number" name="#11d6units" id="#11d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#12d6units">12d6 units:</label>
+            <input type="number" name="#12d6units" id="#12d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#13d6units">13d6 units:</label>
+            <input type="number" name="#13d6units" id="#13d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#14d6units">14d6 units:</label>
+            <input type="number" name="#14d6units" id="#14d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#15d6units">15d6 units:</label>
+            <input type="number" name="#15d6units" id="#15d6units" value="0" min="0" max="8999">
+            <br>
+            <label for="#16d6units">16d6 units:</label>
+            <input type="number" name="#16d6units" id="#16d6units" value="0" min="0" max="8999">
+
+        </fieldset>
+
+        
+
+
+
 
 
 <!--
-            msg
 
-            nolog
-            notext
-
-            kill 4
             addequip 1
-            unrest 1
-            incscale 1
-            taxboost 1
+
             magicitem 1
-            gold 1
+
             worldincscale 1
-            temple 1
-            lab 1
-            incdom 1
-            removesite 1
+
             killcom 1
-            revolt
             gainaff 1
             nationench 1
-            assassin 1
             tempunits 1
             1com
             1unit
@@ -496,5 +1675,7 @@
             2d4vis
             decscale2
 -->
+        </main>
+
     </body>
 </html>

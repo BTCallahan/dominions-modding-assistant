@@ -17,245 +17,246 @@
     </head>
     <body>
         <header>
-                <a href="armor_helper.html">Armor</a>
-                <a href="weapon_helper.html">Weapons</a>
-                <a href="item_helper.html">Magic Items</a>
-                <a href="spell_helper.html">Magic Spells</a>
-                <a href="monster_helper.html">Monsters</a>
-                <a href="nation_helper.html">Nations</a>
-                <a href="site_helper.html">Magic Sites</a>
-            </header>
+            <a href="mod_helper.html">Mod</a>
+            <a href="armor_helper.html">Armor</a>
+            <a href="weapon_helper.html">Weapons</a>
+            <a href="item_helper.html">Magic Items</a>
+            <a href="spell_helper.html">Magic Spells</a>
+            <a href="monster_helper.html">Monsters</a>
+            <a href="nation_helper.html">Nations</a>
+            <a href="site_helper.html">Magic Sites</a>
+        </header>
         <main>
-        <h3>Basic Site Modding</h3>
-        <fieldset>
-            <legend>New Site</legend>
-            <label for="isnew">Magic site is new</label>
-            <input type="checkbox" name="isnew" id="isnew" checked 
-            onchange="enableOrDisable(document.getElementById('isnew').checked, 'new', 'old')">
+            <h3>Basic Site Modding</h3>
+            <fieldset>
+                <legend>New Site</legend>
+                <label for="isnew">Magic site is new</label>
+                <input type="checkbox" name="isnew" id="isnew" checked 
+                onchange="enableOrDisable(document.getElementById('isnew').checked, 'new', 'old')">
+                <br>
+                <input type="number" id="#selectsite" value="0" min="0" max="1499" class="old" disabled>
+                <label for="#selectsite">ID of site to be changed:</label>
+                <br>
+                <input type="number" id="#newsite" value="1500" min="1500" max="1999" class="new">
+                <label for="#newsite">ID of new site:</label>
+                <br>
+                <input type="text" id="#name" class="new">
+                <label for="#name">Name of new site:</label>
+                <br>
+                <input type="checkbox" name="#clear" id="#clear" value="#clear" class="old" disabled>
+                <label for="#clear">Clears existing site if imported</label>
+            </fieldset>
+            <label for="#path">Site Path:</label>
+            <select class="attunment" id="#path">
+                <option value="0">Air</option>
+                <option value="1">Water</option>
+                <option value="2">Earth</option>
+                <option value="3">Fire</option>
+                <option value="4">Astral</option>
+                <option value="5">Nature</option>
+                <option value="6">Death</option>
+                <option value="7">Blood</option>
+                <option value="8" selected>Holy</option>
+            </select>
             <br>
-            <input type="number" id="#selectsite" value="0" min="0" max="1499" class="old" disabled>
-            <label for="#selectsite">ID of site to be changed:</label>
+            <table>
+                <thead>
+                    <th>Allowed Terrain</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="tplain" id="tplain" value="1" class="#loc">
+                            <label for="tplain">Plains</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="tfor" id="tfor" value="2" class="#loc">
+                            <label for="tfor">Forests</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="tmount" id="tmount" value="4" class="#loc">
+                            <label for="tmount">Mountians</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="twaste" id="twaste" value="8" class="#loc">
+                            <label for="twaste">Wastelands</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="tfarm" id="tfarm" value="16" class="#loc">
+                            <label for="tfarm">Farmlands</label>
+                        </td>
+                        <td>
+                                <input type="checkbox" name="tsea" id="tsea" value="32" class="#loc">
+                                <label for="tsea">Seas</label>
+                        </td>
+                        <td>
+                                <input type="checkbox" name="tcoast" id="tcoast" value="64" class="#loc">
+                                <label for="tcoast">Coasts</label>
+                        </td>
+                        <td>
+                                <input type="checkbox" name="tswamp" id="tswamp" value="128" class="#loc">
+                                <label for="tswamp">Swamplands</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="tdsea" id="tdsea" value="256" class="#loc">
+                            <label for="tdsea">Deap Seas</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="tcave" id="tcave" value="512" class="#loc">
+                            <label for="tcave">Caves</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="tuni" id="tuni" value="1024" class="#loc">
+                            <label for="tuni">Unique Site</label>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <fieldset>
+                <legend>Free Gems</legend>
+                <p>Some site provide free gem/pearl/blood slaves.</p>
+                <p>
+                    <label for="gemamount1">Amount of gems to give:</label>
+                    <input type="number" name="gemamount1" id="gemamount1" class="gemamount" value="0" min="0"
+                    onchange="enableOrDisable(document.getElementById('gemamount1').value == '0', '', 'gemtype1')">
+                    <br>
+                    <label for="gemtype1">First type of gem:</label>
+                    <select id="gemtype1" class="gemtype">
+                        <option value="0">Air gem</option>
+                        <option value="1">Water gem</option>
+                        <option value="2">Earth gem</option>
+                        <option value="3">Fire gem</option>
+                        <option value="4" selected>Astral pearl</option>
+                        <option value="5">Nature gem</option>
+                        <option value="6">Death gem</option>
+                        <option value="7">Blood slave</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="gemamount2">Amount of gems to give:</label>
+                    <input type="number" name="gemamount2" id="gemamount2" class="gemamount" value="0" min="0"
+                    onchange="enableOrDisable(document.getElementById('gemamount2').value =='0', '', 'gemtype2')">
+                    <br>
+                    <label for="gemtype2">Second type of gem:</label>
+                    <select id="gemtype2" class="gemtype">
+                        <option value="0">Air gem</option>
+                        <option value="1">Water gem</option>
+                        <option value="2">Earth gem</option>
+                        <option value="3">Fire gem</option>
+                        <option value="4" selected>Astral pearl</option>
+                        <option value="5">Nature gem</option>
+                        <option value="6">Death gem</option>
+                        <option value="7">Blood slave</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="gemamount3">Amount of gems to give:</label>
+                    <input type="number" name="gemamount3" id="gemamount3" class="gemamount" value="0" min="0"
+                    onchange="enableOrDisable(document.getElementById('gemamount3').value =='0', '', 'gemtype3')">
+                    <br>
+                    <label for="gemtype3">Third type of gem:</label>
+                    <select id="gemtype3" class="gemtype">
+                        <option value="0">Air gem</option>
+                        <option value="1">Water gem</option>
+                        <option value="2">Earth gem</option>
+                        <option value="3">Fire gem</option>
+                        <option value="4" selected>Astral pearl</option>
+                        <option value="5">Nature gem</option>
+                        <option value="6">Death gem</option>
+                        <option value="7">Blood slave</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="gemamount4">Amount of gems to give:</label>
+                    <input type="number" name="gemamount4" id="gemamount4" class="gemamount" value="0" min="0"
+                    onchange="enableOrDisable(document.getElementById('gemamount4').value =='0', '', 'gemtype4')">
+                    <br>
+                    <label for="gemtype4">Fourth type of gem:</label>
+                    <select id="gemtype4" class="gemtype">
+                        <option value="0">Air gem</option>
+                        <option value="1">Water gem</option>
+                        <option value="2">Earth gem</option>
+                        <option value="3">Fire gem</option>
+                        <option value="4" selected>Astral pearl</option>
+                        <option value="5">Nature gem</option>
+                        <option value="6">Death gem</option>
+                        <option value="7">Blood slave</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="gemamount5">Amount of gems to give:</label>
+                    <input type="number" name="gemamount5" id="gemamount5" class="gemamount" value="0" min="0"
+                    onchange="enableOrDisable(document.getElementById('gemamount5').value =='0', '', 'gemtype5')">
+                    <br>
+                    <label for="gemtype5">Fifth type of gem:</label>
+                    <select id="gemtype5" class="gemtype">
+                        <option value="0">Air gem</option>
+                        <option value="1">Water gem</option>
+                        <option value="2">Earth gem</option>
+                        <option value="3">Fire gem</option>
+                        <option value="4" selected>Astral pearl</option>
+                        <option value="5">Nature gem</option>
+                        <option value="6">Death gem</option>
+                        <option value="7">Blood slave</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="gemamount6">Amount of gems to give:</label>
+                    <input type="number" name="gemamount6" id="gemamount6" class="gemamount" value="0" min="0"
+                    onchange="enableOrDisable(document.getElementById('gemamount6').value =='0', '', 'gemtype6')">
+                    <br>
+                    <label for="gemtype6">Sixth type of gem:</label>
+                    <select id="gemtype6" class="gemtype">
+                        <option value="0">Air gem</option>
+                        <option value="1">Water gem</option>
+                        <option value="2">Earth gem</option>
+                        <option value="3">Fire gem</option>
+                        <option value="4" selected>Astral pearl</option>
+                        <option value="5">Nature gem</option>
+                        <option value="6">Death gem</option>
+                        <option value="7">Blood slave</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="gemamount7">Amount of gems to give:</label>
+                    <input type="number" name="gemamount7" id="gemamount7" class="gemamount" value="0" min="0"
+                    onchange="enableOrDisable(document.getElementById('gemamount7').value =='0', '', 'gemtype7')">
+                    <br>
+                    <label for="gemtype7">Seventh type of gem:</label>
+                    <select id="gemtype7" class="gemtype">
+                        <option value="0">Air gem</option>
+                        <option value="1">Water gem</option>
+                        <option value="2">Earth gem</option>
+                        <option value="3">Fire gem</option>
+                        <option value="4" selected>Astral pearl</option>
+                        <option value="5">Nature gem</option>
+                        <option value="6">Death gem</option>
+                        <option value="7">Blood slave</option>
+                    </select>
+                </p>
+            </fieldset>
+            <label for="#gold">Amount of gold to provide:</label>
+            <input type="number" name="#gold" id="#gold" value="0" min="0" class="resnum">
             <br>
-            <input type="number" id="#newsite" value="1500" min="1500" max="1999" class="new">
-            <label for="#newsite">ID of new site:</label>
+            <label for="#res">Amount of resources to provide:</label>
+            <input type="number" name="#res" id="#res" value="0" min="0" class="resnum">
             <br>
-            <input type="text" id="#name" class="new">
-            <label for="#name">Name of new site:</label>
+            <label for="#level">Site level:</label>
+            <input type="number" name="#level" id="#level" value="0" min="0" max="4">
             <br>
-            <input type="checkbox" name="#clear" id="#clear" value="#clear" class="old" disabled>
-            <label for="#clear">Clears existing site if imported</label>
-        </fieldset>
-        <label for="#path">Site Path:</label>
-        <select class="attunment" id="#path">
-            <option value="0">Air</option>
-            <option value="1">Water</option>
-            <option value="2">Earth</option>
-            <option value="3">Fire</option>
-            <option value="4">Astral</option>
-            <option value="5">Nature</option>
-            <option value="6">Death</option>
-            <option value="7">Blood</option>
-            <option value="8" selected>Holy</option>
-        </select>
-        <br>
-        <table>
-            <thead>
-                <th>Allowed Terrain</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="tplain" id="tplain" value="1" class="#loc">
-                        <label for="tplain">Plains</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="tfor" id="tfor" value="2" class="#loc">
-                        <label for="tfor">Forests</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="tmount" id="tmount" value="4" class="#loc">
-                        <label for="tmount">Mountians</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="twaste" id="twaste" value="8" class="#loc">
-                        <label for="twaste">Wastelands</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="tfarm" id="tfarm" value="16" class="#loc">
-                        <label for="tfarm">Farmlands</label>
-                    </td>
-                    <td>
-                            <input type="checkbox" name="tsea" id="tsea" value="32" class="#loc">
-                            <label for="tsea">Seas</label>
-                    </td>
-                    <td>
-                            <input type="checkbox" name="tcoast" id="tcoast" value="64" class="#loc">
-                            <label for="tcoast">Coasts</label>
-                    </td>
-                    <td>
-                            <input type="checkbox" name="tswamp" id="tswamp" value="128" class="#loc">
-                            <label for="tswamp">Swamplands</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="tdsea" id="tdsea" value="256" class="#loc">
-                        <label for="tdsea">Deap Seas</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="tcave" id="tcave" value="512" class="#loc">
-                        <label for="tcave">Caves</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="tuni" id="tuni" value="1024" class="#loc">
-                        <label for="tuni">Unique Site</label>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <fieldset>
-            <legend>Free Gems</legend>
-            <p>Some site provide free gem/pearl/blood slaves.</p>
-            <p>
-                <label for="gemamount1">Amount of gems to give:</label>
-                <input type="number" name="gemamount1" id="gemamount1" class="gemamount" value="0" min="0"
-                onchange="enableOrDisable(document.getElementById('gemamount1').value == '0', '', 'gemtype1')">
-                <br>
-                <label for="gemtype1">First type of gem:</label>
-                <select id="gemtype1" class="gemtype">
-                    <option value="0">Air gem</option>
-                    <option value="1">Water gem</option>
-                    <option value="2">Earth gem</option>
-                    <option value="3">Fire gem</option>
-                    <option value="4" selected>Astral pearl</option>
-                    <option value="5">Nature gem</option>
-                    <option value="6">Death gem</option>
-                    <option value="7">Blood slave</option>
-                </select>
-            </p>
-            <p>
-                <label for="gemamount2">Amount of gems to give:</label>
-                <input type="number" name="gemamount2" id="gemamount2" class="gemamount" value="0" min="0"
-                onchange="enableOrDisable(document.getElementById('gemamount2').value =='0', '', 'gemtype2')">
-                <br>
-                <label for="gemtype2">Second type of gem:</label>
-                <select id="gemtype2" class="gemtype">
-                    <option value="0">Air gem</option>
-                    <option value="1">Water gem</option>
-                    <option value="2">Earth gem</option>
-                    <option value="3">Fire gem</option>
-                    <option value="4" selected>Astral pearl</option>
-                    <option value="5">Nature gem</option>
-                    <option value="6">Death gem</option>
-                    <option value="7">Blood slave</option>
-                </select>
-            </p>
-            <p>
-                <label for="gemamount3">Amount of gems to give:</label>
-                <input type="number" name="gemamount3" id="gemamount3" class="gemamount" value="0" min="0"
-                onchange="enableOrDisable(document.getElementById('gemamount3').value =='0', '', 'gemtype3')">
-                <br>
-                <label for="gemtype3">Third type of gem:</label>
-                <select id="gemtype3" class="gemtype">
-                    <option value="0">Air gem</option>
-                    <option value="1">Water gem</option>
-                    <option value="2">Earth gem</option>
-                    <option value="3">Fire gem</option>
-                    <option value="4" selected>Astral pearl</option>
-                    <option value="5">Nature gem</option>
-                    <option value="6">Death gem</option>
-                    <option value="7">Blood slave</option>
-                </select>
-            </p>
-            <p>
-                <label for="gemamount4">Amount of gems to give:</label>
-                <input type="number" name="gemamount4" id="gemamount4" class="gemamount" value="0" min="0"
-                onchange="enableOrDisable(document.getElementById('gemamount4').value =='0', '', 'gemtype4')">
-                <br>
-                <label for="gemtype4">Fourth type of gem:</label>
-                <select id="gemtype4" class="gemtype">
-                    <option value="0">Air gem</option>
-                    <option value="1">Water gem</option>
-                    <option value="2">Earth gem</option>
-                    <option value="3">Fire gem</option>
-                    <option value="4" selected>Astral pearl</option>
-                    <option value="5">Nature gem</option>
-                    <option value="6">Death gem</option>
-                    <option value="7">Blood slave</option>
-                </select>
-            </p>
-            <p>
-                <label for="gemamount5">Amount of gems to give:</label>
-                <input type="number" name="gemamount5" id="gemamount5" class="gemamount" value="0" min="0"
-                onchange="enableOrDisable(document.getElementById('gemamount5').value =='0', '', 'gemtype5')">
-                <br>
-                <label for="gemtype5">Fifth type of gem:</label>
-                <select id="gemtype5" class="gemtype">
-                    <option value="0">Air gem</option>
-                    <option value="1">Water gem</option>
-                    <option value="2">Earth gem</option>
-                    <option value="3">Fire gem</option>
-                    <option value="4" selected>Astral pearl</option>
-                    <option value="5">Nature gem</option>
-                    <option value="6">Death gem</option>
-                    <option value="7">Blood slave</option>
-                </select>
-            </p>
-            <p>
-                <label for="gemamount6">Amount of gems to give:</label>
-                <input type="number" name="gemamount6" id="gemamount6" class="gemamount" value="0" min="0"
-                onchange="enableOrDisable(document.getElementById('gemamount6').value =='0', '', 'gemtype6')">
-                <br>
-                <label for="gemtype6">Sixth type of gem:</label>
-                <select id="gemtype6" class="gemtype">
-                    <option value="0">Air gem</option>
-                    <option value="1">Water gem</option>
-                    <option value="2">Earth gem</option>
-                    <option value="3">Fire gem</option>
-                    <option value="4" selected>Astral pearl</option>
-                    <option value="5">Nature gem</option>
-                    <option value="6">Death gem</option>
-                    <option value="7">Blood slave</option>
-                </select>
-            </p>
-            <p>
-                <label for="gemamount7">Amount of gems to give:</label>
-                <input type="number" name="gemamount7" id="gemamount7" class="gemamount" value="0" min="0"
-                onchange="enableOrDisable(document.getElementById('gemamount7').value =='0', '', 'gemtype7')">
-                <br>
-                <label for="gemtype7">Seventh type of gem:</label>
-                <select id="gemtype7" class="gemtype">
-                    <option value="0">Air gem</option>
-                    <option value="1">Water gem</option>
-                    <option value="2">Earth gem</option>
-                    <option value="3">Fire gem</option>
-                    <option value="4" selected>Astral pearl</option>
-                    <option value="5">Nature gem</option>
-                    <option value="6">Death gem</option>
-                    <option value="7">Blood slave</option>
-                </select>
-            </p>
-        </fieldset>
-        <label for="#gold">Amount of gold to provide:</label>
-        <input type="number" name="#gold" id="#gold" value="0" min="0" class="resnum">
-        <br>
-        <label for="#res">Amount of resources to provide:</label>
-        <input type="number" name="#res" id="#res" value="0" min="0" class="resnum">
-        <br>
-        <label for="#level">Site level:</label>
-        <input type="number" name="#level" id="#level" value="0" min="0" max="4">
-        <br>
-        <label for="#decunrest">Decrease unrest by:</label>
-        <input type="number" name="#decunrest" id="#decunrest" value="0" class="resnum">
-        <br>
-        <label for="#supply">Gives extra supplies:</label>
-        <input type="number" name="#supply" id="#supply" value="0" class="resnum">
-        <br>
-        <label for="rarity">Site Rarity:</label>
+            <label for="#decunrest">Decrease unrest by:</label>
+            <input type="number" name="#decunrest" id="#decunrest" value="0" class="resnum">
+            <br>
+            <label for="#supply">Gives extra supplies:</label>
+            <input type="number" name="#supply" id="#supply" value="0" class="resnum">
+            <br>
+            <label for="rarity">Site Rarity:</label>
             <select class="attunment" id="#rarity" onchange="enableOrDisable(isThrone(), 'throne', '')">
                 <option value="0" selected>Common</option>
                 <option value="1">Uncommon</option>
@@ -277,7 +278,6 @@
                     <br>
                     <label for="#homemon">Monster ID:</label>
                     <input type="number" name="#homemon" id="#homemon" min="0" value="0" class="capnum">
-        
                 </p>
                 <p>
                     ID of commander that can be recuted at site
@@ -363,331 +363,333 @@
             </fieldset>
             <fieldset>
                 <legend>Mage Summoning</legend>
-                <p>In order to use this site to summon monsters, the user must be a 
-                    mage with at least one level in the same magic path as the site.</p>
-                    <p>
+                <p>
+                    In order to use this site to summon monsters, the user must be a 
+                    mage with at least one level in the same magic path as the site.
+                </p>
+                <p>
+                    <br>
+                    <label for="#summon">ID of monster:</label>
+                    <input type="number" name="#summon" id="#summon" min="0" value="0" class="summoning">
+                </p>
+                <p>Mage level must be at least 2
+                    <br>
+                    <label for="#summonlvl2">ID of monster:</label>
+                    <input type="number" name="#summonlvl2" id="#summonlvl2" min="0" value="0" class="summoning">
+                </p>
+                <p>Mage level must be at least 3
+                    <br>
+                    <label for="#summonlvl3">ID of monster:</label>
+                    <input type="number" name="#summonlvl3" id="#summonlvl3" min="0" value="0" class="summoning">
+                </p>
+                <p>Mage level must be at least 4
+                    <br>
+                    <label for="#summonlvl4">ID of monster:</label>
+                    <input type="number" name="#summonlvl4" id="#summonlvl4" min="0" value="0" class="summoning">
+                </p>
+                <p>
+                    A higher void summoning skill means a higher rate of sucess. A mage 
+                    without the Void sanity ability may end up going insane.
+                    <br>
+                    <label for="#voidgate">Chance to sucessfuly summon a Void creature:</label>
+                    <input type="number" name="#voidgate" id="#voidgate" min="0" max="100" value="0">
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>Wall Defenders</legend>
+                <label for="#uwwallcom">ID of wall commander:</label>
+                <input type="number" name="#uwwallcom" id="#uwwallcom" min="0" max="8999" value="0" class="pd">
                 <br>
-                <label for="#summon">ID of monster:</label>
-                <input type="number" name="#summon" id="#summon" min="0" value="0" class="summoning">
+                <label for="uwwallunit">ID of wall defending unit:</label>
+                <input type="number" name="#uwwallunit" id="#uwwallunit" min="0" max="8999" value="0" class="pd">
+                <br>
+                <label for="#uwwallmult">Number of wall defending units per 10 points of PD:</label>
+                <input type="number" name="#uwwallmult" id="#uwwallmult" min="1" value="20" class="pd">
+            </fieldset>
+            <h3>Scale Effects</h3>
+            <p>Order/Turmoil:
+                <br>
+                <input type="radio" name="scaord" id="#decscale 0" value="#decscale 0" class="scaord">
+                <label for="#decscale 0">Increase Turmoil</label>
+                <br>
+                <input type="radio" name="scaord" id="nochangeorder" value="nochangeorder" class="scaord" checked>
+                <label for="nochangeorder">No change</label>
+                <br>
+                <input type="radio" name="scaord" id="#incscale 0" value="#incscale 0" class="scaord">
+                <label for="#incscale 0">Increase Order</label>
             </p>
-            <p>Mage level must be at least 2
+            <p>Productivity/Sloth:
                 <br>
-                <label for="#summonlvl2">ID of monster:</label>
-                <input type="number" name="#summonlvl2" id="#summonlvl2" min="0" value="0" class="summoning">
+                <input type="radio" name="scapro" id="#decscale 1" value="#decscale 1" class="scapro">
+                <label for="#decscale 1">Increase Sloth</label>
+                <br>
+                <input type="radio" name="scapro" id="nochangeprod" value="nochangeprod" class="scapro" checked>
+                <label for="nochangeprod">No change</label>
+                <br>
+                <input type="radio" name="scapro" id="#incscale 1" value="#incscale 1" class="scapro">
+                <label for="#incscale 1">Increase Productivity</label>
             </p>
-            <p>Mage level must be at least 3
+            <p>Heat/Cold:
                 <br>
-                <label for="#summonlvl3">ID of monster:</label>
-                <input type="number" name="#summonlvl3" id="#summonlvl3" min="0" value="0" class="summoning">
+                <input type="radio" name="scatemp" id="#decscale 2" value="#decscale 2" class="scatemp">
+                <label for="#decscale 2">Increase Cold</label>
+                <br>
+                <input type="radio" name="scatemp" id="nochangetemp" value="nochangetemp" class="scatemp" checked>
+                <label for="nochangetemp">No change</label>
+                <br>
+                <input type="radio" name="scatemp" id="#incscale 2" value="#incscale 2" class="scatemp">
+                <label for="#incscale 2">Increase Heat</label>
             </p>
-            <p>Mage level must be at least 4
+            <p>Growth/Death:
                 <br>
-                <label for="#summonlvl4">ID of monster:</label>
-                <input type="number" name="#summonlvl4" id="#summonlvl4" min="0" value="0" class="summoning">
+                <input type="radio" name="scagro" id="#decscale 3" value="#decscale 3" class="scagro">
+                <label for="#decscale 3">Increase Death</label>
+                <br>
+                <input type="radio" name="scagro" id="nochangegro" value="nochangegro" class="scagro" checked>
+                <label for="nochangegro">No change</label>
+                <br>
+                <input type="radio" name="scagro" id="#incscale 3" value="#incscale 3"class="scagro" >
+                <label for="#incscale 3">Increase Growth</label>
+            </p>
+            <p>Luck/Misfortune:
+                <br>
+                <input type="radio" name="scaluck" id="#decscale 4" value="#decscale 4" class="scaluck">
+                <label for="#decscale 4">Increase Misfortune</label>
+                <br>
+                <input type="radio" name="scaluck" id="nochangeluck" value="nochangeluck" class="scaluck" checked>
+                <label for="nochangeluck">No change</label>
+                <br>
+                <input type="radio" name="scaluck" id="#incscale 4" value="#incscale 4" class="scaluck">
+                <label for="#incscale 4">Increase Luck</label>
+            </p>
+            <p>Magic/Drain:
+                <br>
+                <input type="radio" name="scamag" id="#decscale 5" value="#decscale 5" class="scamag">
+                <label for="#decscale 5">Increase Drain</label>
+                <br>
+                <input type="radio" name="scamag" id="nochangemag" value="nochangemag" class="scamag" checked>
+                <label for="nochangemag">No change</label>
+                <br>
+                <input type="radio" name="scamag" id="#incscale 5" value="#incscale 5" class="scamag">
+                <label for="#incscale 5">Increase Magic</label>
+            </p>
+            <h3>Magic Rituals & Scrying</h3>
+            <p>When cast at this site, a rituail will cost less gems/blood slaves then normal. 
+                This is caluclated as a percentage.
+                For example, if a specific enchantment ritual ordinarly cost 60 gems, and the 
+                discount value for enchantment rituals was 12, then it disounted by 7 gems. 
+                <br>
+                round(60 * (12 / 100))
+                <br>
+                12 / 100 = 0.12
+                <br>
+                0.12 * 60
+                <br>
+                7.2
+                <br>
+                round(7.2) = 7
+            </p>
+            <label for="#conjcost">Conjuration Bonus:</label>
+            <input type="number" name="#conjcost" id="#conjcost" min="0" max="99" value="0" class="magdiscount">
+            <br>
+            <label for="#altcost">Alteration Bonus:</label>
+            <input type="number" name="#altcost" id="#altcost" min="0" max="99" value="0" class="magdiscount">
+            <br>
+            <label for="#evocost">Evocation Bonus:</label>
+            <input type="number" name="#evocost" id="#evocost" min="0" max="99" value="0" class="magdiscount">
+            <br>
+            <label for="#constcost">Conjuration Bonus:</label>
+            <input type="number" name="#constcost" id="#constcost" min="0" max="99" value="0" class="magdiscount">
+            <br>
+            <label for="#enchcost">Enchantment Bonus:</label>
+            <input type="number" name="#enchcost" id="#enchcost" min="0" max="99" value="0" class="magdiscount">
+            <br>
+            <label for="#thaucost">Thaumaturgy Bonus:</label>
+            <input type="number" name="#thaucost" id="#thaucost" min="0" max="99" value="0" class="magdiscount">
+            <br>
+            <label for="#bloodcost">Blood Bonus:</label>
+            <input type="number" name="#bloodcost" id="#bloodcost" min="0" max="99" value="0" class="magdiscount">
+            <p>
+                A mage with at least one in the same path as this magic site can enter scry on a faraway provence.
+            </p>
+            <label for="#scry">Scrying Duration:</label>
+            <input type="number" name="#scry" id="#scry" min="0" value="0" class="magdiscount">
+            <h3>Ritual Range Boost</h3>
+            <input type="number" id="#firerange" value="0" min="0" class="magRange">
+            <label for="#firerange">Extra fire range:</label>
+            <br>
+            <input type="number" id="#airrange" value="0" min="0" class="magRange">
+            <label for="#airrange">Extra air range:</label>
+            <br>
+            <input type="number" id="#waterrange" value="0" min="0" class="magRange">
+            <label for="#waterrange">Extra water range:</label>
+            <br>
+            <input type="number" id="#earthrange" value="0" min="0" class="magRange">
+            <label for="#earthrange">Extra earth range:</label>
+            <br>
+            <input type="number" id="#astralrange" value="0" min="0" class="magRange">
+            <label for="#astralrange">Extra astral range:</label>
+            <br>
+            <input type="number" id="#deathrange" value="0" min="0" class="magRange">
+            <label for="#deathrange">Extra death range:</label>
+            <br>
+            <input type="number" id="#naturerange" value="0" min="0" class="magRange">
+            <label for="#naturerange">Extra nature range:</label>
+            <br>
+            <input type="number" id="#bloodrange" value="0" min="0" class="magRange">
+            <label for="#bloodrange">Extra blood range:</label>
+            <br>
+            <input type="number" id="#elementrange" value="0" min="0" class="magRange">
+            <label for="#elementrange">Extra elemental range:</label>
+            <br>
+            <input type="number" id="#sorceryrange" value="0" min="0" class="magRange">
+            <label for="#sorceryrange">Extra sorcery range:</label>
+            <br>
+            <input type="number" id="#allrange" value="0" min="0" class="magRange">
+            <label for="#allrange">Extra range to all paths:</label>
+            <h3>Special Effects</h3>
+            <p>These affect every unit present in the same provence.</p>
+            <label for="#heal">Chance of healing afflicitons:</label>
+            <input type="number" name="#heal" id="#heal" min="0" max="100" value="0" class="special">
+            <br>
+            <label for="#curse">Chance of being cursed:</label>
+            <input type="number" name="#curse" id="#curse" min="0" max="100" value="0" class="special">
+            <br>
+            <label for="#disease">Chance of being diseased:</label>
+            <input type="number" name="#disease" id="#disease" min="0" max="100" value="0" class="special">
+            <br>
+            <label for="#horrormark">Chance of being horror marked:</label>
+            <input type="number" name="#horrormark" id="#horrormark" min="0" max="100" value="0" class="special">
+            <br>
+            <label for="#holyfire">Chance of being struck by holy fire:</label>
+            <input type="number" name="#holyfire" id="#holyfire" min="0" max="100" value="0" class="special">
+            <br>
+            <label for="#holypower">Chance of being struck by holy power:</label>
+            <input type="number" name="#holypower" id="#holypower" min="0" max="100" value="0" class="special">
+            <p>A commander can entr this site to gain experince.
+                <br>
+                <label for="#xp">Exp gained:</label>
+                <input type="number" name="#xp" id="#xp" min="0" value="0" class="special">
             </p>
             <p>
-                A higher void summoning skill means a higher rate of sucess. A mage 
-                without the Void sanity ability may end up going insane.
+                The site is a ruin. A commander can enter to gain gold, magic items, 
+                or other benfiits. Or they might be be killed by monsters or traps.
                 <br>
-                <label for="#voidgate">Chance to sucessfuly summon a Void creature:</label>
-                <input type="number" name="#voidgate" id="#voidgate" min="0" max="100" value="0">
+                <label for="#adventureruin">Sucess chance:</label>
+                <input type="number" name="#adventureruin" id="#adventureruin" min="0" max="100" value="0" class="special">
             </p>
-        </fieldset>
-        <fieldset>
-            <legend>Wall Defenders</legend>
-            <label for="#uwwallcom">ID of wall commander:</label>
-            <input type="number" name="#uwwallcom" id="#uwwallcom" min="0" max="8999" value="0" class="pd">
-            <br>
-            <label for="uwwallunit">ID of wall defending unit:</label>
-            <input type="number" name="#uwwallunit" id="#uwwallunit" min="0" max="8999" value="0" class="pd">
-            <br>
-            <label for="#uwwallmult">Number of wall defending units per 10 points of PD:</label>
-            <input type="number" name="#uwwallmult" id="#uwwallmult" min="1" value="20" class="pd">
-        </fieldset>
-        <h3>Scale Effects</h3>
-        <p>Order/Turmoil:
-            <br>
-            <input type="radio" name="scaord" id="#decscale 0" value="#decscale 0" class="scaord">
-            <label for="#decscale 0">Increase Turmoil</label>
-            <br>
-            <input type="radio" name="scaord" id="nochangeorder" value="nochangeorder" class="scaord" checked>
-            <label for="nochangeorder">No change</label>
-            <br>
-            <input type="radio" name="scaord" id="#incscale 0" value="#incscale 0" class="scaord">
-            <label for="#incscale 0">Increase Order</label>
-        </p>
-        <p>Productivity/Sloth:
-            <br>
-            <input type="radio" name="scapro" id="#decscale 1" value="#decscale 1" class="scapro">
-            <label for="#decscale 1">Increase Sloth</label>
-            <br>
-            <input type="radio" name="scapro" id="nochangeprod" value="nochangeprod" class="scapro" checked>
-            <label for="nochangeprod">No change</label>
-            <br>
-            <input type="radio" name="scapro" id="#incscale 1" value="#incscale 1" class="scapro">
-            <label for="#incscale 1">Increase Productivity</label>
-        </p>
-        <p>Heat/Cold:
-            <br>
-            <input type="radio" name="scatemp" id="#decscale 2" value="#decscale 2" class="scatemp">
-            <label for="#decscale 2">Increase Cold</label>
-            <br>
-            <input type="radio" name="scatemp" id="nochangetemp" value="nochangetemp" class="scatemp" checked>
-            <label for="nochangetemp">No change</label>
-            <br>
-            <input type="radio" name="scatemp" id="#incscale 2" value="#incscale 2" class="scatemp">
-            <label for="#incscale 2">Increase Heat</label>
-        </p>
-        <p>Growth/Death:
-            <br>
-            <input type="radio" name="scagro" id="#decscale 3" value="#decscale 3" class="scagro">
-            <label for="#decscale 3">Increase Death</label>
-            <br>
-            <input type="radio" name="scagro" id="nochangegro" value="nochangegro" class="scagro" checked>
-            <label for="nochangegro">No change</label>
-            <br>
-            <input type="radio" name="scagro" id="#incscale 3" value="#incscale 3"class="scagro" >
-            <label for="#incscale 3">Increase Growth</label>
-        </p>
-        <p>Luck/Misfortune:
-            <br>
-            <input type="radio" name="scaluck" id="#decscale 4" value="#decscale 4" class="scaluck">
-            <label for="#decscale 4">Increase Misfortune</label>
-            <br>
-            <input type="radio" name="scaluck" id="nochangeluck" value="nochangeluck" class="scaluck" checked>
-            <label for="nochangeluck">No change</label>
-            <br>
-            <input type="radio" name="scaluck" id="#incscale 4" value="#incscale 4" class="scaluck">
-            <label for="#incscale 4">Increase Luck</label>
-        </p>
-        <p>Magic/Drain:
-            <br>
-            <input type="radio" name="scamag" id="#decscale 5" value="#decscale 5" class="scamag">
-            <label for="#decscale 5">Increase Drain</label>
-            <br>
-            <input type="radio" name="scamag" id="nochangemag" value="nochangemag" class="scamag" checked>
-            <label for="nochangemag">No change</label>
-            <br>
-            <input type="radio" name="scamag" id="#incscale 5" value="#incscale 5" class="scamag">
-            <label for="#incscale 5">Increase Magic</label>
-        </p>
-        <h3>Magic Rituals & Scrying</h3>
-        <p>When cast at this site, a rituail will cost less gems/blood slaves then normal. 
-            This is caluclated as a percentage.
-            For example, if a specific enchantment ritual ordinarly cost 60 gems, and the 
-            discount value for enchantment rituals was 12, then it disounted by 7 gems. 
-            <br>
-            round(60 * (12 / 100))
-            <br>
-            12 / 100 = 0.12
-            <br>
-            0.12 * 60
-            <br>
-            7.2
-            <br>
-            round(7.2) = 7
-        </p>
-        <label for="#conjcost">Conjuration Bonus:</label>
-        <input type="number" name="#conjcost" id="#conjcost" min="0" max="99" value="0" class="magdiscount">
-        <br>
-        <label for="#altcost">Alteration Bonus:</label>
-        <input type="number" name="#altcost" id="#altcost" min="0" max="99" value="0" class="magdiscount">
-        <br>
-        <label for="#evocost">Evocation Bonus:</label>
-        <input type="number" name="#evocost" id="#evocost" min="0" max="99" value="0" class="magdiscount">
-        <br>
-        <label for="#constcost">Conjuration Bonus:</label>
-        <input type="number" name="#constcost" id="#constcost" min="0" max="99" value="0" class="magdiscount">
-        <br>
-        <label for="#enchcost">Enchantment Bonus:</label>
-        <input type="number" name="#enchcost" id="#enchcost" min="0" max="99" value="0" class="magdiscount">
-        <br>
-        <label for="#thaucost">Thaumaturgy Bonus:</label>
-        <input type="number" name="#thaucost" id="#thaucost" min="0" max="99" value="0" class="magdiscount">
-        <br>
-        <label for="#bloodcost">Blood Bonus:</label>
-        <input type="number" name="#bloodcost" id="#bloodcost" min="0" max="99" value="0" class="magdiscount">
-        <p>
-            A mage with at least one in the same path as this magic site can enter scry on a faraway provence.
-        </p>
-        <label for="#scry">Scrying Duration:</label>
-        <input type="number" name="#scry" id="#scry" min="0" value="0" class="magdiscount">
-        <h3>Ritual Range Boost</h3>
-        <input type="number" id="#firerange" value="0" min="0" class="magRange">
-        <label for="#firerange">Extra fire range:</label>
-        <br>
-        <input type="number" id="#airrange" value="0" min="0" class="magRange">
-        <label for="#airrange">Extra air range:</label>
-        <br>
-        <input type="number" id="#waterrange" value="0" min="0" class="magRange">
-        <label for="#waterrange">Extra water range:</label>
-        <br>
-        <input type="number" id="#earthrange" value="0" min="0" class="magRange">
-        <label for="#earthrange">Extra earth range:</label>
-        <br>
-        <input type="number" id="#astralrange" value="0" min="0" class="magRange">
-        <label for="#astralrange">Extra astral range:</label>
-        <br>
-        <input type="number" id="#deathrange" value="0" min="0" class="magRange">
-        <label for="#deathrange">Extra death range:</label>
-        <br>
-        <input type="number" id="#naturerange" value="0" min="0" class="magRange">
-        <label for="#naturerange">Extra nature range:</label>
-        <br>
-        <input type="number" id="#bloodrange" value="0" min="0" class="magRange">
-        <label for="#bloodrange">Extra blood range:</label>
-        <br>
-        <input type="number" id="#elementrange" value="0" min="0" class="magRange">
-        <label for="#elementrange">Extra elemental range:</label>
-        <br>
-        <input type="number" id="#sorceryrange" value="0" min="0" class="magRange">
-        <label for="#sorceryrange">Extra sorcery range:</label>
-        <br>
-        <input type="number" id="#allrange" value="0" min="0" class="magRange">
-        <label for="#allrange">Extra range to all paths:</label>
-        <h3>Special Effects</h3>
-        <p>These affect every unit present in the same provence.</p>
-        <label for="#heal">Chance of healing afflicitons:</label>
-        <input type="number" name="#heal" id="#heal" min="0" max="100" value="0" class="special">
-        <br>
-        <label for="#curse">Chance of being cursed:</label>
-        <input type="number" name="#curse" id="#curse" min="0" max="100" value="0" class="special">
-        <br>
-        <label for="#disease">Chance of being diseased:</label>
-        <input type="number" name="#disease" id="#disease" min="0" max="100" value="0" class="special">
-        <br>
-        <label for="#horrormark">Chance of being horror marked:</label>
-        <input type="number" name="#horrormark" id="#horrormark" min="0" max="100" value="0" class="special">
-        <br>
-        <label for="#holyfire">Chance of being struck by holy fire:</label>
-        <input type="number" name="#holyfire" id="#holyfire" min="0" max="100" value="0" class="special">
-        <br>
-        <label for="#holypower">Chance of being struck by holy power:</label>
-        <input type="number" name="#holypower" id="#holypower" min="0" max="100" value="0" class="special">
-        <p>A commander can entr this site to gain experince.
-            <br>
-            <label for="#xp">Exp gained:</label>
-            <input type="number" name="#xp" id="#xp" min="0" value="0" class="special">
-        </p>
-        <p>
-            The site is a ruin. A commander can enter to gain gold, magic items, 
-            or other benfiits. Or they might be be killed by monsters or traps.
-            <br>
-            <label for="#adventureruin">Sucess chance:</label>
-            <input type="number" name="#adventureruin" id="#adventureruin" min="0" max="100" value="0" class="special">
-        </p>
-        <h3>Throne Effects</h3>
-        <p>
-            When a map is generated, this throne is more likly to apeare near other 
-            thrones with the same cluster value.
-            <br>
-            <label for="#cluster">Cluster value:</label>
-            <input type="number" name="#cluster" id="#cluster" class="throne" min="1" value="1" max="3200" class="throne">
-        </p>
-        <input type="checkbox" name="#claim" id="#claim" value="#claim" class="throne">
-        <label for="#claim">Throne must be claimed</label>
-        <br>
-        <label for="#dominion">Monthly dominion spread checks:</label>
-        <input type="number" name="#dominion" id="#dominion"  min="0" value="0" class="throne">
-        <br>
-        <label for="#goddomchaos">Increase/Decrease Turmoil:</label>
-        <input type="number" name="#goddomchaos" id="#goddomchaos" value="0" class="throne">
-        <br>
-        <label for="#goddomlazy">Increase/Decrease Sloth:</label>
-        <input type="number" name="#goddomlazy" id="#goddomlazy" value="0" class="throne">
-        <br>
-        <label for="#goddomcold">Increase/Decrease Cold:</label>
-        <input type="number" name="#goddomcold" id="#goddomcold" value="0" class="throne">
-        <br>
-        <label for="#goddomdeath">Increase/Decrease Death:</label>
-        <input type="number" name="#goddomdeath" id="#goddomdeath" value="0" class="throne">
-        <br>
-        <label for="#goddommisfortune">Increase/Decrease Misfortune:</label>
-        <input type="number" name="#goddommisfortune" id="#goddommisfortune" value="0" class="throne">
-        <br>
-        <label for="#goddomdrain">Increase/Decrease Drain:</label>
-        <input type="number" name="#goddomdrain" id="#goddomdrain" value="0" class="throne">
-        <br>
-        <fieldset>
-            <legend>Blessing Bonuses</legend>
+            <h3>Throne Effects</h3>
             <p>
-                When this throne is claimed, blessed units will have their abilites 
-                augmented by the amount spefified. If they do not have the ability, 
-                then it will be granted to them.
+                When a map is generated, this throne is more likly to apeare near other 
+                thrones with the same cluster value.
+                <br>
+                <label for="#cluster">Cluster value:</label>
+                <input type="number" name="#cluster" id="#cluster" class="throne" min="1" value="1" max="3200" class="throne">
             </p>
-            <label for="#blesshp">Extra HP:</label>
-            <input type="number" name="#blesshp" id="#blesshp" value="0" min="0" class="throne thronenum">
+            <input type="checkbox" name="#claim" id="#claim" value="#claim" class="throne">
+            <label for="#claim">Throne must be claimed</label>
             <br>
-            <label for="#blessanimawe">Animal Awe:</label>
-            <input type="number" name="#blessanimawe" id="#blessanimawe" value="0" min="0" class="throne thronenum">
+            <label for="#dominion">Monthly dominion spread checks:</label>
+            <input type="number" name="#dominion" id="#dominion"  min="0" value="0" class="throne">
             <br>
-            <label for="#blessmr">Extra Magic Resistance:</label>
-            <input type="number" name="#blessmr" id="#blessmr" value="0" min="0" class="throne thronenum">
+            <label for="#goddomchaos">Increase/Decrease Turmoil:</label>
+            <input type="number" name="#goddomchaos" id="#goddomchaos" value="0" class="throne">
             <br>
-            <label for="#blessawe">Awe:</label>
-            <input type="number" name="#blessawe" id="#blessawe" value="0" min="0" class="throne thronenum">
+            <label for="#goddomlazy">Increase/Decrease Sloth:</label>
+            <input type="number" name="#goddomlazy" id="#goddomlazy" value="0" class="throne">
             <br>
-            <label for="#blessmor">Extra Morale:</label>
-            <input type="number" name="#blessmor" id="#blessmor" value="0" min="0" class="throne thronenum">
+            <label for="#goddomcold">Increase/Decrease Cold:</label>
+            <input type="number" name="#goddomcold" id="#goddomcold" value="0" class="throne">
             <br>
-            <label for="#blessstr">Extra Strength:</label>
-            <input type="number" name="#blessstr" id="#blessstr" value="0" min="0" class="throne thronenum">
+            <label for="#goddomdeath">Increase/Decrease Death:</label>
+            <input type="number" name="#goddomdeath" id="#goddomdeath" value="0" class="throne">
             <br>
-            <label for="#blessdarkvis">Darkvision:</label>
-            <input type="number" name="#blessdarkvis" id="#blessdarkvis" value="0" min="0" class="throne thronenum">
+            <label for="#goddommisfortune">Increase/Decrease Misfortune:</label>
+            <input type="number" name="#goddommisfortune" id="#goddommisfortune" value="0" class="throne">
             <br>
-            <label for="#blessdef">Extra Defence:</label>
-            <input type="number" name="#blessdef" id="#blessdef" value="0" min="0" class="throne thronenum">
+            <label for="#goddomdrain">Increase/Decrease Drain:</label>
+            <input type="number" name="#goddomdrain" id="#goddomdrain" value="0" class="throne">
             <br>
-            <label for="#blessprec">Extra Precision:</label>
-            <input type="number" name="#blessprec" id="#blessprec" value="0" min="0" class="throne thronenum">
+            <fieldset>
+                <legend>Blessing Bonuses</legend>
+                <p>
+                    When this throne is claimed, blessed units will have their abilites 
+                    augmented by the amount spefified. If they do not have the ability, 
+                    then it will be granted to them.
+                </p>
+                <label for="#blesshp">Extra HP:</label>
+                <input type="number" name="#blesshp" id="#blesshp" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessanimawe">Animal Awe:</label>
+                <input type="number" name="#blessanimawe" id="#blessanimawe" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessmr">Extra Magic Resistance:</label>
+                <input type="number" name="#blessmr" id="#blessmr" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessawe">Awe:</label>
+                <input type="number" name="#blessawe" id="#blessawe" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessmor">Extra Morale:</label>
+                <input type="number" name="#blessmor" id="#blessmor" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessstr">Extra Strength:</label>
+                <input type="number" name="#blessstr" id="#blessstr" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessdarkvis">Darkvision:</label>
+                <input type="number" name="#blessdarkvis" id="#blessdarkvis" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessdef">Extra Defence:</label>
+                <input type="number" name="#blessdef" id="#blessdef" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessprec">Extra Precision:</label>
+                <input type="number" name="#blessprec" id="#blessprec" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessfireres">Fire Resistance:</label>
+                <input type="number" name="#blessfireres" id="#blessfireres" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blesscoldres">Cold Resistance:</label>
+                <input type="number" name="#blesscoldres" id="#blesscoldres" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessshockres">Shock Resistance:</label>
+                <input type="number" name="#blessshockres" id="#blessshockres" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blesspoisres">Poison Resistance:</label>
+                <input type="number" name="#blesspoisres" id="#blesspoisres" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessairshld">Air Shield:</label>
+                <input type="number" name="#blessairshld" id="#blessairshld" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessreinvig">Reinvigoration:</label>
+                <input type="number" name="#blessreinvig" id="#blessreinvig" value="0" min="0" class="throne thronenum">
+                <br>
+                <label for="#blessdtv">Undying:</label>
+                <input type="number" name="#blessdtv" id="#blessdtv" value="0" min="0" class="throne thronenum">
+                <br>
+            </fieldset>
+            <p>
+                The throne will be defended by an evil monster.
+                <br>
+                <input type="checkbox" name="#evil" id="#evil" value="#evil" class="throne thronebool">
+                <label for="#evil">Evil Defender</label>
+            </p>
+            <p>
+                The throne will be defended by a wild monster.
+                <br>
+                <input type="checkbox" name="#wild" id="#wild" value="#wild" class="throne thronebool">
+                <label for="#wild">Wild Defender</label>
+            </p>
+            <p>
+                The throne's holder gains a bonus when calling their pretender back from the dead.
+                <br>
+                <input type="checkbox" name="#recallgod" id="#recallgod" value="#recallgod" class="throne thronebool">
+                <label for="#recallgod">Call God Bonus</label>
+            </p>
+            <input type="checkbox" name="#domwar" id="#domwar" value="#domwar" class="throne thronebool">
+            <label for="#domwar">Bonus to dominion conflict</label>
             <br>
-            <label for="#blessfireres">Fire Resistance:</label>
-            <input type="number" name="#blessfireres" id="#blessfireres" value="0" min="0" class="throne thronenum">
+            <button onclick="document.getElementById('result').innerText = createSite()">Create Site</button>
             <br>
-            <label for="#blesscoldres">Cold Resistance:</label>
-            <input type="number" name="#blesscoldres" id="#blesscoldres" value="0" min="0" class="throne thronenum">
-            <br>
-            <label for="#blessshockres">Shock Resistance:</label>
-            <input type="number" name="#blessshockres" id="#blessshockres" value="0" min="0" class="throne thronenum">
-            <br>
-            <label for="#blesspoisres">Poison Resistance:</label>
-            <input type="number" name="#blesspoisres" id="#blesspoisres" value="0" min="0" class="throne thronenum">
-            <br>
-            <label for="#blessairshld">Air Shield:</label>
-            <input type="number" name="#blessairshld" id="#blessairshld" value="0" min="0" class="throne thronenum">
-            <br>
-            <label for="#blessreinvig">Reinvigoration:</label>
-            <input type="number" name="#blessreinvig" id="#blessreinvig" value="0" min="0" class="throne thronenum">
-            <br>
-            <label for="#blessdtv">Undying:</label>
-            <input type="number" name="#blessdtv" id="#blessdtv" value="0" min="0" class="throne thronenum">
-            <br>
-        </fieldset>
-        <p>
-            The throne will be defended by an evil monster.
-            <br>
-            <input type="checkbox" name="#evil" id="#evil" value="#evil" class="throne thronebool">
-            <label for="#evil">Evil Defender</label>
-        </p>
-        <p>
-            The throne will be defended by a wild monster.
-            <br>
-            <input type="checkbox" name="#wild" id="#wild" value="#wild" class="throne thronebool">
-            <label for="#wild">Wild Defender</label>
-        </p>
-        <p>
-            The throne's holder gains a bonus when calling their pretender back from the dead.
-            <br>
-            <input type="checkbox" name="#recallgod" id="#recallgod" value="#recallgod" class="throne thronebool">
-            <label for="#recallgod">Call God Bonus</label>
-        </p>
-        <input type="checkbox" name="#domwar" id="#domwar" value="#domwar" class="throne thronebool">
-        <label for="#domwar">Bonus to dominion conflict</label>
-        <br>
-        <button onclick="document.getElementById('result').innerText = createSite()">Create Site</button>
-        <br>
-        <p id="result" name="result">Result</p>
-    </main>
+            <p id="result" name="result">Result</p>
+        </main>
     </body>
 </html>

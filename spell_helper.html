@@ -14,881 +14,928 @@
         <script type="text/javascript" src="assets/spell_script.js">
         </script>
         <link rel="stylesheet" href="assets/mod_styling.css">
-
     </head>
     <body>
         <header>
-                <a href="armor_helper.html">Armor</a>
-                <a href="weapon_helper.html">Weapons</a>
-                <a href="item_helper.html">Magic Items</a>
-                <a href="spell_helper.html">Magic Spells</a>
-                <a href="monster_helper.html">Monsters</a>
-                <a href="nation_helper.html">Nations</a>
-                <a href="site_helper.html">Magic Sites</a>
+            <a href="mod_helper.html">Mod</a>
+            <a href="armor_helper.html">Armor</a>
+            <a href="weapon_helper.html">Weapons</a>
+            <a href="item_helper.html">Magic Items</a>
+            <a href="spell_helper.html">Magic Spells</a>
+            <a href="monster_helper.html">Monsters</a>
+            <a href="nation_helper.html">Nations</a>
+            <a href="site_helper.html">Magic Sites</a>
         </header>
         <main>
-
-        <h1>Basic Spell Attributes</h1>
-        <input type="checkbox" name="#clearallspells" id="#clearallspells" value="#clearallspells">
-        <label for="#clearallspells">Clear all spells</label>
-        <br>
-        <fieldset>
-            <legend>New</legend>
-            <input type="checkbox" name="#newspell" id="#newspell" value="#newspell" checked
-            onchange="enableOrDisable(document.getElementById('#newspell').checked, 'new', 'old')">
-            <label for="#newspell">Spell is new</label>
+            <h1>Basic Spell Attributes</h1>
+            <input type="checkbox" name="#clearallspells" id="#clearallspells" value="#clearallspells">
+            <label for="#clearallspells">Clear all spells</label>
             <br>
-            <label for="#selectspell">ID of spell to be altered:</label>
-            <input type="number" name="#selectspell" id="#selectspell" value="0" min="0" max="1100" class="old">
+            <fieldset>
+                <legend>New</legend>
+                <input type="checkbox" name="#newspell" id="#newspell" value="#newspell" checked
+                onchange="enableOrDisable(document.getElementById('#newspell').checked, 'new', 'old')">
+                <label for="#newspell">Spell is new</label>
+                <br>
+                <label for="#selectspell">ID of spell to be altered:</label>
+                <input type="number" name="#selectspell" id="#selectspell" value="0" min="0" max="1100" class="old">
+                <br>
+                <input type="checkbox" name="#clear" id="#clear" value="#clear" class="old">
+                <label for="#clear">Clears current spell</label>
+            </fieldset>
             <br>
-            <input type="checkbox" name="#clear" id="#clear" value="#clear" class="old">
-            <label for="#clear">Clears current spell</label>
-        </fieldset>
-        <br>
-        <label for="#copyspell">ID of spell to be copied:</label>
-        <input type="number" name="#copyspell" id="#copyspell" value="0" min="0" max="2999">
-        <br>
-        <label for="#name">Name of spell:</label>
-        <input type="text" name="#name" id="#name" class="namedes">
-        <br>
-        <label for="#descr">Description of spell</label>
-        <input type="text" name="#descr" id="#descr" class="namedes">
-        <br>
-        <input type="checkbox" name="isritual" id="isritual" 
-        onchange="ritualVsBattle()">
-        <label for="isritual">Spell is a ritual</label>
-        <br>
-        <label for="#school">Spell School:</label>
-        <select name="#school" id="#school" >
-            <option value="-1" selected>Spell cannot be researched</option>
-            <option value="0">Conjuration</option>
-            <option value="1">Alteration</option>
-            <option value="2">Evocation</option>
-            <option value="3">Construction</option>
-            <option value="4">Enchantment</option>
-            <option value="5">Thaumaturgy</option>
-            <option value="6">Blood</option>
-            <option value="7">Divine</option>
-        </select>
-        <br>
-        <label for="#researchlevel">Research level required:</label>
-        <input type="number" name="#researchlevel" id="#researchlevel" value="0" min="0" max="9">
-        <br>
-        <label for="#path 0">First required magic path:</label>
-        <select name="#path 0" id="#path 0" onchange="checkSchool()">
-            <option value="-1">None</option>
-            <option value="0">Fire</option>
-            <option value="1">Air</option>
-            <option value="2">Water</option>
-            <option value="3">Earth</option>
-            <option value="4" selected>Astral</option>
-            <option value="5">Death</option>
-            <option value="6">Nature</option>
-            <option value="7">Blood</option>
-            <option value="8">Priest</option>
-        </select>
-        <br>
-        <label for="#pathlevel 0">Required first path level:</label>
-        <input type="number" name="#pathlevel 0" id="#pathlevel 0" min="0" max="10" value="1" >
-        <br>
-        <input type="checkbox" name="has2ndpath" id="has2ndpath" 
-        onchange="enableOrDisable(document.getElementById('has2ndpath').checked, 'secpath', '')">
-        <label for="has2ndpath">Has second magic path</label>
-        <br>        
-        <label for="#path 1">Second required magic path:</label>
-        <select name="#path 1" id="#path 1" class="secpath" disabled>
-            <option value="-1">None</option>
-            <option value="0">Fire</option>
-            <option value="1">Air</option>
-            <option value="2">Water</option>
-            <option value="3">Earth</option>
-            <option value="4" selected>Astral</option>
-            <option value="5">Death</option>
-            <option value="6">Nature</option>
-            <option value="7">Blood</option>
-            <option value="8">Priest</option>
-        </select>
-        <br>
-        <label for="#pathlevel 1">Required second path level:</label>
-        <input type="number" name="#pathlevel 1" id="#pathlevel 1" min="0" max="10" value="1" class="secpath" disabled>
-        <br>
-        <label for="#fatiguecost">Fatigue cost:</label>
-        <input type="number" name="#fatiguecost" id="#fatiguecost" min="0" max="1000" value="10" step="1" onchange="spellcost()">
-        <p id="spellcost">Spell Cost: 1 fatigue</p>
-        <br>
-        <label for="gemcost">Number of magic gems/blood slaves required</label>
-        <input type="number" name="gemcost" id="gemcost" min="1" max="300" value="5">
-
-        <h3>Spell Effects</h3>
-        <fieldset>
-            <legend>Area Affected</legend>
-            <input type="checkbox" name="bigarea" id="bigarea" class="battle">
-            <label for="bigarea">More powerful caster affect larger area</label>
+            <label for="#copyspell">ID of spell to be copied:</label>
+            <input type="number" name="#copyspell" id="#copyspell" value="0" min="0" max="2999">
             <br>
-            <p>Percentage of battle field affected:</p>
-            <input type="radio" name="battlepercent" id="per100" value="666" class="battlepercent battle">
-            <label for="per100">%100</label>
+            <label for="#name">Name of spell:</label>
+            <input type="text" name="#name" id="#name" class="namedes">
             <br>
-            <input type="radio" name="battlepercent" id="per50" value="663" class="battlepercent battle">
-            <label for="per50">%50</label>
+            <label for="#descr">Description of spell</label>
+            <input type="text" name="#descr" id="#descr" class="namedes">
             <br>
-            <input type="radio" name="battlepercent" id="per25" value="665" class="battlepercent battle">
-            <label for="per25">%25</label>
+            <input type="checkbox" name="isritual" id="isritual" 
+            onchange="ritualVsBattle()">
+            <label for="isritual">Spell is a ritual</label>
             <br>
-            <input type="radio" name="battlepercent" id="per10" value="664" class="battlepercent battle">
-            <label for="per10">%10</label>
-            <br>
-            <input type="radio" name="battlepercent" id="per5" value="662" class="battlepercent battle">
-            <label for="per5">%5</label>
-            <br>
-            <input type="radio" name="battlepercent" id="per0" value="0" class="battlepercent battle" checked>
-            <label for="per0">%Specify number of square below:</label>
-            <br>
-            <label for="#aoe">Area of effect:</label>
-            <input type="number" name="#aoe" id="#aoe" min="0" max="500" value="0" class="battle">
-        </fieldset>
-        <fieldset>
-            <legend>Damage</legend>
-            <input type="checkbox" name="vardamage" id="vardamage">
-            <label for="vardamage">Spell damage varies with the level of the caster</label>
-            <p>Note: Summoning spells use the base damage to determin which monster to summon.</p>
-            <label for="#damage">Base Damage:</label>
-            <input type="number" name="#damage" id="#damage" min="0" value="0">
-            
-            <p>Note: After the main effect happens, then the effect of the spell specified below 
-                will be applied to every area where main spell took place. A value of -1 will 
-                disable this</p>
-            <label for="#nextspell">ID of next effct spell:</label>
-            <input type="number" name="#nextspell" id="#nextspell" min="-1" value="-1" class="battle">
-                                <!--todo: nextingeo-->
-        </fieldset>
-        <label for="combateffect">Spell effect (combat only)</label>
-        <select name="combateffect" id="combateffect" class="battle">
-            <option value="1">Summon monster</option>
-            <option value="2" selected>Damage</option>
-            <option value="3">Fatigue damage</option>
-            <option value="7">Poison damage</option>
-            <option value="8">Relief</option>
-            <option value="13">Healing</option>
-            <option value="20">Blink</option>
-            <option value="24">Holy damage (3x)</option>
-            <option value="28">Enalave</option>
-            <option value="29">Charm</option>
-            <option value="31">Summon Indpendent</option>
-            <option value="43">Border Summon</option>
-            <option value="66">Paralyze</option>
-            <option value="73">Antimagic damage (x2)</option>
-            <option value="103">Drain Life</option>
-            <option value="107">Holy damage (x2 vs demons)</option>
-            <option value="109">Capped damage</option>
-            <option value="124">Holy damage (x2 vs undead)</option>
-            <option value="126">Border Summon Indpendent</option>
-            <option value="128">Stun</option>
-            <option value="134">Bounce damage</option>
-        </select>
-        <label for="ritualeffect"></label>
-        <select name="ritualeffect" id="ritualeffect" class="ritual">
-            <option value="10001" selected>Summon monster</option>
-            <option value="10019">Teleport</option>
-            <option value="10021">Summon commander</option>
-            <option value="10035">Crossbreed</option>
-            <option value="10037">Farsummon</option>
-            <option value="10038">Indpendant farsummon</option>
-            <option value="10039">Gift of reason</option>
-            <option value="10050">Assassination</option>
-            <option value="10063">Build fort</option>
-            <option value="10077">Army teleport</option>
-
-        </select>
-        <label for="#nreff">Number of effects:</label>
-        <input type="number" name="#nreff" id="#nreff" value="1" min="1">
-        <br>
-        <input type="checkbox" name="poweffects" id="poweffects">
-        <label for="poweffects">Powerful casters get more effects</label>
-        <br>
-        <label for="#range">Range (combat only):</label>
-        <input type="number" name="#range" id="#range" min="0" value="0">
-        <br>
-        <input type="checkbox" name="powrange" id="powrange">
-        <label for="powrange">Powerful casters get longer range</label>
-        <br>
-        <label for="#precision">Precision:</label>
-        <input type="number" name="#precision" id="#precision" value="0">
-        <h3>Look & Sound of Combat Spells</h3>
-        <fieldset>
-            <legend>Flying Sprite/Explosion Effect</legend>
-            <label for="#explspr">Explosion effect:</label>
-        <select name="#explspr" id="#explspr" onchange="explosionEffect()" class="battle">
-            <option value="10001">Falling shimmering colors</option>
-            <option value="10002">Falling white</option>
-            <option value="10003">Falling red</option>
-            <option value="10004">Falling green</option>
-            <option value="10005">Falling blue</option>
-            <option value="10006">Falling light red</option>
-            <option value="10007">Falling light green</option>
-            <option value="10008">Falling light blue</option>
-            <option value="10009">Falling purple</option>
-            <option value="10010">Falling yellow</option>
-            <option value="10011">Falling orange</option>
-            <option value="10012">Falling cyan</option>
-            <!--
-            <option value="misc">Misc (seel bellow)</option>
-            -->
-            <option value="10021-10039">Few falling colors</option>
-            <option value="10041-10069">Rising mists</option>
-            <option value="10101-10119">Explosion</option>
-            <option value="10121-10139">Exploding gas</option>
-
-            <option value="10108">Cold blast</option>
-            <option value="10113">Fireball</option>
-            <option value="10141">Rising purple</option>
-            <option value="10200">Curse</option>
-            <option value="10206">Soul slay</option>
-            <option value="10108">Lightning</option>
-        </select>
-        <br>
-        <p id="changemiscsprite">Note: This will produce a few falling colors. Acceptable values are from 10021 to 10039.</p>
-        
-        <label for="miscexplodesprite">Misc explosion effect</label>
-        <input type="number" name="miscexplodesprite" id="miscexplodesprite" value="10021" 
-        min="10021" max="10139" disabled class="battle">
-            <select name="flysp" id="flysp" class="battle"
-            onchange="enableOrDisable(getSelectedValue('flysp') == 'sprite', 'partballsp', '')">
-                <option value="100" selected>Boulder</option>
-                <option value="109">Arrow</option>
-                <option value="110">Javlin</option>
-                <option value="111">Sling stone</option>
-                <option value="133">Fire swirl</option>
-                <option value="137">Frost swirl</option>
-                <option value="141">Multi colored swirl</option>
-                <option value="210">Lightning bolt</option>
-                <option value="274">Banefire arrow</option>
-                <option value="304">Blade wind missle</option>
-                <option value="313">Sticky goo</option>
-                <option value="339">Evil death thingy</option>
-                <option value="350">Fire arrow</option>
-                <option value="354">Fire javlin</option>
-                <option value="162">Fire boulder</option>
-                <option value="395">Elf shot</option>
-                <option value="403">Blow gun needle</option>
-                <option value="404">Green gooey missle</option>
-                <option value="411">Throwing axe</option>
-                <option value="416">Web</option>
-                <!--
-                <option value="10061-10080">Particle ball</option>
-                <option value="10080-10100">Small particle ball</option>
-                -->
-                <option value="sprite">Particle ball/Small particle ball</option>
-                <option value="10179">Acid</option>
-                <option value="10278">Web ball</option>
-                <option value="10287">Dragonfire</option>
-                <option value="10290">Dragonfrost</option>
-                <option value="10292">Dragongas</option>
-                <option value="10295">Petrafying gas</option>
-                <option value="10307">Lightning particles</option>
+            <label for="#school">Spell School:</label>
+            <select name="#school" id="#school" >
+                <option value="-1" selected>Spell cannot be researched</option>
+                <option value="0">Conjuration</option>
+                <option value="1">Alteration</option>
+                <option value="2">Evocation</option>
+                <option value="3">Construction</option>
+                <option value="4">Enchantment</option>
+                <option value="5">Thaumaturgy</option>
+                <option value="6">Blood</option>
+                <option value="7">Divine</option>
             </select>
             <br>
-            <p>Note: Value from 10061 to 10080 will result in the spell using a standard 
-                animated sprite. Values from 10081 to 10100 will result in a smaller sprite.</p>
-            <label for="partball">Number of particle ball/small particle ball sprite to use</label>
-            <input type="number" name="partball" id="partball" value="10061" min="10061" max="10100" class="partballsp battle" disabled>
+            <label for="#researchlevel">Research level required:</label>
+            <input type="number" name="#researchlevel" id="#researchlevel" value="0" min="0" max="9">
+            <br>
+            <label for="#path 0">First required magic path:</label>
+            <select name="#path 0" id="#path 0" onchange="checkSchool()">
+                <option value="-1">None</option>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" selected>Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+            </select>
+            <br>
+            <label for="#pathlevel 0">Required first path level:</label>
+            <input type="number" name="#pathlevel 0" id="#pathlevel 0" min="0" max="10" value="1" >
+            <br>
+            <input type="checkbox" name="has2ndpath" id="has2ndpath" 
+            onchange="enableOrDisable(document.getElementById('has2ndpath').checked, 'secpath', '')">
+            <label for="has2ndpath">Has second magic path</label>
+            <br>        
+            <label for="#path 1">Second required magic path:</label>
+            <select name="#path 1" id="#path 1" class="secpath" disabled>
+                <option value="-1">None</option>
+                <option value="0">Fire</option>
+                <option value="1">Air</option>
+                <option value="2">Water</option>
+                <option value="3">Earth</option>
+                <option value="4" selected>Astral</option>
+                <option value="5">Death</option>
+                <option value="6">Nature</option>
+                <option value="7">Blood</option>
+                <option value="8">Priest</option>
+            </select>
+            <br>
+            <label for="#pathlevel 1">Required second path level:</label>
+            <input type="number" name="#pathlevel 1" id="#pathlevel 1" min="0" max="10" value="1" class="secpath" disabled>
+            <br>
+            <label for="#fatiguecost">Fatigue cost:</label>
+            <input type="number" name="#fatiguecost" id="#fatiguecost" min="0" max="1000" value="10" step="1" onchange="spellcost()">
+            <p id="spellcost">Spell Cost: 1 fatigue</p>
+            <br>
+            <label for="gemcost">Number of magic gems/blood slaves required</label>
+            <input type="number" name="gemcost" id="gemcost" min="1" max="300" value="5">
 
-        </fieldset>
-
-        <fieldset>
-                <legend>Sound Effects</legend>
-
-            <label for="customSound">Has Custom Sound Effect:</label>
-            <input type="checkbox" name="customSound" id="customSound" class="battle"
-            onchange="enableOrDisable(document.getElementById('customSound').checked, 'customSound', 'noCustomSound')">
-
-            <label for="#sound">Weapon Sound:</label>
-            <select name="#sound" id="#sound" class="noCustomSound">
-                <option value="7" selected>Dagger</option>
-                <option value="8">Sword</option>
-                <option value="9">Whip</option>
-                <option value="10">Clup/Axe</option>
-                <option value="11">Flail/Morning Star</option>
-
-                <option value="12">Spear/Pike</option>
-                <option value="13">Crossbow/arbalest</option>
-                <option value="14">Bow</option>
-                <option value="15">Sling</option>
-                <option value="16">Fire Flare</option>
-                <option value="18">Life Drain</option>
-                <option value="19">Javelin</option>
-
-                <option value="20">Banshee</option>
-                <option value="21">Frost Blast</option>
-                <option value="22">Mind Blast</option>
-                <option value="24">Electricity</option>
-                <option value="29">Elf shot</option>
-                <option value="38">Claw/bite/kick</option>
-                <option value="46">Blow pipe</option>
-
-                <option value="50">Serpent</option>
-                <option value="78">Lion</option>
-                <option value="79">Lion</option>
-                <option value="87">Whip</option>
-                <option value="89">Explosion</option>
+            <h3>Spell Effects</h3>
+            <fieldset>
+                <legend>Area Affected</legend>
+                <input type="checkbox" name="bigarea" id="bigarea" class="battle">
+                <label for="bigarea">More powerful caster affect larger area</label>
+                <br>
+                <p>Percentage of battle field affected:</p>
+                <input type="radio" name="battlepercent" id="per100" value="666" class="battlepercent battle">
+                <label for="per100">%100</label>
+                <br>
+                <input type="radio" name="battlepercent" id="per50" value="663" class="battlepercent battle">
+                <label for="per50">%50</label>
+                <br>
+                <input type="radio" name="battlepercent" id="per25" value="665" class="battlepercent battle">
+                <label for="per25">%25</label>
+                <br>
+                <input type="radio" name="battlepercent" id="per10" value="664" class="battlepercent battle">
+                <label for="per10">%10</label>
+                <br>
+                <input type="radio" name="battlepercent" id="per5" value="662" class="battlepercent battle">
+                <label for="per5">%5</label>
+                <br>
+                <input type="radio" name="battlepercent" id="per0" value="0" class="battlepercent battle" checked
+                onchange="enableOrDisable(document.getElementById('per0').checked, '#aoe', '', true)">
+                <label for="per0">%Specify number of square below:</label>
+                <br>
+                <label for="#aoe">Area of effect:</label>
+                <input type="number" name="#aoe" id="#aoe" min="0" max="500" value="0" class="battle">
+            </fieldset>
+            <fieldset>
+                <legend>Damage</legend>
+                <p>
+                    Spell damage varies with the level of the caster.
+                    <br>
+                    <input type="checkbox" name="vardamage" id="vardamage">
+                    <label for="vardamage">Varrying damage</label>
+                </p>
+                <p>Note: Summoning spells use the base damage to determin which monster to summon.</p>
+                <label for="#damage">Base Damage:</label>
+                <input type="number" name="#damage" id="#damage" min="0" value="0">
+                
+                <p>
+                    Note: After the main effect happens, then the effect of the spell specified below 
+                    will be applied to every area where main spell took place. A value of -1 will 
+                    disable this.
+                </p>
+                <label for="#nextspell">ID of next effct spell:</label>
+                <input type="number" name="#nextspell" id="#nextspell" min="-1" value="-1" class="battle">
+                                    <!--todo: nextingeo-->
+            </fieldset>
+            <label for="combateffect">Spell effect (combat only)</label>
+            <select name="combateffect" id="combateffect" class="battle">
+                <option value="1">Summon monster</option>
+                <option value="2" selected>Damage</option>
+                <option value="3">Fatigue damage</option>
+                <option value="7">Poison damage</option>
+                <option value="8">Relief</option>
+                <option value="13">Healing</option>
+                <option value="20">Blink</option>
+                <option value="24">Holy damage (3x)</option>
+                <option value="28">Enalave</option>
+                <option value="29">Charm</option>
+                <option value="31">Summon Indpendent</option>
+                <option value="43">Border Summon</option>
+                <option value="66">Paralyze</option>
+                <option value="73">Antimagic damage (x2)</option>
+                <option value="103">Drain Life</option>
+                <option value="107">Holy damage (x2 vs demons)</option>
+                <option value="109">Capped damage</option>
+                <option value="124">Holy damage (x2 vs undead)</option>
+                <option value="126">Border Summon Indpendent</option>
+                <option value="128">Stun</option>
+                <option value="134">Bounce damage</option>
+            </select>
+            <br>
+            <label for="ritualeffect">Spell effect (ritual only)</label>
+            <select name="ritualeffect" id="ritualeffect" class="ritual">
+                <option value="10001" selected>Summon monster</option>
+                <option value="10019">Teleport</option>
+                <option value="10021">Summon commander</option>
+                <option value="10035">Crossbreed</option>
+                <option value="10037">Farsummon</option>
+                <option value="10038">Indpendant farsummon</option>
+                <option value="10039">Gift of reason</option>
+                <option value="10050">Assassination</option>
+                <option value="10063">Build fort</option>
+                <option value="10077">Army teleport</option>
 
             </select>
-
-            <label for="#sample">Custom Sound Effect:</label>
-            <input type="text" name="#sample" id="#sample" class="customSound">
-        </fieldset>
-        
-        <h3>Spell Range & Targeting</h3>
-
-        <label for="#provrange">Provence Range</label>
-        <input type="number" name="#provrange" id="#provrange" min="0" value="0" class="ritual">
-        <br>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Spell can only be cast from one of the following terrain types:
-                    </th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc-" id="onlygeosrc-" value="0" class="onlygeosrc ritual">
-                        <label for="onlygeosrc0">Plains</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc0" id="onlygeosrc0" value="1" class="onlygeosrc ritual">
-                        <label for="onlygeosrc0">Small Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc1" id="onlygeosrc1" value="2" class="onlygeosrc ritual">
-                        <label for="onlygeosrc1">Large Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc2" id="onlygeosrc2" value="4" class="onlygeosrc ritual">
-                        <label for="onlygeosrc2">Sea</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc3" id="onlygeosrc3" value="8" class="onlygeosrc ritual">
-                        <label for="onlygeosrc3">Freshwater</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc4" id="onlygeosrc4" value="16" class="onlygeosrc ritual">
-                        <label for="onlygeosrc4">Mountain</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc5" id="onlygeosrc5" value="32" class="onlygeosrc ritual">
-                        <label for="onlygeosrc5">Swamp</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc6" id="onlygeosrc6" value="64" class="onlygeosrc ritual">
-                        <label for="onlygeosrc6">Wasteland</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc7" id="onlygeosrc7" value="128" class="onlygeosrc ritual">
-                        <label for="onlygeosrc7">Forest</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc8" id="onlygeosrc8" value="256" class="onlygeosrc ritual">
-                        <label for="onlygeosrc8">Farm</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc9" id="onlygeosrc9" value="512" class="onlygeosrc ritual">
-                        <label for="onlygeosrc9">Non Starting Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc10" id="onlygeosrc10" value="1024" class="onlygeosrc ritual">
-                        <label for="onlygeosrc10">Many Sites</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc11" id="onlygeosrc11" value="2048" class="onlygeosrc ritual">
-                        <label for="onlygeosrc11">Deep Sea</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc12" id="onlygeosrc12" value="4096" class="onlygeosrc ritual">
-                        <label for="onlygeosrc12">Cave</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeosrc22" id="onlygeosrc22" value="4194304" class="onlygeosrc ritual">
-                        <label for="onlygeosrc22">Border Mountain</label>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Spell cannot be cast from one of the following terrain types:
-                    </th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="nogeosrc-" id="nogeosrc-" value="0" class="nogeosrc ritual">
-                        <label for="nogeosrc0">Plains</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc0" id="nogeosrc0" value="1" class="nogeosrc ritual">
-                        <label for="nogeosrc0">Small Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc1" id="nogeosrc1" value="2" class="nogeosrc ritual">
-                        <label for="nogeosrc1">Large Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc2" id="nogeosrc2" value="4" class="nogeosrc ritual">
-                        <label for="nogeosrc2">Sea</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc3" id="nogeosrc3" value="8" class="nogeosrc ritual">
-                        <label for="nogeosrc3">Freshwater</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="nogeosrc4" id="nogeosrc4" value="16" class="nogeosrc ritual">
-                        <label for="nogeosrc4">Mountain</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc5" id="nogeosrc5" value="32" class="nogeosrc ritual">
-                        <label for="nogeosrc5">Swamp</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc6" id="nogeosrc6" value="64" class="nogeosrc ritual">
-                        <label for="nogeosrc6">Wasteland</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc7" id="nogeosrc7" value="128" class="nogeosrc ritual">
-                        <label for="nogeosrc7">Forest</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc8" id="nogeosrc8" value="256" class="nogeosrc ritual">
-                        <label for="nogeosrc8">Farm</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="nogeosrc9" id="nogeosrc9" value="512" class="nogeosrc ritual">
-                        <label for="nogeosrc9">Non Starting Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc10" id="nogeosrc10" value="1024" class="nogeosrc ritual">
-                        <label for="nogeosrc10">Many Sites</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc11" id="nogeosrc11" value="2048" class="nogeosrc ritual">
-                        <label for="nogeosrc11">Deep Sea</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc12" id="nogeosrc12" value="4096" class="nogeosrc ritual">
-                        <label for="nogeosrc12">Cave</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeosrc22" id="nogeosrc22" value="4194304" class="nogeosrc ritual">
-                        <label for="nogeosrc22">Border Mountain</label>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Spell can only target one of the following terrain types:
-                    </th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="onlygeodst-" id="onlygeodst-" value="0" class="onlygeodst ritual">
-                        <label for="onlygeodst0">Plains</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst0" id="onlygeodst0" value="1" class="onlygeodst ritual">
-                        <label for="onlygeodst0">Small Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst1" id="onlygeodst1" value="2" class="onlygeodst ritual">
-                        <label for="onlygeodst1">Large Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst2" id="onlygeodst2" value="4" class="onlygeodst ritual">
-                        <label for="onlygeodst2">Sea</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst3" id="onlygeodst3" value="8" class="onlygeodst ritual">
-                        <label for="onlygeodst3">Freshwater</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="onlygeodst4" id="onlygeodst4" value="16" class="onlygeodst ritual">
-                        <label for="onlygeodst4">Mountain</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst5" id="onlygeodst5" value="32" class="onlygeodst ritual">
-                        <label for="onlygeodst5">Swamp</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst6" id="onlygeodst6" value="64" class="onlygeodst ritual">
-                        <label for="onlygeodst6">Wasteland</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst7" id="onlygeodst7" value="128" class="onlygeodst ritual">
-                        <label for="onlygeodst7">Forest</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst8" id="onlygeodst8" value="256" class="onlygeodst ritual">
-                        <label for="onlygeodst8">Farm</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="onlygeodst9" id="onlygeodst9" value="512" class="onlygeodst ritual">
-                        <label for="onlygeodst9">Non Starting Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst10" id="onlygeodst10" value="1024" class="onlygeodst ritual">
-                        <label for="onlygeodst10">Many Sites</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst11" id="onlygeodst11" value="2048" class="onlygeodst ritual">
-                        <label for="onlygeodst11">Deep Sea</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst12" id="onlygeodst12" value="4096" class="onlygeodst ritual">
-                        <label for="onlygeodst12">Cave</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="onlygeodst22" id="onlygeodst22" value="4194304" class="onlygeodst ritual">
-                        <label for="onlygeodst22">Border Mountain</label>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Spell cannot target one of the following terrain types:
-                    </th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="nogeodst-" id="nogeodst-" value="0" class="nogeodst ritual">
-                        <label for="nogeodst0">Plains</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst0" id="nogeodst0" value="1" class="nogeodst ritual">
-                        <label for="nogeodst0">Small Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst1" id="nogeodst1" value="2" class="nogeodst ritual">
-                        <label for="nogeodst1">Large Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst2" id="nogeodst2" value="4" class="nogeodst ritual">
-                        <label for="nogeodst2">Sea</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst3" id="nogeodst3" value="8" class="nogeodst ritual">
-                        <label for="nogeodst3">Freshwater</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="nogeodst4" id="nogeodst4" value="16" class="nogeodst ritual">
-                        <label for="nogeodst4">Mountain</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst5" id="nogeodst5" value="32" class="nogeodst ritual">
-                        <label for="nogeodst5">Swamp</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst6" id="nogeodst6" value="64" class="nogeodst ritual">
-                        <label for="nogeodst6">Wasteland</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst7" id="nogeodst7" value="128" class="nogeodst ritual">
-                        <label for="nogeodst7">Forest</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst8" id="nogeodst8" value="256" class="nogeodst ritual">
-                        <label for="nogeodst8">Farm</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" name="nogeodst9" id="nogeodst9" value="512" class="nogeodst ritual">
-                        <label for="nogeodst9">Non Starting Provence</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst10" id="nogeodst10" value="1024" class="nogeodst ritual">
-                        <label for="nogeodst10">Many Sites</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst11" id="nogeodst11" value="2048" class="nogeodst ritual">
-                        <label for="nogeodst11">Deep Sea</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst12" id="nogeodst12" value="4096" class="nogeodst ritual">
-                        <label for="nogeodst12">Cave</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="nogeodst22" id="nogeodst22" value="4194304" class="nogeodst ritual">
-                        <label for="nogeodst22">Border Mountain</label>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <input type="checkbox" name="#onlyatsite" id="#onlyatsite" class="ritual">
-        <label for="#onlycoastsrc">Name of site that spell can only be cast from</label>
-        <br>
-        <input type="checkbox" name="#onlycoastsrc" id="#onlycoastsrc" class="ritualoptions ritual">
-        <label for="#onlycoastsrc">Spell can only be cast from a costal provence</label>
-        <br>
-        <input type="checkbox" name="#onlyfriendlydst" id="#onlyfriendlydst" class="ritualoptions ritual">
-        <label for="#onlyfriendlydst">Spell can only target friendly provences</label>
-        <br>
-        <input type="checkbox" name="#onlyowndst" id="#onlyowndst" class="ritualoptions ritual">
-        <label for="#onlyowndst">Spell can only target casters provences</label>
-        <br>
-        <input type="checkbox" name="#nowatertrace" id="#nowatertrace" class="ritualoptions ritual">
-        <label for="#nowatertrace">Spell cannot pass through water provences</label>
-        <br>
-        <input type="checkbox" name="#nolandtrace" id="#nolandtrace" class="ritualoptions ritual">
-        <label for="#nolandtrace">Spell cannot pass through land provences</label>
-        <br>
-        <input type="checkbox" name="#walkable" id="#walkable" class="ritualoptions ritual">
-        <label for="#walkable">Spell must trace through a walkable path</label>
-
-        <h3>Spell Special Attributes</h3>
-
-        <fieldset>
-            <!--
-                Strength adds 1
-Unused 2
-Unused 4
-Works on Demons (only)* 8
-Works on Magic Beings (only)* 16
-Only vs. Sacred. 32768
-Only affects Hostile 262144
-Only affects Friendly 4194304
-Works on Undead (only)*. 67108864
-
-Not vs Amphibians? 65536
-Not vs. Mindless? 131072
-Not vs. Undead 524288
-
-Fire Based 32
-Cold Based 512
-Shock Based 2048
-Not vs. Inanimates? Damage Type = Poison? 8192
-Physical damage? 2097152
-
-Armor Piercing (documented) 64
-Armor Negating (documented) 128
-
-Unused 256
-Unused 1024
-
-Magic Resistance Negates 4096
-MRN Easily 16777216
-
-Ignore default damage type? 16384
-
-Resisted by Defense Skill? 1048576
-
-Works underwater. 8388608
-*ONLY* under water. 33554432
-
-Unused 134217728
-
-Remote province targeting? 268435456
-Mysterious 536870912
-Bloodletting 1073741824
-Unused 2147483648
-            -->
-            <input type="checkbox" name="ssa1" id="ssa1" value="1" class="spec">
-            <label for="ssa1">Strength adds to spell effect</label>
             <br>
-            <input type="checkbox" name="ssa8" id="ssa8" value="8" class="spec">
-            <label for="ssa8">Only affects demons</label>
+            <label for="#nreff">Number of effects:</label>
+            <input type="number" name="#nreff" id="#nreff" value="1" min="1">
             <br>
-            <input type="checkbox" name="ssa16" id="ssa16" value="16" class="spec">
-            <label for="ssa16">Only affects magic beings</label>
-
-            <input type="checkbox" name="ssa32768" id="ssa32768" value="32768" class="spec">
-            <label for="ssa32768">Only affects Sacred units</label>
-
-            <input type="checkbox" name="ssa262144" id="ssa262144" value="262144" class="spec">
-            <label for="ssa262144">Only affects Hostile units</label>
-
-            <input type="checkbox" name="ssa4194304" id="ssa4194304" value="4194304" class="spec" >
-            <label for="ssa4194304">Only affects friently units</label>
-
-            <input type="checkbox" name="ssa67108864" id="ssa67108864" value="67108864" class="spec"
-            onchange="deactivateIfChecked('ssa67108864', 'ssa524288')">
-            <label for="ssa67108864">Only affects undead</label>
-
-            <input type="checkbox" name="ssa65536" id="ssa65536" value="65536" class="spec">
-            <label for="ssa65536">No effect on amphibians</label>
-
-            <input type="checkbox" name="ssa131072" id="ssa131072" value="131072" class="spec">
-            <label for="ssa131072">No effect on mindless units</label>
-
-            <input type="checkbox" name="ssa524288" id="ssa524288" value="524288" class="spec" 
-            onchange="deactivateIfChecked('ssa524288', 'ssa67108864')">
-            <label for="ssa524288">No effect on undead</label>
-
-            <input type="checkbox" name="ssa32" id="ssa32" value="32" class="spec">
-            <label for="ssa32">Fire damage</label>
-
-            <input type="checkbox" name="ssa512" id="ssa512" value="512" class="spec">
-            <label for="ssa512">Cold damage</label>
-
-            <input type="checkbox" name="ssa2048" id="ssa2048" value="2048" class="spec">
-            <label for="ssa2048">Shock damage</label>
-            
-            <input type="checkbox" name="ssa8192" id="ssa8192" value="8192" class="spec">
-            <label for="ssa8192">Poison damage</label>
-
-            <input type="checkbox" name="ssa2097152" id="ssa2097152" value="2097152" class="spec">
-            <label for="ssa2097152">Physical damage</label>
-
-            <input type="checkbox" name="ssa64" id="ssa64" value="64" class="spec"
-            onchange="deactivateIfChecked('ssa64', 'ssa128')">
-            <label for="ssa64">Armor Piercing</label>
-
-            <input type="checkbox" name="ssa128" id="ssa128" value="128" class="spec"
-            onchange="deactivateIfChecked('ssa128', 'ssa64')">
-            <label for="ssa128">Armor Negating</label>
-
-
-            <input type="checkbox" name="ssa4096" id="ssa4096" value="4096" class="spec"
-            onchange="deactivateIfChecked('ssa4096', 'ssa16777216')">
-            <label for="ssa4096">Magic restance negates</label>
-
-            <input type="checkbox" name="ssa16777216" id="ssa16777216" value="16777216" class="spec"
-            onchange="deactivateIfChecked('ssa16777216', 'ssa4096')">
-            <label for="ssa16777216">Magic restance negates easily</label>
-
-
-            <input type="checkbox" name="ssa8388608" id="ssa8388608" value="8388608" class="spec"
-            onchange="deactivateIfChecked('ssa8388608', 'ssa33554432')">
-            <label for="ssa8388608">Can be used underwater</label>
-
-            <input type="checkbox" name="ssa33554432" id="ssa33554432" value="33554432" class="spec"
-            onchange="deactivateIfChecked('ssa33554432', 'ssa8388608')">
-            <label for="ssa33554432">Can only be used underwater</label>
-        </fieldset>
-        <!--todo farsumcom-->
-
-        <fieldset>
-            <legend>Restricted to the Following Nations:</legend>
-            <p>Enter the numbers of the nations you want to restricted this spell to in the fields below. </p>
-            <input type="number" name="restricted1" id="restricted1" class="restricted" min="-1" value="-1" >
+            <input type="checkbox" name="poweffects" id="poweffects">
+            <label for="poweffects">Powerful casters get more effects</label>
             <br>
-            <input type="number" name="restricted2" id="restricted2" class="restricted" min="-1" value="-1">
+            <label for="#range">Range (combat only):</label>
+            <input type="number" name="#range" id="#range" min="0" value="0">
             <br>
-            <input type="number" name="restricted3" id="restricted3" class="restricted" min="-1" value="-1">
+            <input type="checkbox" name="powrange" id="powrange">
+            <label for="powrange">Powerful casters get longer range</label>
             <br>
-            <input type="number" name="restricted4" id="restricted4" class="restricted" min="-1" value="-1">
-            <br>
-            <input type="number" name="restricted5" id="restricted5" class="restricted" min="-1" value="-1">
-            <br>
-            <input type="number" name="restricted6" id="restricted6" class="restricted" min="-1" value="-1">
-            <br>
-            <input type="number" name="restricted7" id="restricted7" class="restricted" min="-1" value="-1">
-            <br>
-            <input type="number" name="restricted8" id="restricted8" class="restricted" min="-1" value="-1">
-            <br>
-            <input type="number" name="restricted9" id="restricted9" class="restricted" min="-1" value="-1">
-            <br>
-            <input type="number" name="restricted10" id="restricted10" class="restricted" min="-1" value="-1">
-            <br>
-            <input type="number" name="restricted11" id="restricted11" class="restricted" min="-1" value="-1">
-            <br>
-            <input type="number" name="restricted12" id="restricted12" class="restricted" min="-1" value="-1">
-        </fieldset>
-        <p>To preven a nation from using this spell, enter it's ID below.
-            <br>
-            <label for="#notfornation">Barred Nation:</label>
-            <input type="number" name="#notfornation" id="#notfornation" min="-1" value="-1">
-        </p>
-        <input type="checkbox" name="setcasttime" id="setcasttime" class="battle"
-        onchange="enableOrDisable(document.getElementById('setcasttime').checked, 'casttime', '')">
-        <label for="setcasttime">Manualy set casting time</label>
-        <br>
-        <label for="#casttime">Casting time:</label>
-        <input type="number" name="#casttime" id="#casttime" min="1" value="5" max="1000" class="casttime battle">
-        <p>When a pretender god has the hightest magical skill in a paticular path, 
-            his/her priest will be able to use this.  If this value is set to -1, 
-            then this spell will used when the god has no magic paths. This only 
-            takes effect if the spells first path is divine/priest.
-            <br>
-                <label for="#godpathspell">God Path Spell:</label>
-                <select name="#godpathspell" id="#godpathspell">
-                    <option value="-1">Fallback Spell (-1)</option>
-                    <option value="0">Fire</option>
-                    <option value="1">Air</option>
-                    <option value="2">Water</option>
-                    <option value="3">Earth</option>
-                    <option value="4" selected>Astral</option>
-                    <option value="5">Death</option>
-                    <option value="6">Nature</option>
-                    <option value="7">Blood</option>
+            <label for="#precision">Precision:</label>
+            <input type="number" name="#precision" id="#precision" value="0">
+            <h3>Look & Sound of Combat Spells</h3>
+            <fieldset>
+                <legend>Flying Sprite/Explosion Effect</legend>
+                <p>
+                    Note: Setting the explosion effect to Few falling colors, Rising mists, Explosion, 
+                    or Exploding gas will allow you set set a custom number.
+                </p>
+                <label for="#explspr">Explosion effect:</label>
+                <select name="#explspr" id="#explspr" onchange="explosionEffect()" class="battle">
+                    <option value="10001" selected>Falling shimmering colors</option>
+                    <option value="10002">Falling white</option>
+                    <option value="10003">Falling red</option>
+                    <option value="10004">Falling green</option>
+                    <option value="10005">Falling blue</option>
+                    <option value="10006">Falling light red</option>
+                    <option value="10007">Falling light green</option>
+                    <option value="10008">Falling light blue</option>
+                    <option value="10009">Falling purple</option>
+                    <option value="10010">Falling yellow</option>
+                    <option value="10011">Falling orange</option>
+                    <option value="10012">Falling cyan</option>
+                    <!--
+                    <option value="misc">Misc (seel bellow)</option>
+                    -->
+                    <option value="10021-10039">Few falling colors</option>
+                    <option value="10041-10069">Rising mists</option>
+                    <option value="10101-10119">Explosion</option>
+                    <option value="10121-10139">Exploding gas</option>
+
+                    <option value="10108">Cold blast</option>
+                    <option value="10113">Fireball</option>
+                    <option value="10141">Rising purple</option>
+                    <option value="10200">Curse</option>
+                    <option value="10206">Soul slay</option>
+                    <option value="10108">Lightning</option>
                 </select>
-        </p>
-        <br>
+                <br>
+                <p id="changemiscsprite"></p>
+                <label for="miscexplodesprite">Misc explosion effect</label>
+                <input type="number" name="miscexplodesprite" id="miscexplodesprite" value="10021" 
+                min="10021" max="10139" disabled class="battle">
+                <br>
+
+                <br>
+                <label for="flysp">Flying sprite</label>
+                <select name="flysp" id="flysp" class="battle"
+                onchange="enableOrDisable(getSelectedValue('flysp') == 'sprite', 'partballsp', '')">
+                    <option value="100" selected>Boulder</option>
+                    <option value="109">Arrow</option>
+                    <option value="110">Javlin</option>
+                    <option value="111">Sling stone</option>
+                    <option value="133">Fire swirl</option>
+                    <option value="137">Frost swirl</option>
+                    <option value="141">Multi colored swirl</option>
+                    <option value="210">Lightning bolt</option>
+                    <option value="274">Banefire arrow</option>
+                    <option value="304">Blade wind missle</option>
+                    <option value="313">Sticky goo</option>
+                    <option value="339">Evil death thingy</option>
+                    <option value="350">Fire arrow</option>
+                    <option value="354">Fire javlin</option>
+                    <option value="162">Fire boulder</option>
+                    <option value="395">Elf shot</option>
+                    <option value="403">Blow gun needle</option>
+                    <option value="404">Green gooey missle</option>
+                    <option value="411">Throwing axe</option>
+                    <option value="416">Web</option>
+                    <!--
+                    <option value="10061-10080">Particle ball</option>
+                    <option value="10080-10100">Small particle ball</option>
+                    -->
+                    <option value="sprite">Particle ball/Small particle ball</option>
+                    <option value="10179">Acid</option>
+                    <option value="10278">Web ball</option>
+                    <option value="10287">Dragonfire</option>
+                    <option value="10290">Dragonfrost</option>
+                    <option value="10292">Dragongas</option>
+                    <option value="10295">Petrafying gas</option>
+                    <option value="10307">Lightning particles</option>
+                </select>
+                <br>
+                <p>Note: Value from 10061 to 10080 will result in the spell using a standard 
+                    animated sprite. Values from 10081 to 10100 will result in a smaller sprite.</p>
+                <label for="partball">Number of particle ball/small particle ball sprite to use</label>
+                <input type="number" name="partball" id="partball" value="10061" min="10061" max="10100" 
+                class="partballsp battle" disabled>
+            </fieldset>
+
+            <fieldset>
+                    <legend>Sound Effects</legend>
+
+                <label for="customSound">Has Custom Sound Effect:</label>
+                <input type="checkbox" name="customSound" id="customSound" class="battle"
+                onchange="enableOrDisable(document.getElementById('customSound').checked, 'customSound', 'noCustomSound')">
+                <br>
+                <label for="#sound">Weapon Sound:</label>
+                <select name="#sound" id="#sound" class="noCustomSound">
+                    <option value="7" selected>Dagger</option>
+                    <option value="8">Sword</option>
+                    <option value="9">Whip</option>
+                    <option value="10">Clup/Axe</option>
+                    <option value="11">Flail/Morning Star</option>
+
+                    <option value="12">Spear/Pike</option>
+                    <option value="13">Crossbow/arbalest</option>
+                    <option value="14">Bow</option>
+                    <option value="15">Sling</option>
+                    <option value="16">Fire Flare</option>
+                    <option value="18">Life Drain</option>
+                    <option value="19">Javelin</option>
+
+                    <option value="20">Banshee</option>
+                    <option value="21">Frost Blast</option>
+                    <option value="22">Mind Blast</option>
+                    <option value="24">Electricity</option>
+                    <option value="29">Elf shot</option>
+                    <option value="38">Claw/bite/kick</option>
+                    <option value="46">Blow pipe</option>
+
+                    <option value="50">Serpent</option>
+                    <option value="78">Lion</option>
+                    <option value="79">Lion</option>
+                    <option value="87">Whip</option>
+                    <option value="89">Explosion</option>
+                </select>
+                <br>
+                <label for="#sample">Custom Sound Effect:</label>
+                <input type="text" name="#sample" id="#sample" class="customSound">
+            </fieldset>
+            <h3>Spell Range & Targeting</h3>
+
+            <label for="#provrange">Provence Range</label>
+            <input type="number" name="#provrange" id="#provrange" min="0" value="0" class="ritual">
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Spell can only be cast from one of the following terrain types:
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc-" id="onlygeosrc-" value="0" class="onlygeosrc ritual">
+                            <label for="onlygeosrc0">Plains</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc0" id="onlygeosrc0" value="1" class="onlygeosrc ritual">
+                            <label for="onlygeosrc0">Small Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc1" id="onlygeosrc1" value="2" class="onlygeosrc ritual">
+                            <label for="onlygeosrc1">Large Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc2" id="onlygeosrc2" value="4" class="onlygeosrc ritual">
+                            <label for="onlygeosrc2">Sea</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc3" id="onlygeosrc3" value="8" class="onlygeosrc ritual">
+                            <label for="onlygeosrc3">Freshwater</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc4" id="onlygeosrc4" value="16" class="onlygeosrc ritual">
+                            <label for="onlygeosrc4">Mountain</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc5" id="onlygeosrc5" value="32" class="onlygeosrc ritual">
+                            <label for="onlygeosrc5">Swamp</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc6" id="onlygeosrc6" value="64" class="onlygeosrc ritual">
+                            <label for="onlygeosrc6">Wasteland</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc7" id="onlygeosrc7" value="128" class="onlygeosrc ritual">
+                            <label for="onlygeosrc7">Forest</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc8" id="onlygeosrc8" value="256" class="onlygeosrc ritual">
+                            <label for="onlygeosrc8">Farm</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc9" id="onlygeosrc9" value="512" class="onlygeosrc ritual">
+                            <label for="onlygeosrc9">Non Starting Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc10" id="onlygeosrc10" value="1024" class="onlygeosrc ritual">
+                            <label for="onlygeosrc10">Many Sites</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc11" id="onlygeosrc11" value="2048" class="onlygeosrc ritual">
+                            <label for="onlygeosrc11">Deep Sea</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc12" id="onlygeosrc12" value="4096" class="onlygeosrc ritual">
+                            <label for="onlygeosrc12">Cave</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeosrc22" id="onlygeosrc22" value="4194304" class="onlygeosrc ritual">
+                            <label for="onlygeosrc22">Border Mountain</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Spell cannot be cast from one of the following terrain types:
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="nogeosrc-" id="nogeosrc-" value="0" class="nogeosrc ritual">
+                            <label for="nogeosrc0">Plains</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc0" id="nogeosrc0" value="1" class="nogeosrc ritual">
+                            <label for="nogeosrc0">Small Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc1" id="nogeosrc1" value="2" class="nogeosrc ritual">
+                            <label for="nogeosrc1">Large Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc2" id="nogeosrc2" value="4" class="nogeosrc ritual">
+                            <label for="nogeosrc2">Sea</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc3" id="nogeosrc3" value="8" class="nogeosrc ritual">
+                            <label for="nogeosrc3">Freshwater</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="nogeosrc4" id="nogeosrc4" value="16" class="nogeosrc ritual">
+                            <label for="nogeosrc4">Mountain</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc5" id="nogeosrc5" value="32" class="nogeosrc ritual">
+                            <label for="nogeosrc5">Swamp</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc6" id="nogeosrc6" value="64" class="nogeosrc ritual">
+                            <label for="nogeosrc6">Wasteland</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc7" id="nogeosrc7" value="128" class="nogeosrc ritual">
+                            <label for="nogeosrc7">Forest</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc8" id="nogeosrc8" value="256" class="nogeosrc ritual">
+                            <label for="nogeosrc8">Farm</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="nogeosrc9" id="nogeosrc9" value="512" class="nogeosrc ritual">
+                            <label for="nogeosrc9">Non Starting Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc10" id="nogeosrc10" value="1024" class="nogeosrc ritual">
+                            <label for="nogeosrc10">Many Sites</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc11" id="nogeosrc11" value="2048" class="nogeosrc ritual">
+                            <label for="nogeosrc11">Deep Sea</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc12" id="nogeosrc12" value="4096" class="nogeosrc ritual">
+                            <label for="nogeosrc12">Cave</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeosrc22" id="nogeosrc22" value="4194304" class="nogeosrc ritual">
+                            <label for="nogeosrc22">Border Mountain</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Spell can only target one of the following terrain types:
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="onlygeodst-" id="onlygeodst-" value="0" class="onlygeodst ritual">
+                            <label for="onlygeodst0">Plains</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst0" id="onlygeodst0" value="1" class="onlygeodst ritual">
+                            <label for="onlygeodst0">Small Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst1" id="onlygeodst1" value="2" class="onlygeodst ritual">
+                            <label for="onlygeodst1">Large Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst2" id="onlygeodst2" value="4" class="onlygeodst ritual">
+                            <label for="onlygeodst2">Sea</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst3" id="onlygeodst3" value="8" class="onlygeodst ritual">
+                            <label for="onlygeodst3">Freshwater</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="onlygeodst4" id="onlygeodst4" value="16" class="onlygeodst ritual">
+                            <label for="onlygeodst4">Mountain</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst5" id="onlygeodst5" value="32" class="onlygeodst ritual">
+                            <label for="onlygeodst5">Swamp</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst6" id="onlygeodst6" value="64" class="onlygeodst ritual">
+                            <label for="onlygeodst6">Wasteland</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst7" id="onlygeodst7" value="128" class="onlygeodst ritual">
+                            <label for="onlygeodst7">Forest</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst8" id="onlygeodst8" value="256" class="onlygeodst ritual">
+                            <label for="onlygeodst8">Farm</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="onlygeodst9" id="onlygeodst9" value="512" class="onlygeodst ritual">
+                            <label for="onlygeodst9">Non Starting Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst10" id="onlygeodst10" value="1024" class="onlygeodst ritual">
+                            <label for="onlygeodst10">Many Sites</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst11" id="onlygeodst11" value="2048" class="onlygeodst ritual">
+                            <label for="onlygeodst11">Deep Sea</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst12" id="onlygeodst12" value="4096" class="onlygeodst ritual">
+                            <label for="onlygeodst12">Cave</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="onlygeodst22" id="onlygeodst22" value="4194304" class="onlygeodst ritual">
+                            <label for="onlygeodst22">Border Mountain</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Spell cannot target one of the following terrain types:
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="nogeodst-" id="nogeodst-" value="0" class="nogeodst ritual">
+                            <label for="nogeodst0">Plains</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst0" id="nogeodst0" value="1" class="nogeodst ritual">
+                            <label for="nogeodst0">Small Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst1" id="nogeodst1" value="2" class="nogeodst ritual">
+                            <label for="nogeodst1">Large Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst2" id="nogeodst2" value="4" class="nogeodst ritual">
+                            <label for="nogeodst2">Sea</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst3" id="nogeodst3" value="8" class="nogeodst ritual">
+                            <label for="nogeodst3">Freshwater</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="nogeodst4" id="nogeodst4" value="16" class="nogeodst ritual">
+                            <label for="nogeodst4">Mountain</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst5" id="nogeodst5" value="32" class="nogeodst ritual">
+                            <label for="nogeodst5">Swamp</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst6" id="nogeodst6" value="64" class="nogeodst ritual">
+                            <label for="nogeodst6">Wasteland</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst7" id="nogeodst7" value="128" class="nogeodst ritual">
+                            <label for="nogeodst7">Forest</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst8" id="nogeodst8" value="256" class="nogeodst ritual">
+                            <label for="nogeodst8">Farm</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="nogeodst9" id="nogeodst9" value="512" class="nogeodst ritual">
+                            <label for="nogeodst9">Non Starting Provence</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst10" id="nogeodst10" value="1024" class="nogeodst ritual">
+                            <label for="nogeodst10">Many Sites</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst11" id="nogeodst11" value="2048" class="nogeodst ritual">
+                            <label for="nogeodst11">Deep Sea</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst12" id="nogeodst12" value="4096" class="nogeodst ritual">
+                            <label for="nogeodst12">Cave</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="nogeodst22" id="nogeodst22" value="4194304" class="nogeodst ritual">
+                            <label for="nogeodst22">Border Mountain</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                    Name of site that spell can only be cast from.
+                    <br>
+                    <input type="checkbox" name="#onlyatsite" id="#onlyatsite" class="ritual">
+                    <label for="#onlycoastsrc">Site name:</label>
+            </p>
+            <p>
+                    Spell can only be cast from a costal provence.
+                    <br>
+                    <input type="checkbox" name="#onlycoastsrc" id="#onlycoastsrc" class="ritualoptions ritual">
+                    <label for="#onlycoastsrc">Costal provence only</label>
+            </p>
+            <p>
+                    Spell can only target friendly provences.
+                    <br>
+                    <input type="checkbox" name="#onlyfriendlydst" id="#onlyfriendlydst" class="ritualoptions ritual">
+                    <label for="#onlyfriendlydst">Friendly provence only</label>
+            </p>
+            <p>
+                    Spell can only target the provence the casters is in.
+                    <br>
+                    <input type="checkbox" name="#onlyowndst" id="#onlyowndst" class="ritualoptions ritual">
+                    <label for="#onlyowndst">Caster's provences only</label>
+            </p>
+            <p>
+                    Spell cannot pass through water provences.
+                    <br>
+                    <input type="checkbox" name="#nowatertrace" id="#nowatertrace" class="ritualoptions ritual">
+                    <label for="#nowatertrace">No water trace</label>
+            </p>
+            <p>
+                    Spell cannot pass through land provences.
+                    <br>
+                    <input type="checkbox" name="#nolandtrace" id="#nolandtrace" class="ritualoptions ritual">
+                    <label for="#nolandtrace">No land trace</label>
+            </p>
+            <p>
+                    Spell must trace through a walkable path.
+                    <br>
+                    <input type="checkbox" name="#walkable" id="#walkable" class="ritualoptions ritual">
+                    <label for="#walkable">Walkable path</label>
+            </p>
+            <h3>Spell Special Attributes</h3>
+            <fieldset>
+                <!--
+                    Strength adds 1
+    Unused 2
+    Unused 4
+    Works on Demons (only)* 8
+    Works on Magic Beings (only)* 16
+    Only vs. Sacred. 32768
+    Only affects Hostile 262144
+    Only affects Friendly 4194304
+    Works on Undead (only)*. 67108864
+
+    Not vs Amphibians? 65536
+    Not vs. Mindless? 131072
+    Not vs. Undead 524288
+
+    Fire Based 32
+    Cold Based 512
+    Shock Based 2048
+    Not vs. Inanimates? Damage Type = Poison? 8192
+    Physical damage? 2097152
+
+    Armor Piercing (documented) 64
+    Armor Negating (documented) 128
+
+    Unused 256
+    Unused 1024
+
+    Magic Resistance Negates 4096
+    MRN Easily 16777216
+
+    Ignore default damage type? 16384
+
+    Resisted by Defense Skill? 1048576
+
+    Works underwater. 8388608
+    *ONLY* under water. 33554432
+
+    Unused 134217728
+
+    Remote province targeting? 268435456
+    Mysterious 536870912
+    Bloodletting 1073741824
+    Unused 2147483648
+                -->
+                <input type="checkbox" name="ssa1" id="ssa1" value="1" class="spec">
+                <label for="ssa1">Strength adds to spell effect</label>
+                <br>
+                <input type="checkbox" name="ssa8" id="ssa8" value="8" class="spec">
+                <label for="ssa8">Only affects demons</label>
+                <br>
+                <input type="checkbox" name="ssa16" id="ssa16" value="16" class="spec">
+                <label for="ssa16">Only affects magic beings</label>
+                <br>
+                <input type="checkbox" name="ssa32768" id="ssa32768" value="32768" class="spec">
+                <label for="ssa32768">Only affects Sacred units</label>
+                <br>
+                <input type="checkbox" name="ssa262144" id="ssa262144" value="262144" class="spec">
+                <label for="ssa262144">Only affects Hostile units</label>
+                <br>
+                <input type="checkbox" name="ssa4194304" id="ssa4194304" value="4194304" class="spec" >
+                <label for="ssa4194304">Only affects friently units</label>
+                <br>
+                <input type="checkbox" name="ssa67108864" id="ssa67108864" value="67108864" class="spec"
+                onchange="deactivateIfChecked('ssa67108864', 'ssa524288')">
+                <label for="ssa67108864">Only affects undead</label>
+                <br>
+                <input type="checkbox" name="ssa65536" id="ssa65536" value="65536" class="spec">
+                <label for="ssa65536">No effect on amphibians</label>
+                <br>
+                <input type="checkbox" name="ssa131072" id="ssa131072" value="131072" class="spec">
+                <label for="ssa131072">No effect on mindless units</label>
+                <br>
+                <input type="checkbox" name="ssa524288" id="ssa524288" value="524288" class="spec" 
+                onchange="deactivateIfChecked('ssa524288', 'ssa67108864')">
+                <label for="ssa524288">No effect on undead</label>
+                <br>
+                <input type="checkbox" name="ssa32" id="ssa32" value="32" class="spec">
+                <label for="ssa32">Fire damage</label>
+                <br>
+                <input type="checkbox" name="ssa512" id="ssa512" value="512" class="spec">
+                <label for="ssa512">Cold damage</label>
+                <br>
+                <input type="checkbox" name="ssa2048" id="ssa2048" value="2048" class="spec">
+                <label for="ssa2048">Shock damage</label>
+                <br>
+                <input type="checkbox" name="ssa8192" id="ssa8192" value="8192" class="spec">
+                <label for="ssa8192">Poison damage</label>
+                <br>
+                <input type="checkbox" name="ssa2097152" id="ssa2097152" value="2097152" class="spec">
+                <label for="ssa2097152">Physical damage</label>
+                <br>
+                <input type="checkbox" name="ssa64" id="ssa64" value="64" class="spec"
+                onchange="deactivateIfChecked('ssa64', 'ssa128')">
+                <label for="ssa64">Armor Piercing</label>
+                <br>
+                <input type="checkbox" name="ssa128" id="ssa128" value="128" class="spec"
+                onchange="deactivateIfChecked('ssa128', 'ssa64')">
+                <label for="ssa128">Armor Negating</label>
+                <br>
+
+                <input type="checkbox" name="ssa4096" id="ssa4096" value="4096" class="spec"
+                onchange="deactivateIfChecked('ssa4096', 'ssa16777216')">
+                <label for="ssa4096">Magic restance negates</label>
+                <br>
+                <input type="checkbox" name="ssa16777216" id="ssa16777216" value="16777216" class="spec"
+                onchange="deactivateIfChecked('ssa16777216', 'ssa4096')">
+                <label for="ssa16777216">Magic restance negates easily</label>
+                <br>
+
+                <input type="checkbox" name="ssa8388608" id="ssa8388608" value="8388608" class="spec"
+                onchange="deactivateIfChecked('ssa8388608', 'ssa33554432')">
+                <label for="ssa8388608">Can be used underwater</label>
+                <br>
+                <input type="checkbox" name="ssa33554432" id="ssa33554432" value="33554432" class="spec"
+                onchange="deactivateIfChecked('ssa33554432', 'ssa8388608')">
+                <label for="ssa33554432">Can only be used underwater</label>
+            </fieldset>
+            <!--todo farsumcom-->
+
+            <fieldset>
+                <legend>Restricted to the Following Nations:</legend>
+                <p>Enter the numbers of the nations you want to restricted this spell to in the fields below. </p>
+                <input type="number" name="restricted1" id="restricted1" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted2" id="restricted2" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted3" id="restricted3" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted4" id="restricted4" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted5" id="restricted5" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted6" id="restricted6" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted7" id="restricted7" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted8" id="restricted8" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted9" id="restricted9" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted10" id="restricted10" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted11" id="restricted11" class="restricted" min="-1" value="-1" max="249">
+                <br>
+                <input type="number" name="restricted12" id="restricted12" class="restricted" min="-1" value="-1" max="249">
+            </fieldset>
+            <p>To preven a nation from using this spell, enter it's ID below.
+                <br>
+                <label for="#notfornation">Barred Nation:</label>
+                <input type="number" name="#notfornation" id="#notfornation" min="-1" value="-1" max="249">
+            </p>
+            <input type="checkbox" name="setcasttime" id="setcasttime" class="battle"
+            onchange="enableOrDisable(document.getElementById('setcasttime').checked, 'casttime', '')">
+            <label for="setcasttime">Manualy set casting time</label>
+            <br>
+            <label for="#casttime">Casting time:</label>
+            <input type="number" name="#casttime" id="#casttime" min="1" value="5" max="1000" class="casttime battle">
+            <p>When a pretender god has the hightest magical skill in a paticular path, 
+                his/her priest will be able to use this.  If this value is set to -1, 
+                then this spell will used when the god has no magic paths. This only 
+                takes effect if the spells first path is divine/priest.
+                <br>
+                    <label for="#godpathspell">God Path Spell:</label>
+                    <select name="#godpathspell" id="#godpathspell">
+                        <option value="-1">Fallback Spell (-1)</option>
+                        <option value="0">Fire</option>
+                        <option value="1">Air</option>
+                        <option value="2">Water</option>
+                        <option value="3">Earth</option>
+                        <option value="4" selected>Astral</option>
+                        <option value="5">Death</option>
+                        <option value="6">Nature</option>
+                        <option value="7">Blood</option>
+                    </select>
+            </p>
+            <p>
+                Enchantment is dispelled if target provence is conqured my enemy.
+                <br>
+                <input type="checkbox" id="#friendlyench" value="#friendlyench 1" class="atribbool ritual">
+                <label for="#friendlyench">Friendly enchantment</label>
+            
+            </p>
+            <p>
+                Enchantment is not visible during battles.
+                <br>
+                <input type="checkbox" id="#hiddenench" value="#hiddenench 1" class="atribbool ritual">
+                <label for="#hiddenench">Hidden during battles</label>
+            
+            </p>
+            <p>
+                Mindless units cannot cast this spell.
+                <br>
+                <input type="checkbox" id="#nocastmindless" value="#nocastmindless 1"  class="atribbool">
+                <label for="#nocastmindless">No mindless casters</label>
+            </p>
+            <p>
+                Only flying units cannot cast this spell.
+                <br>
+                <input type="checkbox" id="#spellreqfly" value="#spellreqfly 1" class="atribbool">
+                <label for="#nocastmindless">Only flying casters</label>
+            </p>
+            <p>
+                A unit ploymorphed by this spell will retain its magic paths
+                <br>
+                <input type="checkbox" id="#polygetmagic" value="#polygetmagic 1" class="atribbool">
+                <label for="#polygetmagic">Polymorph safe</label>
+            </p>
+            <p>
+                If only a single type of monster can cast this spell, enter it's ID below.
+                <br>
+                <label for="#onlymnr">Monster ID</label>
+                <input type="number" name="#onlymnr" id="#onlymnr" value="-1" min="-1" max="8999">
         
+            </p>
+            <p>
+                If this spell has a chain lightning effect, then enter the 
+                maximun number of time that it can bounce below.
+                <br>
+                <label for="#maxbounces">Max bounces:</label>
+                <input type="number" name="#maxbounces" id="#maxbounces" min="0" value="0" class="battle">
+            
+            </p>
+            <button onclick="document.getElementById('result').innerText = createSpell()">Create Spell</button>
 
-        <input type="checkbox" name="#friendlyench" id="#friendlyench 1" class="atribbool ritual">
-        <label for="#friendlyench">Enchantment is dispelled if target provence is conqured my enemy</label>
-        <br>
-        <input type="checkbox" name="#hiddenench" id="#hiddenench 1" class="atribbool ritual">
-        <label for="#hiddenench">Enchantment is not visible during battles</label>
-        <br>
-        <input type="checkbox" name="#hiddenench" id="#hiddenench 1" class="atribbool ritual">
-        <label for="#hiddenench">Enchantment is not visible during battles</label>
-        <br>
-        <input type="checkbox" name="#nocastmindless" id="#nocastmindless 1"  class="atribbool">
-        <label for="#nocastmindless">Mindless units cannot cast this spell</label>
-        <br>
-        <input type="checkbox" name="#spellreqfly" id="#spellreqfly 1" class="atribbool">
-        <label for="#nocastmindless">Only flying units cannot cast this spell</label>
-        <br>
-        <input type="checkbox" name="#polygetmagic" id="#polygetmagic 1" class="atribbool">
-        <label for="#polygetmagic">A unit ploymorphed by this spell will retain its magic paths</label>
-        <br>
-        <label for="#onlymnr">If only a single type of monster can cast this spell, enter it's ID below</label>
-        <input type="number" name="#onlymnr" id="#onlymnr" value="-1" min="-1">
-        <br>
-        <label for="#maxbounces">If this spell has a chain lightning effect, then enter the 
-            maximun number of time that it can bounce below</label>
-        <input type="number" name="#maxbounces" id="#maxbounces" min="0" value="0" class="battle">
-        <br>
-        <button onclick="document.getElementById('result').innerText = createSpell()">Create Spell</button>
-
-        <p id="result" name="result">Result</p>
-    </main>
-
+            <p id="result" name="result">Result</p>
+        </main>
     </body>
 </html>
     

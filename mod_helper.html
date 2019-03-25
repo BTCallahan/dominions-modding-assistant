@@ -17,6 +17,7 @@
     </head>
     <body>
         <header>
+            <a href="mod_helper.html">Mod</a>
             <a href="armor_helper.html">Armor</a>
             <a href="weapon_helper.html">Weapons</a>
             <a href="item_helper.html">Magic Items</a>
@@ -26,32 +27,32 @@
             <a href="site_helper.html">Magic Sites</a>
         </header>
         <main>
-        <p>
-            <label for="#modname">Name of Mod:</label>
-            <input type="text" name="#modname" id="#modname" class="mod">
-        </p>
-        <br>
-        <p>
-            <label for="#description">Description:</label>
-            <input type="text" name="#description" id="#description" class="mod desc">
-        </p>
-        <br>
-        <p>
-            <label for="#icon">Icon filename:</label>
-            <input type="text" name="#icon" id="#icon" class="mod">
-        </p>
-        <br>
-        <p>
-            <label for="#version">Mod Version</label>
-            <input type="number" name="#version" id="#version" step="0.01" class="mod">
-        </p>
-        <br>
-        <p>
-            <label for="#domversion">Dominions Version:</label>
-            <input type="text" name="#domversion" id="#domversion" step="0.01" class="mod">
-        </p>
-        <button onclick="document.getElementById('result').innerText = createMod()">Create Mod</button>
-        <p id="result"> </p>
-    </main>
+            <p>
+                <label for="#modname">Name of Mod:</label>
+                <input type="text" name="#modname" id="#modname" class="mod">
+            </p>
+            <br>
+            <p>
+                <label for="#description">Description:</label>
+                <input type="text" name="#description" id="#description" class="mod desc">
+            </p>
+            <br>
+            <p>
+                <label for="#icon">Icon filename:</label>
+                <input type="text" name="#icon" id="#icon" class="mod">
+            </p>
+            <br>
+            <p>
+                <label for="#version">Mod Version</label>
+                <input type="number" name="#version" id="#version" step="0.01" class="mod">
+            </p>
+            <br>
+            <p>
+                <label for="#domversion">Dominions Version:</label>
+                <input type="text" name="#domversion" id="#domversion" step="0.01" class="mod">
+            </p>
+            <button onclick="document.getElementById('result').innerText = createMod()">Create Mod</button>
+            <p id="result">Result</p>
+        </main>
     </body>
 </html>
