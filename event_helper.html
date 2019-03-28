@@ -60,25 +60,25 @@
 
         <fieldset>
             <legend>Required Era</legend>
-            <input type="radio" name="era" id="re1" value="1" class="#req_era">
+            <input type="radio" name="era" id="re1" value="#req_era 1" class="#req_era">
             <label for="re1">Only in Early Era</label>
             <br>
-            <input type="radio" name="era" id="re2" value="2" class="#req_era">
+            <input type="radio" name="era" id="re2" value="#req_era 2" class="#req_era">
             <label for="re2">Only in Middle Era</label>
             <br>
-            <input type="radio" name="era" id="re3" value="3" class="#req_era">
+            <input type="radio" name="era" id="re3" value="#req_era 3" class="#req_era">
             <label for="re3">Only in Late Era</label>
             <br>
-            <input type="radio" name="era" id="re0" value="0" class="#nill">
+            <input type="radio" name="era" id="re0" value="#req_era 0" class="#req_era">
             <label for="re0">No Era Requirments</label>
             <br>
-            <input type="radio" name="era" id="nore1" value="1" class="#req_noera">
+            <input type="radio" name="era" id="nore1" value="#req_noera 1" class="#req_era">
             <label for="nore1">Never in Early Era</label>
             <br>
-            <input type="radio" name="era" id="nore2" value="2" class="#req_noera">
+            <input type="radio" name="era" id="nore2" value="#req_noera 2" class="#req_era">
             <label for="nore2">Never in Early Era</label>
             <br>
-            <input type="radio" name="era" id="nore3" value="3" class="#req_noera">
+            <input type="radio" name="era" id="nore3" value="#req_noera 3" class="#req_era">
             <label for="nore3">Never in Early Era</label>
         </fieldset>
 
@@ -100,22 +100,32 @@
         <fieldset>
             <legend>Required Season</legend>
             <p>Some events only happen during a specific season.</p>
-            <input type="radio" name="season" id="onlyspring" value="1" class="#req_season">
+            <input type="radio" name="season" id="onlyspring" value="#req_season 1" class="#req_season">
             <label for="onlyspring">Only in Spring</label>
             <br>
-            <input type="radio" name="season" id="onlysummer" value="2" class="#req_season">
+            <input type="radio" name="season" id="onlysummer" value="#req_season 2" class="#req_season">
             <label for="onlysummer">Only in Summer</label>
             <br>
-            <input type="radio" name="season" id="onlyfall" value="3" class="#req_season">
+            <input type="radio" name="season" id="onlyfall" value="#req_season 3" class="#req_season">
             <label for="onlyfall">Only in Fall</label>
             <br>
-            <input type="radio" name="season" id="onlywinter" value="4" class="#req_season">
+            <input type="radio" name="season" id="onlywinter" value="#req_season 4" class="#req_season">
             <label for="onlywinter">Only in Winter</label>
             <br>
-            <input type="radio" name="season" id="only" value="0" class="#req_season">
-            <label for="only">N/A</label>
-
-
+            <input type="radio" name="season" id="only" value="#req_season 0" class="#req_season">
+            <label for="only">No seasonal requirments</label>
+            <br>
+            <input type="radio" name="season" id="neverspring" value="#req_noseason 1" class="#req_season">
+            <label for="only">Never during Spring</label>
+            <br>
+            <input type="radio" name="season" id="neversummer" value="#req_noseason 2" class="#req_season">
+            <label for="only">Never during Summer</label>
+            <br>
+            <input type="radio" name="season" id="neverfall" value="#req_noseason 3" class="#req_season">
+            <label for="only">Never during Fall</label>
+            <br>
+            <input type="radio" name="season" id="neverwinter" value="#req_noseason 4" class="#req_season">
+            <label for="only">Never during Winter</label>
             <!--todo req_noseason-->
         </fieldset>
         <h3>Nation Requirement</h3>
@@ -480,64 +490,64 @@
             Note: If this event creates a site, then this value should always be at least one.
             <br>
             <label for="#req_freesites">Unused site slots required:</label>
-            <input type="number" name="#req_freesites" id="#req_freesites" value="0" min="0" class="site_reqs">
+            <input type="number" name="#req_freesites" id="#req_freesites" value="0" min="0" class="site_reqs_num">
         </p>
         <p>
             This site cannot be present in the provence.
             <br> 
             <label for="#req_nositenbr">Site ID:</label>
-            <input type="number" name="#req_nositenbr" id="#req_nositenbr" value="0" min="0" max="1999" class="site_reqs">
+            <input type="number" name="#req_nositenbr" id="#req_nositenbr" value="0" min="0" max="1999" class="site_reqs_num">
         </p>
         <p>
             This site must be present in the provence and discovered.
             <br>
             <label for="#req_foundsite">Site name:</label>
-            <input type="text" name="#req_foundsite" id="#req_foundsite" class="site_reqs">
+            <input type="text" name="#req_foundsite" id="#req_foundsite" class="site_reqs_txt">
         </p>
         <p>
             This site must be present in the provence and not have been discovered.
             <br>
             <label for="#req_hiddensite">Site name:</label>
-            <input type="text" name="#req_hiddensite" id="#req_hiddensite" class="site_reqs">
+            <input type="text" name="#req_hiddensite" id="#req_hiddensite" class="site_reqs_txt">
         </p>
         <p>
             This site must be present in the provence. Wheather is has been discovered or not 
             does not matter.
             <br>
             <label for="#req_site">Site name:</label>
-            <input type="text" name="#req_site" id="#req_site" class="site_reqs">
+            <input type="text" name="#req_site" id="#req_site" class="site_reqs_txt">
         </p>
         <p>
             This site must be present in the provence or present in a provence next the provence 
             the even fires in.
             <br>
             <label for="#req_nearbysite">Site name:</label>
-            <input type="text" name="#req_nearbysite" id="#req_nearbysite" class="site_reqs">
+            <input type="text" name="#req_nearbysite" id="#req_nearbysite" class="site_reqs_txt">
         </p>
         <p>
             This throne must have been clamed by someone.
             <br>
             <label for="#req_claimedthrone">Throne name:</label>
-            <input type="text" name="#req_claimedthrone" id="#req_claimedthrone" class="site_reqs">
+            <input type="text" name="#req_claimedthrone" id="#req_claimedthrone" class="site_reqs_txt">
         </p>
         <p>
             This site must be exist in the game and not have been clamed.
             <br>
             <label for="#req_unclaimedthrone">Site name:</label>
-            <input type="text" name="#req_unclaimedthrone" id="#req_unclaimedthrone" class="site_reqs">
+            <input type="text" name="#req_unclaimedthrone" id="#req_unclaimedthrone" class="site_reqs_txt">
         </p>
         <h3>Dominion Requirements</h3>
         <p>
             This nation must control the provence and have positive dominion in the provence.
             <br>
             <label for="#req_fullowner">Nation ID:</label>
-            <input type="number" name="#req_fullowner" id="#req_fullowner" value="0" min="0" max="249"  class="site_reqs">    
+            <input type="number" name="#req_fullowner" id="#req_fullowner" value="0" min="0" max="249"  class="site_reqs_num">    
         </p>
         <p>
             This nation must have positive dominion in the provence.
             <br>
             <label for="#req_domowner">Nation ID:</label>
-            <input type="number" name="#req_domowner" id="#req_domowner" value="0" min="0" max="249" class="site_reqs">
+            <input type="number" name="#req_domowner" id="#req_domowner" value="0" min="0" max="249" class="site_reqs_num">
         </p>
         <p>
             Determines if the provence must or must not have have the owner's dominion.
@@ -555,19 +565,19 @@
             The minimum provence owner's dominion value for the event to happen.
             <br>
             <label for="#req_dominion">Minimum value:</label>
-            <input type="number" name="#req_dominion" id="#req_dominion" value="0" min="0" max="10" class="site_reqs">
+            <input type="number" name="#req_dominion" id="#req_dominion" value="0" min="0" max="10" class="site_reqs_num">
         </p>
         <p>
             The maximum provence owner's dominion value for the event to happen.
             <br>
             <label for="#req_maxdominion">Maximum value:</label>
-            <input type="number" name="#req_maxdominion" id="#req_maxdominion" value="0" min="-10" max="10" class="site_reqs">
+            <input type="number" name="#req_maxdominion" id="#req_maxdominion" value="0" min="-10" max="10" class="site_reqs_num">
         </p>
         <p>
             Percent per dominion candle for the event to happen. To create an event that fires...
             <br>
             <label for="#req_domchance">Percent per chance:</label>
-            <input type="number" name="#req_domchance" id="#req_domchance" value="0" min="0" max="100" class="site_reqs">
+            <input type="number" name="#req_domchance" id="#req_domchance" value="0" min="0" max="100" class="site_reqs_num">
         </p>
         <h3>Scale Requirements</h3>
         <p>
