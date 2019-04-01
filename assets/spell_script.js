@@ -1,5 +1,65 @@
 const ExplosionEffect = new Set(["10021-10039", "10041-10069", "10101-10119", "10121-10139"])
 
+function explosionEffect(){
+    let expValue = grabSelectedValue("#explspr");
+    
+    let changemiscsprite = document.getElementById("changemiscsprite");
+    let miscexplodesprite = document.getElementById("miscexplodesprite");
+    let miscValue = Number(miscexplodesprite.value);
+    switch (expValue) {
+        case "10021-10039":
+        miscexplodesprite.disabled = false;
+        miscexplodesprite.setAttribute("min", "10021");
+        miscexplodesprite.setAttribute("max", "10039");
+        if (miscValue < 10021){
+            miscexplodesprite.value = "10021";
+        }else if(miscValue > 10039){
+            miscexplodesprite.value = "10039";
+        }
+        changemiscsprite.innerText = "Note: This wil produce a few falling colors. Acceptable values are from 10021 to 10039.";
+        break;
+        case "10041-10069":
+        miscexplodesprite.disabled = false;
+        miscexplodesprite.setAttribute("min", "10041");
+        miscexplodesprite.setAttribute("max", "10069");
+        if (miscValue < 10041){
+            miscexplodesprite.value = "10041";
+        }else if(miscValue > 10069){
+            miscexplodesprite.value = "10069";
+        }
+        changemiscsprite.innerText = "Note: This wil produce rising mists. Acceptable values are from 10041 to 10069.";
+
+        break;
+        case "10101-10119":
+        miscexplodesprite.disabled = false;
+        miscexplodesprite.setAttribute("min", "10101");
+        miscexplodesprite.setAttribute("max", "10119");
+        if (miscValue < 10101){
+            miscexplodesprite.value = "10101";
+        }else if(miscValue > 10119){
+            miscexplodesprite.value = "10119";
+        }
+        changemiscsprite.innerText = "Note: This wil produce an explosion. Acceptable values are from 10101 to 10119.";
+
+        break;
+        case "10121-10139":
+        miscexplodesprite.disabled = false;
+        miscexplodesprite.setAttribute("min", "10121");
+        miscexplodesprite.setAttribute("max", "10139");
+        if (miscValue < 10121){
+            miscexplodesprite.value = "10121";
+        }else if(miscValue > 10139){
+            miscexplodesprite.value = "10139";
+        }
+        changemiscsprite.innerText = "Note: This wil produce a gass explosion. Acceptable values are from 10121 to 10139.";
+        break;
+        default:
+        miscexplodesprite.disabled = true;
+        changemiscsprite.innerText = "";
+        break;
+    }
+}
+
 
 
 function checIfPathIsPriest(){
@@ -120,7 +180,10 @@ function ritualVsBattle(){
                 fatiguecost.val = "1000";
             }
         }
+        enableOrDisable(document.getElementById('per0').checked, '#aoe', '', true);
+        enableOrDisable(document.getElementById('combateffect').value=='134', '#maxbounces', '', true)
     }
+    
     spellcost();
 }
 
@@ -293,12 +356,12 @@ function createSpell(){
     let restricted = document.getElementsByClassName("restricted");
 
     for(let i = 0; i < restricted.length; i++){
-        if(restricted[i].value != "-1"){
+        if(restricted[i].value != "0"){
             pushTo.push("#restricted " + restricted[i].value);
         }
     }
 
-    getSingleValue("#notfornation", "-1");
+    getSingleValue("#notfornation", "0");
 
     if(document.getElementById("setcasttime").checked){
         getSingleValue("#casttime");
