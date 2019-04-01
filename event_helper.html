@@ -17,16 +17,22 @@
     </head>
     <body>
         <header>
-
+            <div style="text-align: justify">
+                <a href="index.html">Main Page</a>
+                <a href="about.html">About</a>
+                <a href="mod_helper.html">Mod</a>
+                <a href="armor_helper.html">Armor</a>
+                <a href="weapon_helper.html">Weapons</a>
+                <a href="item_helper.html">Magic Items</a>
+                <a href="spell_helper.html">Magic Spells</a>
+                <a href="monster_helper.html">Monsters</a>
+                <a href="nation_helper.html">Nations</a>
+                <a href="site_helper.html">Magic Sites</a>
+                <a href="event_helper.html">Events</a>
+            </div>
         </header>
         <main>
-
         <h3>Basic Event Modding</h3>
-
-        <input type="checkbox" name="#newevent" id="#newevent" value="#newevent">
-        <label for="#newevent">New Event</label>
-        <br>
-
         <select name="#rarity" id="#rarity">
             <option value="0" selected>Always</option>
             <option value="1">Common Bad</option>
@@ -39,9 +45,7 @@
             <option value="12">Uncommon Global</option>
             <option value="13">Always Immediate Global</option>
         </select>
-
         <h3>Event Requirements</h3>
-
         <p>
             Some events are extra rare. When they are normaly rolled, a d100 is rolled to 
             determine the chance theevent happening.
@@ -57,7 +61,6 @@
             <label for="#req_unique">Events per Game:</label>
             <input type="number" name="#req_unique" id="#req_unique" value="0" min="0" class="reqs">
         </p>
-
         <fieldset>
             <legend>Required Era</legend>
             <input type="radio" name="era" id="re1" value="#req_era 1" class="#req_era">
@@ -81,7 +84,6 @@
             <input type="radio" name="era" id="nore3" value="#req_noera 3" class="#req_era">
             <label for="nore3">Never in Early Era</label>
         </fieldset>
-
         <p>
             The event will only happen after this turn.
             <br>
@@ -94,9 +96,7 @@
             <label for="#req_maxturn">Minimum Turn: </label>
             <input type="number" name="#req_maxturn" id="#req_maxturn" value="0" min="0" class="reqs">
         </p>
-
         <!--todo: req_pregame-->
-
         <fieldset>
             <legend>Required Season</legend>
             <p>Some events only happen during a specific season.</p>
@@ -191,12 +191,10 @@
         <p>
             Note: A value of zero will waive this requirement.
             <br>
-                <label for="#req_gold">Required Gold:</label>
-                <input type="number" name="#req_gold" id="#req_gold" min="0" value="0">
-        
+            <label for="#req_gold">Required Gold:</label>
+            <input type="number" name="#req_gold" id="#req_gold" min="0" value="0">
         </p>
         <h3>Province Requirements</h3>
-
         <p>
             Determines if the event can happen only in a capital province, never 
             in a capital province, or anyware.
@@ -227,7 +225,6 @@
         <label for="#req_poptype">Required Poptype:</label>
         <select name="#req_poptype" id="#req_poptype">
             <option value="-1" selected>N\A</option>
-
             <option value="39">Militia, Archers, Lt Inf</option>
             <option value="59">Militia, Archers, Lt Inf</option>
             <option value="60">Militia, Archers, Lt Inf</option>
@@ -498,50 +495,98 @@
             <label for="#req_nositenbr">Site ID:</label>
             <input type="number" name="#req_nositenbr" id="#req_nositenbr" value="0" min="0" max="1999" class="site_reqs_num">
         </p>
+        <label for="sitename">Name of site:</label>
+        <input type="text" name="sitename" id="sitename" 
+        onchange="enableOrDisable(document.getElementById('sitename').value != '', 'sitename', '')">
         <p>
-            This site must be present in the provence and discovered.
+            Determins if this site must be present in the provence and discovered.
             <br>
-            <label for="#req_foundsite">Site name:</label>
-            <input type="text" name="#req_foundsite" id="#req_foundsite" class="site_reqs_txt">
+            <label for="#req_foundsite1">Must be discoved:</label>
+            <input type="radio" name="#req_foundsite" id="#req_foundsite1" value="#req_foundsite 1" class="req_foundsite sitename" disabled>
+            <br>
+            <label for="#req_foundsite">No prefrence:</label>
+            <input type="radio" name="#req_foundsite" id="#req_foundsite" value="#req_foundsite" class="req_foundsite sitename" disabled checked>
+            <br>
+            <label for="#req_foundsite0">Must be not discoved:</label>
+            <input type="radio" name="#req_foundsite" id="#req_foundsite0" value="#req_foundsite 0" class="req_foundsite sitename" disabled>
         </p>
         <p>
-            This site must be present in the provence and not have been discovered.
+            Determins if this site must be present in the provence and not have been discovered.
             <br>
-            <label for="#req_hiddensite">Site name:</label>
-            <input type="text" name="#req_hiddensite" id="#req_hiddensite" class="site_reqs_txt">
+            <label for="#req_hiddensite1">Must be hidden:</label>
+            <input type="radio" name="#req_hiddensite" id="#req_hiddensite1" value="#req_hiddensite 1" class="req_hiddensite sitename" disabled>
+            <br>
+            <label for="#req_hiddensite">No prefrence:</label>
+            <input type="radio" name="#req_hiddensite" id="#req_hiddensite" value="#req_hiddensite" class="req_hiddensite sitename" disabled checked>
+            <br>
+            <label for="#req_hiddensite0">Must be not hidden:</label>
+            <input type="radio" name="#req_hiddensite" id="#req_hiddensite0" value="#req_hiddensite 0" class="req_hiddensite sitename" disabled>
         </p>
         <p>
-            This site must be present in the provence. Wheather is has been discovered or not 
+            Determins if this site must be present in the provence. Wheather is has been discovered or not 
             does not matter.
             <br>
-            <label for="#req_site">Site name:</label>
-            <input type="text" name="#req_site" id="#req_site" class="site_reqs_txt">
+            <label for="#req_site1">Must be present:</label>
+            <input type="radio" name="#req_site" id="#req_site1" value="#req_site 1" class="req_site sitename" disabled>
+            <br>
+            <label for="#req_site">No prefrence:</label>
+            <input type="radio" name="#req_site" id="#req_site" value="#req_site" class="req_site sitename" disabled checked>
+            <br>
+            <label for="#req_site0">Must not be present:</label>
+            <input type="radio" name="#req_site" id="#req_site0" value="#req_site 0" class="req_site sitename" disabled>
         </p>
         <p>
-            This site must be present in the provence or present in a provence next the provence 
+            Determins if this site must be present in the provence or present in a provence next the provence 
             the even fires in.
             <br>
-            <label for="#req_nearbysite">Site name:</label>
-            <input type="text" name="#req_nearbysite" id="#req_nearbysite" class="site_reqs_txt">
+            <label for="#req_nearbysite1">Must be nearby:</label>
+            <input type="radio" name="#req_nearbysite" id="#req_nearbysite1" value="#req_nearbysite1 1" 
+            class="req_nearbysite sitename" disabled>
+            <br>
+            <label for="#req_nearbysite">No prefrence:</label>
+            <input type="radio" name="#req_nearbysite" id="#req_nearbysite" value="#req_nearbysite1" 
+            class="req_nearbysite sitename" disabled checked>
+            <br>
+            <label for="#req_nearbysite0">Must not be nearby:</label>
+            <input type="radio" name="#req_nearbysite" id="#req_nearbysite0" value="#req_nearbysite1 0" 
+            class="req_nearbysite sitename" disabled>
         </p>
         <p>
-            This throne must have been clamed by someone.
+            Determins if this throne must have been claimed by someone.
             <br>
-            <label for="#req_claimedthrone">Throne name:</label>
-            <input type="text" name="#req_claimedthrone" id="#req_claimedthrone" class="site_reqs_txt">
+            <label for="#req_claimedthrone1">Throne must be claimed:</label>
+            <input type="radio" name="#req_claimedthrone" id="#req_claimedthrone1" value="#req_claimedthrone 1" 
+            class="req_claimedthrone sitename" disabled>
+            <br>
+            <label for="#req_claimedthrone">No prefrence:</label>
+            <input type="radio" name="#req_claimedthrone" id="#req_claimedthrone" value="#req_claimedthrone" 
+            class="req_claimedthrone sitename" disabled checked>
+            <br>
+            <label for="#req_claimedthrone0">Throne must not be claimed:</label>
+            <input type="radio" name="#req_claimedthrone" id="#req_claimedthrone0" value="#req_claimedthrone 0" 
+            class="req_claimedthrone sitename" disabled>
         </p>
         <p>
-            This site must be exist in the game and not have been clamed.
+            Determins if this throne must be exist in the game and not have been clamed.
             <br>
-            <label for="#req_unclaimedthrone">Site name:</label>
-            <input type="text" name="#req_unclaimedthrone" id="#req_unclaimedthrone" class="site_reqs_txt">
+            <label for="#req_unclaimedthrone1">Throne must be unclaimed:</label>
+            <input type="radio" name="#req_unclaimedthrone" id="#req_unclaimedthrone1" value="#req_unclaimedthrone 1" 
+            class="req_unclaimedthrone sitename" disabled>
+            <br>
+            <label for="#req_unclaimedthrone">No prefrence:</label>
+            <input type="radio" name="#req_unclaimedthrone" id="#req_unclaimedthrone" value="#req_unclaimedthrone" 
+            class="req_unclaimedthrone sitename" disabled checked>
+            <br>
+            <label for="#req_unclaimedthrone0">Throne must not be unclaimed:</label>
+            <input type="radio" name="#req_unclaimedthrone" id="#req_unclaimedthrone0" value="#req_unclaimedthrone 0" 
+            class="req_unclaimedthrone sitename" disabled>
         </p>
         <h3>Dominion Requirements</h3>
         <p>
             This nation must control the provence and have positive dominion in the provence.
             <br>
             <label for="#req_fullowner">Nation ID:</label>
-            <input type="number" name="#req_fullowner" id="#req_fullowner" value="0" min="0" max="249"  class="site_reqs_num">    
+            <input type="number" name="#req_fullowner" id="#req_fullowner" value="0" min="0" max="249" class="site_reqs_num">    
         </p>
         <p>
             This nation must have positive dominion in the provence.
@@ -694,7 +739,7 @@
             If a priest is present and preaching in a provence, the the event has a chance of 
             happening based on the priest's holy magic levels.
             <br>
-            <label for="#req_preach">Chance</label>
+            <label for="#req_preach">Chance:</label>
             <input type="number" name="#req_preach" id="#req_preach" value="0" min="0" max="100">
         </p>
         <h3>Mage Requirements</h3>
@@ -704,58 +749,76 @@
         </p>
 
         <label for="#req_pathfire">Min fire path:</label>
-        <input type="number" name="req_pathfire" id="req_pathfire" value="0" min="0" class="magepaths">
+        <input type="number" name="req_pathfire" id="req_pathfire" value="0" min="0" class="magepaths" 
+        onchange="minMax('req_pathfire', 'req_nopathfire')">
         <br>
         <label for="#req_nopathfire">Max fire path:</label>
-        <input type="number" name="req_nopathfire" id="req_nopathfire" value="0" min="0" class="magepaths">
+        <input type="number" name="req_nopathfire" id="req_nopathfire" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathfire', 'req_nopathfire', true)">
         <br>
         <label for="#req_pathair">Min air path:</label>
-        <input type="number" name="req_pathair" id="req_pathair" value="0" min="0" class="magepaths">
+        <input type="number" name="req_pathair" id="req_pathair" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathair', 'req_nopathair')">
         <br>
         <label for="#req_nopathair">Max air path:</label>
-        <input type="number" name="req_nopathair" id="req_nopathair" value="0" min="0" class="magepaths">
+        <input type="number" name="req_nopathair" id="req_nopathair" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathair', 'req_nopathair', true)">
         <br>
         <label for="#req_pathwater">Min water path:</label>
-        <input type="number" name="req_pathwater" id="req_pathwater" value="0" min="0" class="magepaths">
+        <input type="number" name="req_pathwater" id="req_pathwater" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathwater', 'req_nopathwater')">
         <br>
         <label for="#req_nopathwater">Max water path:</label>
-        <input type="number" name="req_nopathwater" id="req_nopathwater" value="0" min="0" class="magepaths">
+        <input type="number" name="req_nopathwater" id="req_nopathwater" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathwater', 'req_nopathwater', true)">
         <br>
         <label for="#req_pathearth">Min earth path:</label>
-        <input type="number" name="req_pathearth" id="req_pathearth" value="0" min="0" class="magepaths">
+        <input type="number" name="req_pathearth" id="req_pathearth" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathearth', 'req_nopathearth')">
         <br>
         <label for="#req_nopathearth">Max earth path:</label>
-        <input type="number" name="req_nopathearth" id="req_nopathearth" value="0" min="0" class="magepaths">
+        <input type="number" name="req_nopathearth" id="req_nopathearth" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathearth', 'req_nopathearth', true)">
         <br>
         <label for="#req_pathastral">Min astral path:</label>
-        <input type="number" name="req_pathastral" id="req_pathastral" value="0" min="0" class="magepaths">
+        <input type="number" name="req_pathastral" id="req_pathastral" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathastral', 'req_nopathastral')">
         <br>
         <label for="#req_nopathastral">Max astral path:</label>
-        <input type="number" name="req_nopathastral" id="req_nopathastral" value="0" min="0" class="magepaths">
+        <input type="number" name="req_nopathastral" id="req_nopathastral" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathastral', 'req_nopathastral', true)">
         <br>
         <label for="#req_pathdeath">Min death path:</label>
-        <input type="number" name="req_pathdeath" id="req_pathdeath" value="0" min="0" class="magepaths">
+        <input type="number" name="req_pathdeath" id="req_pathdeath" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathdeath', 'req_nopathdeath')">
         <br>
         <label for="#req_nopathdeath">Max death path:</label>
-        <input type="number" name="req_nopathdeath" id="req_nopathdeath" value="0" min="0" class="magepaths">
+        <input type="number" name="req_nopathdeath" id="req_nopathdeath" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathdeath', 'req_nopathdeath', true)">
         <br>
         <label for="#req_pathnature">Min nature path:</label>
-        <input type="number" name="req_pathnature" id="req_pathnature" value="0" min="0" class="magepaths">
+        <input type="number" name="req_pathnature" id="req_pathnature" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathnature', 'req_nopathnature')">
         <br>
         <label for="#req_nopathnature">Max nature path:</label>
-        <input type="number" name="req_nopathnature" id="req_nopathnature" value="0" min="0" class="magepaths">
+        <input type="number" name="req_nopathnature" id="req_nopathnature" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathnature', 'req_nopathnature', true)">
         <br>
         <label for="#req_pathblood">Min blood path:</label>
-        <input type="number" name="req_pathblood" id="req_pathblood" value="0" min="0" class="magepaths">
+        <input type="number" name="req_pathblood" id="req_pathblood" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathblood', 'req_nopathblood')">
         <br>
         <label for="#req_nopathblood">Max blood path:</label>
-        <input type="number" name="req_nopathblood" id="req_nopathblood" value="0" min="0" class="magepaths">
+        <input type="number" name="req_nopathblood" id="req_nopathblood" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathblood', 'req_nopathblood', true)">
         <br>
         <label for="#req_pathholy">Min holy path:</label>
-        <input type="number" name="req_pathholy" id="req_pathholy" value="0" min="0" class="magepaths">
+        <input type="number" name="req_pathholy" id="req_pathholy" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathholy', 'req_nopathholy')">
         <br>
         <label for="#req_nopathholy">Max holy path:</label>
-        <input type="number" name="req_nopathholy" id="req_nopathholy" value="0" min="0" class="magepaths">
+        <input type="number" name="req_nopathholy" id="req_nopathholy" value="0" min="0" class="magepaths"
+        onchange="minMax('req_pathholy', 'req_nopathholy', true)">
         <br>
         <label for="#req_nopathall">Max level in any path:</label>
         <input type="number" name="req_nopathall" id="req_nopathall" value="0" min="0" class="magepaths">
@@ -765,7 +828,7 @@
             If the target is a commander, enter it's number below.
             <br>
             <label for="#req_targmnr">Target commander ID:</label>
-            <input type="number" name="req_targmnr" id="req_targmnr" value="0" min="0" class="a">
+            <input type="number" name="req_targmnr" id="#req_targmnr" value="0" min="0" max="8999" class="a">
         </p>
         <p>
             Determins if a the target must (or must not be) a pretender or disciple.
@@ -867,12 +930,144 @@
                 <option value="53">All except Priest</option>
             </select>
         </p>
+        <!--
         <p>
             The target must have this affliction.
             <br>
             <label for="#req_targaff">Affliction number:</label>
             <input type="number" name="#req_targaff" id="#req_targaff" value="0" min="0" class="b">
         </p>
+        -->
+        <table>
+            <thead>
+                <tr>
+                    <th>The target must have the following afflictions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="aw0" class="aw" value="0" >
+                        <label for="aw0">Disease</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw1" class="aw" value="1">
+                        <label for="aw1">Cursed</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw3" class="aw" value="3">
+                        <label for="aw3">Plagued</label>
+                    </td>
+                    <td>
+                        <!--
+                        <input type="checkbox" id="aw5" class="aw" value="5">
+                        <label for="aw5">Curse of Stones</label>
+                        -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="aw6" class="aw" value="6">
+                        <label for="aw6">Entangles Foes</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw7" class="aw" value="7">
+                        <label for="aw7">Enraged</label>
+                    </td>
+                    <td>
+                        <!--
+                        <input type="checkbox" id="aw8" class="aw" value="8">
+                        <label for="aw8">Decaying</label>
+                    -->
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw9" class="aw" value="9">
+                        <label for="aw9">Burned</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="aw10" class="aw" value="10">
+                        <label for="aw10">Sleep</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw11" class="aw" value="11">
+                        <label for="aw11">Rusted Armor</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw12" class="aw" value="12">
+                        <label for="aw12">Blind</label>
+                    </td>
+                    <td>
+                        <!--
+                        <input type="checkbox" id="aw13" class="aw" value="13">
+                        <label for="aw13">Bleeding</label>
+                    -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!--
+                        <input type="checkbox" id="aw14" class="aw" value="14">
+                        <label for="aw14">Earth Grip</label>
+                    -->
+                    </td>
+                    <td>
+                        <!--
+                        <input type="checkbox" id="aw16" class="aw" value="16">
+                        <label for="aw16">Fire Bonds</label>
+                    -->
+                    </td>
+                    <td>
+                        <!--
+                        <input type="checkbox" id="aw17" class="aw" value="17">
+                        <label for="aw17">Inflicts False Fetters</label>
+                        -->
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw18" class="aw" value="18">
+                        <label for="aw18">Limp</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="aw19" class="aw" value="19">
+                        <label for="aw19">Lost Eye</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw20" class="aw" value="20">
+                        <label for="aw20">Weakness</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw21" class="aw" value="21">
+                        <label for="aw21">Battle Fright</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw22" class="aw" id="22" value="22">
+                        <label for="aw22">Mute</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="aw23" class="aw" value="23" >
+                        <label for="aw23">Chest Wound</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw24" class="aw" value="24">
+                        <label for="aw24">Crippled</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw25" class="aw" value="25">
+                        <label for="aw25">Feeblemind</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="aw26" class="aw" value="26">
+                        <label for="aw26">Never Healing Wound</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
         <!--todo: write affliciton number guide-->
         <p>
             Target must be carrying out one of the following orders.
@@ -901,13 +1096,13 @@
             The target must have this item.
             <br>
             <label for="#req_targitem">Required item ID:</label>
-            <input type="number" name="#req_targitem" id="#req_targitem" value="0" min="0" class="b">    
+            <input type="number" name="#req_targitem" id="#req_targitem" value="0" min="0" max="999" class="req_item">    
         </p>
         <p>
             The target must not have this item.
             <br>
             <label for="#req_targnoitem">Forbidden item ID:</label>
-            <input type="number" name="#req_targnoitem" id="#req_targnoitem" value="0" min="0" class="b">    
+            <input type="number" name="#req_targnoitem" id="#req_targnoitem" value="0" min="0" max="999" class="req_item">    
         </p>
         <p>
             Determins if a the target must (or must not be) undead.
@@ -1011,54 +1206,54 @@
             The affected provence must have this event code.
             <br>
             <label for="#req_code">Event code:</label>
-            <input type="number" name="#req_targowner" id="#req_targowner" value="-301" max="-301" class="code">
+            <input type="number" name="#req_targowner" id="#req_targowner" value="-299" max="-299" class="code">
         </p>
         <p>
             At least one provence in the world must have this event code.
             <br>
             <label for="#req_anycode">Event code:</label>
-            <input type="number" name="#req_anycode" id="#req_anycode" value="-301" max="-301" class="code">
+            <input type="number" name="#req_anycode" id="#req_anycode" value="-299" max="-299" class="code">
         </p>
         <p>
             No provences in the world can have this event code.
             <br>
             <label for="#req_notanycode">Event code:</label>
-            <input type="number" name="#req_notanycode" id="#req_notanycode" value="-301" max="-301" class="code">
+            <input type="number" name="#req_notanycode" id="#req_notanycode" value="-299" max="-299" class="code">
         </p>
         <p>
             At least one provence adjacent to the affected one must have this event code.
             <br>
             <label for="#req_nearbycode">Event code:</label>
-            <input type="number" name="#req_nearbycode" id="#req_nearbycode" value="-301" max="-301" class="code">
+            <input type="number" name="#req_nearbycode" id="#req_nearbycode" value="-299" max="-299" class="code">
         </p>
         <p>
             At least one provence adjacent to the affected one must have this event code.
             <br>
             <label for="#req_nearowncode">Event code:</label>
-            <input type="number" name="#req_nearowncode" id="#req_nearowncode" value="-301" max="-301" class="code">
+            <input type="number" name="#req_nearowncode" id="#req_nearowncode" value="-299" max="-299" class="code">
         </p>
         <h3>Enchantment Requirements</h3>
         <p>The commands are used for the creation of global encantments.</p>
         <label for="#req_permonth">Max times per month:</label>
-        <input type="number" name="#req_permonth" id="#req_permonth" value="0" min="0">
+        <input type="number" name="#req_permonth" id="#req_permonth" value="0" min="0" class="ench">
         <p>
             This enchantment cannot be active.
             <br>
             <label for="#req_noench">Enchantment ID:</label>
-            <input type="number" name="#req_noench" id="#req_noench" value="0" min="0">
+            <input type="number" name="#req_noench" id="#req_noench" value="0" min="0" class="ench">
         </p>
         <p>
             This enchantment must be active.
             <br>
             <label for="#req_ench">Enchantment ID:</label>
-            <input type="number" name="#req_ench" id="#req_ench" value="0" min="0">
+            <input type="number" name="#req_ench" id="#req_ench" value="0" min="0" class="ench">
         </p>
         <p>
             This enchantment must be active, and the enchantment must have been cast by a 
             unit commanded by the nation affected by the event. Example: Maelstrom.
             <br>
             <label for="#req_myench">Enchantment ID:</label>
-            <input type="number" name="#req_myench" id="#req_myench" value="0" min="0">
+            <input type="number" name="#req_myench" id="#req_myench" value="0" min="0" class="ench">
         </p>
         <p>
             This enchantment must be active, and the enchantment must have been cast by a 
@@ -1066,7 +1261,7 @@
             Example: Gift of Health.
             <br>
             <label for="#req_friendlyench">Enchantment ID:</label>
-            <input type="number" name="#req_friendlyench" id="#req_friendlyench" value="0" min="0">
+            <input type="number" name="#req_friendlyench" id="#req_friendlyench" value="0" min="0" class="ench">
         </p>
         <p>
             This enchantment must be active, and the enchantment must have been cast by an 
@@ -1074,14 +1269,14 @@
             Example: The Looming Hell.
             <br>
             <label for="#req_hostileench">Enchantment ID:</label>
-            <input type="number" name="#req_hostileench" id="#req_hostileench" value="0" min="0">
+            <input type="number" name="#req_hostileench" id="#req_hostileench" value="0" min="0" class="ench">
         </p>
         <p>
             This enchantment must be active, and it will only affect provences with the same 
             dominion as the own of the casting unit.
             <br>
             <label for="#req_enchdom">Enchantment ID:</label>
-            <input type="number" name="#req_enchdom" id="#req_enchdom" value="0" min="0">
+            <input type="number" name="#req_enchdom" id="#req_enchdom" value="0" min="0" class="ench">
         </p>
 
         
@@ -1118,7 +1313,6 @@
         req_nomnr
 
 -->
-
         <h1>Event Effects</h1>
         <h3>Basic Effects</h3>
         <p>
@@ -1157,16 +1351,22 @@
         </p>
 
         <p>
-            Event does not generate a text message.
+            Event does not display a text mesage to the player.
             <br>
-            <input type="checkbox" name="#notext" id="#notext" value="#notext" 
-            onchange="enableOrDisable(document.getElementById('#notext').checked, '', '#msg', true)">
+            <input type="checkbox" name="#notext" id="#notext" value="#notext">
             <label for="#notext">No text message</label>
         </p>
+        <p>
+            Note: Even if no message is displayed to the player, this can still be used
+            <label for="#msg">Message:</label>
+            <input type="text" name="#msg" id="#msg" class="desc">
+    
+        </p>
+        <!--#notext if no message
+        onchange="enableOrDisable(document.getElementById('#notext').checked, '', '#msg', true)"
 
-        <label for="#msg">Message:</label>
-        <input type="text" name="#msg" id="#msg" class="desc">
-        <!--#notext if no message-->
+        sitename
+        -->
         <p>
             Event does not appear in the event logs.
             <br>
@@ -1181,6 +1381,8 @@
             <label for="#magicitem">Magic item to give:</label>
             <select name="#magicitem" id="#magicitem" 
             onchange="enableOrDisable(document.getElementById('#magicitem').value=='9', 'itemname', '', true)">
+            <option value="-1">No item</option>
+
                 <option value="0">Rarity 0</option>
                 <option value="1">Rarity 1</option>
                 <option value="2">Rarity 2</option>
@@ -1195,7 +1397,7 @@
         <p>
             Gives or takes an amount of gold. A rough amount will randomly vary by 50%. That is to 
             say, if this is set to 250, then every time the even fires, the affected nation will be 
-            given between 125 and 375 gold. Use exact amount for more precise control.
+            given between 125 and 375 gold. Use the exact amount field for more precise control.
             <br>
             <label for="#gold">Rough amount:</label>
             <input type="number" name="#gold" id="#gold" value="0">
@@ -1441,113 +1643,165 @@
         </fieldset>
         <h3>Province Effects</h3>
         <label for="#landgold">Permanent gold increase:</label>
-        <input type="number" name="#landgold" id="#landgold" value="0">
+        <input type="number" name="#landgold" id="#landgold" value="0" class="provEff">
         <br>
         <label for="#landprod">Permanent resources increase:</label>
-        <input type="number" name="#landprod" id="#landprod" value="0">
+        <input type="number" name="#landprod" id="#landprod" value="0" class="provEff">
         <br>
         <label for="#taxboost">Tempory tax bonus%:</label>
-        <input type="number" name="#taxboost" id="#taxboost" value="0" min="-100">
+        <input type="number" name="#taxboost" id="#taxboost" value="0" min="-100" class="provEff">
         <br>
         <label for="#defence">Permanent PD increase:</label>
-        <input type="number" name="#defence" id="#defence" value="0">
+        <input type="number" name="#defence" id="#defence" value="0" class="provEff">
         <br>
-        <label for="#kill">Kill population%:</label>
-        <input type="number" name="#kill" id="#kill" value="0" min="0" max="100">
-        <br>
+        <p>
+            Kills a percentage of the population.
+            <br>
+            <label for="#kill">Percent:</label>
+            <input type="number" name="#kill" id="#kill" value="0" min="0" max="100" class="provEff">    
+        </p>
                 <!--decapop-->
-
         <p>
             Kills a specific amount of the population. This number randomly varies by 25%, and the 
-            final amount will be rounded to the tens place, so a value of 300 
-            will result in 225 to 375 dieing. This is then rounded, so a result of 312 
-            would be rounded to 310.
+            final amount will be rounded to the tens place, so a value of 300 will result in 225 to 
+            375 dieing. This is then rounded, so in game this will result in from 230 to 380 of the 
+            population dieing.
             <br>
-            <label for="#kill">Kill population amount:</label>
-            <input type="number" name="#kill" id="#kill" value="0" min="0" step="10">    
+            <label for="#killpop">Kill population amount:</label>
+            <input type="number" name="#killpop" id="#killpop" value="0" min="0" step="10" 
+            onchange="decapop('#killpop', 'killsp')">
+            <br>
+            Amount: <span id="killsp">0 to 0</span>
         </p>
         <p>
             Adds to the population. Like the pervous command, this value also randomly varies 
             by 25%, and the final result is also rounded.
             <br>
             <label for="#incpop">Add population amount:</label>
-            <input type="number" name="#incpop" id="#incpop" value="0" min="0" step="10">    
+            <input type="number" name="#incpop" id="#incpop" value="0" min="0" step="10"
+            onchange="decapop('#incpop', 'incpopsp')">
+            <br>
+            Amount: <span id="incpopsp"></span>
         </p>
         <p>
             Add or subtract unburied corpses. This number number randomly varies by 25%, but
             it is not rounded.
             <br>
             <label for="#inccorpses">Add corpses:</label>
-            <input type="number" name="#inccorpses" id="#inccorpses" value="0" min="0" >    
+            <input type="number" name="#inccorpses" id="#inccorpses" value="0" min="0" class="provEff">
         </p>
         <label for="#emigration">Emigration population%:</label>
-        <input type="number" name="#emigration" id="#emigration" value="0" min="0" max="100">
+        <input type="number" name="#emigration" id="#emigration" value="0" min="0" max="100" class="provEff">
         <br>
         <label for="#unrest">Increase/decrease unrest:</label>
-        <input type="number" name="#unrest" id="#unrest" value="0" min="0">
+        <input type="number" name="#unrest" id="#unrest" value="0" class="provEff">
         <br>
         <label for="#incdom">Increase/decrease domnion:</label>
-        <input type="number" name="#incdom" id="#incdom" value="0" min="-20" max="20">
+        <input type="number" name="#incdom" id="#incdom" value="0" min="-20" max="20" class="provEff">
         <br>
         <p>
-                <input type="radio" name="temple" id="#temple 1" value="temple 1">
+            If the affected provence does not already have a fort, it will be given one.
+            <br>
+            <label for="#fort">Free Fort:</label>
+                <select name="#fort" id="#fort">
+                    <option value="0" selected>Provence does not get a fort</option>
+                    <option value="1">Palisades</option>
+                    <option value="2">(Early Era) Fortress</option>
+                    <option value="3">(Middle Era) Castle</option>
+                    <option value="4" >(Late Era) Citadel</option>
+                    <option value="5">Rock Walls</option>
+                    <option value="10">Bramble Fort</option>
+                    <option value="11">City Palisades</option>
+                    <option value="12">Walled City</option>
+                    <option value="13">Fortified City</option>
+                    <option value="14">Great Walled City</option>
+                    <option value="15">Giant Palisades</option>
+                    <option value="16">Giant Fortress</option>
+                    <option value="17">Giant Castle</option>
+                    <option value="18">Giant Citadel</option>
+                    <option value="19">Grand Citadel</option>
+                    <option value="20">Ice Walls</option>
+                    <option value="21">Ice Fortress</option>
+                    <option value="22">Ice Castle</option>
+                    <option value="23">Ice Citadel</option>
+                    <option value="23">Wizard’s Tower</option>
+                    <option value="23">Citadel of Power</option>
+                    <option value="23">Half Melted Fort</option>
+                    <option value="23">Fortified village</option>
+                    <option value="23">Wooden Fort</option>
+                    <option value="23">Crystal Citadel</option>
+                    <optgroup label="Underwater fortresses">
+                            <option value="6">(Early Era) Underwater Fortress</option>
+                            <option value="7">(Middle-Late Era) Underwater Castle</option>        
+                            <option value="8">(Underwater?) Castle of Bronze and Crystal</option>
+                            <option value="9">(Underwater) Fort of Kelp and Coral</option>
+                            <option value="23">(Underwater) Kelp Fort</option>
+                    </optgroup>
+                </select> 
+        </p>
+        <p>
+                <input type="radio" name="temple" id="#temple 1" value="#temple 1" class="temple">
                 <label for="#temple">Give Temple</label>
                 <br>
-                <input type="radio" name="temple" id="temple" value="temple" checked>
+                <input type="radio" name="temple" id="temple" value="temple" class="temple" checked>
                 <label for="temple">Don't afftect Temple</label>
                 <br>
-                <input type="radio" name="temple" id="#temple 0" value="temple 0">
+                <input type="radio" name="temple" id="#temple 0" value="#temple 0" class="temple">
                 <label for="#temple 0">Destroy Temple</label>
         </p>
         <p>
-                <input type="radio" name="lab" id="#lab 1" value="lab 1">
+                <input type="radio" name="lab" id="#lab 1" value="#lab 1" class="lab">
                 <label for="#lab">Give Lab</label>
                 <br>
-                <input type="radio" name="lab" id="lab" value="lab" checked>
+                <input type="radio" name="lab" id="lab" value="lab" class="lab" checked>
                 <label for="lab">Don't afftect Lab</label>
                 <br>
-                <input type="radio" name="lab" id="#lab 0" value="lab 0">
+                <input type="radio" name="lab" id="#lab 0" value="#lab 0" class="lab">
                 <label for="#lab 0">Destroy Lab</label>
         </p>
-        <label for="#revealsite">Name of site to reveal:</label>
-        <input type="text" name="#revealsite" id="#revealsite">
+        <p>
+            Note: The name of the site to reveal is set above in the "Name of site" field.
+            <br>
+            <label for="#revealsite">Name of site to reveal:</label>
+            <input type="checkbox" name="#revealsite" id="#revealsite" value="#revealsite" class="sitename">
+        </p>
         <p>
             Adds a discovered site to the provence.
             <br>
             <label for="#addsite">Site ID:</label>
-            <input type="number" name="#addsite" id="#addsite" value="0" min="0" max="1999">
+            <input type="number" name="#addsite" id="#addsite" value="0" min="0" max="1999" class="site">
         </p>
         <p>
             Removes a site from the provence.
             <br>
             <label for="#removesite">Site ID:</label>
-            <input type="number" name="#removesite" id="#removesite" value="0" min="0" max="1999">
+            <input type="number" name="#removesite" id="#removesite" value="0" min="0" max="1999" class="site">
         </p>
         <p>
             Adds a hidden site to the provence.
             <br>
             <label for="#hiddensite">Site ID:</label>
-            <input type="number" name="#hiddensite" id="#hiddensite" value="0" min="0" max="1999">
+            <input type="number" name="#hiddensite" id="#hiddensite" value="0" min="0" max="1999" class="site">
         </p>
-        <input type="checkbox" name="#visitors" id="#visitors" value="visitors">
-        <label for="#visitors">Bogus attacks</label>
+        <input type="checkbox" name="#visitors" id="#visitors" value="#visitors" class="provbool">
+        <label for="#visitors">Bogus attacks provence</label>
         <p>
-            The dominion of the provence changes the that of the even owner, and is set 
-            to this amound.
+            The dominion of the provence changes the that of the event owner, and is set 
+            to this amount.
             <br>
-            <label for="#newdom">Site ID:</label>
-            <input type="text" name="#newdom" id="#newdom" value="0" min="0" max="10">
+            <label for="#newdom">New dominion:</label>
+            <input type="text" name="#newdom" id="#newdom" value="0" min="0" max="10" class="site">
 
         </p>
-        <input type="checkbox" name="#revolt" id="#revolt" value="revolt">
+        <input type="checkbox" name="#revolt" id="#revolt" value="#revolt" class="provbool">
         <label for="#revolt">Provence revolts</label>
         <br>
-        <input type="checkbox" name="#revealprov" id="#revealprov" value="revealprov">
+        <input type="checkbox" name="#revealprov" id="#revealprov" value="#revealprov" class="provbool">
         <label for="#revealprov">Provence name is revealed</label>
         <p>
                 Any thrones in provence are claimed by the event owner.
                 <br>
-                <input type="checkbox" name="#claimthrone" id="#claimthrone" value="claimthrone">
+                <input type="checkbox" name="#claimthrone" id="#claimthrone" value="claimthrone" class="provbool">
                 <label for="#claimthrone">Claim thrones</label>
         </p>
         <h3>Monster Effects</h3>
@@ -1555,109 +1809,97 @@
             A ramdomly chosen commander is attacked by an assassin.
             <br>
             <label for="#assassin">Unit ID:</label>
-            <input type="number" name="#assassin" id="#assassin" value="0" min="0" max="8999">
+            <input type="number" name="#assassin" id="#assassin" value="0" min="0" max="8999" class="monnum">
         </p>
         <p>
             The event owner is given a stealthy commander in the provence.
             <br>
             <label for="#stealthcom">Unit ID:</label>
-            <input type="number" name="#stealthcom" id="#stealthcom" value="0" min="0" max="8999">
+            <input type="number" name="#stealthcom" id="#stealthcom" value="0" min="0" max="8999" class="monnum">
         </p>
         <fieldset>
             <legend>Give Commanders</legend>
             This gives the event owner one or more commanders of the specified ID.
             <br>
             <label for="#com">One commander:</label>
-            <input type="number" name="#com" id="#com" value="0" min="0" max="8999">
+            <input type="number" name="#com" id="#com" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#2com">Two commanders:</label>
-            <input type="number" name="#2com" id="#2com" value="0" min="0" max="8999">
+            <input type="number" name="#2com" id="#2com" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#3com">Three commanders:</label>
-            <input type="number" name="#3com" id="#3com" value="0" min="0" max="8999">
+            <input type="number" name="#3com" id="#3com" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#4com">Four commanders:</label>
-            <input type="number" name="#4com" id="#4com" value="0" min="0" max="8999">
+            <input type="number" name="#4com" id="#4com" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#5com">Five commanders:</label>
-            <input type="number" name="#5com" id="#5com" value="0" min="0" max="8999">
+            <input type="number" name="#5com" id="#5com" value="0" min="0" max="8999" class="monnum">
         </fieldset>
-        <!-- todo finish later
-        <p>
-                <input type="radio" name="temple" id="#temple 1" value="temple 1">
-                <label for="#temple">Give Temple</label>
-                <br>
-                <input type="radio" name="temple" id="temple" value="temple" checked>
-                <label for="temple">Don't afftect Temple</label>
-                <br>
-                <input type="radio" name="temple" id="#temple 0" value="temple 0">
-                <label for="#temple 0">Destroy Temple</label>
-
-        </p>
-        -->
+        
         <fieldset>
             <legend>Give Units</legend>
             This gives the event owner one or more units of the specified ID.
             <br>
             <label for="#1unit">One unit:</label>
-            <input type="number" name="#1unit" id="#1unit" value="0" min="0" max="8999">
+            <input type="number" name="#1unit" id="#1unit" value="0" min="0" max="8999"  class="monnum">
             <br>
             <label for="#1d3units">1d3 units:</label>
-            <input type="number" name="#1d3units" id="#1d3units" value="0" min="0" max="8999">
+            <input type="number" name="#1d3units" id="#1d3units" value="0" min="0" max="8999"  class="monnum">
             <br>
             <label for="#1d6units">1d6 units:</label>
-            <input type="number" name="#1d6units" id="#1d6units" value="0" min="0" max="8999">
+            <input type="number" name="#1d6units" id="#1d6units" value="0" min="0" max="8999"  class="monnum">
             <br>
             <label for="#2d6units">2d6 units:</label>
-            <input type="number" name="#2d6units" id="#2d6units" value="0" min="0" max="8999">
+            <input type="number" name="#2d6units" id="#2d6units" value="0" min="0" max="8999"  class="monnum">
             <br>
             <label for="#3d6units">3d6 units:</label>
-            <input type="number" name="#3d6units" id="#3d6units" value="0" min="0" max="8999">
+            <input type="number" name="#3d6units" id="#3d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#4d6units">4d6 units:</label>
-            <input type="number" name="#4d6units" id="#4d6units" value="0" min="0" max="8999">
+            <input type="number" name="#4d6units" id="#4d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#5d6units">5d6 units:</label>
-            <input type="number" name="#5d6units" id="#5d6units" value="0" min="0" max="8999">
+            <input type="number" name="#5d6units" id="#5d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#6d6units">6d6 units:</label>
-            <input type="number" name="#6d6units" id="#6d6units" value="0" min="0" max="8999">
+            <input type="number" name="#6d6units" id="#6d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#7d6units">7d6 units:</label>
-            <input type="number" name="#7d6units" id="#7d6units" value="0" min="0" max="8999">
+            <input type="number" name="#7d6units" id="#7d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#8d6units">8d6 units:</label>
-            <input type="number" name="#8d6units" id="#8d6units" value="0" min="0" max="8999">
+            <input type="number" name="#8d6units" id="#8d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#9d6units">9d6 units:</label>
-            <input type="number" name="#9d6units" id="#9d6units" value="0" min="0" max="8999">
+            <input type="number" name="#9d6units" id="#9d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#10d6units">10d6 units:</label>
-            <input type="number" name="#10d6units" id="#10d6units" value="0" min="0" max="8999">
+            <input type="number" name="#10d6units" id="#10d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#11d6units">11d6 units:</label>
-            <input type="number" name="#11d6units" id="#11d6units" value="0" min="0" max="8999">
+            <input type="number" name="#11d6units" id="#11d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#12d6units">12d6 units:</label>
-            <input type="number" name="#12d6units" id="#12d6units" value="0" min="0" max="8999">
+            <input type="number" name="#12d6units" id="#12d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#13d6units">13d6 units:</label>
-            <input type="number" name="#13d6units" id="#13d6units" value="0" min="0" max="8999">
+            <input type="number" name="#13d6units" id="#13d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#14d6units">14d6 units:</label>
-            <input type="number" name="#14d6units" id="#14d6units" value="0" min="0" max="8999">
+            <input type="number" name="#14d6units" id="#14d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#15d6units">15d6 units:</label>
-            <input type="number" name="#15d6units" id="#15d6units" value="0" min="0" max="8999">
+            <input type="number" name="#15d6units" id="#15d6units" value="0" min="0" max="8999" class="monnum">
             <br>
             <label for="#16d6units">16d6 units:</label>
-            <input type="number" name="#16d6units" id="#16d6units" value="0" min="0" max="8999">
+            <input type="number" name="#16d6units" id="#16d6units" value="0" min="0" max="8999" class="monnum">
         </fieldset>
         <p>
             Damage is inflicted on all units located in the provence.
             <br>
             <label for="#strikeunits">Damage amount:</label>
-            <input type="number" name="#strikeunits" id="#strikeunits" value="0" min="0">
+            <input type="number" name="#strikeunits" id="#strikeunits" value="0" min="0" class="monnum">
         </p>
         <fieldset>
             <legend>Kill Spcific Units</legend>
@@ -1665,29 +1907,295 @@
                 This will kill a unit (not a commander).
                 <br>
                 <label for="#killmon">Unit ID:</label>
-                <input type="number" name="#killmon" id="#killmon" value="0" min="0">
+                <input type="number" name="#killmon" id="#killmon" value="0" min="0" class="monnum">
             </p>
             <p>
                 This will kill 2d6 units.
                 <br>
                 <label for="#kill2d6mon">Unit ID:</label>
-                <input type="number" name="#kill2d6mon" id="#kill2d6mon" value="0" min="0">
+                <input type="number" name="#kill2d6mon" id="#kill2d6mon" value="0" min="0" class="monnum">
             </p>
             <p>
                 This will kill a commander.
                 <br>
                 <label for="#killcom">Commander ID:</label>
-                <input type="number" name="#killcom" id="#killcom" value="0" min="0">
+                <input type="number" name="#killcom" id="#killcom" value="0" min="0" class="monnum">
             </p>
         </fieldset>
 
         <label for="#curse">Unit Curse chance:</label>
-        <input type="number" name="#curse" id="#curse" value="0" min="0" max="100">
+        <input type="number" name="#curse" id="#curse" value="0" min="0" max="100" class="monnum">
         <br>
         <label for="#curse">Unit Curse chance:</label>
-        <input type="number" name="#curse" id="#curse" value="0" min="0" max="100">
+        <input type="number" name="#curse" id="#curse" value="0" min="0" max="100" class="monnum">
         <!--todo researchaff, gainaff-->
+        <table>
+                <thead>
+                    <tr>
+                        <th>Researcher Afflictions
+                            <br>
+                            This causes a researcher in the provence will suffer the following afflictions:
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="rafl0" class="rafl" value="0" >
+                            <label for="rafl0">Disease</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl1" class="rafl" value="1">
+                            <label for="rafl1">Cursed</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl3" class="rafl" value="3">
+                            <label for="rafl3">Plagued</label>
+                        </td>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="rafl5" class="rafl" value="5">
+                            <label for="rafl5">Curse of Stones</label>
+                        -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="rafl6" class="rafl" value="6">
+                            <label for="rafl6">Entangled</label>
+                        -->
+                        </td>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="rafl7" class="rafl" value="7">
+                            <label for="rafl7">Enraged</label>
+                        -->
+
+                        </td>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="rafl8" class="rafl" value="8">
+                            <label for="rafl8">Decaying</label>
+                        -->
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl9" class="rafl" value="9">
+                            <label for="rafl9">Burned</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="rafl10" class="rafl" value="10">
+                            <label for="rafl10">Sleep</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl11" class="rafl" value="11">
+                            <label for="rafl11">Rusted Armor</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl12" class="rafl" value="12">
+                            <label for="rafl12">Blind</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl13" class="rafl" value="13">
+                            <label for="rafl13">Bleeding</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="rafl14" class="rafl" value="14">
+                            <label for="rafl14">Earth Grip</label>
+                        </td>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="rafl16" class="rafl" value="16">
+                            <label for="rafl16">Fire Bonds</label>
+                        -->
+                        </td>
+                        <td>
+                            
+                            <input type="checkbox" id="rafl17" class="rafl" value="30">
+                            <label for="rafl17">Lost an Arm</label>
+                        
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl18" class="rafl" value="18">
+                            <label for="rafl18">Limp</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="rafl19" class="rafl" value="19">
+                            <label for="rafl19">Lost Eye</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl20" class="rafl" value="20">
+                            <label for="rafl20">Weakness</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl21" class="rafl" value="21">
+                            <label for="rafl21">Battle Fright</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl22" class="rafl" id="22" value="22">
+                            <label for="rafl22">Mute</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="rafl23" class="rafl" value="23" >
+                            <label for="rafl23">Chest Wound</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl24" class="rafl" value="24">
+                            <label for="rafl24">Crippled</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl25" class="rafl" value="25">
+                            <label for="rafl25">Feeblemind</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="rafl26" class="rafl" value="26">
+                            <label for="rafl26">Never Healing Wound</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         <br>
+        <table>
+                <thead>
+                    <tr>
+                        <th>Commander Afflictions
+                            <br>
+                            This causes a commander in the provence will suffer the following afflictions:
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="cofl0" class="cofl" value="0" >
+                            <label for="cofl0">Disease</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl1" class="cofl" value="1">
+                            <label for="cofl1">Cursed</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl3" class="cofl" value="3">
+                            <label for="cofl3">Plagued</label>
+                        </td>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="cofl5" class="cofl" value="5">
+                            <label for="cofl5">Curse of Stones</label>
+                        -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="cofl6" class="cofl" value="6">
+                            <label for="cofl6">Entangled</label>
+                        -->
+                        </td>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="cofl7" class="cofl" value="7">
+                            <label for="cofl7">Enraged</label>
+                        -->
+
+                        </td>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="cofl8" class="cofl" value="8">
+                            <label for="cofl8">Decaying</label>
+                        -->
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl9" class="cofl" value="9">
+                            <label for="cofl9">Burned</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="cofl10" class="cofl" value="10">
+                            <label for="cofl10">Sleep</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl11" class="cofl" value="11">
+                            <label for="cofl11">Rusted Armor</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl12" class="cofl" value="12">
+                            <label for="cofl12">Blind</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl13" class="cofl" value="13">
+                            <label for="cofl13">Bleeding</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="cofl14" class="cofl" value="14">
+                            <label for="cofl14">Earth Grip</label>
+                        </td>
+                        <td>
+                            <!--
+                            <input type="checkbox" id="cofl16" class="cofl" value="16">
+                            <label for="cofl16">Fire Bonds</label>
+                        -->
+                        </td>
+                        <td>
+                            
+                            <input type="checkbox" id="cofl17" class="cofl" value="30">
+                            <label for="cofl17">Lost an Arm</label>
+                        
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl18" class="cofl" value="18">
+                            <label for="cofl18">Limp</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="cofl19" class="cofl" value="19">
+                            <label for="cofl19">Lost Eye</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl20" class="cofl" value="20">
+                            <label for="cofl20">Weakness</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl21" class="cofl" value="21">
+                            <label for="cofl21">Battle Fright</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl22" class="cofl" id="22" value="22">
+                            <label for="cofl22">Mute</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="cofl23" class="cofl" value="23" >
+                            <label for="cofl23">Chest Wound</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl24" class="cofl" value="24">
+                            <label for="cofl24">Crippled</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl25" class="cofl" value="25">
+                            <label for="cofl25">Feeblemind</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="cofl26" class="cofl" value="26">
+                            <label for="cofl26">Never Healing Wound</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
         <p>
             The following effects will only happen to commanders who meet the requirments set in the Target Requirements section. 
@@ -1704,16 +2212,16 @@
             will be banished to the spefified plane. 
             <br>
             <label for="banished0">No banishment</label>
-            <input type="radio" name="banished" id="banished0" value="#banished0" checked>
+            <input type="radio" name="banished" id="banished0" value="#banished0" class="banished" checked>
             <br>
             <label for="banished11">The Void</label>
-            <input type="radio" name="banished" id="banished11" value="#banished 11" checked>
+            <input type="radio" name="banished" id="banished11" value="#banished 11" class="banished">
             <br>
             <label for="banished12">The Inferno</label>
-            <input type="radio" name="banished" id="banished12" value="#banished 12" checked>
+            <input type="radio" name="banished" id="banished12" value="#banished 12" class="banished">
             <br>
             <label for="banished13">Kokytos</label>
-            <input type="radio" name="banished" id="banished13" value="#banished 13" checked>
+            <input type="radio" name="banished" id="banished13" value="#banished 13" class="banished">
         </p>
         <p>
             Gives a magic item to a commander. The item will be randomly chose based on rarity level unless spefified.
@@ -1723,25 +2231,26 @@
             One commander in the target provence is transformed into a new creature/unit.
             <br>
             <label for="#transform">New unit ID:</label>
-            <input type="number" name="#transform" id="#transform" value="0" min="0" max="8999">
+            <input type="number" name="#transform" id="#transform" value="0" min="0" max="8999" class="comnum">
         </p>
         <!--todo cleartarg-->
         <p>
             One commander in the target provence is hit by a poison attack that bypasses armor.
             <br>
             <label for="#poison">Posion damage:</label>
-            <input type="number" name="#poison" id="#poison" value="0" min="0" >
+            <input type="number" name="#poison" id="#poison" value="0" min="0"  class="comnum">
         </p>
         <p>
             One commander in the target provence is given extra experience. This varries by 25%.
             <br>
             <label for="#experience">Exp:</label>
-            <input type="number" name="#experience" id="#experience" value="0" min="0" >
+            <input type="number" name="#experience" id="#experience" value="0" min="0"  class="comnum">
         </p>
         <h3>Magic Pathboost Effects</h3>
         Note: If none of the monster requirements have been set, then setting any of the following 
         boost IDs will tell the event to give a boost to that type of unit and that type only. If 
-        any requirments have been set, then the boost will be applied to to the uit that meents the requirments.
+        any requirments have been set, then the boost will be applied to to the uit that meents the 
+        requirments.
         <br>
         <label for="#fireboost">Fire boost unit ID:</label>
         <input type="number" name="#fireboost" id="#fireboost" value="0" min="0" max="8999" class="magicboost">
@@ -1928,14 +2437,12 @@
         <p>
             Increases or decrease the unrest by this amount.
             <br>
-                <label for="#worldunrest">World unrest amount:</label>
-                <input type="number" name="#worldunrest" id="#worldunrest" value="0">
-        
+            <label for="#worldunrest">World unrest amount:</label>
+            <input type="number" name="#worldunrest" id="#worldunrest" value="0">
         </p>
         <label for="#worldincdom">World dominion amount:</label>
         <input type="number" name="#worldincdom" id="#worldincdom" value="0">
         <br>
-
         <label for="#worldritrebate">World ritual casting rebate:</label>
         <select name="#worldritrebate" id="#worldritrebate" class="global">
             <option value="-1" selected>N/A</option>
@@ -1955,25 +2462,25 @@
             <label for="#worlddarkness">Darkness</label>
         </p>
         <label for="#worldcurse">Chance of being cursed:</label>
-        <input type="number" name="#worldcurse" id="#worldcurse" value="0" min="0" max="100">
+        <input type="number" name="#worldcurse" id="#worldcurse" value="0" min="0" max="100" class="unitchance">
         <br>
         <label for="#worlddisease">Chance of being diseased:</label>
-        <input type="number" name="#worlddisease" id="#worlddisease" value="0" min="0" max="100">
+        <input type="number" name="#worlddisease" id="#worlddisease" value="0" min="0" max="100" class="unitchance">
         <br>
         <label for="#worldmark">Chance of being horror marked:</label>
-        <input type="number" name="#worldmark" id="#worldmark" value="0" min="0" max="100">
+        <input type="number" name="#worldmark" id="#worldmark" value="0" min="0" max="100" class="unitchance">
         <br>
-        <label for="#worldheal">Chance of healign an affliction:</label>
-        <input type="number" name="#worldheal" id="#worldheal" value="0" min="0" max="100">
+        <label for="#worldheal">Chance of healing an affliction:</label>
+        <input type="number" name="#worldheal" id="#worldheal" value="0" min="0" max="100" class="unitchance">
         <br>
         <label for="#worldage">Number of years to age:</label>
-        <input type="number" name="#worldage" id="#worldage" value="0">
+        <input type="number" name="#worldage" id="#worldage" value="0" class="unitchance">
         <br>
         <p>
             Some global event effects last for several turns.
             <br>
             <label for="#linger">Number of turns:</label>
-            <input type="number" name="#linger" id="#linger" value="0" min="0">
+            <input type="number" name="#linger" id="#linger" value="0" min="0" class="unitchance">
     
         </p>
         <h3>Special Event Commands</h3>
@@ -1998,19 +2505,19 @@
             The next event happens a number of turns after this event.
             <br>
             <label for="#delay">Number of turns:</label>
-            <input type="number" name="#delay" id="#delay" value="0" min="0">
+            <input type="number" name="#delay" id="#delay" value="0" min="0" class="eventnum">
         </p>
         <p>
             The next event happens a number of turns after this event. This delay varies by 25%.
             <br>
             <label for="#delay25">Number of turns:</label>
-            <input type="number" name="#delay25" id="#delay25" value="0" min="0">
+            <input type="number" name="#delay25" id="#delay25" value="0" min="0" class="eventnum">
         </p>
         <p>
             The next event happens a number of turns after this event. This delay varies by 50%.
             <br>
             <label for="#delay50">Number of turns:</label>
-            <input type="number" name="#delay50" id="#delay50" value="0" min="0">
+            <input type="number" name="#delay50" id="#delay50" value="0" min="0" class="eventnum">
         </p>
         <table>
             <thead>
@@ -2023,49 +2530,46 @@
             <tbody>
                 <tr>
                     <td>
-                        <input type="checkbox" name="nil" id="nil" value="0">
+                        <input type="checkbox" name="nil" id="nil" value="0" class="evbit">
                         <label for="nil">Nil (resets all order options)</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="ivestigate" id="ivestigate" value="1">
+                        <input type="checkbox" name="ivestigate" id="ivestigate" value="1" class="evbit">
                         <label for="ivestigate">Ivestigate</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="continue" id="continue" value="2">
+                        <input type="checkbox" name="continue" id="continue" value="2" class="evbit">
                         <label for="continue">Continue</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="accept" id="accept" value="4">
+                        <input type="checkbox" name="accept" id="accept" value="4" class="evbit">
                         <label for="accept">Accept</label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                            <input type="checkbox" name="decline" id="decline" value="8">
+                            <input type="checkbox" name="decline" id="decline" value="8" class="evbit">
                             <label for="decline">Decline</label>
     
                     </td>
                     <td>
-                            <input type="checkbox" name="withdraw" id="withdraw" value="16">
+                            <input type="checkbox" name="withdraw" id="withdraw" value="16" class="evbit">
                             <label for="withdraw">Withdraw</label>
     
                     </td>
                     <td>
-                            <input type="checkbox" name="attack" id="attack" value="32">
+                            <input type="checkbox" name="attack" id="attack" value="32" class="evbit">
                             <label for="attack">Attack</label>
-    
                     </td>
                     <td>
-                            <input type="checkbox" name="subterfuge" id="subterfuge" value="64">
+                            <input type="checkbox" name="subterfuge" id="subterfuge" value="64" class="evbit">
                             <label for="subterfuge">Subterfuge</label>
-    
                     </td>
                 </tr>
                 <tr>
                     <td>
-                            <input type="checkbox" name="magic" id="magic" value="128">
+                            <input type="checkbox" name="magic" id="magic" value="128" class="evbit">
                             <label for="magic">Magic</label>
-
                     </td>
                 </tr>
             </tbody>
@@ -2075,21 +2579,21 @@
             This sets the event code of of the current provence. Used when planned for global events.
             <br>
             <label for="#code">Event Code:</label>
-            <input type="number" name="#code" id="#code" value="-299" max="-299">
+            <input type="number" name="#code" id="#code" value="-299" max="-299" class="evcode">
 
         </p>
         <p>
             This sets the event code of of the current provence. Used when exicuting for global events.
             <br>
             <label for="#code2">Event Code:</label>
-            <input type="number" name="#code2" id="#code2" value="-299" max="-299">
+            <input type="number" name="#code2" id="#code2" value="-299" max="-299" class="evcode">
 
         </p>
         <p>
             This removes the event code from every provence in the world.
             <br>
             <label for="#resetcode">Event Code:</label>
-            <input type="number" name="#resetcode" id="#resetcode" value="-299" max="-299">
+            <input type="number" name="#resetcode" id="#resetcode" value="-299" max="-299" class="evcode">
 
         </p>
         <p>
@@ -2127,7 +2631,7 @@
             <label for="#id">ID:</label>
             <input type="number" name="#id" id="#id" value="-299" max="-299">
         </p>
-        <button>Create event</button>
+        <button onclick="document.getElementById('result').innerText=createEvent()">Create event</button>
         <p id="result">Result</p>
 
 

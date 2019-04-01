@@ -17,6 +17,7 @@
     </head>
     <body>
         <header>
+            <a href="about.html">About</a>
             <a href="mod_helper.html">Mod</a>
             <a href="armor_helper.html">Armor</a>
             <a href="weapon_helper.html">Weapons</a>
@@ -25,6 +26,7 @@
             <a href="monster_helper.html">Monsters</a>
             <a href="nation_helper.html">Nations</a>
             <a href="site_helper.html">Magic Sites</a>
+            <a href="event_helper.html">Events</a>
         </header>
         <main>
             <h1>Basic Spell Attributes</h1>
@@ -169,7 +171,8 @@
                                     <!--todo: nextingeo-->
             </fieldset>
             <label for="combateffect">Spell effect (combat only)</label>
-            <select name="combateffect" id="combateffect" class="battle">
+            <select name="combateffect" id="combateffect" class="battle"
+            onchange="enableOrDisable(document.getElementById('combateffect').value=='134', '#maxbounces', '', true)">
                 <option value="1">Summon monster</option>
                 <option value="2" selected>Damage</option>
                 <option value="3">Fatigue damage</option>
@@ -191,6 +194,13 @@
                 <option value="126">Border Summon Indpendent</option>
                 <option value="128">Stun</option>
                 <option value="134">Bounce damage</option>
+                <optgroup>
+                    <option value="6043">6turns border summoning</option>
+                    <option value="10">Bless</option>
+
+                    <option value="23">Unspecified</option>
+
+                </optgroup>
             </select>
             <br>
             <label for="ritualeffect">Spell effect (ritual only)</label>
@@ -205,8 +215,18 @@
                 <option value="10050">Assassination</option>
                 <option value="10063">Build fort</option>
                 <option value="10077">Army teleport</option>
-
+                <optgroup label="Experment effects - use at your own risk">
+                        <option value="10101">Aging</option>
+                        <option value="10503">Horror mark?</option>
+                        <option value="10524">Unspecified</option>
+                        
+                </optgroup>
             </select>
+            <p>
+                Note: The list of ritual effects in the documentation is pretty incomplete, as 
+                of the moment it does not say how to create a remote damage spell (Fires from Afar), 
+                or a local encahntment (Dome of Ice).
+            </p>
             <br>
             <label for="#nreff">Number of effects:</label>
             <input type="number" name="#nreff" id="#nreff" value="1" min="1">
@@ -264,7 +284,6 @@
                 <input type="number" name="miscexplodesprite" id="miscexplodesprite" value="10021" 
                 min="10021" max="10139" disabled class="battle">
                 <br>
-
                 <br>
                 <label for="flysp">Flying sprite</label>
                 <select name="flysp" id="flysp" class="battle"
@@ -439,7 +458,6 @@
                         <th>
                             Spell cannot be cast from one of the following terrain types:
                         </th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -517,7 +535,6 @@
                         <th>
                             Spell can only target one of the following terrain types:
                         </th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -675,37 +692,37 @@
             <p>
                     Spell can only be cast from a costal provence.
                     <br>
-                    <input type="checkbox" name="#onlycoastsrc" id="#onlycoastsrc" class="ritualoptions ritual">
+                    <input type="checkbox" name="#onlycoastsrc" id="#onlycoastsrc" value="#onlycoastsrc 1" class="ritualoptions ritual">
                     <label for="#onlycoastsrc">Costal provence only</label>
             </p>
             <p>
                     Spell can only target friendly provences.
                     <br>
-                    <input type="checkbox" name="#onlyfriendlydst" id="#onlyfriendlydst" class="ritualoptions ritual">
+                    <input type="checkbox" name="#onlyfriendlydst" id="#onlyfriendlydst" value="#onlyfriendlydst 1" class="ritualoptions ritual">
                     <label for="#onlyfriendlydst">Friendly provence only</label>
             </p>
             <p>
                     Spell can only target the provence the casters is in.
                     <br>
-                    <input type="checkbox" name="#onlyowndst" id="#onlyowndst" class="ritualoptions ritual">
+                    <input type="checkbox" name="#onlyowndst" id="#onlyowndst" value="#onlyowndst" class="ritualoptions ritual">
                     <label for="#onlyowndst">Caster's provences only</label>
             </p>
             <p>
                     Spell cannot pass through water provences.
                     <br>
-                    <input type="checkbox" name="#nowatertrace" id="#nowatertrace" class="ritualoptions ritual">
+                    <input type="checkbox" name="#nowatertrace" id="#nowatertrace" value="#nowatertrace" class="ritualoptions ritual">
                     <label for="#nowatertrace">No water trace</label>
             </p>
             <p>
                     Spell cannot pass through land provences.
                     <br>
-                    <input type="checkbox" name="#nolandtrace" id="#nolandtrace" class="ritualoptions ritual">
+                    <input type="checkbox" name="#nolandtrace" id="#nolandtrace" value="#nolandtrace" class="ritualoptions ritual">
                     <label for="#nolandtrace">No land trace</label>
             </p>
             <p>
                     Spell must trace through a walkable path.
                     <br>
-                    <input type="checkbox" name="#walkable" id="#walkable" class="ritualoptions ritual">
+                    <input type="checkbox" name="#walkable" id="#walkable" value="#walkable" class="ritualoptions ritual">
                     <label for="#walkable">Walkable path</label>
             </p>
             <h3>Spell Special Attributes</h3>
@@ -818,6 +835,10 @@
                 onchange="deactivateIfChecked('ssa16777216', 'ssa4096')">
                 <label for="ssa16777216">Magic restance negates easily</label>
                 <br>
+                <input type="checkbox" name="ssa1048576" id="ssa1048576" value="1048576" class="spec">
+                <label for="ssa1048576">Defence negates</label>
+                <br>
+                
 
                 <input type="checkbox" name="ssa8388608" id="ssa8388608" value="8388608" class="spec"
                 onchange="deactivateIfChecked('ssa8388608', 'ssa33554432')">
@@ -832,34 +853,34 @@
             <fieldset>
                 <legend>Restricted to the Following Nations:</legend>
                 <p>Enter the numbers of the nations you want to restricted this spell to in the fields below. </p>
-                <input type="number" name="restricted1" id="restricted1" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted1" id="restricted1" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted2" id="restricted2" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted2" id="restricted2" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted3" id="restricted3" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted3" id="restricted3" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted4" id="restricted4" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted4" id="restricted4" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted5" id="restricted5" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted5" id="restricted5" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted6" id="restricted6" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted6" id="restricted6" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted7" id="restricted7" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted7" id="restricted7" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted8" id="restricted8" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted8" id="restricted8" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted9" id="restricted9" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted9" id="restricted9" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted10" id="restricted10" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted10" id="restricted10" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted11" id="restricted11" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted11" id="restricted11" class="restricted" min="0" value="0" max="249">
                 <br>
-                <input type="number" name="restricted12" id="restricted12" class="restricted" min="-1" value="-1" max="249">
+                <input type="number" name="restricted12" id="restricted12" class="restricted" min="0" value="0" max="249">
             </fieldset>
             <p>To preven a nation from using this spell, enter it's ID below.
                 <br>
                 <label for="#notfornation">Barred Nation:</label>
-                <input type="number" name="#notfornation" id="#notfornation" min="-1" value="-1" max="249">
+                <input type="number" name="#notfornation" id="#notfornation" min="0" value="0" max="249">
             </p>
             <input type="checkbox" name="setcasttime" id="setcasttime" class="battle"
             onchange="enableOrDisable(document.getElementById('setcasttime').checked, 'casttime', '')">

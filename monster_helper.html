@@ -17,14 +17,19 @@
     </head>
     <body>
         <header>
-            <a href="mod_helper.html">Mod</a>
-            <a href="armor_helper.html">Armor</a>
-            <a href="weapon_helper.html">Weapons</a>
-            <a href="item_helper.html">Magic Items</a>
-            <a href="spell_helper.html">Magic Spells</a>
-            <a href="monster_helper.html">Monsters</a>
-            <a href="nation_helper.html">Nations</a>
-            <a href="site_helper.html">Magic Sites</a>
+            <div style="text-align: justify">
+                <a href="index.html">Main Page</a>
+                <a href="about.html">About</a>
+                <a href="mod_helper.html">Mod</a>
+                <a href="armor_helper.html">Armor</a>
+                <a href="weapon_helper.html">Weapons</a>
+                <a href="item_helper.html">Magic Items</a>
+                <a href="spell_helper.html">Magic Spells</a>
+                <a href="monster_helper.html">Monsters</a>
+                <a href="nation_helper.html">Nations</a>
+                <a href="site_helper.html">Magic Sites</a>
+                <a href="event_helper.html">Events</a>
+            </div>
         </header>
         <main>
             <h1>Monster Modding</h1>
@@ -173,7 +178,6 @@
                     <br>
                     <label for="#enchrebate50">Enchantmant ID:</label>
                     <input type="number" name="#enchrebate50" id="#enchrebate50" value="0" min="0" class="recrestrict">
-        
             </p>
             <fieldset>
                 <legend>Required Buildings:</legend>
@@ -241,14 +245,12 @@
                     <br>
                     <label for="#deserter">Desertion change*:</label>
                     <input type="number" name="#deserter" value="0" id="#deserter" min="0" max="100" class="desertionnum">
-        
             </p>
             <p>
                     Chance of disertion per month when astral corruption is active.
                     <br>
                     <label for="#horrordeserter">Desertion change*:</label>
                     <input type="number" name="#horrordeserter" value="0" id="#horrordeserter" min="0" max="100" class="desertionnum">
-        
             </p>
             <p>
                     Chance of becoming indpentant per month.
@@ -312,8 +314,37 @@
             <input type="number" name="#enc" value="3" id="#enc" min="0" class="atributes">
             <br>
             <!-- note: dom 5 vales are not implemented-->
-            <label for="#mapmove">Map Speed:</label>
-            <input type="number" name="#mapmove" value="2" id="#mapmove" min="1" class="atributes">
+            <p>
+                Note: Dominions 5 has a marked changed in how unit movment is calculated. It is still 
+                possible to use the old values, dominions will automaticly covert them to the corect 
+                movment values.
+                <br>
+                <label for="#mapmove">Map Speed:</label>
+                <input type="number" name="#mapmove" value="14" id="#mapmove" min="0" class="atributes">
+    
+            </p>
+            <label for="mapSpeedTemplate">Speed Guide</label>
+            <select name="mapSpeedTemplate" id="mapSpeedTemplate">
+                    <option value="10">Naga</option>
+                    <option value="12">Vaetti/Lizard/Abysian/Atlantian/Bandar/Pale One</option>
+                    <option value="14">Human/Shambler/Wyrm/Vanara/Ancient One</option>
+                    <option value="16">Giant/Enkidu/Satyr/Triton</option>
+                    <option value="18">Legion/Serpent/Colossi</option>
+                    <option value="20">Titan/Caelum/Zotz/Horse/Undead/Demon</option>
+                    <option value="26">Feyhorse</option>
+                <optgroup label="Pre Dominions 5 move spaces">
+                        <option value="1">Heavy infantry</option>
+                        <option value="2">Light infantry/Heavy cavalry</option>
+                        <option value="3">Light cavalry</option>
+                </optgroup>
+            </select>
+            <br>
+            <!--
+                234 + 1024
+            -->
+            <button 
+            onclick="document.getElementById('#mapmove').value = document.getElementById('mapSpeedTemplate').value"
+            >Copy movespeed from template</button>
             <br>
             <label for="#ap">Action Points:</label>
             <input type="number" name="#ap" value="12" id="#ap" min="1" class="atributes">
@@ -387,7 +418,6 @@
                         <br>
                         <label for="#userestricteditem">Item ID:</label>
                         <input type="number" id="#userestricteditem" value="0" min="0" max="10000">
-        
                 </p>
                 <br>
                 <label for="#noitem">Can Only Use Misc Items:</label>
@@ -454,8 +484,8 @@
                 <input type="checkbox" id="#mounted" value="#mounted" class="atributes">
                 <label for="#mounted">Unit is Mounted</label>
                 <br>
-                <input type="checkbox" id="#holy" value="#holy" class="atributes" 
-                onchange="document.getElementById('#inquisitor').disabled = !document.getElementById('#holy').checked">
+                <input type="checkbox" id="#holy" value="#holy" class="atributes">
+                <!--onchange="document.getElementById('#inquisitor').disabled = !document.getElementById('#holy').checked"-->
                 <label for="#holy">Unit is Holy</label>
                 <br>
                 <input type="checkbox" id="#animal" value="#animal" class="atributes">
@@ -509,10 +539,14 @@
                     <input type="radio" name="underwaterMove" id="#aquatic" value="#aquatic" class="underwaterMove">
                     <label for="#aquatic">Unit is Aquatic</label>
                     <br>
-                    <input type="radio" name="underwaterMove" id="#amphibian" value="#amphibian" class="underwaterMove">
+                    <input type="radio" name="underwaterMove" id="#amphibian" value="#amphibian" class="underwaterMove"
+                    onclick="document.getElementById('#giftofwater').disabled=!(
+                        document.getElementById('#amphibian').checked||document.getElementById('#pooramphibian'))">
                     <label for="#amphibian">Unit is Amphibious</label>
                     <br>
-                    <input type="radio" name="underwaterMove" id="#pooramphibian" value="#pooramphibian" class="underwaterMove">
+                    <input type="radio" name="underwaterMove" id="#pooramphibian" value="#pooramphibian" class="underwaterMove"
+                    onclick="document.getElementById('#giftofwater').disabled=!(
+                        document.getElementById('#amphibian').checked||document.getElementById('#pooramphibian'))">
                     <label for="#pooramphibian">Unit is Semi-Amphibous</label>
                     <br>
                     <input type="radio" name="underwaterMove" id="#swimming" value="#swimming"  class="underwaterMove">
@@ -733,8 +767,6 @@
                     <label for="#older">Extra Age:</label>
                     <input type="number" id="#older" value="0" class="miscAge">
                 </p>
-                
-                <br>
                 <label for="#addrandomage">Adds between 1 ad X years to the units age:</label>
                 <input type="number" id="#addrandomage" value="0" min="0" class="miscAge">
                 <br>
@@ -761,37 +793,68 @@
         
                     <input type="number" id="#healer" value="0" min="0" max="100" class="healthnum">
                 </p>
+                <p>
+                    Some units take damage while away from home provence.
+                    <br>
+                        <label for="#homesick">Damage per turn:</label>
+                        <input type="number" id="#homesick" value="0" min="0" max="100" class="healthnum">
+        
+                </p>
+                <p>
+                    Some units can cure a number of diseased units per turn.
+                        <br>
+                        <label for="#autodishealer">Diseases to heal per turn:</label>
+                        <input type="number" id="#autodishealer" value="0" min="0" class="healthnum">
+                </p>
+                <p>
+                        Some units can cure a number of diseased units per turn, and convert the 
+                        diseases into death gems.
+                        <br>
+                        <label for="#autodisgrinder">Diseases to heal per turn:</label>
+                        <input type="number" id="#autodisgrinder" value="0" min="0" class="healthnum">
+        
+                </p>
                 
-                
-                <label for="#homesick">Damage taken per turn while away from home provence:</label>
-                <input type="number" id="#homesick" value="0" min="0" max="100" class="healthnum">
-                <br>
-                <label for="#autodishealer">Number of diseases to heal per turn:</label>
-                <input type="number" id="#autodishealer" value="0" min="0" class="healthnum">
-                <br>
-                <label for="#autodisgrinder">Number of diseases to heal and convert to death gems per turn:</label>
-                <input type="number" id="#autodisgrinder" value="0" min="0" class="healthnum">
                 <br>
                 <label for="#diseaseres">Disease resistance:</label>
                 <input type="number" id="#diseaseres" value="0" min="0" max="100" class="healthnum">
                 <br>
                 <label for="#woundfend">Affliction resistance:</label>
-                <input type="number" id="#woundfend" value="0" min="0" max="99" class="healthnum">
+                <input type="number" id="#woundfend" value="0" min="0" max="99" class="healthnum"
+                onchange="document.getElementById('wf').innerText = calcWoundfend()">
+                <p id="wf"></p>
                 <br>
-                <input type="checkbox" id="#hpoverflow" value="hpoverflow"
-                onchange="document.getElementById('#hpoverslow').disabled = document.getElementById('#hpoverflow').checked">
-                <label for="#hpoverflow">HP can go above the normal maximum (no limit)</label>
+                <p>
+                    If this is checked, then the monster's hit ponts can go above the normal maximum. 
+                    There is not limit to how high they can go, and the extra hit points are kept until 
+                    they are lost from damage.
+                    <br>
+                    <input type="checkbox" id="#hpoverflow" value="hpoverflow"
+                    onchange="document.getElementById('#hpoverslow').disabled = !document.getElementById('#hpoverflow').checked">
+                    <label for="#hpoverflow">HP can go above normal maximum</label>
+                </p>
+                <p>
+                    Setting this value above 0 alows the monster's hit ponts to go above its normal maximum 
+                    by the specified percent. Any extra hit points will gradualy be lost over time.
+                        <br>
+                        <label for="#hpoverslow">Percent:</label>
+                        <input type="number" id="#hpoverslow" value="0" min="0" max="1000">
+                </p>
+                <p>
+                    Some monsters can eat unburied corspes during a turn to regain hit points. This specifes 
+                    the maximum number of corspes a monster can eat each turn.
+                    <br>
+                    <label for="#corpseeater">Corspes per turn:</label>
+                    <input type="number" id="#corpseeater" value="0" min="0" 
+                    onchange="enableOrDisable(document.getElementById('#corpseeater').value != '0', '#deadhp', '', true)">
+                </p>
+                <label for="#deadhp">Number of HP per corpse:</label>
+                <input type="number" id="#deadhp" value="1" min="1" disabled>
                 <br>
-                <label for="#hpoverslow">HP can go above the normal maximum by this percent:</label>
-                <input type="number" id="#hpoverslow" value="0" min="0" max="1000">
-                <br>
-                <label for="#corpseeater">Number of corsepes Monster can eat to regain HP:</label>
-                <input type="number" id="#corpseeater" value="0" min="0">
-                <br>
-                <label for="#deadhp">Number of HP gained per corpse eaten:</label>
-                <input type="number" id="#deadhp" value="0" min="1">
-                <br>
-                <label for="#startaff">Chance of starting with a random affliction:</label>
+                <p>
+                    Some monsters have a chance of haveing a random affliction when they are recruited/summoned.
+                </p>
+                <label for="#startaff">Chance of random affliction:</label>
                 <input type="number" id="#startaff" value="0" min="0">
                 <table>
                     <thead>
@@ -814,22 +877,31 @@
                                 <label for="aw3">Plagued</label>
                             </td>
                             <td>
+                                <!--
                                 <input type="checkbox" id="aw5" class="aw" value="5">
-                                <label for="aw5">Inflicts Curse of Stones</label>
+                                <label for="aw5">Curse of Stones</label>
+                            -->
                             </td>
                         </tr>
                         <tr>
                             <td>
+                                <!--
                                 <input type="checkbox" id="aw6" class="aw" value="6">
-                                <label for="aw6">Entangles Foes</label>
+                                <label for="aw6">Entangled</label>
+                            -->
                             </td>
                             <td>
+                                <!--
                                 <input type="checkbox" id="aw7" class="aw" value="7">
-                                <label for="aw7">Enrages Foes</label>
+                                <label for="aw7">Enraged</label>
+                            -->
+
                             </td>
                             <td>
+                                <!--
                                 <input type="checkbox" id="aw8" class="aw" value="8">
                                 <label for="aw8">Decaying</label>
+                            -->
                             </td>
                             <td>
                                 <input type="checkbox" id="aw9" class="aw" value="9">
@@ -843,7 +915,7 @@
                             </td>
                             <td>
                                 <input type="checkbox" id="aw11" class="aw" value="11">
-                                <label for="aw11">Rust Armor</label>
+                                <label for="aw11">Rusted Armor</label>
                             </td>
                             <td>
                                 <input type="checkbox" id="aw12" class="aw" value="12">
@@ -851,7 +923,7 @@
                             </td>
                             <td>
                                 <input type="checkbox" id="aw13" class="aw" value="13">
-                                <label for="aw13">Inflicts Bleeding</label>
+                                <label for="aw13">Bleeding</label>
                             </td>
                         </tr>
                         <tr>
@@ -860,12 +932,16 @@
                                 <label for="aw14">Earth Grip</label>
                             </td>
                             <td>
+                                <!--
                                 <input type="checkbox" id="aw16" class="aw" value="16">
                                 <label for="aw16">Fire Bonds</label>
+                            -->
                             </td>
                             <td>
+                                <!--
                                 <input type="checkbox" id="aw17" class="aw" value="17">
-                                <label for="aw17">Inflicts False Fetters</label>
+                                <label for="aw17">False Fetters</label>
+                            -->
                             </td>
                             <td>
                                 <input type="checkbox" id="aw18" class="aw" value="18">
@@ -910,8 +986,13 @@
                         </tr>
                     </tbody>
                 </table>
-                <label for="#insane">Chance of taking a random action each turn:</label>
-                <input type="number" name="#insane" value="0" min="0" max="100">
+                <p>
+                    Insanity. Units that are insane have a chance of taking a random action each turn 
+                    based on how insane they are.
+                    <br>
+                    <label for="#insane">Insanity level:</label>
+                    <input type="number" name="#insane" value="0" min="0" max="100">
+                </p>
                 <h3>Damage Reduction</h3>
                 <fieldset>
                     <legend>Non Elemental Resistance</legend>
@@ -1007,21 +1088,28 @@
                 <input type="number" name="#acidshield" value="0" min="0" class="auranum">
                 <br>
                 <p>
-                    Foes who strike this monster recive the same damage instead of harming the monster, 
+                    Foes who damage this monster recive the same damage instead of harming the monster, 
                     unless they pass a magic resistance test.
+                    <br>
                     <label for="#damagerev">Damage Reversal:</label>
                     <input type="number" name="#damagerev" value="0" min="0" class="auranum">
                 </p>            
                 <p>
-                    Foes who damage this monster recive the same damage unless they pass a magic resistance test.
+                    Foes who damage this monster recive the same damage that they inflict, unless they 
+                    pass a magic resistance test.
                     <br>
                     <label for="#bloodvengeance">Blood Vengance:</label>
                     <input type="number" name="#bloodvengeance" value="0" min="0" class="auranum">
-                </p>            
-                <label for="#slimer">Slimer:</label>
-                <input type="number" name="#slimer" value="0" min="0" class="auranum">
+                </p>
+                <p>
+                    Foes who attack this monster will become covered in slime and imobilised unless they 
+                    pass a magic resistance test.
+                    <br>
+                    <label for="#slimer">Slimer:</label>
+                    <input type="number" name="#slimer" value="0" min="0" class="auranum">    
+                </p>
                 <br>
-                <label for="#mindslime">Mindslim area:</label>
+                <label for="#mindslime">Mindslime area:</label>
                 <input type="number" name="#mindslime" value="0" min="0" class="auranum">
                 <br>
                 <label for="#overcharged">Overcharged:</label>
@@ -1090,18 +1178,15 @@
                 <input type="number" name="#berserk" value="0" min="0"  class="comabilnum">
                 <br>
                 <input type="checkbox" name="#blessbers" value="#blessbers" class="comabilbool">
-
                 <label for="#blessbers">Unit goes berserk when blessed</label>
                 <br>
                 <input type="checkbox" name="#blessfly" value="#blessfly" class="comabilbool">
-
                 <label for="#blessfly">Unit can fly when blessed</label>
                 <br>
                 <label for="#darkvision">Darkvision:</label>
                 <input type="number" name="#darkvision" value="0" min="0"  class="comabilnum">
                 <br>
                 <input type="checkbox" name="#deathcurse" value="#deathcurse" class="comabilbool">
-
                 <label for="#deathcurse">Death curse</label>
                 <br>
                 <label for="#deathdisease">Disease cloud on death AoE:</label>
@@ -1203,15 +1288,19 @@
                 <input type="checkbox" name="#neednoteat" value="#neednoteat" class="noncombool">
                 <label for="#neednoteat">Unit does not need food</label>
                 <br>
-
-                <label for="#elegist">Extra effectiveness at calling back a slain god:</label>
-                <input type="number" name="#elegist" value="0" class="noncomnum">
+                <p>
+                    Some monsters are extra effective at calling back a slain pretender god. This value 
+                    will be added to their priest level when using the Call God command.
+                    <br>
+                        <label for="#elegist">Elegist value:</label>
+                        <input type="number" name="#elegist" value="0" min="0" class="noncomnum">
+                </p>
                 <br>
                 <label for="#spreaddom">Spreads dominion:</label>
                 <input type="number" name="#spreaddom" value="0" class="noncomnum">
                 <br>
                 <label for="#heretic">Heretic:</label>
-                <input type="number" name="#heretic" value="0" max="5" class="noncomnum">
+                <input type="number" name="#heretic" value="0" min="0" max="5" class="noncomnum">
                 <br>
                 <fieldset>
                     <legend>Gold and Resources</legend>
@@ -1783,9 +1872,50 @@
             onchange="enableOrDisable(document.getElementById('magicmask').checked, 'mmask', 'magicskill1')">
             <label for="magicmask">Use custom magic mask</label>
             -->
+            <input type="number" id="#magiclevel 0" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 0">Fire Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 1" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 1">Air Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 2" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 2">Water Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 3" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 3">Earth Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 4" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 4">Astral Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 5" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 5">Death Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 6" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 6">Nature Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 7" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 7">Blood Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 8" value="0" min="0" max="10" class="magicLevels" 
+            onchange="checkPriest()">
+            <label for="#magiclevel 8">Priest Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 50" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 50">Random Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 51" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 51">Elemental Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 52" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 52">Sorcery Magic Level:</label>
+            <br>
+            <input type="number" id="#magiclevel 53" value="0" min="0" max="10" class="magicLevels">
+            <label for="#magiclevel 53">Non-Priest Magic Level:</label>
+
+            <!--
             <input type="number" id="#magiclevel1" value="0" min="0" max="10">
             <label for="#magiclevel1">Base Magic Level:</label>
-
+            <br>
             <label for="magicskill1">Base Magic Path:</label>
             <select class="magicskill1" id="magicskill1">
                 <option value="0">Fire</option>
@@ -1803,7 +1933,7 @@
                 <option value="53">All except Priest</option>
             </select>
             <br>
-
+            -->
             <input type="number" id="magicchance" value="0" min="0" max="900" class="mmask">
             <label for="magicchance">Chance of reciving a random magic boost</label>
 
@@ -2039,33 +2169,84 @@
                 <label for="#indepspells">Independent spells levels:</label>
                 <input type="number" id="#indepspells" value="0" class="othermagic">
             </p>
-            <!--
-                #spiritsight 
-      #invisible 
-      #fastcast <-1000 - 1000>
-      #doheal 
-      #undregen <-1000 - 1000>
-      #spellsinger 
-      #magicstudy <-1000 - 1000>
-      #yearturn <-1000 - 1000>
-      #fortkill <-1000 - 1000>
-      #thronekill <-1000 - 1000>
-      #farthronekill <-1000 - 1000>
-      #reanimpriest
-      #norange 
-      #polyimmune
-      #minprison <0 - 2>
-      #startmajoraff <0 - 100>
-      #triplegod <0 - 10>
-      #triplegodmag <-10 - 10>
-      #unify 
-      #triple3mon 
-      #bringeroffortune <-100 - 100>
-      #combatcaster
-      #unsurr <0 - 1000>
-      #skirmisher <-25 - 25>
-      #minsizeleader <0 - 6>
-            -->
+            <h1>Monster Modding, New Abilities for Dominions 5</h1>
+            <p>
+                Note: These abilities are listed but not documented in the modding manual. Use at your own risk.
+            </p>
+            <input type="checkbox" name="#spiritsight" id="#spiritsight" value="#spiritsight" class="miscbool">
+            <label for="#spiritsight">#spiritsight</label>
+            <br>
+            <input type="checkbox" name="#invisible" id="#invisible" value="#invisible"  class="miscbool">
+            <label for="#invisible">#invisible</label>
+            <br>
+            <input type="checkbox" name="#doheal" id="#doheal" value="#doheal" class="miscbool">
+            <label for="#doheal">#doheal</label>
+            <br>
+            <input type="checkbox" name="#reanimpriest" id="#reanimpriest" value="#reanimpriest" class="miscbool">
+            <label for="#reanimpriest">#reanimpriest</label>
+            <br>
+            <input type="checkbox" name="#norange" id="#norange" value="#norange" class="miscbool">
+            <label for="#norange">#norange</label>
+            <br>
+            <input type="checkbox" name="#polyimmune" id="#polyimmune" value="#polyimmune" class="miscbool">
+            <label for="#polyimmune">#polyimmune</label>
+            <br>
+            <input type="checkbox" name="#unify" id="#unify" value="#unify" class="miscbool">
+            <label for="#unify">#unify</label>
+            <br>
+            <input type="checkbox" name="#triple3mon" id="#triple3mon" value="#triple3mon" class="miscbool">
+            <label for="#triple3mon">#triple3mon</label>
+            <br>
+            <input type="checkbox" name="#combatcaster" id="#combatcaster" value="#combatcaster" class="miscbool">
+            <label for="#combatcaster">#combatcaster</label>
+            <br>
+            <br>
+            <label for="#fastcast">#fastcast</label>
+            <input type="number" name="#fastcast" id="#fastcast" value="0" min="-1000" max="1000" class="miscnum">
+            <br>
+            <label for="#undregen">#undregen</label>
+            <input type="number" name="#undregen" id="#undregen" value="0" min="-1000" max="1000" class="miscnum">
+            <br>
+            <label for="#magicstudy">#magicstudy</label>
+            <input type="number" name="#magicstudy" id="#magicstudy" value="0" min="-1000" max="1000" class="miscnum">
+            <br>
+            <label for="#yearturn">#yearturn</label>
+            <input type="number" name="#yearturn" id="#yearturn" value="0" min="-1000" max="1000" class="miscnum">
+            <br>
+            <label for="#fortkill">#fortkill</label>
+            <input type="number" name="#fortkill" id="#fortkill" value="0" min="-1000" max="1000" class="miscnum">
+            <br>
+            <label for="#thronekill">#thronekill</label>
+            <input type="number" name="#thronekill" id="#thronekill" value="0" min="-1000" max="1000" class="miscnum">
+            <br>
+            <label for="#farthronekill">#farthronekill</label>
+            <input type="number" name="#farthronekill" id="#farthronekill" value="0" min="-1000" max="1000" class="miscnum">
+            <br>
+            <br>
+            <label for="#minprison">#minprison</label>
+            <input type="number" name="#minprison" id="#minprison" value="0" min="0" max="2" class="miscnum">
+            <br>
+            <label for="#startmajoraff">#startmajoraff</label>
+            <input type="number" name="#startmajoraff" id="#startmajoraff" value="0" min="0" max="100" class="miscnum">
+            <br>
+            <label for="#triplegod">#triplegod</label>
+            <input type="number" name="#triplegod" id="#triplegod" value="0" min="0" max="10" class="miscnum">
+            <br>
+            <label for="#triplegodmag">#triplegodmag</label>
+            <input type="number" name="#triplegodmag" id="#triplegodmag" value="0" min="-10" max="10" class="miscnum">
+            <br>
+            <label for="#bringeroffortune">#bringeroffortune</label>
+            <input type="number" name="#bringeroffortune" id="#bringeroffortune" value="0" min="-100" max="100" class="miscnum">
+            <br>
+            <label for="#unsurr">#unsurr</label>
+            <input type="number" name="#unsurr" id="#unsurr" value="0" min="0" max="1000" class="miscnum">
+            <br>
+            <label for="#skirmisher">#skirmisher</label>
+            <input type="number" name="#skirmisher" id="#skirmisher" value="0" min="-25" max="25" class="miscnum">
+            <br>
+            <label for="#minsizeleader">#minsizeleader</label>
+            <input type="number" name="#minsizeleader" id="#minsizeleader" value="0" min="0" max="6" class="miscnum">
+            <br>
             <button onclick="document.getElementById('result').innerText = createMonster()">Create Armor</button>
             <br>
             <p id="result" name="result">Result</p>
