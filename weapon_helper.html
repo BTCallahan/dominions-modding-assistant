@@ -27,6 +27,7 @@
                 <a href="item_helper.html">Magic Items</a>
                 <a href="spell_helper.html">Magic Spells</a>
                 <a href="monster_helper.html">Monsters</a>
+                <a href="mercenary_helper.html">Mercenaries</a>
                 <a href="nation_helper.html">Nations</a>
                 <a href="site_helper.html">Magic Sites</a>
                 <a href="event_helper.html">Events</a>
@@ -188,7 +189,7 @@
                 </select>
                 <br>
                 <label for="#sample">Custom Sound Effect:</label>
-                <input type="text" name="#sample" id="#sample" class="customSound">
+                <input type="text" name="#sample" id="#sample" class="customSound" disabled>
             </fieldset>
             <label for="#rcost">Cost in Resources:</label>
             <input type="number" name="#rcost" id="#rcost" min="0" value="0">
@@ -411,9 +412,10 @@
                 <legend>Amount of Strength to add to Damage</legend>
                 <p>
                     This is used for hooves or claws of caverly mounts.
+                    <br>
                     <input type="radio" id="#nostr" name="strength-amount" class="strength-amount"
                     class="strength-amount" value="#nostr">
-                    <label for="#nostr">None ()</label>
+                    <label for="#nostr">None</label>
                 </p>
                 <input type="radio" id="#bowstr" name="strength-amount" class="strength-amount"
                 class="strength-amount" value="#bowstr">
@@ -731,10 +733,13 @@
                 Note: Value from 10061 to 10080 will result in the spell using a standard 
                 animated sprite. Values from 10081 to 10100 will result in a smaller sprite.
             </p>
-            <label for="partball">Number of particle ball/small particle ball sprite to use</label>
-            <input type="number" name="partball" id="partball" value="10061" min="10061" max="10100" class="partballsp" disabled>
+            <p>
+                The number of particle ball/small particle ball sprite to use.
+                <br>
+                <label for="partball">Number:</label>
+                <input type="number" name="partball" id="partball" value="10061" min="10061" max="10100" class="partballsp" disabled>
+            </p>
             <!-- todo: flysprite-->
-            <br>
             <button onclick="document.getElementById('result').innerText=createWeapon()">Create Weapon</button>
             <br>
             <p id="result">Result</p>

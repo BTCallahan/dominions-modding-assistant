@@ -17,20 +17,24 @@
     </head>
     <body>
         <header>
-            <a href="about.html">About</a>
-            <a href="mod_helper.html">Mod</a>
-            <a href="armor_helper.html">Armor</a>
-            <a href="weapon_helper.html">Weapons</a>
-            <a href="item_helper.html">Magic Items</a>
-            <a href="spell_helper.html">Magic Spells</a>
-            <a href="monster_helper.html">Monsters</a>
-            <a href="nation_helper.html">Nations</a>
-            <a href="site_helper.html">Magic Sites</a>
-            <a href="event_helper.html">Events</a>
+            <div style="text-align: justify">
+                <a href="index.html">Main Page</a>
+                <a href="about.html">About</a>
+                <a href="mod_helper.html">Mod</a>
+                <a href="armor_helper.html">Armor</a>
+                <a href="weapon_helper.html">Weapons</a>
+                <a href="item_helper.html">Magic Items</a>
+                <a href="spell_helper.html">Magic Spells</a>
+                <a href="monster_helper.html">Monsters</a>
+                <a href="mercenary_helper.html">Mercenaries</a>
+                <a href="nation_helper.html">Nations</a>
+                <a href="site_helper.html">Magic Sites</a>
+                <a href="event_helper.html">Events</a>
+            </div>
         </header>
         <main>
             <h1>Basic Spell Attributes</h1>
-            <input type="checkbox" name="#clearallspells" id="#clearallspells" value="#clearallspells">
+            <input type="checkbox" name="#clearallspells" id="#clearallspells" value="#clearallspells" class="new">
             <label for="#clearallspells">Clear all spells</label>
             <br>
             <fieldset>
@@ -40,9 +44,9 @@
                 <label for="#newspell">Spell is new</label>
                 <br>
                 <label for="#selectspell">ID of spell to be altered:</label>
-                <input type="number" name="#selectspell" id="#selectspell" value="0" min="0" max="1100" class="old">
+                <input type="number" name="#selectspell" id="#selectspell" value="0" min="0" max="1100" class="old" disabled>
                 <br>
-                <input type="checkbox" name="#clear" id="#clear" value="#clear" class="old">
+                <input type="checkbox" name="#clear" id="#clear" value="#clear" class="old" disabled>
                 <label for="#clear">Clears current spell</label>
             </fieldset>
             <br>
@@ -53,7 +57,7 @@
             <input type="text" name="#name" id="#name" class="namedes">
             <br>
             <label for="#descr">Description of spell</label>
-            <input type="text" name="#descr" id="#descr" class="namedes">
+            <input type="text" name="#descr" id="#descr" class="namedes desc">
             <br>
             <input type="checkbox" name="isritual" id="isritual" 
             onchange="ritualVsBattle()">
@@ -116,9 +120,7 @@
             <label for="#fatiguecost">Fatigue cost:</label>
             <input type="number" name="#fatiguecost" id="#fatiguecost" min="0" max="1000" value="10" step="1" onchange="spellcost()">
             <p id="spellcost">Spell Cost: 1 fatigue</p>
-            <br>
-            <label for="gemcost">Number of magic gems/blood slaves required</label>
-            <input type="number" name="gemcost" id="gemcost" min="1" max="300" value="5">
+
 
             <h3>Spell Effects</h3>
             <fieldset>
@@ -149,6 +151,27 @@
                 <label for="#aoe">Area of effect:</label>
                 <input type="number" name="#aoe" id="#aoe" min="0" max="500" value="0" class="battle">
             </fieldset>
+            <!--lets keep this invisible until its finished-->
+            <table style="visibility: hidden;">
+                <thead>
+                    <tr>
+                        <th>Helpful Effects</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="he0" id="hr0" value="0">
+                            <label for="he0">Bless</label>
+                        </td>
+                        <td>
+                                <input type="checkbox" name="he0" id="hr0" value="0">
+                                <label for="he0">Bless</label>
+    
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <fieldset>
                 <legend>Damage</legend>
                 <p>
@@ -157,10 +180,103 @@
                     <input type="checkbox" name="vardamage" id="vardamage">
                     <label for="vardamage">Varrying damage</label>
                 </p>
-                <p>Note: Summoning spells use the base damage to determin which monster to summon.</p>
+                <p>
+                    Note: Summoning spells use the base damage to determin which monster to summon. 
+                    Other effect also use it.
+                </p>
                 <label for="#damage">Base Damage:</label>
                 <input type="number" name="#damage" id="#damage" min="0" value="0">
-                
+                <!--
+                    10 1 -- self bless - 1
+                    10 2 -- luck - 10
+                    10 4 -- - 100
+                    10 8 -- - 1000
+                        10 12 -- Air Shield & Precision - 1100
+                    10 16 -- barkskin - 10000
+                    10 32 -- Regeneration - 100000
+
+                        10 48 -- Barkskin & Regen - 110000
+                    1 64 --
+                    10 256 -- bezerk
+                    10 1024 -- fire Resistance - 10000000000
+                    10 4096 -- Cold Resistance - 1000000000000
+                    10 8192 -- Chill Aura - 10000000000000
+                    10 16384 - Heat Aura - 100000000000000
+                    10 32768 -- Sermon of Courage
+                    10 65536 -- stone skin
+                        10 82944 -- Stoneskin + Heat Aura + Fire Res -          10100010000000000
+                    10 131072 -- Flying
+                    10 262144 -- Quickness
+                    10 524288 -- Weapons of Sharpness
+                    10 1048576 -- Astral Weapons
+                    10 2097152 -- Reanimation
+                    10 4194304 -- Holy Avenger
+                    10 67108864 -- magic resist?
+                    
+                    10 2147483776 -- Enlarge & Strength - 10000000000000000000000010000000
+                    10 481036338176 -- Temper Flesh - 111000000000000000000000000010000000000
+                    10 549755813888 -- 50% Shield/Protective Force
+                    10 2199023255552 -- liquid form?
+                    10 2680059592704 -- Liquid Body                    
+                    10 70437463654400 -- Slashing Res & 5 Prot
+
+                    11 = afflictions
+                    11 128 -- Rage - 10000000
+                    11 33554432 -- Feeblemind
+                    11 134217728 -- Slime
+                    11 268435456 -- Numbness
+                    11 17179869184 -- Confuse
+                    11 68719476736 -- Slow
+
+                    23 1 -- twist fate
+                    23 4 -- quickness
+                    23 8 -- Mossbody - 100
+                    23 128 -- strength
+                    23 256 -- Poison Barbs - 100000000
+                    23 16384 -- charge body - 100000000000000
+                    23 32768 -- Fire Shield - 1000000000000000
+                    23 65536 -- Mistform - 10000000000000000
+                    23 524288 -- water power - 10000000000000000000
+                    23 1048576 -- Nature Power - 100000000000000000000
+                    23 16777216 -- Mirror Image - 1000000000000000000000000
+                    23 33554432 -- Unholy Power - 10000000000000000000000000
+                    23 17179869184 -- Stygian Skin
+                    23 68719476736 -- Reinvigoration
+                    23 274877906944 -- surge of blood?
+                    23 549755813888 -- Awaken Tattoos
+                    
+                    500 363 -- Master Smith +1 - 101101011
+                    500 463 -- Master Ritualist +1
+
+                    
+                    501 363 -- Master Smith +2 -
+
+                    503 368 -- Inspirational 4 - 101110000
+
+                    504 105 -- Awe 5 - 1101001
+                    504 354 -- Autohealer 5 - 101100010
+
+                    509 117 -- Reinvig 10 - 1110101
+
+                    519 163 -- Fireshield 20 - 10100011
+                    519 189 -- Regeneration 20% - 10111101
+                    519 382 -- Invulnerable 20 - 101111110
+
+
+                    579 108 -- Stealthy 80 - 1101100
+                    599 228 -- Bringer of Fortune 100 - 11100100
+                    601 453 -- Fixforgebonus +2, uncapped
+
+                    10503 261 -- Horror Mark
+                    10524 309 -- Insanity +25
+                    
+                    ? 2147483648 -- Enlarge
+
+                    
+                    ? 8388608 -- Flaming Arrows - 100000000000000000000000
+                    ? 8388612 -- Wind Guide + Flaming Arrows - 100000000000000000000100
+                    ? 134235136 -- Ethereal & Heat Aura & Fire Resistance - 1000000000000100010000000000
+                -->
                 <p>
                     Note: After the main effect happens, then the effect of the spell specified below 
                     will be applied to every area where main spell took place. A value of -1 will 
@@ -194,11 +310,33 @@
                 <option value="126">Border Summon Indpendent</option>
                 <option value="128">Stun</option>
                 <option value="134">Bounce damage</option>
-                <optgroup>
-                    <option value="6043">6turns border summoning</option>
-                    <option value="10">Bless</option>
+                <optgroup label="Expermental effects - use at your own risk">
+                        <option value="2">Kills caster</option>
+                        <option value="17">Battle transformation</option>
 
-                    <option value="23">Unspecified</option>
+                    <option value="10">Helpful effects</option>
+                    <option value="11">Afflictions</option>
+                    <option value="23">Additional helpful affects</option>
+
+                    <option value="500">?</option>
+                    <option value="503">?</option>
+
+                    <option value="504">?</option>
+
+                    <option value="509">?</option>
+
+                    <option value="519">?</option>
+
+                    <option value="579">?</option>
+
+                    <option value="599">?</option>
+
+                    <option value="601">?</option>
+
+                    <option value="1043">Summoning related?</option>
+
+
+                    <option value="6043">6turns border summoning</option>
 
                 </optgroup>
             </select>
@@ -215,11 +353,33 @@
                 <option value="10050">Assassination</option>
                 <option value="10063">Build fort</option>
                 <option value="10077">Army teleport</option>
-                <optgroup label="Experment effects - use at your own risk">
-                        <option value="10101">Aging</option>
+                <optgroup label="Expermental effects - use at your own risk">
+                        <option value="10042">Causes histeria?</option>
+                        <option value="10050">Cause unrest?</option>
+
+                        <option value="10081">Create site? Global enchantment?</option>
+
+
+                        <option value="10082">?</option>
+                        <option value="10083">?</option>
+
+
+                        <option value="10091">Ranged attack?</option>
+
+
+                        <option value="10101">Aging?</option>
+
+                        <option value="10130">Transforms caster?</option>
+
+                        <option value="10132">Only affects living? Cure afflicitons?</option>
+
+
                         <option value="10503">Horror mark?</option>
-                        <option value="10524">Unspecified</option>
-                        
+
+                        <option value="10519">Void insanity</option>
+
+
+                        <option value="10524">Insanity?</option>
                 </optgroup>
             </select>
             <p>
@@ -287,7 +447,7 @@
                 <br>
                 <label for="flysp">Flying sprite</label>
                 <select name="flysp" id="flysp" class="battle"
-                onchange="enableOrDisable(getSelectedValue('flysp') == 'sprite', 'partballsp', '')">
+                onchange="enableOrDisable(grabSelectedValue('flysp') == 'sprite', 'partballsp', '')">
                     <option value="100" selected>Boulder</option>
                     <option value="109">Arrow</option>
                     <option value="110">Javlin</option>
@@ -322,9 +482,12 @@
                     <option value="10307">Lightning particles</option>
                 </select>
                 <br>
-                <p>Note: Value from 10061 to 10080 will result in the spell using a standard 
-                    animated sprite. Values from 10081 to 10100 will result in a smaller sprite.</p>
-                <label for="partball">Number of particle ball/small particle ball sprite to use</label>
+                <p>
+                    Note: This has ne effect unless the option "particle ball/small particle ball" is 
+                    selected. Value from 10061 to 10080 will result in the spell using a standard 
+                    animated sprite. Values from 10081 to 10100 will result in a smaller sprite.
+                </p>
+                <label for="partball">Number of sprite to use</label>
                 <input type="number" name="partball" id="partball" value="10061" min="10061" max="10100" 
                 class="partballsp battle" disabled>
             </fieldset>
@@ -378,7 +541,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>
+                        <th colspan="5">
                             Spell can only be cast from one of the following terrain types:
                         </th>
                     </tr>
@@ -455,7 +618,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>
+                        <th colspan="5">
                             Spell cannot be cast from one of the following terrain types:
                         </th>
                     </tr>
@@ -463,29 +626,35 @@
                 <tbody>
                     <tr>
                         <td>
-                            <input type="checkbox" name="nogeosrc-" id="nogeosrc-" value="0" class="nogeosrc ritual">
+                            <input type="checkbox" name="nogeosrc-" id="nogeosrc-" value="0" class="nogeosrc ritual"
+                            onchange="deactivateIfChecked('nogeosrc-', 'onlygeodst-')">
                             <label for="nogeosrc0">Plains</label>
                         </td>
                         <td>
-                            <input type="checkbox" name="nogeosrc0" id="nogeosrc0" value="1" class="nogeosrc ritual">
+                            <input type="checkbox" name="nogeosrc0" id="nogeosrc0" value="1" class="nogeosrc ritual"
+                            onchange="deactivateIfChecked('nogeosrc0', 'onlygeodst0')">
                             <label for="nogeosrc0">Small Provence</label>
                         </td>
                         <td>
-                            <input type="checkbox" name="nogeosrc1" id="nogeosrc1" value="2" class="nogeosrc ritual">
+                            <input type="checkbox" name="nogeosrc1" id="nogeosrc1" value="2" class="nogeosrc ritual"
+                            onchange="deactivateIfChecked('nogeosrc1', 'onlygeodst1')">
                             <label for="nogeosrc1">Large Provence</label>
                         </td>
                         <td>
-                            <input type="checkbox" name="nogeosrc2" id="nogeosrc2" value="4" class="nogeosrc ritual">
+                            <input type="checkbox" name="nogeosrc2" id="nogeosrc2" value="4" class="nogeosrc ritual"
+                            onchange="deactivateIfChecked('nogeosrc2', 'onlygeodst2')">
                             <label for="nogeosrc2">Sea</label>
                         </td>
                         <td>
-                            <input type="checkbox" name="nogeosrc3" id="nogeosrc3" value="8" class="nogeosrc ritual">
+                            <input type="checkbox" name="nogeosrc3" id="nogeosrc3" value="8" class="nogeosrc ritual"
+                            onchange="deactivateIfChecked('nogeosrc3', 'onlygeodst3')">
                             <label for="nogeosrc3">Freshwater</label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <input type="checkbox" name="nogeosrc4" id="nogeosrc4" value="16" class="nogeosrc ritual">
+                            <input type="checkbox" name="nogeosrc4" id="nogeosrc4" value="16" class="nogeosrc ritual"
+                            onchange="deactivateIfChecked('nogeosrc4', 'onlygeodst4')">
                             <label for="nogeosrc4">Mountain</label>
                         </td>
                         <td>
@@ -532,7 +701,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>
+                        <th colspan="5">
                             Spell can only target one of the following terrain types:
                         </th>
                     </tr>
@@ -609,7 +778,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>
+                        <th colspan="5">
                             Spell cannot target one of the following terrain types:
                         </th>
                     </tr>

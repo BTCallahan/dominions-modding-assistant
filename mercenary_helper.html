@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="assets/checkers_and_getters.js"></script>
+        <script type="text/javascript" src="assets/mercenary_script.js"></script>
+        <link rel="stylesheet" href="assets/mod_styling.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <header>
+            <div style="text-align: justify">
+                    <a href="index.html">Main Page</a>
+                    <a href="about.html">About</a>
+                    <a href="mod_helper.html">Mod</a>
+                    <a href="armor_helper.html">Armor</a>
+                    <a href="weapon_helper.html">Weapons</a>
+                    <a href="item_helper.html">Magic Items</a>
+                    <a href="spell_helper.html">Magic Spells</a>
+                    <a href="monster_helper.html">Monsters</a>
+                    <a href="mercenary_helper.html">Mercenaries</a>
+                    <a href="nation_helper.html">Nations</a>
+                    <a href="site_helper.html">Magic Sites</a>
+                    <a href="event_helper.html">Events</a>
+                </div>
+        </header>
+        <main>
+            <input type="checkbox" name="#clearmercs" id="#clearmercs" value="#clearmercs">
+            <label for="#clearmercs">Clear all mercenaries</label>
+            <br>
+            <input type="text" name="#name" id="#name">
+            <label for="#name">Name:</label>
+            <br>
+            <label for="earlygame">Early game</label>
+            <input type="radio" name="level" id="earlygame" value="#level 0" class="level">
+            <br>
+            <label for="midgame">Mid game</label>
+            <input type="radio" name="level" id="midgame" value="#level 1" class="level" checked>
+            <br>
+            <label for="lategame">Early game</label>
+            <input type="radio" name="level" id="lategame" value="#level 2" class="level">
+            <br>
+            <input type="text" name="#bossname" id="#bossname">
+            <label for="#bossname">Leader Name:</label>
+            <br>
+            <p>
+                Commander unit type. For this, you must use the name of the unit, not its number.
+                <br>
+                    <input type="text" name="#com" id="#com">
+                    <label for="#com">Commander:</label>
+        
+            </p>
+            <p>
+                Main unit type. For this, you must use the name of the unit, not its number.
+                <br>
+                    <input type="text" name="#unit" id="#unit">
+                    <label for="#unit">Unit:</label>
+        
+            </p>
+            <input type="number" name="#nrunits" id="#nrunits" value="10" min="1" class="rate">
+            <label for="#nrunits">Units in band:</label>
+            <p>
+                The mininum number of units this band can have. If the number of units in 
+                this band ever goes below this number, the band will begin recuriting more.
+                <br>
+                <input type="number" name="#minmen" id="#minmen" value="10" min="1" class="rate">
+                <label for="#minmen">Mininum size:</label>
+            </p>
+            <input type="number" name="#recrate" id="#recrate" value="100" min="1" class="rate">
+            <label for="#recrate">Recrutment rate:</label>
+            <p>
+                1 per month
+            </p>
+            <input type="number" name="#minpay" id="#minpay" value="25" min="1" class="rate">
+            <label for="#minpay">Mininum price:</label>
+            <br>
+            <input type="number" name="#xp" id="#xp" value="0" min="0" class="rate">
+            <label for="#xp">Starting experince:</label>
+            <br>
+            <p>
+                Starting magical equipment for the commander.
+                <br>
+                <input type="radio" name="randequip" id="randequip0" value="#randequip 0" class="randequip" checked>
+                <label for="randequip0">No magic items</label>
+                <br>
+                <input type="radio" name="randequip" id="randequip1" value="#randequip 1" class="randequip">
+                <label for="randequip1">Minor magic items</label>
+                <br>
+                <input type="radio" name="randequip" id="randequip2" value="#randequip 2" class="randequip">
+                <label for="randequip2">Average magic items</label>
+                <br>
+                <input type="radio" name="randequip" id="randequip3" value="#randequip 3" class="randequip">
+                <label for="randequip3">Powerful magic items</label>
+                
+            </p>
+            <p>
+                Specific magical items that the comander starts with.
+                <br>
+                <input type="text" name="#item0" id="#item0" class="#item">
+                <label for="#item0">First item:</label>
+                <br>
+                <input type="text" name="#item1" id="#item1" class="#item">
+                <label for="#item1">Second item:</label>
+                <br>
+                <input type="text" name="#item2" id="#item2" class="#item">
+                <label for="#item2">Third item:</label>
+                <br>
+                <input type="text" name="#item3" id="#item3" class="#item">
+                <label for="#item3">Fourth item:</label>
+            </p>
+            <p>
+                The eras in which the band will be avaliable to hire.
+                <br>
+                <input type="checkbox" name="eramask0" id="eramask0" value="1" class="era" checked
+                onchange="atLeastOneEara('eramask0')">
+                <label for="eramask0">Early Era</label>
+                <br>
+                <input type="checkbox" name="eramask1" id="eramask1" value="2" class="era" checked
+                onchange="atLeastOneEara('eramask1')">
+                <label for="eramask1">Middle Era</label>
+                <br>
+                <input type="checkbox" name="eramask2" id="eramask2" value="4" class="era" checked
+                onchange="atLeastOneEara('eramask2')">
+                <label for="eramask2">Late Era</label>
+            </p>
+
+
+
+        </main>
+
+
+        
+    </body>
+</html>

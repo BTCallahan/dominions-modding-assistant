@@ -17,14 +17,18 @@
     </head>
     <body>
         <header>
+            <a href="index.html">Main Page</a>
+            <a href="about.html">About</a>
             <a href="mod_helper.html">Mod</a>
             <a href="armor_helper.html">Armor</a>
             <a href="weapon_helper.html">Weapons</a>
             <a href="item_helper.html">Magic Items</a>
             <a href="spell_helper.html">Magic Spells</a>
             <a href="monster_helper.html">Monsters</a>
+            <a href="mercenary_helper.html">Mercenaries</a>
             <a href="nation_helper.html">Nations</a>
             <a href="site_helper.html">Magic Sites</a>
+            <a href="event_helper.html">Events</a>
         </header>
         <main>
             <h1>Nation Modding</h1>
@@ -53,6 +57,7 @@
                 onchange="handleAges()">
                 <label for="lateera">Late Era</label>
                 <fieldset>
+                    <legend>Pre-existing Nation to Import From</legend>
                     <label for="earlyselect">Early Nation:</label>
                     <select name="earlyselect" id="earlyselect" class="nationeras old" disabled>
                         <option value="5" selected>Arcoscephale, Golden Era</option>
@@ -417,25 +422,22 @@
             <input type="number" name="#killcappop" id="#killcappop" min="-100" max="100" value="0">
             <h3>AI Hints</h3>
             <p>
-                    Instructs AI to never leave the home province with the pretender
+                    Instructs AI to never leave the home province with the pretender.
                     <br>
                 <input type="checkbox" name="#aiholdgod" id="#aiholdgod">
                 <label for="#aiholdgod">Stay in Home</label>
             </p>
-
-            
             <p>
-                    Extra chance of AI choosing awake pretender
+                    Extra chance of AI choosing awake pretender.
                     <br>
-
                     <label for="#aiawake">Awake chance:</label>
                     <input type="number" name="#aiawake" id="#aiawake" min="0" max="100" value="0">
-            
             </p>
             <fieldset>
                 <legend>Magic Used by Nation</legend>
                 <p>
-                    This tells the AI what kind of magic the nation will use, and what kind of pretender it should try to build
+                    This tells the AI what kind of magic the nation will use, and what kind of pretender it 
+                    should try to build.
                 </p>
                 <input type="checkbox" name="#aifirenation" id="#aifirenation" class="magicnation">
                 <label for="#aifirenation">Fire</label>
@@ -644,7 +646,8 @@
                     <input type="text" name="terrainrecid5" id="terrainrecid5" min="1" max="8999" value="1" class="terrainrecid">
                 </p>
                 <br>
-                <p>Like the prevous, but for commanders.
+                <p>
+                    Like the prevous, but for commanders.
                     <br>
                     <label for="terraincom1">Terrain Type:</label>
                     <select name="terraincom1" id="terraincom1" class="terraincom">
@@ -655,6 +658,7 @@
                         <option value="wastecom">Waste</option>
                         <option value="cavecom">Cave</option>
                     </select>
+                    <br>
                     <label for="terraincomid1">Commander ID:</label>
                     <input type="text" name="terraincomid1" id="terraincomid1" min="1" max="8999" value="1" class="terraincomid">
                 </p>
@@ -668,6 +672,7 @@
                         <option value="wastecom">Waste</option>
                         <option value="cavecom">Cave</option>
                     </select>
+                    <br>
                     <label for="terraincomid2">Commander ID:</label>
                     <input type="text" name="terraincomid2" id="terraincomid2" min="1" max="8999" value="1" class="terraincomid">
                 </p>
@@ -681,6 +686,7 @@
                         <option value="wastecom">Waste</option>
                         <option value="cavecom">Cave</option>
                     </select>
+                    <br>
                     <label for="terraincomid3">Commander ID:</label>
                     <input type="text" name="terraincomid3" id="terraincomid3" min="1" max="8999" value="1" class="terraincomid">
                 </p>
@@ -694,6 +700,7 @@
                             <option value="wastecom">Waste</option>
                             <option value="cavecom">Cave</option>
                         </select>
+                        <br>
                         <label for="terraincomid4">Commander ID:</label>
                         <input type="text" name="terraincomid4" id="terraincomid4" min="1" max="8999" value="1" class="terraincomid">
                 </p>
@@ -707,6 +714,7 @@
                             <option value="wastecom">Waste</option>
                             <option value="cavecom">Cave</option>
                         </select>
+                        <br>
                         <label for="terraincomid5">Commander ID:</label>
                         <input type="text" name="terraincomid5" id="terraincomid5" min="1" max="8999" value="1" class="terraincomid">
                 </p>
@@ -720,6 +728,7 @@
                             <option value="wastecom">Waste</option>
                             <option value="cavecom">Cave</option>
                         </select>
+                        <br>
                         <label for="terraincomid6">Commander ID:</label>
                         <input type="text" name="terraincomid6" id="terraincomid6" min="1" max="8999" value="1" class="terraincomid">
                 </p>
