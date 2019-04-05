@@ -1,3 +1,7 @@
+td{
+    border: 1px solid gray;
+}
+
 label{
     width: 250px;
     float: left;
@@ -17,4 +21,20 @@ input[type="number"]{
 
 input.desc[type="text"]{
     height: 4ch;
+}
+
+input:disabled + label{
+    color: slategray;
+}
+
+select:disabled + label{
+    color:slategrey;
+}
+
+input:disabled{
+    color: slategray;
+}
+
+p#result{
+    border: 2px;
 }

@@ -4,7 +4,7 @@ function newVsOld(){
 
     enableOrDisable(isnew, "new", "old");
 
-    if (isnew){
+    if (!isnew){
         handleAges()
     }else{
         let nationeras = document.getElementsByClassName("nationeras");
@@ -19,7 +19,7 @@ function handleAges(){
     let era = document.getElementsByClassName("#era");
     let nationeras = document.getElementsByClassName("nationeras");
     debugger;
-    if(document.getElementById("#newnation").checked){
+    if(!document.getElementById("#newnation").checked){
         if (era["earlyera"].checked){
             nationeras["earlyselect"].disabled = false;
             nationeras["middleselect"].disabled = true;
@@ -51,6 +51,10 @@ function colorChopper(color){
 
     return red_num + " " + green_num + " " + blue_num;
 }
+
+window.addEventListener("DOMContentLoaded", function(event){
+    newVsOld();
+});
 
 function createNation(){
     setText();

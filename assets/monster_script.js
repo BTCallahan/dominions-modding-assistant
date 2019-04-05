@@ -1,3 +1,104 @@
+var templates = new Map();
+templates.set("human", {
+    hp:"10",
+    str:"10",
+    mr:"10"
+});
+templates.set("ulm", {
+    hp:"12",
+    str:"11",
+    mr:"9"
+});
+templates.set("abysian", {
+    hp:"20",
+    str:"13",
+    mr:"12",
+    fireres:"25",
+    maxage:"35"
+});
+templates.set("cael", {
+    hp:"9",
+    str:"9",
+    mr:"12",
+    coldres:"5",
+    fly:true
+});
+templates.set("ctis", {
+    hp:"11",
+    mr:"12",
+    poisonres:"7",
+    coldblood:true
+});
+templates.set("satyr", {
+    hp:"12",
+    str:"11",
+    mr:"13"
+});
+templates.set("mino", {
+    hp:"25",
+    str:"16",
+    mr:"11"
+});
+templates.set("paleone", {
+    hp:"18",
+    str:"12",
+    mr:"12",
+    darkvision:"100",
+    amphibian:true
+});
+templates.set("firbolg",{
+    hp:"13",
+    str:"11",
+    mr:"13",
+    prec:"12"
+});
+templates.set("van",{
+    hp:"13",
+    str:"11",
+    mr:"14",
+    prec:"12",
+    stealthy:"40",
+    illusion:true
+});
+templates.set("jotun",{
+    hp:"30",
+    str:"20",
+    mr:"12",
+    size:"4",
+    cr:"15"
+});
+templates.set("markata",{
+    hp:"5",
+    str:"5",
+    mr:"7",
+    size:"1",
+    prec:"8",
+    forestsurvival:true,
+    animal:true
+});
+templates.set("atavi",{
+    forestsurvival:true,
+    animal:true
+});
+
+
+function applyTemplate(templateName){
+    let o = templates.get(templateName);
+
+    if (o.hp){
+        document.getElementById("#hp").value = o.hp;
+    }
+    if (o.str){
+        document.getElementById("#str").value = o.str;
+    }
+    if (o.mr){
+        document.getElementById("#mr").value = o.mr;
+    }
+    if(o.prec){
+        document.getElementById("#prec").value = o.prec;
+    }
+}
+
 function stealthCheck(){
 
     let stealthy = Number(document.getElementById("#stealthy").value) > 0;
@@ -12,7 +113,7 @@ function stealthCheck(){
 
     }else{
         assassin.disabled = true;
-        enableOrDisable(true, "", "reqAssassin")
+        enableOrDisable(true, "", "reqAssassin");
     }
 }
 
@@ -26,6 +127,48 @@ function trampleCheck(){
     enableOrDisable(canTrample && trampswallow.checked, "dige", "");
 }
 
+function calcWoundfend(){
+    let woundfend = parseInt(document.getElementById("#woundfend").value);
+    if (woundfend == 0){
+        return "0%";
+    }else{
+        
+        return String(1 / (woundfend + 1)) + "%";
+    }
+}
+
+function checkPriest(){
+
+    let priestSkill = document.getElementById("#magiclevel 8").value;
+
+    if(priestSkill != "0"){
+        document.getElementById("#holy").checked = true;
+        document.getElementById("#elegist").disabled = false;
+        document.getElementById('#inquisitor').disabled = false;
+    }else{
+        document.getElementById("#elegist").disabled = true;
+        document.getElementById('#inquisitor').disabled = true;
+    }
+}
+
+function setAsScout(){
+
+    document.getElementById("#noleader").checked = true;
+    document.getElementById("#command").value = "0";
+
+    document.getElementById("magicleadership").value = "#nomagicleader";
+    document.getElementById("#magiccommand").value = "0";
+
+    document.getElementById("undeadleadership").value = "#noundeadleader";
+    document.getElementById("#undcommand").value = "0";
+
+    let stealthy = document.getElementById("#stealthy");
+
+    if (Number(stealthy.value) < 10){
+        stealthy.value / "10";
+    }
+}
+
 function createMonster(){
 
     let isNew = document.getElementById("is-monster-new").checked;
@@ -36,7 +179,7 @@ function createMonster(){
     setText();
 
     let isgod = document.getElementById("isgod").checked;
-
+    let newmonster = document.getElementById("is-monster-new").checked;
     if (isNew){
 
         getSingleValue("#name");
@@ -107,7 +250,7 @@ function createMonster(){
 
     checkIfAnyElementIsChecked("aireq");
 
-    getMultipleValues("recreq", "-1");
+    getMultipleValues("recreq", "0");
     // TODO: handle monpresentrec and ownsmonrec done
 
     //desertion
@@ -116,9 +259,16 @@ function createMonster(){
     getMultipleValues("desertionnum", "0");
 
     getMultipleValues("cost", "0");
+
+    if(document.getElementById("autocalc").checked){
+        pushTo.push("#gcost " + (Number(document.getElementById("#gcostaj").value) + 10000));
+    }else{
+        getSingleValue("#gcost", "0");
+    }
+
     // TODO: handle automatic gold calculation
 
-    getMultipleValues("atributes");
+    checkIfAnyElementIsChecked("atributes");
 
     let eyes = document.getElementById("#eyes");
 
@@ -134,7 +284,7 @@ function createMonster(){
 
     for (let i = 1; i < weapons.lenght; i++){
 
-        if (Number(weapons[i].value) > -1){
+        if (Number(weapons[i].value) > 0){
             pushTo.push("#weapon " + weapons[i].value);
         }
     }
@@ -143,14 +293,14 @@ function createMonster(){
 
     for (let i = 1; i < armor.lenght; i++){
 
-        if (Number(armor[i].value) > -1){
+        if (Number(armor[i].value) > 0){
             pushTo.push("#armor " + armor[i].value);
         }
     }
 
     pushTo.push(grabSelectedValue("bodytype"));
 
-    getSingleValue("#startitem",  "-1");
+    getSingleValue("#startitem",  "0");
     getSingleValue("#userestricteditem", "0");
 
     checkIfElementIsChecked("#noitem");
@@ -326,12 +476,12 @@ function createMonster(){
     }
 
     getMultipleValues("noncomnum",  "0");
-    checkIfElementIsChecked("noncombool",  "0");
+    checkIfAnyElementIsChecked("noncombool");
 
     getMultipleValues("shapechange",  "0");
-    getMultipleValues("hpshapechange",  "-1");
+    getMultipleValues("hpshapechange",  "0");
 
-    checkIfAnyElementIsChecked("#transformation",  "standardresult");
+    checkIfAnyElementIsChecked("#transformation",  "#transformation 0");
 
     let atunmentchance = document.getElementById("atunmentchance");
 
@@ -346,40 +496,40 @@ function createMonster(){
 
     getSingleValue("#reanimator",  "0");
 
-    getMultipleValues("domsummon",  "-1");
+    getMultipleValues("domsummon",  "0");
 
     let makemonsters = document.getElementById("makemonsters");
     let makemonstersnum = document.getElementById("makemonstersnum");
 
-    if (Number(makemonsters.value) > 0 && Number(makemonstersnum.value) > -1){
+    if (Number(makemonsters.value) > 0 && Number(makemonstersnum.value) > 0){
 
         pushTo.push("#makemonsters" + makemonsters.value + " " + makemonstersnum.value);
     }
 
     let summonmonsters = document.getElementById("summonmonsters");
     let summonmonstersnum = document.getElementById("summonmonstersnum");
-    if (Number(summonmonsters.value) > 0 && Number(summonmonstersnum.value) > -1){
+    if (Number(summonmonsters.value) > 0 && Number(summonmonstersnum.value) > 0){
 
         pushTo.push("#summon" + summonmonsters.value + " " + summonmonstersnum.value);
     }
 
     let battlesum = document.getElementById("battlesum");
     let battlemonstersnum = document.getElementById("battlemonstersnum");
-    if (Number(battlesum.value) > 0 && Number(battlemonstersnum.value) > -1){
+    if (Number(battlesum.value) > 0 && Number(battlemonstersnum.value) > 0){
 
         pushTo.push("#battlesum" + battlesum.value + " " + battlemonstersnum.value);
     }
 
     let batstartsum = document.getElementById("batstartsum");
     let battlestartmonstersnum = document.getElementById("battlestartmonstersnum");
-    if (Number(battlesum.value) > 0 && Number(battlestartmonstersnum.value) > -1){
+    if (Number(battlesum.value) > 0 && Number(battlestartmonstersnum.value) > 0){
 
         pushTo.push("#batstartsum" + batstartsum.value + " " + battlestartmonstersnum.value);
     }
 
     let batdicesum = document.getElementById("batdicesum");
     let battledicemonstersnum = document.getElementById("battledicemonstersnum");
-    if (Number(batdicesum.value) > 0 && Number(battledicemonstersnum.value) != -1){
+    if (Number(batdicesum.value) > 0 && Number(battledicemonstersnum.value) > 0){
 
         pushTo.push("#batstartsum" + batdicesum.value + "d6 " + battledicemonstersnum.value);
     }
@@ -416,17 +566,22 @@ function createMonster(){
     getMultipleValues("moralenum",  "0");
 
     checkIfAnyElementIsChecked("moralebool");
-
+    
+    
+    /*
     if (document.getElementById("#magiclevel1").value != "0"){
         //let magic_path = grabSelectedValue("magicskill1");
         pushTo.push("#magicskill " + grabSelectedValue("magicskill1") + " " + document.getElementById("#magiclevel1").value);
-    }
-
-    let magiclevel1 = document.getElementById("magiclevel1").value;
+    
+        let magiclevel1 = document.getElementById("magiclevel1").value;
 
     if (magiclevel1 != "0") {
         pushTo.push("#magicskill " + grabSelectedValue("magicskill1") + " " + magiclevel1);
     }
+    }*/
+
+    getMultipleValues("magicLevels", "0");
+
 
     let magicchance = document.getElementById("magicchance").value;
 
@@ -443,10 +598,10 @@ function createMonster(){
         }
     }
 
-    let boostamount = document.getElementById("boostamount").value;
+    let boostamount1 = document.getElementById("boostamount1").value;
 
-    if(boostamount != "0"){
-        pushTo.push("#magicboost " + grabSelectedValue("magicboost1") + " " + boostamount);
+    if(boostamount1 != "0"){
+        pushTo.push("#magicboost " + grabSelectedValue("magicboost1") + " " + boostamount1);
     }
 
     checkIfElementIsChecked("#masterrit");
@@ -475,6 +630,10 @@ function createMonster(){
 
     getMultipleValues("escapechance",  "0");
     getMultipleValues("othermagic",  "0");
+
+    checkIfAnyElementIsChecked("miscbool");
+    getMultipleValues("miscnum", "0");
+
     pushTo.push("#end");
     return getText();
 }
