@@ -8,28 +8,23 @@ function isWeaponOrArmor(){
     if (wepSet.has(itemtype)){
         document.getElementById("#weapon").disabled = false;
         document.getElementById("#armor").disabled = true;
-
     }else if (armSet.has(itemtype)){
         document.getElementById("#weapon").disabled = true;
         document.getElementById("#armor").disabled = false;
-
     }else{
         document.getElementById("#weapon").disabled = true;
         document.getElementById("#weapon").disabled = true;
-
     }
 }
 
 function createItem(){
 
-    //let returnText = [];
     setText();
 
     checkIfElementIsChecked("#clearallitems");
-    let isnew = document.getElementById("is-item-new");
 
-    //checkIfElementIsChecked("#newitem");
     getSingleValue("#newitem");
+    getSingleValue("#name");
 
     getSingleValue("#selectitem");
     getSingleValue("#clear");

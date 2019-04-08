@@ -6,6 +6,15 @@ function isThrone(){
     return throne.has(rare);
 }
 
+window.addEventListener("DOMContentLoaded", function(event){
+    let isth = isThrone();
+    let eles = document.getElementsByClassName("throne");
+    for (let index = 0; index < eles.length; index++) {
+        const element = eles[index];
+        element.disabled = !isth;
+    }
+});
+
 function createSite(){
     //let returnText = [];
     setText();

@@ -17,189 +17,196 @@
     </head>
     <body>
         <header>
-            <a href="mod_helper.html">Mod</a>
-            <a href="armor_helper.html">Armor</a>
-            <a href="weapon_helper.html">Weapons</a>
-            <a href="item_helper.html">Magic Items</a>
-            <a href="spell_helper.html">Magic Spells</a>
-            <a href="monster_helper.html">Monsters</a>
-            <a href="nation_helper.html">Nations</a>
-            <a href="site_helper.html">Magic Sites</a>
+            <div style="text-align: justify">
+                <a href="index.html">Main Page</a>
+                <a href="about.html">About</a>
+                <a href="mod_helper.html">Mod</a>
+                <a href="armor_helper.html">Armor</a>
+                <a href="weapon_helper.html">Weapons</a>
+                <a href="item_helper.html">Magic Items</a>
+                <a href="spell_helper.html">Magic Spells</a>
+                <a href="monster_helper.html">Monsters</a>
+                <a href="nation_helper.html">Nations</a>
+                <a href="site_helper.html">Magic Sites</a>
+                <a href="event_helper.html">Events</a>
+            </div>
         </header>
         <main>
             <h1>Magic Item Modding</h1>
-            <input type="checkbox" name="#clearallitems" id="#clearallitems" value="#clearallitems">
-            <label for="#clearallitems">Clear all item</label>
+            <input type="checkbox" name="#clearallitems" id="#clearallitems" value="#clearallitems" class="new">
+            <label for="#clearallitems">Clear all items</label>
             <fieldset>
-                    <legend>New</legend>
-                    <input type="checkbox" name="is-item-new" id="is-item-new" value="is-item-new" checked
-                    onchange="enableOrDisable(document.getElementById('is-item-new').checked, 'new', 'old')">
-                    <label for="is-item-new">Item is new</label>
-                    <br>
-                    <input type="number" name="#newitem" id="#newitem" min="500" value="500" max="999" class="new">
-                    <label for="#newitem">New item number:</label>
-                    <br>
-                    <label for="#selectitem">ID of item to be altered:</label>
-                    <input type="number" name="#selectitem" id="#selectitem" value="0" min="0" max="499" class="old" disabled>
-                    <br>
+                <legend>New</legend>
+                <input type="checkbox" name="is-item-new" id="is-item-new" value="is-item-new" checked
+                onchange="enableOrDisable(document.getElementById('is-item-new').checked, 'new', 'old')">
+                <label for="is-item-new">Item is new</label>
+                <br>
+                <input type="number" name="#newitem" id="#newitem" min="500" value="500" max="999" class="new">
+                <label for="#newitem">New item number:</label>
+                <br>
+                <input type="text" name="#name" id="#name" class="new">
+                <label for="#name">New item name:</label>
+                <br>
+                <label for="#selectitem">ID of item to be altered:</label>
+                <input type="number" name="#selectitem" id="#selectitem" value="0" min="0" max="499" class="old" disabled>
+                <br>
+                <input type="checkbox" name="#clear" id="#clear" value="#clear" class="old" disabled>
+                <label for="#clear">Clears current item</label>
+            </fieldset>
 
-                    <input type="checkbox" name="#clear" id="#clear" value="#clear" class="old" disabled>
-                    <label for="#clear">Clears current item</label>
-                </fieldset>
+            <label for="#constlevel">Construction Level Required:</label>
+            <select name="#constlevel" id="#constlevel">
+                <option value="0" selected>Level 0</option>
+                <option value="2">Level 2</option>
+                <option value="4">Level 4</option>
+                <option value="6">Level 6</option>
+                <option value="8">Level 8</option>
+                <option value="12">Level 12 (Unforageable)</option>
+            </select>
 
-                <label for="#constlevel">Construction Level Required:</label>
-                <select name="#constlevel" id="#constlevel">
-                    <option value="0" selected>Level 0</option>
-                    <option value="2">Level 2</option>
-                    <option value="4">Level 4</option>
-                    <option value="6">Level 6</option>
-                    <option value="8">Level 8</option>
-                    <option value="12">Level 12 (Unforageable)</option>
+            <fieldset>
+                <legend>Required Magic Path</legend>
+                <label for="#mainlevel">Required Magic Path Level:</label>
+                <input type="number" name="#mainlevel" id="#mainlevel" value="1" min="1" max="8">
+                <br>
+                <label for="#mainpath">Magic Path Required:</label>
+                <select class="#mainpath" id="#mainpath">
+                    <option value="0">Fire</option>
+                    <option value="1">Air</option>
+                    <option value="2">Water</option>
+                    <option value="3">Earth</option>
+                    <option value="4" selected>Astral</option>
+                    <option value="5">Death</option>
+                    <option value="6">Nature</option>
+                    <option value="7">Blood</option>
                 </select>
+                <br>
+                <input type="checkbox" name="needsecondary" id="needsecondary" value="needsecondary" 
+                onchange="enableOrDisable(document.getElementById('needsecondary').checked, 'secpath', '')">
+                <label for="needsecondary">Item requires secondary magic path</label>
+                <br>
+                <label for="#secondarylevel">2nd Required Magic Path Level:</label>
+                <input type="number" name="#secondarylevel" id="#secondarylevel" value="1" min="1" max="8" 
+                        class="secpath" disabled>
+                <br>
+                <label for="#secondarypath">Secondary Magic Path Required:</label>
+                <select class="secpath" id="#secondarypath" disabled>
+                    <option value="0">Fire</option>
+                    <option value="1">Air</option>
+                    <option value="2">Water</option>
+                    <option value="3">Earth</option>
+                    <option value="4" selected>Astral</option>
+                    <option value="5">Death</option>
+                    <option value="6">Nature</option>
+                    <option value="7">Blood</option>
+                </select>
+            </fieldset>
 
-                <fieldset>
-                    <legend>Required Magic Path</legend>
-                    <label for="#mainlevel">Required Magic Path Level:</label>
-                    <input type="number" name="#mainlevel" id="#mainlevel" value="1" min="1" max="8">
+            <fieldset>
+                <legend>Copying</legend>
+                <p>
+                    Note: A value of zero will disable this.
                     <br>
-            <label for="#mainpath">Magic Path Required:</label>
-            <select class="#mainpath" id="#mainpath">
-            <option value="0">Fire</option>
-            <option value="1">Air</option>
-            <option value="2">Water</option>
-            <option value="3">Earth</option>
-            <option value="4" selected>Astral</option>
-            <option value="5">Death</option>
-            <option value="6">Nature</option>
-            <option value="7">Blood</option>
+                    <label for="#copyitem">ID of item to copy stats from:</label>
+                    <input type="number" name="#copyitem" id="#copyitem" value="0" min="0">
+                </p>
+                <input type="checkbox" name="newsprite" id="newsprite" value="newsprite" checked
+                onchange="enableOrDisable(document.getElementById('newsprite').checked, 'nsprite', 'osprite')">
+                <label for="newsprite">Item uses new sprite</label>
+                <br>
+                <label for="#copyspr">ID of item to copy sprite from:</label>
+                <input type="number" name="#copyitem" id="#copyspr" value="0" min="0" class="osprite" disabled>
+                <br>
+                <label for="#spr">Name of sprite filename:</label>
+                <input type="text" id="#spr" class="nsprite">
+            </fieldset>
+            <!--onChange-->
+            <label for="#type">Item Type:</label>
+            <select class="#type" id="#type" onchange="isWeaponOrArmor()">
+                <option value="1">One handed weapon</option>
+                <option value="2">Two handed weapon</option>
+                <option value="3">Missle weapon</option>
+                <option value="4" >Shield</option>
+                <option value="5">Body armor</option>
+                <option value="6">Helmet</option>
+                <option value="7">Boots</option>
+                <option value="8" selected>Misc Item</option>
+                <option value="9">Crown</option>
             </select>
             <br>
-            <input type="checkbox" name="needsecondary" id="needsecondary" value="needsecondary" 
-            onchange="enableOrDisable(document.getElementById('needsecondary').checked, 'secpath', '')">
-            <label for="needsecondary">Item requires secondary magic path</label>
+            <label for="#name">Name of item:</label>
+            <input type="text" id="#name">
             <br>
-            <label for="#secondarylevel">2nd Required Magic Path Level:</label>
-            <input type="number" name="#secondarylevel" id="#secondarylevel" value="1" min="1" max="8" 
-                    class="secpath" disabled>
+            <label for="#descr">Description:</label>
+            <input type="text" id="#descr" class="desc">
+            <p>
+                This is only used if item is a weapon. If this is set to, say 15, 
+                then the commander wielding this item will be treated as if he 
+                had a Morning Star in place of his default weapon.
+                <br>
+                <label for="#weapon">ID of weapon:</label>
+                <input type="number" name="#weapon" id="#weapon" value="1" min="1" max="1999" disabled>
+            </p>
+            <p>
+                This is only used if item is armor.If this is set to, say 9, 
+                then the commander wielding this item will bew treated as if he 
+                were a Plate Cuirass instead of his default armor.
+                <br>
+                <label for="#armor">ID of armor:</label>
+                <input type="number" name="#armor" id="#armor" value="1" min="1" max="999" disabled>
+            </p>
+            <!---->
+            <h3>Magic & Spells</h3>
+            <fieldset>
+                <legend>Magic Boosters</legend>
+                <input type="number" id="#magiclevel1" value="0" min="0" max="10">
+                <label for="#magiclevel1">Base Magic Level:</label>
+                <br>
+                <label for="magicskill1">Base Magic Path:</label>
+                <select class="magicskill1" id="magicskill1">
+                    <option value="0">Fire</option>
+                    <option value="1">Air</option>
+                    <option value="2">Water</option>
+                    <option value="3">Earth</option>
+                    <option value="4" selected>Astral</option>
+                    <option value="5">Death</option>
+                    <option value="6">Nature</option>
+                    <option value="7">Blood</option>
+                    <option value="8">Priest</option>
+                    <option value="50">Random</option>
+                    <option value="51">Elemental</option>
+                    <option value="52">Sorcery</option>
+                    <option value="53">All except Priest</option>
+                </select>
+            </fieldset>
             <br>
-            <label for="#secondarypath">Secondary Magic Path Required:</label>
-            <select class="secpath" id="#secondarypath" disabled>
-                <option value="0">Fire</option>
-                <option value="1">Air</option>
-                <option value="2">Water</option>
-                <option value="3">Earth</option>
-                <option value="4" selected>Astral</option>
-                <option value="5">Death</option>
-                <option value="6">Nature</option>
-                <option value="7">Blood</option>
-            </select>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Copying</legend>
-                    <p>
-                        Note: A value of zero will disable this.
-                        <br>
-                        <label for="#copyitem">ID of item to copy stats from:</label>
-                        <input type="number" name="#copyitem" id="#copyitem" value="0" min="0">
-                    </p>
-                    <input type="checkbox" name="newsprite" id="newsprite" value="newsprite" checked
-                    onchange="enableOrDisable(document.getElementById('newsprite').checked, 'nsprite', 'osprite')">
-                    <label for="newsprite">Item uses new sprite</label>
-                    <br>
-                    <label for="#copyspr">ID of item to copy sprite from:</label>
-                    <input type="number" name="#copyitem" id="#copyspr" value="0" min="0" class="osprite" disabled>
-                    <br>
-                    <label for="#spr">Name of sprite filename:</label>
-                    <input type="text" id="#spr" class="nsprite">
-                </fieldset>
-                <!--onChange-->
-                <label for="#type">Item Type:</label>
-        <select class="#type" id="#type" onchange="isWeaponOrArmor()">
-            <option value="1">One handed weapon</option>
-            <option value="2">Two handed weapon</option>
-            <option value="3">Missle weapon</option>
-            <option value="4" >Shield</option>
-            <option value="5">Body armor</option>
-            <option value="6">Helmet</option>
-            <option value="7">Boots</option>
-            <option value="8" selected>Misc Item</option>
-            <option value="9">Crown</option>
-        </select>
-        <br>
-        <label for="#name">Name of item:</label>
-        <input type="text" id="#name">
-        <br>
-        <label for="#descr">Description:</label>
-        <input type="text" id="#descr" class="desc">
-        <p>
-            This is only used if item is a weapon. If this is set to, say 15, 
-            then the commander wielding this item will be treated as if he 
-            had a Morning Star in place of his default weapon.
-            <br>
-            <label for="#weapon">ID of weapon:</label>
-            <input type="number" name="#weapon" id="#weapon" value="1" min="1" max="1999" disabled>
-        </p>
-        <p>
-            This is only used if item is armor.If this is set to, say 9, 
-            then the commander wielding this item will bew treated as if he 
-            were a Plate Cuirass instead of his default armor.
-            <br>
-            <label for="#armor">ID of armor:</label>
-            <input type="number" name="#armor" id="#armor" value="1" min="1" max="999" disabled>
-        </p>
-        <!---->
-        <h3>Magic & Spells</h3>
-        <fieldset>
-            <legend>Magic Boosters</legend>
-            <input type="number" id="#magiclevel1" value="0" min="0" max="10">
-            <label for="#magiclevel1">Base Magic Level:</label>
-            <br>
-            <label for="magicskill1">Base Magic Path:</label>
-            <select class="magicskill1" id="magicskill1">
-                <option value="0">Fire</option>
-                <option value="1">Air</option>
-                <option value="2">Water</option>
-                <option value="3">Earth</option>
-                <option value="4" selected>Astral</option>
-                <option value="5">Death</option>
-                <option value="6">Nature</option>
-                <option value="7">Blood</option>
-                <option value="8">Priest</option>
-                <option value="50">Random</option>
-                <option value="51">Elemental</option>
-                <option value="52">Sorcery</option>
-                <option value="53">All except Priest</option>
-            </select>
-        </fieldset>
-        <br>
-        <p>
-            <input type="number" name="#pen" id="#pen" value="0">
-            <label for="#pen">Bonus spell penitration:</label>
-        </p>
-        <p>
-            Name of spell that item allows user to cast.
-            <br>
-            <input type="text" name="#spell" id="#spell">
-            <label for="#spell">Allowed Spell:</label>
-        </p>
-        <p>
-            Name of spell that will automaticly be cast in battle. Spell 
-            will only be cast once unless auto spell repeat is greater then zero.
-            <br>
-            <input type="text" id="#autospell">
-            <label for="#autospell">Autocast spell</label>
-        </p>
-        <p>
-            Number of time per round that the autospell will be cast.
-            <br>
-            <input type="number" name="#autospellrepeat" id="#autospellrepeat" value="0" min="0">
-            <label for="#autospellrepeat">Spells per Round:</label>
-        </p>
-        <p>
-            <input type="number" name="#randomspell" id="#randomspell" value="0" min="0" max="100">
-            <label for="#randomspell">Chance of casting a random spell:</label>
-        </p>
+            <p>
+                <input type="number" name="#pen" id="#pen" value="0">
+                <label for="#pen">Bonus spell penitration:</label>
+            </p>
+            <p>
+                Name of spell that item allows user to cast.
+                <br>
+                <input type="text" name="#spell" id="#spell">
+                <label for="#spell">Allowed Spell:</label>
+            </p>
+            <p>
+                Name of spell that will automaticly be cast in battle. Spell 
+                will only be cast once unless auto spell repeat is greater then zero.
+                <br>
+                <input type="text" id="#autospell">
+                <label for="#autospell">Autocast spell</label>
+            </p>
+            <p>
+                Number of time per round that the autospell will be cast.
+                <br>
+                <input type="number" name="#autospellrepeat" id="#autospellrepeat" value="0" min="0">
+                <label for="#autospellrepeat">Spells per Round:</label>
+            </p>
+            <p>
+                <input type="number" name="#randomspell" id="#randomspell" value="0" min="0" max="100">
+                <label for="#randomspell">Chance of casting a random spell:</label>
+            </p>
         <!--
     UNCATEGORIZED MISC
     #speciallook
@@ -480,7 +487,7 @@
         <p>
             Unit can only teleport using Stygian Paths and Faery Trod.
             <br>
-            <input type="checkbox" name="teleport" id="#unteleportable" value="#unteleportable" class="attresnum">
+            <input type="checkbox" name="teleport" id="#unteleportable" value="#unteleportable" class="attresbool">
             <label for="#unteleportable">No teleport</label>
         </p>
         <p>
@@ -756,7 +763,7 @@
                 <input type="number" name="#invulnerable" id="#invulnerable" value="0" min="0" class="resnum">
             </p>
             <!--to do -->
-            <button onclick="document.getElementById('result').innerText = createItem()">Create Spell</button>
+            <button onclick="document.getElementById('result').innerText = createItem()">Create Item</button>
             <br>
             <p id="result" name="result">Result</p>
         </main>

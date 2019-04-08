@@ -73,6 +73,60 @@
                 <button onclick="setAsScout()">Set Unit as Scout</button>
 
             </p>
+            <p>
+                <label for="racialtemplates">Racial Templates</label>
+                <select name="racialtemplates" id="racialtemplates">
+                    <option value="abysian">Abysian</option>
+                    <option value="caelian">Caelian</option>
+                    <option value="ctis">C'tis</option>
+                    <option value="van">Van</option>
+                    <option value="jotun">Jotun</option>
+                    <option value="naga">Naga</option>
+                    <option value="tengu">Tengu</option>
+                    
+                    <option value="bakemono">Bakemono</option>
+
+                    <optgroup label="Human">
+                        <option value="human" selected>Human</option>
+                        <option value="ulm">Ulm</option>
+                        <option value="colossi">Colossi</option>
+                        
+                    </optgroup>
+                    <optgroup label="Agarthians">
+                        <option value="paleone">Pale One</option>
+                        <option value="oldpaleone">Ancient Pale One</option>
+                        
+                    </optgroup>
+                    <optgroup label="Pangeans">
+                        <option value="harpy">Harpy</option>
+                        <option value="satyr">Satyr</option>
+                        <option value="dryad">Dryad</option>
+                        <option value="centaur">Centaur</option>
+                        <option value="mino">Minotaur</option>
+                    </optgroup>
+                    <optgroup label="Nemedians">
+                            <option value="firbolg">Fir Bolg</option>
+                            <option value="tuatha">Tuatha</option>
+                    </optgroup>
+                    <optgroup label="Altantians">
+                            <option value="altantian">Altantian</option>
+                            <option value="shambler">Shambler</option>
+                    </optgroup>
+                    <optgroup label="Vanara">
+                            <option value="markata">Markata</option>
+                            <option value="atavi">Atavi</option>
+                            <option value="bandar">Bandar</option>
+                            <option value="whiteone">White One</option>
+                    </optgroup>
+                    <optgroup label="Aquatic">
+                            <option value="merman">Merman</option>
+                            <option value="triton">Triton</option>
+                    </optgroup>
+
+                </select>
+            </p>
+            <button 
+            onclick="applyTemplate(document.getElementById('racialtemplates').value)">Apply Template</button>
             <h3>Clearing & Copying</h3>
             <fieldset>
                 <legend>Clearing Data</legend>
@@ -403,18 +457,25 @@
             </fieldset>
             <h3>Bodytype</h3>
             <label for="bodytype">Unit BodyType:</label>
-            <select  id="bodytype">
+            <select id="bodytype" 
+            onchange="enableOrDisable(document.getElementById('bodytype').value==='#miscshape', 'bpnum', '')">
                 <option value="#humanoid" selected>Humanoid</option>
                 <option value="#mountedhumanoid">Mounted Humanoid/Centaur</option>
                 <option value="#quadruped">Quadruped</option>
                 <option value="#lizard">Lizard/Dragon</option>
-                <option value="#naga">Naga</option>
+                <option value="#naga">Naga/Merman</option>
                 <option value="#snake">Snake</option>
                 <option value="#bird">Bird</option>
                 <option value="#djinn">Djinn</option>
                 <option value="#troglodyte">Troglodyte/Headless</option>
                 <option value="#miscshape">Miscshape</option>
             </select>
+            <p>
+                Note: To customise your monsters body slots, choose the option "Miscshape" from the
+                "Unit Bodytype" drop down menu. This will enable the options under the "Number of 
+                Body Parts" box below. From ther, you can manually set the item slots that the 
+                monster will have.
+            </p>
             <h3>Item Slots</h3>
             <p>
                 Note: this is used only if the unit is a comander.
@@ -431,25 +492,42 @@
             <br>
             <label for="#noitem">Can Only Use Misc Items:</label>
             <input type="checkbox" id="#noitem" value="#noitem">
+            <br>
             <fieldset>
                 <legend>Number of Body Parts:</legend>
+                <label for="bodytemplate">Unit Body Template:</label>
+                <select id="bodytemplate" class="bpnum">
+                    <option value="#humanoid" selected>Humanoid</option>
+                    <option value="#mountedhumanoid">Mounted Humanoid/Centaur</option>
+                    <option value="#quadruped">Quadruped</option>
+                    <option value="#lizard">Lizard/Dragon</option>
+                    <option value="#naga">Naga/Merman</option>
+                    <option value="#snake">Snake</option>
+                    <option value="#bird">Bird</option>
+                    <option value="#djinn">Djinn</option>
+                    <option value="#troglodyte">Troglodyte/Headless</option>
+                </select>
+                <br>
+                <button onclick="copyBodyData()" class="bpnum">Copy item slots from template</button>
+                <br>
+                
                 <label for="num-hands">Number of Hands:</label>
-                <input type="number" id="num-hands" value="2" min="0" max="4">
+                <input type="number" id="num-hands" value="2" min="0" max="4" class="bpnum">
                 <br>
                 <label for="num-heads">Number of Heads:</label>
-                <input type="number" id="num-heads" value="1" min="0" max="3">
+                <input type="number" id="num-heads" value="1" min="0" max="3" class="bpnum">
                 <br>
                 <label for="has-body">Has Body:</label>
-                <input type="checkbox" id="has-body" checked>
+                <input type="checkbox" id="has-body" class="bpnum" checked>
                 <br>
                 <label for="has-feet">Has Feet:</label>
-                <input type="checkbox" id="has-feet" checked>
+                <input type="checkbox" id="has-feet" class="bpnum" checked>
                 <br>
                 <label for="num-misc">Number of Misc Slots:</label>
-                <input type="number" id="num-misc" value="2" min="0" max="4">
+                <input type="number" id="num-misc" value="2" min="0" max="4" class="bpnum">
                 <br>
                 <label for="only-crowns">Can Only Wear Crowns:</label>
-                <input type="checkbox" id="only-crowns">
+                <input type="checkbox" id="only-crowns" class="bpnum">
             </fieldset>
             <h3>Creature Type & Status</h3>
             <input type="checkbox" id="#female" value="#female" class="atributes">
@@ -557,7 +635,7 @@
                     document.getElementById('#amphibian').checked||document.getElementById('#pooramphibian'))">
                 <label for="#pooramphibian">Unit is Semi-Amphibous</label>
                 <br>
-                <input type="radio" name="underwaterMove" id="#swimming" value="#swimming"  class="underwaterMove">
+                <input type="checkbox" name="swimming" id="#swimming" value="#swimming">
                 <label for="#swimming">Unit can Swim across rivers</label>
                 <br>
                 <input type="radio" name="underwaterMove" id="#float" value="#float" class="underwaterMove">
@@ -1857,7 +1935,7 @@
                 <option value="#superiormagicleader">Can command 160 magic beings</option>
             </select>
             <br>
-            <input type="number" name="#magiccommand" value="0" min="0" class="incleadership">
+            <input type="number" name="#magiccommand" id="#magiccommand" value="0" min="0" class="incleadership">
             <label for="#magiccommand">Increase magic leadership by:</label>
 
             <h3>Undead Leadership</h3>

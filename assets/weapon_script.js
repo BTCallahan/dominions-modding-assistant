@@ -60,12 +60,10 @@ function explosionEffect(){
             miscexplodesprite.value = "10139";
         }
         changemiscsprite.innerText = "Note: This wil produce a gass explosion. Acceptable values are from 10121 to 10139.";
-
         break;
-
         default:
         miscexplodesprite.disabled = true;
-
+        changemiscsprite.innerText = "";
         break;
     }
 }
@@ -82,9 +80,9 @@ function createWeapon(){
     setText()
 
     if (isWepNew){
+        getSingleValue("#newweapon");
         getSingleValue("#name");
     }else{
-
         getSingleValue("#selectweapon");
     }
 

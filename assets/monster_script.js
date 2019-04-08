@@ -2,101 +2,388 @@ var templates = new Map();
 templates.set("human", {
     hp:"10",
     str:"10",
-    mr:"10"
+    mr:"10",
+    coldblood:false
 });
 templates.set("ulm", {
-    hp:"12",
-    str:"11",
-    mr:"9"
+    hp:"13",//12-16
+    str:"12",//11-13
+    mr:"8",
+    def:"11",
+    //mor:11-14
+    ap:"13",
+    coldblood:false
 });
+templates.set("colossi", {
+    hp:"20",//18-22
+    str:"14",//13-15
+    mr:"17",//13-17
+    size:"3",
+    mor:"14",//13-15
+    att:"11",//9-12
+    ap:"14",
+    holy:true,
+    coldblood:false
+    //maxage 285-365
+})
 templates.set("abysian", {
     hp:"20",
     str:"13",
     mr:"12",
+    ap:"11",
     fireres:"25",
-    maxage:"35"
+    maxage:"35",
+    coldblood:false
 });
-templates.set("cael", {
+templates.set("caelian", {
     hp:"9",
     str:"9",
     mr:"12",
     coldres:"5",
-    fly:true
+    flying:true,
+    coldblood:false
 });
 templates.set("ctis", {
-    hp:"11",
-    mr:"12",
+    hp:"11",//10-14
+    mr:"12",//12-18
     poisonres:"7",
     coldblood:true
 });
 templates.set("satyr", {
-    hp:"12",
-    str:"11",
-    mr:"13"
+    hp:"12",//12-16
+    str:"11",//11-12
+    mr:"13",//
+    mor:"9",//9-12
+    ap:"14",
+    mapmove:"18",
+    stealthy:"40",//40-65
+    female:false,
+    undisciplined:true,
+    forestsurvival:true,
+    heal:true,
+    coldblood:false
+});
+templates.set("dryad", {
+    hp:"11",
+    mr:"16",
+    def:"12",
+    stealthy:"65",
+    awe:"4",
+    female:true,
+    holy:true,
+    forestsurvival:true,
+    heal:true,
+    seduce:true,
+    coldblood:false
+});
+templates.set("centaur", {
+    hp:"20",//18-23
+    str:"13",//12-14
+    mr:"14",//13-15
+    stealthy:"40",
+    size:"3",
+    mor:"12",//11-15
+    prec:"12",
+    ap:"31",//30-32
+    forestsurvival:true,
+    heal:true,
+    coldblood:false
+});
+templates.set("harpy", {
+    hp:"7",
+    str:"8",
+    mr:"11",
+    ap:"4",
+    att:"8",
+    prec:"8",
+    stealthy:"40",
+    //10 leardership
+    //4 ap
+    female:true,
+    forestsurvival:true,
+    heal:true,
+    flying:true,
+    coldblood:false
 });
 templates.set("mino", {
     hp:"25",
     str:"16",
-    mr:"11"
+    mr:"11",
+    prec:"8",
+    coldblood:false
 });
 templates.set("paleone", {
-    hp:"18",
-    str:"12",
-    mr:"12",
+    hp:"18",//18-22
+    str:"12",//12-13
+    mr:"12",//12-15
+    size:"3",
+    prec:"7",
+    def:"7",//7-9
+    att:"8",//7-8
+    eyes:"1",
+    maxage:"400",//starting age 82-110
     darkvision:"100",
-    amphibian:true
+    amphibian:true,
+    coldblood:true,
+    neednoteat:true
+});
+templates.set("oldpaleone", {
+    hp:"42",//40-44
+    str:"19",//18-20
+    mr:"13",//13-18
+    size:"4",
+    prec:"7",
+    ap:"14",
+    def:"8",//8-10
+    att:"9",//8-10
+    eyes:"1",
+    maxage:"400",//starting age 220-385
+    darkvision:"100",
+    amphibian:true,
+    coldblood:true,
+    neednoteat:true
 });
 templates.set("firbolg",{
     hp:"13",
     str:"11",
     mr:"13",
-    prec:"12"
+    prec:"12",
+    coldblood:false
 });
+templates.set("tuatha",{
+    hp:"14",
+    str:"13",
+    mr:"14",
+    mor:"14",
+    ap:"13",
+    att:"13",
+    darkvision:"50",
+    stealthy:"65",
+    maxage:"300",//age 120
+    illusion:true,
+    forestsurvival:true,
+    coldblood:false
+})
 templates.set("van",{
     hp:"13",
     str:"11",
     mr:"14",
     prec:"12",
     stealthy:"40",
-    illusion:true
+    illusion:true,
+    coldblood:false
 });
 templates.set("jotun",{
     hp:"30",
     str:"20",
     mr:"12",
     size:"4",
-    cr:"15"
+    cr:"15",
+    coldblood:false
 });
 templates.set("markata",{
     hp:"5",
     str:"5",
     mr:"7",
+    mor:"7",
     size:"1",
     prec:"8",
     forestsurvival:true,
-    animal:true
+    animal:true,
+    coldblood:false
 });
 templates.set("atavi",{
+    mor:"8",
     forestsurvival:true,
-    animal:true
+    animal:true,
+    coldblood:false
+});
+templates.set("bandar",{
+    hp:"18",
+    str:"15",
+    mr:"8",
+    att:"9",
+    prec:"9",
+    forestsurvival:true,
+    animal:true,
+    coldblood:false
+});
+templates.set("whiteone",{
+    hp:"9",
+    str:"9",
+    mr:"14",
+    att:"7",
+    prec:"8",
+    reincarnation:"50",
+    maxage:"60",
+    forestsurvival:true,
+    animal:true,
+    holy:true,
+    coldblood:false
+    //leadership is 10
+    //age si 36
+});
+templates.set("naga",{
+    hp:"18",
+    str:"12",
+    mr:"13",
+    mor:"12",
+    prot:"5",
+    poisonres:"10",
+    //magic leadership 10
+    //encumberance 4
+    maxage:"300",
+    //current age 180
+    holy:true,
+    magicbeing:true,
+    coldblood:true,
+    swampsurvival:true,
+    spiritsight:true
+});
+templates.set("tengu",{
+    hp:"13",
+    str:"11",
+    mr:"14",
+    mor:"13",
+    att:"13",
+    def:"14",
+    prec:"12",
+    holy:true,
+    flying:true,
+    stormimmune:true,
+    mountainsurvival:true,
+    coldblood:false
+
+    //16 16 14 13  = 59 / 4 = 10
+});
+//Bakemono
+templates.set("bakemono", {
+    hp:"9",
+    str:"9",
+    mr:"9",
+    mor:"9",
+    dv:"50",
+    stealthy:"40",
+    undisciplined:true,
+    forestsurvival:true,
+    mountainsurvival:true//base cost +7
+})
+templates.set("altantian",{
+    hp:"12",
+    str:"11",
+    prec:"8",
+    dv:"50",
+    maxage:"500",
+    amphibian:true,
+    coldblood:false
+});
+templates.set("shambler", {
+    hp:"22",
+    str:"15",
+    size:"3",
+    mor:"11",
+    prec:"8",
+    dv:"50",
+    maxage:"500",
+    older:"143",
+    amphibian:true,
+    coldblood:false
+});
+templates.set("merman", {
+    mr:"12",
+    mor:"11",
+    amphibian:true,
+    naga:true,
+    coldblood:false
+});
+templates.set("triton", {
+    mr:"11",
+    mor:"11",
+    aquatic:true,
+    coldblood:false
 });
 
+
+function checkValue(valueName, objectValue, reserveValue){
+    if(objectValue === null){
+        document.getElementById(valueName).value = reserveValue;
+    }else{
+        document.getElementById(valueName).value = objectValue;
+    }
+}
+
+function checkBoolian(valueName, objectValue, reserveValueName){
+    if(objectValue === null){
+        document.getElementById(valueName).checked = false;
+        if(reserveValueName){
+            document.getElementById(reserveValueName).checked = true;
+        }
+    }else{
+        document.getElementById(valueName).checked = objectValue;
+        if(reserveValueName){
+            document.getElementById(reserveValueName).checked = !objectValue;
+        }
+    }
+}
 
 function applyTemplate(templateName){
     let o = templates.get(templateName);
 
+    checkValue("#hp", o.hp, "10");
+    checkValue("#str", o.str, "10");
+    checkValue("#mr", o.mr, "10");
+    checkValue("#prec", o.prec, "10");
+    checkValue("#fireres", o.fireres, "0");
+    checkValue("#coldres", o.coldres, "0");
+    checkValue("#poisonres", o.poisonres, "0");
+    checkValue("#darkvision", o.darkvision, "0");
+    checkValue("#stealthy", o.stealthy, "0");
+    checkValue("#maxage", o.maxage, "50");
+    checkValue("#eyes", o.eyes, "2");
+    checkValue("#reincarnation", o.reincarnation, "0");
+
+    checkBoolian("#flying", o.flying);
+    checkBoolian("#stormimmune", o.stormimmune);
+    checkBoolian("#holy", o.holy);
+
+    checkBoolian("#illusion", o.illusion);
+    checkBoolian("#undisciplined", o.undisciplined);
+    checkBoolian("#forestsurvival", o.forestsurvival);
+    checkBoolian("#mountainsurvival", o.mountainsurvival);
+    checkBoolian("#swampsurvival", o.swampsurvival);
+
+    checkBoolian("#animal", o.animal);
+    checkBoolian("#coldblood", o.coldblood);
+
+    checkBoolian("#aquatic", o.aquatic, "#nounderwater");
+    checkBoolian("#amphibian", o.amphibian, "#nounderwater");
+    checkBoolian("#magicbeing", o.magicbeing);
+    checkBoolian("#neednoteat", o.neednoteat);
+
+    
+
+    /*
     if (o.hp){
         document.getElementById("#hp").value = o.hp;
+    }else{
+        document.getElementById("#hp").value = "10";
     }
     if (o.str){
         document.getElementById("#str").value = o.str;
+    }else{
+        document.getElementById("#str").value = "10";
     }
     if (o.mr){
         document.getElementById("#mr").value = o.mr;
+    }else{
+        document.getElementById("#mr").value = "10";
     }
     if(o.prec){
         document.getElementById("#prec").value = o.prec;
+    }else{
+
     }
+    */
 }
 
 function stealthCheck(){
@@ -115,6 +402,54 @@ function stealthCheck(){
         assassin.disabled = true;
         enableOrDisable(true, "", "reqAssassin");
     }
+}
+
+function copyBodyData(){
+    let bt = document.getElementById("bodytemplate");
+
+    let hands = "2";
+    let heads = "1";
+    let body = true;
+    let feet = true;
+    let misc = "2";
+
+    switch (bt.value) {
+        case "#humanoid":
+            break;
+        case "#naga":
+        case "#mountedhumanoid":
+            feet = false;
+            break;
+        case "#lizard":
+            hands = "0";
+            body = false;
+            feet = false;
+            break;
+        case "#bird":
+        case "#snake":
+        case "#quadruped":
+            head = "0";
+            hands = "0";
+            body = false;
+            feet = false;
+            break;
+        case "#djinn":
+            feet = false;
+            body = false;
+            break;
+        case "#troglodyte":
+            heads = "0";
+            break;
+        default:
+            break;
+    }
+
+    document.getElementById("num-hands").value = hands;
+    document.getElementById("num-heads").value = heads;
+    document.getElementById("has-body").checked = body;
+    document.getElementById("has-feet").checked = feet;
+    document.getElementById("num-misc").value = misc;
+
 }
 
 function trampleCheck(){
@@ -165,9 +500,14 @@ function setAsScout(){
     let stealthy = document.getElementById("#stealthy");
 
     if (Number(stealthy.value) < 10){
-        stealthy.value / "10";
+        stealthy.value = "10";
     }
 }
+
+window.addEventListener("DOMContentLoaded", function(event){
+    enableOrDisable(document.getElementById('bodytype').value==='#miscshape', 'bpnum', '');
+
+});
 
 function createMonster(){
 
@@ -246,7 +586,7 @@ function createMonster(){
 
     checkIfAnyElementIsChecked("reqbuildings");
 
-    getMultipleValues("scaleValues", invalidValue="0");
+    getMultipleValues("scaleValues", "0");
 
     checkIfAnyElementIsChecked("aireq");
 
@@ -279,7 +619,7 @@ function createMonster(){
     }
 
     getSingleValue("#voidsanity", "0");
-
+    /*
     let weapons = document.getElementsByClassName("#weapon");
 
     for (let i = 1; i < weapons.lenght; i++){
@@ -287,8 +627,10 @@ function createMonster(){
         if (Number(weapons[i].value) > 0){
             pushTo.push("#weapon " + weapons[i].value);
         }
-    }
+    }*/
 
+    getMultipleValues("#weapon" , "0", true);
+    /*
     let armor = document.getElementsByClassName("#armor");
 
     for (let i = 1; i < armor.lenght; i++){
@@ -296,52 +638,60 @@ function createMonster(){
         if (Number(armor[i].value) > 0){
             pushTo.push("#armor " + armor[i].value);
         }
-    }
+    }*/
 
-    pushTo.push(grabSelectedValue("bodytype"));
+    getMultipleValues("#armor" , "0", true);
+
+    let bt = grabSelectedValue("bodytype");
+
+    pushTo.push(bt);
+    
 
     getSingleValue("#startitem",  "0");
     getSingleValue("#userestricteditem", "0");
 
     checkIfElementIsChecked("#noitem");
 
-    let itemSlotValues = 0;
-    let numHands = document.getElementById("num-hands");
-    if (numHands > 0){
-        itemSlotValues += (2 ** (numHands + 1)) - 2;
+    if(bt==="#miscshape"){
+        let itemSlotValues = 0;
+        let numHands = document.getElementById("num-hands");
+        if (numHands > 0){
+            itemSlotValues += (2 ** (numHands + 1)) - 2;
+        }
+        /*
+        0, 1, 2, 3, 4,  5,  6,  7,   8,   9,   10,   11,   12
+        1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096
+        */
+        let numHeads = document.getElementById("num-heads");
+    
+        for (let i = 1; i <= numHeads; i++){
+            itemSlotValues += 2 ** (i + 6);
+        }
+    
+        if (document.getElementById("has-body").checked){
+            itemSlotValues += 1024;
+        }
+    
+        if (document.getElementById("has-feet").checked){
+            itemSlotValues += 2048;
+        }
+    
+        let numMisc = document.getElementById("num-misc");
+        for (let i = 1; i <= numMisc; i++){
+            itemSlotValues += 2 ** (i + 11);
+        }
+    
+        if(document.getElementById("only-crowns").checked){
+            itemSlotValues += 262144;
+        }
+    
+        if (itemSlotValues == 0){
+            itemSlotValues = 1;
+        }
+    
+        pushTo.push("#itemslots " + itemSlotValues );
+    
     }
-    /*
-    0, 1, 2, 3, 4,  5,  6,  7,   8,   9,   10,   11,   12
-    1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096
-    */
-    let numHeads = document.getElementById("num-heads");
-
-    for (let i = 1; i <= numHeads; i++){
-        itemSlotValues += 2 ** (i + 6);
-    }
-
-    if (document.getElementById("has-body").checked){
-        itemSlotValues += 1024;
-    }
-
-    if (document.getElementById("has-feet").checked){
-        itemSlotValues += 2048;
-    }
-
-    let numMisc = document.getElementById("num-misc");
-    for (let i = 1; i <= numMisc; i++){
-        itemSlotValues += 2 ** (i + 11);
-    }
-
-    if(document.getElementById("only-crowns").checked){
-        itemSlotValues += 262144;
-    }
-
-    if (itemSlotValues == 0){
-        itemSlotValues = 1;
-    }
-
-    pushTo.push("#itemslots " + itemSlotValues );
 
     checkIfAnyElementIsChecked("atributes");
 
@@ -351,15 +701,20 @@ function createMonster(){
 
     checkIfAnyElementIsChecked("underwaterMove", "#nounderwater", true);
 
-    checkIfElementIsChecked("#snow");
+    checkIfElementIsChecked("#swimming");
 
+    checkIfElementIsChecked("#snow");
+    /*
     let canFly = document.getElementById("#flying").checked;
 
     if (canFly){
         pushTo.push('#flying\n');
 
         checkIfElementIsChecked("#stormimmune");
-    }
+    }*/
+
+    checkIfElementIsChecked("#flying");
+    checkIfElementIsChecked("#stormimmune");
 
     checkIfAnyElementIsChecked("teleport", "#noteleport", true);
 
@@ -433,8 +788,14 @@ function createMonster(){
 
     let startaff = Number(document.getElementById("#startaff"));
 
-    if (startaff > 0){
+    let tot = calcBitmask("aw");
+
+    if (startaff > 0 && tot > 0){
+
         pushTo.push("#startaff " + startaff);
+        pushTo.push("#startingaff " + tot);
+
+        /*
         aws = document.getElementsByClassName("aw");
         let total = 0;
 
@@ -445,6 +806,7 @@ function createMonster(){
         }
 
         pushTo.push(" " + total);
+        */
     }
 
     getSingleValue("#insane",  "0");
@@ -542,7 +904,8 @@ function createMonster(){
 
         pushTo.push("#nametype " + document.getElementById("customnamelistnum").value);
     }else{
-        pushTo.push("#nametype " + grabSelectedValue("#nametype"));
+        getSelectedValue("#nametype")
+        //pushTo.push("#nametype " + grabSelectedValue("#nametype"));
     }
 
     checkIfAnyElementIsChecked("leadership",  "#okleader", true);
@@ -567,7 +930,6 @@ function createMonster(){
 
     checkIfAnyElementIsChecked("moralebool");
     
-    
     /*
     if (document.getElementById("#magiclevel1").value != "0"){
         //let magic_path = grabSelectedValue("magicskill1");
@@ -581,7 +943,6 @@ function createMonster(){
     }*/
 
     getMultipleValues("magicLevels", "0");
-
 
     let magicchance = document.getElementById("magicchance").value;
 

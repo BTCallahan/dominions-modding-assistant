@@ -1,6 +1,6 @@
 function atLeastOneEara(elementId){
 
-    
+
     let checkedEras = document.getElementsByClassName("era");
     checkedEras.array.forEach(element => {
         element.checked
@@ -40,5 +40,7 @@ function createMercenary(){
     });
 
     pushTo.push("#eramask " + total);
+    pushTo.push("#end");
 
+    getText();
 }

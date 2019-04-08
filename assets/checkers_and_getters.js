@@ -238,12 +238,45 @@ function grabSelectedValue(id){
     //return select.options[select.selectedIndex].value;
 }
 
-/*
-function grabSelectedValue(id, value){
-    let select = document.getElementById(id);
-
-    let v = select.options.filter(opt => opt.value === value)[0];
-    select.selectedIndex = v.index;
-    //select.options[v.index]
+function setSelectableValue(id, value){
+    document.getElementById(id).value = value;
 }
-*/
+
+function minMax(minId, maxId, reverse = false){
+
+    let minEle = document.getElementById(minId);
+    let maxEle = document.getElementById(maxId);
+
+    if(minEle.value != "0" && maxEle.value != "0"){
+        if(Number(minEle.value) > Number(maxEle.value)){
+            if(reverse){
+                maxEle.value = minEle.value;
+
+            }else{
+                minEle.value = maxEle.value;
+
+            }
+        }
+    }
+}
+
+function maxMin(minId, maxId){
+    let minEle = document.getElementById(minId);
+    let maxEle = document.getElementById(maxId);
+
+    if(minEle.value != "0" && maxEle.value != "0"){
+        if(Number(minEle.value) > Number(maxEle.value)){
+            maxEle.value = minEle.value;
+        }
+    }
+
+}
+
+function calcBitmask(className){
+
+    let a = Array.from(document.getElementsByClassName(className)).filter(element => element.checked);
+    let total = 0
+    a.forEach(element => {
+        total += 2 ** Number(element.value);
+    });
+}
