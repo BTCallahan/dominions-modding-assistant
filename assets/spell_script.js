@@ -187,6 +187,117 @@ function ritualVsBattle(){
     spellcost();
 }
 
+window.addEventListener("DOMContentLoaded", function (event) {
+
+    createBitmaskTable("helpfuleffects", "Helpful Effects", 4, ["Bless", "Luck", "Precision", "Air Shield", 
+    "Barkskin", "Regenaration", "Tough Armor", "Bezerk", 
+    "Pain Transfer", "fire Resistance", "Shock Resistance", "Cold Resistance", 
+    "Chill Aura", "Heat Aura", "Sermon of Courage", "Stone skin", 
+    "Flying", "Quickness", "Weapons of Sharpness", "Astral Weapons", 
+    "Reanimation", "Holy Avenger", "Flaming Arrows", "Magic Resistance", 
+    "Magic Resistance", "Body Etheral", "Ironskin", "Communion Master", 
+    "Communion Slave", "Enlarge", "Shrink", "?", 
+    "?", "?", "?", "?", 
+    "Piercing Restance", "Shield blocks 50%", "?", "Liquid Form", 
+    "?", "?"]);
+
+    createBitmaskTable("helpfuleffects2", "More Helpful Effects", 4, 
+    ["Twist Fate", "Invlurability", "Quickness", "Mossbody",
+    "?", "Water Shield", "?", "Strength",
+    "Poison Barbs", "?", "?", "Life Drain",
+    "Earth Power", "Air Power", "Charge Body", "Fire Shield",
+    "Mistform", "Blood Power", "Fire Power", "Water Power", 
+    "Nature Power", "Rreanimation", "Twiceborn", "Returning", 
+    "Mirror Image", "Unholy Power", "Inner Sun", "Phoenix Pyre",
+    "Astrial Shield", "Manikin Regeneration", "Dragon Mastery",
+    "?", "?", "?", "Stygian Skin", 
+    "Reinvigoration", "?", "Surge of Blood", "Awaken Tattoos"]);
+
+    createBitmaskTable("afflictioneffects", "Afflictions", 4, afflictonList);
+});
+/*
+23 1 -- twist fate
+23 2 -- Invlurability
+23 4 -- quickness
+23 8 -- Mossbody - 100
+23 16 -- ?
+23 32 -- Water Shield
+23 64 -- ?
+23 128 -- Strength/Magic power
+23 256 -- Poison Barbs - 100000000
+23 512 -- ?
+23 1024 -- ?
+23 2048 -- Life Drain
+23 4096 -- Earth Power
+23 8192 -- Storm Power
+23 16384 -- charge body - 100000000000000
+23 32768 -- Fire Shield - 1000000000000000
+23 65536 -- Mistform - 10000000000000000
+23 131072 -- Hell Power
+   1048576
+262144
+23 262144 -- Fire Power
+23 524288 -- water power - 10000000000000000000
+23 1048576 -- Nature Power - 100000000000000000000
+23 2097152 -- Rreanimation
+23 4194304 -- Twiceborn
+23 8388608 -- Ritual of Returning
+23 16777216 -- Mirror Image - 1000000000000000000000000
+23 33554432 -- Unholy Power - 10000000000000000000000000
+23 67108864 -- Inner SUn
+23 134217728 -- Phoenix Pyre
+23 268435456 -- Astrial Shield
+23 536870912 -- Manikin Regeneration
+23 1073741824 -- Dragon Mastery
+23 2147483648 -- ?
+23 4294967296 -- ?
+23 8589934592 -- ?
+23 17179869184 -- Stygian Skin
+23 68719476736 -- Reinvigoration
+23 137438953472 -- ?
+23 274877906944 -- Surge of Blood?
+23 549755813888 -- Awaken Tattoos
+
+
+0	disease
+1	curse
+3	plague
+5	curse of stones
+6	entangle
+7	rage
+8	decay
+9	burn
+10	asleep
+11	rusty armor
+12	blind
+13	bleed
+14	earth grip
+16	fire bonds
+17	false fetters
+18	limp
+19	lost eye
+20	weakness
+21	battle fright
+22	mute
+23	chest wound
+24	crippled
+25	feeble minded
+26	never healing wound
+27	slime
+28	frozen
+29	webbed
+30	arm loss
+32	shrinked
+34	confused
+36	slowed
+41	rusty
+49	soul slayed
+50	soul annihilated
+
+*/
+
+
+
 function createSpell(){
 
     //let pushTo = [];
@@ -255,16 +366,35 @@ function createSpell(){
         }
     }
 
-    getSingleValue("#damage");
 
     if(!isRitual){
 
         getSingleValue("#nextspell", "-1");
         //todo nextingeo
         pushTo.push("#effect " + grabSelectedValue("ritualeffect"));
+        getSingleValue("#damage");
+
     }else{
 
-        grabSelectedValue("combateffect");
+        let comeff = grabSelectedValue("combateffect");
+        pushTo.push("#effect " + comeff);
+        let comeffSet = new Set(["10", "11", "23"]);
+        if(comeffSet.has(comeff) ){
+            let dam = 0;
+            if(comeff == "10"){
+                dam = String( calcBitmask("helpfuleffects"));
+                
+            }else if(comeff == "21"){
+                dam = String(calcBitmask("helpfuleffects2"));
+            }else if(comeff == "11"){
+                dam = String(calcBitmask("afflictioneffects"));
+            }
+
+            pushTo.push("#damage " + dam);
+
+        }else{
+            getSingleValue("#damage");
+        }
     }
 
     let nreff = Number(document.getElementById("#nreff").value);
@@ -272,6 +402,8 @@ function createSpell(){
     if (document.getElementById("poweffects").checked){
         nreff += 1000;
     }
+
+
 
     pushTo.push("#nreff " + nreff);
 

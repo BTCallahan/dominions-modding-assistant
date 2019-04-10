@@ -99,11 +99,14 @@ templates.set("harpy", {
     stealthy:"40",
     //10 leardership
     //4 ap
+
     female:true,
     forestsurvival:true,
     heal:true,
     flying:true,
     coldblood:false
+
+
 });
 templates.set("mino", {
     hp:"25",
@@ -326,6 +329,13 @@ function checkBoolian(valueName, objectValue, reserveValueName){
     }
 }
 
+function checkBoolianUnobtrusive(valueName, objectValue){
+    if(objectValue !== null){
+        document.getElementById(valueName).checked = objectValue;
+
+    }
+}
+
 function applyTemplate(templateName){
     let o = templates.get(templateName);
 
@@ -344,7 +354,6 @@ function applyTemplate(templateName){
 
     checkBoolian("#flying", o.flying);
     checkBoolian("#stormimmune", o.stormimmune);
-    checkBoolian("#holy", o.holy);
 
     checkBoolian("#illusion", o.illusion);
     checkBoolian("#undisciplined", o.undisciplined);
@@ -360,7 +369,9 @@ function applyTemplate(templateName){
     checkBoolian("#magicbeing", o.magicbeing);
     checkBoolian("#neednoteat", o.neednoteat);
 
-    
+    checkBoolianUnobtrusive("#female", o.female);
+    checkBoolianUnobtrusive("#holy", o.holy);
+
 
     /*
     if (o.hp){
@@ -488,7 +499,9 @@ function checkPriest(){
 
 function setAsScout(){
 
-    document.getElementById("#noleader").checked = true;
+    //document.getElementById("#noleader").checked = true;
+    document.getElementById("leadership").value = "#noleader";
+
     document.getElementById("#command").value = "0";
 
     document.getElementById("magicleadership").value = "#nomagicleader";
@@ -506,7 +519,6 @@ function setAsScout(){
 
 window.addEventListener("DOMContentLoaded", function(event){
     enableOrDisable(document.getElementById('bodytype').value==='#miscshape', 'bpnum', '');
-
 });
 
 function createMonster(){
@@ -530,7 +542,6 @@ function createMonster(){
         getSingleValue("#copystats", "3499");
 
     }else{
-
         getSingleValue("#selectmonster");
     }
 
@@ -908,10 +919,18 @@ function createMonster(){
         //pushTo.push("#nametype " + grabSelectedValue("#nametype"));
     }
 
-    checkIfAnyElementIsChecked("leadership",  "#okleader", true);
+    //checkIfAnyElementIsChecked("leadership",  "#okleader", true);
+
+    let leadership = grabSelectedValue("leadership");
+
+    if(leadership != "#okleader"){
+
+        pushTo.push(leadership);
+
+    }
 
     let magicleadership = grabSelectedValue("magicleadership");
-
+    
     if (magicleadership != "#nomagicleader"){
         pushTo.push(magicleadership);
     }

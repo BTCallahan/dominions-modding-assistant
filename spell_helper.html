@@ -151,34 +151,7 @@
                 <label for="#aoe">Area of effect:</label>
                 <input type="number" name="#aoe" id="#aoe" min="0" max="500" value="0" class="battle">
             </fieldset>
-            <!--lets keep this invisible until its finished-->
-            <table style="visibility: hidden;">
-                <thead>
-                    <tr>
-                        <th>Helpful Effects</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="he0" id="hr0" value="0">
-                            <label for="he0">Bless</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" name="he1" id="hr1" value="1">
-                            <label for="he1">Luck</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" name="he2" id="hr2" value="2">
-                            <label for="he2">?</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" name="he2" id="hr2" value="2">
-                            <label for="he2">?</label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
             <fieldset>
                 <legend>Damage</legend>
                 <p>
@@ -188,24 +161,26 @@
                     <label for="vardamage">Varrying damage</label>
                 </p>
                 <p>
-                    Note: Summoning spells use the base damage to determin which monster to summon. 
+                    Note: Summoning and transformation spells use the base damage to determin which monster to summon. 
                     Other effect also use it.
                 </p>
                 <label for="#damage">Base Damage:</label>
-                <input type="number" name="#damage" id="#damage" min="0" value="0">
+                <input type="number" name="#damage" id="#damage" min="0" value="0" class="dam">
                 <!--
                     10 1 -- self bless - 1
                     10 2 -- luck - 10
-                    10 4 -- - 100
-                    10 8 -- - 1000
+                    10 4 -- - 100 Precision
+                    10 8 -- - 1000 Air Shield
                         10 12 -- Air Shield & Precision - 1100
                     10 16 -- barkskin - 10000
                     10 32 -- Regeneration - 100000
 
                         10 48 -- Barkskin & Regen - 110000
-                    1 64 --
-                    10 256 -- bezerk
-                    10 1024 -- fire Resistance - 10000000000
+                    1 64 -- Tough Armor - 1000000
+                    10 256 -- bezerk - 10000000
+                    10 512 -- Pain Transfer
+                    10 1024 -- Fire Resistance - 10000000000
+                    10 2048 -- Shock Resistance
                     10 4096 -- Cold Resistance - 1000000000000
                     10 8192 -- Chill Aura - 10000000000000
                     10 16384 - Heat Aura - 100000000000000
@@ -218,57 +193,120 @@
                     10 1048576 -- Astral Weapons
                     10 2097152 -- Reanimation
                     10 4194304 -- Holy Avenger
-                    10 67108864 -- magic resist?
-                    
-                    10 2147483776 -- Enlarge & Strength - 10000000000000000000000010000000
-                    10 481036338176 -- Temper Flesh - 111000000000000000000000000010000000000
-                    10 549755813888 -- 50% Shield/Protective Force
-                    10 2199023255552 -- liquid form?
-                    10 2680059592704 -- Liquid Body                    
-                    10 70437463654400 -- Slashing Res & 5 Prot
+                    10 8388608 -- Flaming Arrows
+                    10 16777216 -- Posion Restaince
+                    10 33554432 -- Magic Resist
+                    10 67108864 -- Magic Resist?
+                    10 134217728 -- Etherel
+                    10 268435456 -- Ironskin
+                    10 536870912 -- Communion Master
+                    10 1073741824 -- Communion Slave
+                        10 2147483776 -- Enlarge & Strength - 10000000000000000000000010000000
+                    10 2147483648 -- Enlarge
+                    10 4294967296 -- Shrink?
+                    10 8589934592 -- ?
+                    10 17179869184 -- ?
+                    10 34359738368 -- ?
+                    10 68719476736 -- ?
+                    10 137438953472 -- ?
+                    10 274877906944 -- Piercing Restance
+                        10 481036338176 -- Temper Flesh - 111000000000000000000000000010000000000
+                        481036338176
+                        1024 + 68719476736 + 137438953472 + 274877906944
+                        100000000000000000000000000000000000000
+                    10 549755813888 -- Shield blocks 50%
+                    10 1099511627776 -- ?
+                    10 2199023255552 -- Liquid Form
+                    10 4398046511104 -- ?
+                    10 8796093022208 -- ?
+                        10 2680059592704 -- Liquid Body?
+                    10 17592186044416 -- ?
+
+                    10 70437463654400 -- Slashing Res & 5 Prot - 10000000001000000000000000000000000000000000000
+
+                    army of lead = 10100000000000000000000000000
+                    67108864 + 268435456
+
 
                     11 = afflictions
+                    11 
                     11 128 -- Rage - 10000000
                     11 33554432 -- Feeblemind
                     11 134217728 -- Slime
                     11 268435456 -- Numbness
+                    11 4294967296 -- Shrink?
+                    11 8589934592 -- 
                     11 17179869184 -- Confuse
+                    11 34359738368
                     11 68719476736 -- Slow
 
                     23 1 -- twist fate
+                    23 2 -- Invlurability
                     23 4 -- quickness
                     23 8 -- Mossbody - 100
-                    23 128 -- strength
+                    23 16 -- ?
+                    23 32 -- Water Shield
+                    23 64 -- ?
+                    23 128 -- Strength
                     23 256 -- Poison Barbs - 100000000
+                    23 512 -- ?
+                    23 1024 -- ?
+                    23 2048 -- Life Drain
+                    23 4096 -- Earth Power
+                    23 8192 -- Air Power
                     23 16384 -- charge body - 100000000000000
                     23 32768 -- Fire Shield - 1000000000000000
                     23 65536 -- Mistform - 10000000000000000
-                    23 524288 -- water power - 10000000000000000000
+                    23 131072 -- Blood Power
+                    23 242144 -- Fire Power
+                    23 524288 -- Water Power - 10000000000000000000
                     23 1048576 -- Nature Power - 100000000000000000000
+                    23 2097152 -- ?
+                    23 4194304 -- Twiceborn
+                    23 8388608 -- Ritual of Returning
                     23 16777216 -- Mirror Image - 1000000000000000000000000
                     23 33554432 -- Unholy Power - 10000000000000000000000000
+                    23 67108864 -- Inner Sun
+                    23 134217728 -- Phoenix Pyre
+                    23 268435456 -- Astrial Shield
+                    23 536870912 -- Manikin Regeneration
+                    23 1073741824 -- Dragon Mastery
+                    23 2147483648 -- ?
+                    23 4294967296 -- ?
+                    23 8589934592 -- ?
                     23 17179869184 -- Stygian Skin
                     23 68719476736 -- Reinvigoration
-                    23 274877906944 -- surge of blood?
+                    23 137438953472 -- ?
+                    23 274877906944 -- Surge of Blood?
                     23 549755813888 -- Awaken Tattoos
-                    500 - 599 = add perminate atribute
+
+500 - 599 = add perminate atribute
+101 - Ivy Lord
+103 - Standard
+104 - Pertrification
+105 -- Awe 5
+108 -- Stealthy 80
+117 -- Reinvig 10
+163 -- Fireshield 20
+189 -- Regeneration 20%
+228 -- Bringer of Fortune
+354 -- Autohealer 5
+363 -- Master Smith +1
+368 -- Inspirational 4
+382 -- Invulnerable 20
+463 -- Master Ritualist +1
+
+
                     500 363 -- Master Smith +1 - 101101011
                     500 463 -- Master Ritualist +1
-
                     501 363 -- Master Smith +2 -
-
                     503 368 -- Inspirational 4 - 101110000
-
                     504 105 -- Awe 5 - 1101001
                     504 354 -- Autohealer 5 - 101100010
-
                     509 117 -- Reinvig 10 - 1110101
-
                     519 163 -- Fireshield 20 - 10100011
                     519 189 -- Regeneration 20% - 10111101
                     519 382 -- Invulnerable 20 - 101111110
-
-
                     579 108 -- Stealthy 80 - 1101100
                     599 228 -- Bringer of Fortune 100 - 11100100
 
@@ -279,7 +317,6 @@
                     
                     ? 2147483648 -- Enlarge
 
-                    
                     ? 8388608 -- Flaming Arrows - 100000000000000000000000
                     ? 8388612 -- Wind Guide + Flaming Arrows - 100000000000000000000100
                     ? 134235136 -- Ethereal & Heat Aura & Fire Resistance - 1000000000000100010000000000
@@ -295,8 +332,19 @@
             </fieldset>
             <label for="combateffect">Spell effect (combat only)</label>
             <select name="combateffect" id="combateffect" class="battle"
-            onchange="enableOrDisable(document.getElementById('combateffect').value=='134', '#maxbounces', '', true)">
+            onchange="enableOrDisable(document.getElementById('combateffect').value=='134', '#maxbounces', '', true);
+            enableOrDisable(document.getElementById('combateffect').value=='10', 'helpfuleffects', 'dam');
+            visibleOrInvisible(document.getElementById('combateffect').value=='10', 'helpfuleffects', '', true);
+
+            enableOrDisable(document.getElementById('combateffect').value=='23', 'helpfuleffects2', 'dam');
+            visibleOrInvisible(document.getElementById('combateffect').value=='23', 'helpfuleffects2', '', true);
+
+            enableOrDisable(document.getElementById('combateffect').value=='11', 'afflictioneffects', 'dam');
+            visibleOrInvisible(document.getElementById('combateffect').value=='11', 'afflictioneffects', '', true);">
                 <option value="1">Summon monster</option>
+                <option value="31">Summon Indpendent</option>
+                <option value="126">Border Summon Indpendent</option>
+
                 <option value="2" selected>Damage</option>
                 <option value="3">Fatigue damage</option>
                 <option value="7">Poison damage</option>
@@ -304,47 +352,37 @@
                 <option value="13">Healing</option>
                 <option value="20">Blink</option>
                 <option value="24">Holy damage (3x)</option>
+                <option value="107">Holy damage (x2 vs demons)</option>
+                <option value="124">Holy damage (x2 vs undead)</option>
+
                 <option value="28">Enalave</option>
                 <option value="29">Charm</option>
-                <option value="31">Summon Indpendent</option>
                 <option value="43">Border Summon</option>
                 <option value="66">Paralyze</option>
                 <option value="73">Antimagic damage (x2)</option>
                 <option value="103">Drain Life</option>
-                <option value="107">Holy damage (x2 vs demons)</option>
                 <option value="109">Capped damage</option>
-                <option value="124">Holy damage (x2 vs undead)</option>
-                <option value="126">Border Summon Indpendent</option>
-                <option value="128">Stun</option>
+                <option value="128">Stun Damage</option>
                 <option value="134">Bounce damage</option>
                 <optgroup label="Expermental effects - use at your own risk">
                         <option value="2">Kills caster</option>
                         <option value="17">Battle transformation</option>
 
                     <option value="10">Helpful effects</option>
-                    <option value="11">Afflictions</option>
                     <option value="23">Additional helpful affects</option>
+                    <option value="11">Afflictions</option>
 
                     <option value="500">?</option>
                     <option value="503">?</option>
-
                     <option value="504">?</option>
-
                     <option value="509">?</option>
-
                     <option value="519">?</option>
-
                     <option value="579">?</option>
-
                     <option value="599">?</option>
-
                     <option value="601">?</option>
 
                     <option value="1043">Summoning related?</option>
-
-
                     <option value="6043">6turns border summoning</option>
-
                 </optgroup>
             </select>
             <br>
@@ -363,32 +401,121 @@
                 <optgroup label="Expermental effects - use at your own risk">
                         <option value="10042">Causes histeria?</option>
                         <option value="10050">Cause unrest?</option>
-
                         <option value="10081">Create site? Global enchantment?</option>
-
-
                         <option value="10082">?</option>
                         <option value="10083">?</option>
-
-
                         <option value="10091">Ranged attack?</option>
-
-
                         <option value="10101">Aging?</option>
-
                         <option value="10130">Transforms caster?</option>
-
                         <option value="10132">Only affects living? Cure afflicitons?</option>
-
-
                         <option value="10503">Horror mark?</option>
-
                         <option value="10519">Void insanity</option>
-
-
                         <option value="10524">Insanity?</option>
                 </optgroup>
             </select>
+            <br>
+            <select name="permstat" id="permstat">
+                <option value="101">Ivy Lord</option>
+                <option value="103">Standard</option>
+                <option value="104">Pertrification</option>
+                <option value="105">Awe</option>
+                <option value="106">Poison Cloud</option>
+
+                <option value="108">Stealthy</option>
+                <option value="110">Water Breathing</option>
+                <option value="111">Gift of Water Breathing</option>
+                <option value="112">Sailing</option>
+                <option value="117">Reinvigoration</option>
+                <option value="118">Forgebonus</option>
+                <option value="121">Adept researcher</option>
+                <option value="131">Pillager</option>
+
+                <option value="132">Alchemist</option>
+                <option value="151">Strength</option>
+                <option value="160">MR</option>
+                <option value="162">Animal Awe</option>
+                <option value="163">Fireshield</option>
+                <option value="170">Patrolbonus</option>
+                <option value="172">Plague carrier</option>
+
+                <!--
+                    500 - 599 = add perminate atribute
+101 - Ivy Lord
+103 - Standard
+104 - Pertrification
+105 -- Awe 5
+108 -- Stealthy 80
+117 -- Reinvig 10
+163 -- Fireshield 20
+189 -- Regeneration 20%
+228 -- Bringer of Fortune
+354 -- Autohealer 5
+363 -- Master Smith +1
+368 -- Inspirational 4
+382 -- Invulnerable 20
+463 -- Master Ritualist +1
+                -->
+
+            </select>
+            <!--lets keep these invisible until thry are finished-->
+            <br>
+            <table style="visibility: hidden;" id=afflictioneffects>
+            </table>
+            <table style="visibility: hidden;" id="helpfuleffects">
+                                <!--
+                                <thead>
+                                    <tr>
+                                        <th>Helpful Effects</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="he0" id="hr0" value="0" class="he">
+                                            <label for="he0">Bless</label>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" name="he1" id="hr1" value="1" class="he">
+                                            <label for="he1">Luck</label>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" name="he2" id="hr2" value="2" class="he">
+                                            <label for="he2">Precision</label>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" name="he3" id="hr3" value="3" class="he">
+                                            <label for="he3">Air Shield</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="he4" id="hr4" value="4" class="he">
+                                            <label for="he4">Barkskin</label>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" name="he5" id="hr5" value="5" class="he">
+                                            <label for="he5">Regenaration</label>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" name="he6" id="hr6" value="6" class="he">
+                                            <label for="he6">Ironskin</label>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" name="he7" id="hr7" value="7" class="he">
+                                            <label for="he7">Bezerk</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="he8" id="hr8" value="8" class="he">
+                                            <label for="he8">Bezerk</label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            -->
+            </table>
+            <table style="visibility: hidden;" id=helpfuleffects2>
+            </table>
             <p>
                 Note: The list of ritual effects in the documentation is pretty incomplete, as 
                 of the moment it does not say how to create a remote damage spell (Fires from Afar), 

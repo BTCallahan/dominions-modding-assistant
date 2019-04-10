@@ -204,6 +204,57 @@ function enableOrDisable(condition, enableThisClassIfTrue, disableThisClassIfTru
   */
 }
 
+function visibleOrInvisible(condition, showThisClassIfTrue, hideThisClassIfTrue, useId=false){
+    if(useId){
+        if(condition){
+            try {
+                document.getElementById(showThisClassIfTrue).style.visibility = "visible";
+            } catch (error) {
+                
+            }
+            try {
+                document.getElementById(hideThisClassIfTrue).style.visibility = "hidden";
+            } catch (error) {
+                
+            }
+        }else{
+            try {
+                document.getElementById(showThisClassIfTrue).style.visibility = "hidden";
+            } catch (error) {
+                
+            }
+            try {
+                document.getElementById(hideThisClassIfTrue).style.visibility = "visible";
+            } catch (error) {
+                
+            }
+        }
+    }else{
+        if(condition){
+            let enableThese = document.getElementsByClassName(showThisClassIfTrue);
+            for(let i = 0; i < enableThese.length; i++){
+                enableThese[i].style.visibility = "visible";
+            }
+            let disableThese = document.getElementsByClassName(hideThisClassIfTrue);
+            for(let i = 0; i < disableThese.length; i++){
+                //let i2 = disableThese[i];
+                disableThese[i].style.visibility = "hidden";
+            }
+          }else{
+            let enableThese = document.getElementsByClassName(showThisClassIfTrue);
+            for(let i = 0; i < enableThese.length; i++){
+                enableThese[i].style.visibility = "hidden";
+            }
+            let disableThese = document.getElementsByClassName(hideThisClassIfTrue);
+            for(let i = 0; i < disableThese.length; i++){
+                //let i2 = disableThese[i];
+                disableThese[i].style.visibility = "visible";
+            }
+        }
+    }
+}
+
+
 function deactivateIfChecked(isThisChecked, deactivateThis, invertFirstCondition=false){
     if(invertFirstCondition && !document.getElementById(isThisChecked).checked){
         document.getElementById(deactivateThis).checked = false;
@@ -280,3 +331,122 @@ function calcBitmask(className){
         total += 2 ** Number(element.value);
     });
 }
+
+
+function createBitmaskTable(tableID, tableTitle, coloumsPerRow, listOfEffects){
+
+    let tab = document.getElementById(tableID);
+
+    let table_head = document.createElement("thead")
+
+    tab.appendChild(table_head);
+
+    let tr_table_head = document.createElement("tr");
+
+    table_head.appendChild(tr_table_head);
+
+    let th_head = document.createElement("th");
+
+    th_head.innerText = tableTitle;
+
+    let table_body = document.createElement("tbody");
+
+    tab.appendChild(table_body);
+
+    var currentRow;
+    let r = 0;
+    for (let i =0; i < listOfEffects.length; i++){
+        if(r===0){
+            currentRow = document.createElement("tr");
+            table_body.appendChild(currentRow);
+            r++;
+        }else if(r===coloumsPerRow){
+            r = 0;
+        }else{
+            r++;
+        }
+        let currentCell = document.createElement("td");
+        currentRow.appendChild(currentCell);
+
+        let input = document.createElement("input");
+        input.setAttribute("type", "checkbox");
+        input.setAttribute("name", "he" + i);
+        input.setAttribute("id", "he" + i);
+        input.setAttribute("value", String(i));
+        input.setAttribute("class", "he");
+
+        currentCell.appendChild(input);
+
+        let label =document.createElement("label");
+        label.setAttribute("for", "he" + i);
+        label.innerText = listOfEffects[i];
+        currentCell.appendChild(label);
+    }
+}
+
+var afflictonList = ["Disease", "Curse", "?", "Plague", 
+"?", "Curse of Stones", "Entangle", "Rage", 
+"Decay", "Burn", "Sleep", "Rusty Armor", 
+"Blind", "Bleed", "Earth Grip", "?", 
+"Fire Bonds", "False Fetters", "Limp", "Lost Eye", 
+"Weakness", "Battle Fright", "Mute", "Chest Wound", 
+"Crippled", "Feble Minded", "Never Healing Wound", "Slime", 
+"Frozen", "Webbed", "Arm Loss", "?", 
+"Shrunken", "?", "Confused", "?", 
+"Slowed", "?", "?", "?", "?", 
+"?", "Rusty", "?", "?", 
+"?", "?", "?", "?", 
+"?", "Soul Slain", "Soul Annihilated"]
+
+/*
+0	disease
+1	curse
+2
+3	plague
+4
+5	curse of stones
+6	entangle
+7	rage
+8	decay
+9	burn
+10	asleep
+11	rusty armor
+12	blind
+13	bleed
+14	earth grip
+15
+16	fire bonds
+17	false fetters
+18	limp
+19	lost eye
+20	weakness
+21	battle fright
+22	mute
+23	chest wound
+24	crippled
+25	feeble minded
+26	never healing wound
+27	slime
+28	frozen
+29	webbed
+30	arm loss
+31
+32	shrinked
+33
+34	confused
+35
+36	slowed
+41	rusty
+42
+43
+44
+45
+46
+47
+48
+49	soul slayed
+50	soul annihilated
+
+*/
+
+

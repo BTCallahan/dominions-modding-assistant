@@ -1853,7 +1853,6 @@
             <label for="customnamelistnum">Number of custom namelist to use:</label>
 
             <h1>Monster Modding, Leadership & Morale</h1>
-            <h3>Normal Leadership</h3>
 
             <table>
                 <thead>
@@ -1866,8 +1865,11 @@
                 <tbody>
                     <tr>
                         <td>
+                            <!--
                             <input type="radio" name="leadership" id="#noleader" value="#noleader" class="leadership">
                             <label for="#noleader">0</label>
+                            -->
+                            No leadership ability (0 units)
                         </td>
                         <td>N/A</td>
                         <td>N/A</td>
@@ -1875,8 +1877,11 @@
                     </tr>
                     <tr>
                         <td>
+                            <!--
                             <input type="radio" name="leadership" id="#poorleader" value="#poorleader" class="leadership">
                             <label for="#poorleader">10</label>
+                            -->
+                            Poor (10 units)
                         </td>
                         <td>-1</td>
                         <td>1</td>
@@ -1884,8 +1889,11 @@
                     </tr>
                     <tr>
                         <td>
+                            <!--
                             <input type="radio" name="leadership" id="#okleader" value="#okleader" class="leadership" checked>
                             <label for="#okleader">40</label>
+                            -->
+                            Average (40 units)
                         </td>
                         <td>0</td>
                         <td>2</td>
@@ -1893,8 +1901,11 @@
                     </tr>
                     <tr>
                         <td>
+                            <!--
                             <input type="radio" name="leadership" id="#goodleader" value="#goodleader" class="leadership">
                             <label for="#goodleader">80</label>
+                            -->
+                            Good (80 units)
                         </td>
                         <td>1</td>
                         <td>3</td>
@@ -1902,8 +1913,11 @@
                     </tr>
                     <tr>
                         <td>
+                            <!--
                             <input type="radio" name="leadership" id="#expertleader" value="#expertleader" class="leadership">
                             <label for="#expertleader">120</label>
+                            -->
+                            Expert (120 units)
                         </td>
                         <td>2</td>
                         <td>4</td>
@@ -1911,8 +1925,11 @@
                     </tr>
                     <tr>
                         <td>
+                            <!--
                             <input type="radio" name="leadership" id="#superiorleader" value="#superiorleader" class="leadership">
                             <label for="#superiorleader">160</label>
+                            -->
+                            Superior (160 units)
                         </td>
                         <td>3</td>
                         <td>5</td>
@@ -1920,6 +1937,19 @@
                     </tr>
                 </tbody>
             </table>
+
+            <h3>Normal Leadership</h3>
+
+            <label for="leadership">Number of magic beings</label>
+            <select class="leadership" id="leadership">
+                <option value="#noleader" >Cannot command magic beings</option>
+                <option value="#poorleader">Can command 10 magic beings</option>
+                <option value="#okleader" selected>Can command 40 magic beings</option>
+                <option value="#goodleader">Can command 80 magic beings</option>
+                <option value="#expertleader">Can command 120 magic beings</option>
+                <option value="#superiorleader">Can command 160 magic beings</option>
+            </select>
+            <br>
 
             <input type="number" id="#command" value="0" min="0" class="incleadership">
             <label for="#command">Increase leadership by:</label>
@@ -1942,8 +1972,8 @@
             <label for="undeadleadership">Number of undead</label>
             <select class="undeadleadership" id="undeadleadership">
                 <option value="#noundeadleader" selected>Cannot lead undead units</option>
-                <option value="#poorundeadleader">Can lead 10 undead units. Commanded units suffer a moral penalty of -1 per squad</option>
-                <option value="#okundeadleader">Can lead 40 undead units. Commanded units suffer a moral penalty -1 per squad if ther are more then two</option>
+                <option value="#poorundeadleader">Can lead 10 undead units.</option>
+                <option value="#okundeadleader">Can lead 40 undead units.</option>
                 <option value="#goodundeadleader">Can lead 80 undead units</option>
                 <option value="#expertundeadleader">Can lead 120 undead units</option>
                 <option value="#superiorundeadleader">Can lead 160 undead units</option>
