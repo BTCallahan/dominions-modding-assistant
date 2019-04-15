@@ -308,7 +308,7 @@ templates.set("triton", {
 
 
 function checkValue(valueName, objectValue, reserveValue){
-    if(objectValue === null){
+    if(objectValue === null || objectValue === undefined){
         document.getElementById(valueName).value = reserveValue;
     }else{
         document.getElementById(valueName).value = objectValue;
@@ -316,14 +316,14 @@ function checkValue(valueName, objectValue, reserveValue){
 }
 
 function checkBoolian(valueName, objectValue, reserveValueName){
-    if(objectValue === null){
+    if(objectValue === null || objectValue === undefined){
         document.getElementById(valueName).checked = false;
-        if(reserveValueName){
+        if(reserveValueName !== undefined){
             document.getElementById(reserveValueName).checked = true;
         }
     }else{
         document.getElementById(valueName).checked = objectValue;
-        if(reserveValueName){
+        if(reserveValueName !== undefined){
             document.getElementById(reserveValueName).checked = !objectValue;
         }
     }
@@ -750,7 +750,9 @@ function createMonster(){
 
         pushTo.push("#stealthy " + stealth);
 
-        getMultipleValues("reqStealth", "0");
+        checkIfElementIsChecked("#spy")
+
+        getMultipleValues("seduce", "0");
 
         let isAssassin = document.getElementById("#assassin").checked;
 

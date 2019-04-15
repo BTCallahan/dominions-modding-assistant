@@ -125,7 +125,6 @@ function spellcost(){
         }
     }
     spellcost.innerText = spellcostarray.join("");
-
 }
 
 function ritualVsBattle(){
@@ -185,6 +184,39 @@ function ritualVsBattle(){
     }
     
     spellcost();
+    specialDamageEffects();
+}
+
+function specialDamageEffects(){
+    if(document.getElementById("isritual").checked){
+       // enableOrDisable(document.getElementById('combateffect').value=='134', '#maxbounces', '', true);
+        enableOrDisable(document.getElementById('ritualeffect').value=='10010', 'helpfuleffects', 'dam');
+        visibleOrInvisible(document.getElementById('ritualeffect').value=='10010', 'helpfuleffects', '', true);
+    
+        enableOrDisable(document.getElementById('ritualeffect').value=='10023', 'helpfuleffects2', 'dam');
+        visibleOrInvisible(document.getElementById('ritualeffect').value=='10023', 'helpfuleffects2', '', true);
+    
+        enableOrDisable(document.getElementById('ritualeffect').value=='10011', 'afflictioneffects', 'dam');
+        visibleOrInvisible(document.getElementById('ritualeffect').value=='10011', 'afflictioneffects', '', true);
+        
+        enableOrDisable(document.getElementById('ritualeffect').value=='10500' || 
+        document.getElementById('combateffect').value=='600', 'statboost', '');
+    }else{
+        enableOrDisable(document.getElementById('combateffect').value=='134', '#maxbounces', '', true);
+        enableOrDisable(document.getElementById('combateffect').value=='10', 'helpfuleffects', 'dam');
+        visibleOrInvisible(document.getElementById('combateffect').value=='10', 'helpfuleffects', '', true);
+    
+        enableOrDisable(document.getElementById('combateffect').value=='23', 'helpfuleffects2', 'dam');
+        visibleOrInvisible(document.getElementById('combateffect').value=='23', 'helpfuleffects2', '', true);
+    
+        enableOrDisable(document.getElementById('combateffect').value=='11', 'afflictioneffects', 'dam');
+        visibleOrInvisible(document.getElementById('combateffect').value=='11', 'afflictioneffects', '', true);
+        
+        enableOrDisable(document.getElementById('combateffect').value=='500' || 
+        document.getElementById('combateffect').value=='600', 'statboost', '');
+    }
+    
+
 }
 
 window.addEventListener("DOMContentLoaded", function (event) {
@@ -366,33 +398,77 @@ function createSpell(){
         }
     }
 
+    let comeffSet = new Set(["10", "11", "23", "10010", "10011", "10023"]);
 
-    if(!isRitual){
+    if(isRitual){
 
-        getSingleValue("#nextspell", "-1");
+        getSingleValue("#nextspell", "0");
         //todo nextingeo
-        pushTo.push("#effect " + grabSelectedValue("ritualeffect"));
-        getSingleValue("#damage");
+        let ritval = grabSelectedValue("ritualeffect");
+        if(ritval == "10500" || ritval == "10600"){
 
-    }else{
+            ritval = ritval.substr(0, 3);
+            let boostamount = Number( document.getElementById("boostamount").value) - 1;
 
-        let comeff = grabSelectedValue("combateffect");
-        pushTo.push("#effect " + comeff);
-        let comeffSet = new Set(["10", "11", "23"]);
-        if(comeffSet.has(comeff) ){
+            if (boostamount > 9){
+                ritval+= boostamount;
+            }else{
+                ritval+= "0" + boostamount;
+            }
+            pushTo.push("#effect " + ritval);
+            pushTo.push("#damage " + document.getElementById("permstat").value);
+
+        }else if(comeffSet.has(ritval)){
             let dam = 0;
-            if(comeff == "10"){
+            pushTo.push("#effect " + ritval);
+
+            if(ritval == "10010"){
                 dam = String( calcBitmask("helpfuleffects"));
-                
-            }else if(comeff == "21"){
+            }else if(ritval == "10021"){
                 dam = String(calcBitmask("helpfuleffects2"));
-            }else if(comeff == "11"){
+            }else if(ritval == "10011"){
                 dam = String(calcBitmask("afflictioneffects"));
             }
-
             pushTo.push("#damage " + dam);
 
         }else{
+            pushTo.push("#effect " + ritval);
+            getSingleValue("#damage");
+        }
+
+    }else{
+        getSingleValue("#nextspell", "0");
+
+        let comeff = grabSelectedValue("combateffect");
+
+        if(comeff == "500" || comeff == "600"){
+
+            comeff = comeff.substr(0, 1);
+            let boostamount = Number( document.getElementById("boostamount").value) - 1;
+
+            if (boostamount > 9){
+                comeff+= boostamount;
+            }else{
+                comeff+= "0" + boostamount;
+            }
+            pushTo.push("#effect " + comeff);
+            pushTo.push("#damage " + document.getElementById("permstat").value);
+
+        }else if(comeffSet.has(comeff)){
+            let dam = 0;
+            pushTo.push("#effect " + comeff);
+
+            if(ritval == "10"){
+                dam = String( calcBitmask("helpfuleffects"));
+            }else if(ritval == "21"){
+                dam = String(calcBitmask("helpfuleffects2"));
+            }else if(ritval == "11"){
+                dam = String(calcBitmask("afflictioneffects"));
+            }
+            pushTo.push("#damage " + dam);
+
+        }else{
+            pushTo.push("#effect " + comeff);
             getSingleValue("#damage");
         }
     }

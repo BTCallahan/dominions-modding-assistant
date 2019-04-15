@@ -24,6 +24,10 @@ function getText(){
     return pushTo.join("\n");
 }
 
+/**
+ * 
+ * @param {*} num 
+ */
 function checkIfIsNUmber(num){
     if(Number.isInteger(num)){
         return "";
@@ -208,7 +212,7 @@ function visibleOrInvisible(condition, showThisClassIfTrue, hideThisClassIfTrue,
     if(useId){
         if(condition){
             try {
-                document.getElementById(showThisClassIfTrue).style.visibility = "visible";
+                document.getElementById(showThisClassIfTrue).style.visibility = "block";
             } catch (error) {
                 
             }
@@ -224,7 +228,7 @@ function visibleOrInvisible(condition, showThisClassIfTrue, hideThisClassIfTrue,
                 
             }
             try {
-                document.getElementById(hideThisClassIfTrue).style.visibility = "visible";
+                document.getElementById(hideThisClassIfTrue).style.visibility = "block";
             } catch (error) {
                 
             }
@@ -233,7 +237,7 @@ function visibleOrInvisible(condition, showThisClassIfTrue, hideThisClassIfTrue,
         if(condition){
             let enableThese = document.getElementsByClassName(showThisClassIfTrue);
             for(let i = 0; i < enableThese.length; i++){
-                enableThese[i].style.visibility = "visible";
+                enableThese[i].style.visibility = "block";
             }
             let disableThese = document.getElementsByClassName(hideThisClassIfTrue);
             for(let i = 0; i < disableThese.length; i++){
@@ -248,7 +252,7 @@ function visibleOrInvisible(condition, showThisClassIfTrue, hideThisClassIfTrue,
             let disableThese = document.getElementsByClassName(hideThisClassIfTrue);
             for(let i = 0; i < disableThese.length; i++){
                 //let i2 = disableThese[i];
-                disableThese[i].style.visibility = "visible";
+                disableThese[i].style.visibility = "block";
             }
         }
     }

@@ -332,15 +332,7 @@
             </fieldset>
             <label for="combateffect">Spell effect (combat only)</label>
             <select name="combateffect" id="combateffect" class="battle"
-            onchange="enableOrDisable(document.getElementById('combateffect').value=='134', '#maxbounces', '', true);
-            enableOrDisable(document.getElementById('combateffect').value=='10', 'helpfuleffects', 'dam');
-            visibleOrInvisible(document.getElementById('combateffect').value=='10', 'helpfuleffects', '', true);
-
-            enableOrDisable(document.getElementById('combateffect').value=='23', 'helpfuleffects2', 'dam');
-            visibleOrInvisible(document.getElementById('combateffect').value=='23', 'helpfuleffects2', '', true);
-
-            enableOrDisable(document.getElementById('combateffect').value=='11', 'afflictioneffects', 'dam');
-            visibleOrInvisible(document.getElementById('combateffect').value=='11', 'afflictioneffects', '', true);">
+            onchange="specialDamageEffects()">
                 <option value="1">Summon monster</option>
                 <option value="31">Summon Indpendent</option>
                 <option value="126">Border Summon Indpendent</option>
@@ -358,6 +350,13 @@
                 <option value="28">Enalave</option>
                 <option value="29">Charm</option>
                 <option value="43">Border Summon</option>
+                <option value="1043">1turns border summoning</option>
+                <option value="2043">1turns border summoning</option>
+                <option value="3043">1turns border summoning</option>
+                <option value="4043">1turns border summoning</option>
+                <option value="5043">1turns border summoning</option>
+                <option value="6043">6turns border summoning</option>
+
                 <option value="66">Paralyze</option>
                 <option value="73">Antimagic damage (x2)</option>
                 <option value="103">Drain Life</option>
@@ -365,29 +364,21 @@
                 <option value="128">Stun Damage</option>
                 <option value="134">Bounce damage</option>
                 <optgroup label="Expermental effects - use at your own risk">
-                        <option value="2">Kills caster</option>
-                        <option value="17">Battle transformation</option>
+                    <option value="2">Kills caster</option>
+                    <option value="17">Battle transformation</option>
 
                     <option value="10">Helpful effects</option>
                     <option value="23">Additional helpful affects</option>
                     <option value="11">Afflictions</option>
 
-                    <option value="500">?</option>
-                    <option value="503">?</option>
-                    <option value="504">?</option>
-                    <option value="509">?</option>
-                    <option value="519">?</option>
-                    <option value="579">?</option>
-                    <option value="599">?</option>
-                    <option value="601">?</option>
+                    <option value="500">Permanently boost stat (capped)</option>
+                    <option value="600">Permanently boost stat (uncapped)</option>
 
-                    <option value="1043">Summoning related?</option>
-                    <option value="6043">6turns border summoning</option>
                 </optgroup>
             </select>
             <br>
             <label for="ritualeffect">Spell effect (ritual only)</label>
-            <select name="ritualeffect" id="ritualeffect" class="ritual">
+            <select name="ritualeffect" id="ritualeffect" class="ritual" onchange="specialDamageEffects()">
                 <option value="10001" selected>Summon monster</option>
                 <option value="10019">Teleport</option>
                 <option value="10021">Summon commander</option>
@@ -399,23 +390,34 @@
                 <option value="10063">Build fort</option>
                 <option value="10077">Army teleport</option>
                 <optgroup label="Expermental effects - use at your own risk">
-                        <option value="10042">Causes histeria?</option>
-                        <option value="10050">Cause unrest?</option>
-                        <option value="10081">Create site? Global enchantment?</option>
-                        <option value="10082">?</option>
-                        <option value="10083">?</option>
-                        <option value="10091">Ranged attack?</option>
-                        <option value="10101">Aging?</option>
-                        <option value="10130">Transforms caster?</option>
-                        <option value="10132">Only affects living? Cure afflicitons?</option>
-                        <option value="10503">Horror mark?</option>
-                        <option value="10519">Void insanity</option>
-                        <option value="10524">Insanity?</option>
+                    <option value="10042">Causes histeria?</option>
+                    <option value="10050">Cause unrest?</option>
+                    <option value="10081">Global Enchantment?</option>
+                    <option value="10082">Local Enchantment</option>
+                    <option value="10083">Local Enchantment</option>
+                    <option value="10084">Local Enchantment</option>
+                    <option value="10085">Local Enchantment</option>
+                    <option value="10086">Local Enchantment</option>
+
+                    <option value="10091">Ranged attack?</option>
+                    <option value="10101">Aging?</option>
+                    <option value="10130">Transforms caster?</option>
+                    <option value="10132">Only affects living? Cure afflicitons?</option>
+                    <option value="10500">Permanently boost stat (capped)</option>
+                    <option value="10600">Permanently boost stat (uncapped)</option>
                 </optgroup>
             </select>
             <br>
-            <select name="permstat" id="permstat">
-                <option value="101">Ivy Lord</option>
+            <p>
+                Note: This is only used if the effect is set to "Permanently boost stat (capped)" or 
+                "Permanently boost stat (uncapped)".
+            </p>
+            <label for="boostamount">Amount to bost stat:</label>
+            <input type="number" name="boostamount" id="boostamount" min="1" max="100" value="1" class="statboost">
+            <br>
+            <label for="permstat">Permanent effect to add</label>
+            <select name="permstat" id="permstat" class="statboost">
+                <option value="101" selected>Ivy Lord</option>
                 <option value="103">Standard</option>
                 <option value="104">Pertrification</option>
                 <option value="105">Awe</option>
@@ -434,9 +436,165 @@
                 <option value="151">Strength</option>
                 <option value="160">MR</option>
                 <option value="162">Animal Awe</option>
-                <option value="163">Fireshield</option>
+                <option value="163">Fire Shield</option>
                 <option value="170">Patrolbonus</option>
                 <option value="172">Plague carrier</option>
+
+                <option value="175">Storm Immunity</option>
+                <option value="174">Storm Power</option>
+                <option value="176">Cold Power</option>
+                <option value="177">Fire Power</option>
+
+                <option value="184">Heretic</option>
+                <option value="188">POisonarmor</option>
+                <option value="189">Regeneration</option>
+                <option value="190">Berserk</option>
+                <option value="191">Iceprot</option>
+                <option value="206">Summoning Skill (R'lyeh)</option>
+
+                <option value="208">Air Shield</option>
+                <option value="210">Dream seduction</option>
+                <option value="211">Inquisitor</option>
+                <option value="212">Army Healer</option>
+                <option value="213">Assassin</option>
+                <option value="214">Spy</option>
+                <option value="215">Castle Def</option>
+                <option value="216">Sacrifice Bonus</option>
+                <option value="217">Ambidextrous</option>
+
+                <option value="220">Cold aura</option>
+                <option value="221">UW Regen</option>
+                <option value="222">Banefire Shield</option>
+                <option value="223">Incunrest</option>
+                <option value="228">Bringer of Fortune</option>
+
+                <option value="231">Springpower</option>
+                <option value="232">Summerpower</option>
+                <option value="233">Fallpower</option>
+                <option value="234">Winterpower</option>
+
+                <option value="235">Nobadevents</option>
+                <option value="236">Corpse Eater</option>
+                <option value="250">Desiccation</option>
+                <option value="253">Homesickness</option>
+                <option value="255">Cursed Luck</option>
+                <option value="261">Horrormark</option>
+                <option value="270">Dragon master</option>
+                <option value="272">Philosopher</option>
+                <option value="273">Drain Immune</option>
+                <option value="281">Darkvision</option>
+
+                <option value="288">Popkiller</option>
+                <option value="291">Prophet bonuses</option>
+                <option value="293">Darkpower</option>
+                <option value="298">Normal seduction</option>
+                <option value="304">Reincarnation</option>
+                <option value="309">Insanity</option>
+                <option value="316">Heat</option>
+
+                <option value="321">Astral shield</option>
+                <option value="324">Magic Power</option>
+                <option value="327">Halt Heretic</option>
+                <option value="328">Shattered Soul</option>
+
+                <option value="341">Inspiring Researcher</option>
+                <option value="342">Tax Collector</option>
+                <option value="352">Defence organizer</option>
+                <option value="354">Healer</option>
+
+                <option value="355">Disease Healer</option>
+                <option value="356">Disease Grinder</option>
+                <option value="363">Master smith</option>
+                <option value="364">Priestly Reanimation bonus</option>
+                <option value="365">Necromancy Reanimation bonus</option>
+                <option value="366">Formationfighter</option>
+                <option value="367">Undisciplined</option>
+                <option value="368">Inspirational</option>
+                <option value="369">Beastmaster</option>
+                <option value="373">Trampswallow</option>
+
+                <option value="377">Magic Item defense Bonus</option>
+                <option value="379">Taskmaster</option>
+                <option value="380">Slave</option>
+                <option value="382">Invulnerable</option>
+                <option value="383">Protective Force</option>
+                <option value="395">Reform</option>
+                <option value="395">battlesummon1</option>
+                <option value="396">battlesummon2</option>
+                <option value="397">battlesummon3</option>
+                <option value="398">battlesummon4</option>
+                <option value="399">battlesummon5</option>
+                <option value="400">battlesummon6</option>
+
+                <option value="402">Mindslime</option>
+                <option value="408">Bodyguard</option>
+                <option value="411">Elegist</option>
+                <option value="412">Slimer</option>
+                <option value="413">Deathcurse</option>
+                <option value="414">Blood Vengeance</option>
+                <option value="415">Undying</option>
+                <option value="416">Chaospower</option>
+                <option value="418">Norivercross</option>
+
+                <option value="421">Mountain survival</option>
+                <option value="422">forest survival</option>
+                <option value="423">Waste survival</option>
+                <option value="424">Swamp survival</option>
+                <option value="425">Map Move +1</option>
+                <option value="430">Pearl Cultivator</option>
+
+<!--
+
+	431 Cross Breeder
+	432 Communion slave
+	433 ??? maybe communion master
+	434-448 ???
+	450 Divine Insights (#divineins)
+	451 ???
+	452 Goldmaker
+	453 Fixed Forge Bonus
+	454-457 ???
+	458 Chaos recruitment
+	459-461 ???
+	462 Limited Regeneration
+	463 Master Ritualist
+	464-476 ???
+	478 Overcharged
+	479-482 ???
+	483 Scale Walls (?!)
+	484 Deathpower
+	485 Deathrec
+	486-488 ???
+	489 Iceforging (insane resource boost)
+	490-496 ???
+	497 Acid Splash
+	498-510 ???
+	510 ???
+	511 Mummify (Nazcans), makes mummies of ID, however mummies also have this ability and so are immortal
+	512 ???
+	513 diseaseres
+	514 Reanimator
+	-- Likely raiseonkill type is around here
+	515 ???
+	516 ???
+	517 ???
+	518 POison skin
+	519-526 ???
+	527 UWHEAT
+	528 ???
+	529 Slothpower
+	530 Can cast MindVessel
+	531 Can be targeted by Mind Vessel
+	532 IS A SLAVE VESSEL?! -- Don't ever think of using this, since it might *actually work*
+	533 COMMANDS A SLAVE VESSEL?!
+	534-599 ??? -- Here should be various #homeshape and #summershape added lately
+	600 Lost All XXX arms (...UM??? I didn't expect this)
+	601 ???
+	602 Lost xx eyes (Doesn't work?)
+	603-610 ???
+
+
+-->
 
                 <!--
                     500 - 599 = add perminate atribute
@@ -456,6 +614,33 @@
 463 -- Master Ritualist +1
                 -->
 
+            </select>
+            <br>
+            <label for="enchant">Global/Local Enchantments</label>
+            <select name="enchant" id="enchant">
+                <option value="3" selected>Astral Tempest</option>
+                <option value="4">Rigor Mortis</option>
+                <option value="6">Heat from Hell</option>
+                <option value="9">Grip of Winter</option>
+                <option value="11">Acid Storm</option>
+                <option value="12">Wailing Winds</option>
+                <option value="21">Solar Brilliance</option>
+                <option value="25">Fire Storm</option>
+                <option value="45">Foul Vapours</option>
+                <optgroup label="g">
+                        <option value="13">Growing Fury</option>
+
+                </optgroup>
+                <optgroup label="Local enchantment only">
+                        <option value="1">Storm</option>
+                        <option value="7">Rain</option>
+                        <option value="40">Light of the Northern Star</option>
+                        <option value="68">Blood Rain</option>
+                        <option value="70">Mist</option>
+                        <option value="71">Mist of Deception</option>
+                        <option value="83">Demon Cleansing</option>
+                        <option value="85">Quagmire</option>
+                </optgroup>
             </select>
             <!--lets keep these invisible until thry are finished-->
             <br>
@@ -1236,7 +1421,8 @@
                 <label for="#nocastmindless">Only flying casters</label>
             </p>
             <p>
-                A unit ploymorphed by this spell will retain its magic paths
+                A unit ploymorphed by this spell will retain its magic paths. Used in the case of spells like Lichcraft, 
+                where the player would want their monster to keep its magical skills.
                 <br>
                 <input type="checkbox" id="#polygetmagic" value="#polygetmagic 1" class="atribbool">
                 <label for="#polygetmagic">Polymorph safe</label>
@@ -1253,7 +1439,7 @@
                 maximun number of time that it can bounce below.
                 <br>
                 <label for="#maxbounces">Max bounces:</label>
-                <input type="number" name="#maxbounces" id="#maxbounces" min="0" value="0" class="battle">
+                <input type="number" name="#maxbounces" id="#maxbounces" min="0" value="0" class="battle" disabled>
             
             </p>
             <button onclick="document.getElementById('result').innerText = createSpell()">Create Spell</button>

@@ -1424,15 +1424,11 @@
                 <label for="#homefort">Starting Fort:</label>
                 <select name="homefort" id="#homefort">
                     <option value="0" selected>Use default fort</option>
+                    <option value="0" selected>No fort</option>
                     <option value="1">Palisades</option>
                     <option value="2">(Early Era) Fortress</option>
                     <option value="3">(Middle Era) Castle</option>
-                    <option value="4" >(Late Era) Citadel</option>
-                    <option value="5">Rock Walls</option>
-                    <option value="6">(Early Era) Underwater Fortress</option>
-                    <option value="7">(Middle-Late Era) Underwater Castle</option>
-                    <option value="8">(Underwater?) Castle of Bronze and Crystal</option>
-                    <option value="9">(Underwater) Fort of Kelp and Coral</option>
+                    <option value="4">(Late Era) Citadel</option>
                     <option value="10">Bramble Fort</option>
                     <option value="11">City Palisades</option>
                     <option value="12">Walled City</option>
@@ -1453,7 +1449,15 @@
                     <option value="23">Fortified village</option>
                     <option value="23">Wooden Fort</option>
                     <option value="23">Crystal Citadel</option>
-                    <option value="23">(Underwater) Kelp Fort</option>
+                    <optgroup label="Underwater Forts">
+                        <option value="5">Rock Walls</option>
+                        <option value="6">(Early Era) Underwater Fortress</option>
+                        <option value="7">(Middle-Late Era) Underwater Castle</option>        
+                        <option value="8">Castle of Bronze and Crystal</option>
+                        <option value="9">Fort of Kelp and Coral</option>
+                        <option value="23">Kelp Fort</option>
+                    </optgroup>
+
                 </select>
             </p>
             

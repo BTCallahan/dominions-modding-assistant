@@ -67,66 +67,7 @@
                 <label for="#speciallook">Special Look:</label>
                 <input type="number" name="#speciallook" id="#speciallook" value="0" min="0" max="199">
             </fieldset>
-            <p>
-                Sets the units steal to at least 10 if less then 10, and set's its commanding ability to zero.
-                <br>
-                <button onclick="setAsScout()">Set Unit as Scout</button>
-
-            </p>
-            <p>
-                <label for="racialtemplates">Racial Templates</label>
-                <select name="racialtemplates" id="racialtemplates">
-                    <option value="abysian">Abysian</option>
-                    <option value="caelian">Caelian</option>
-                    <option value="ctis">C'tis</option>
-                    <option value="van">Van</option>
-                    <option value="jotun">Jotun</option>
-                    <option value="naga">Naga</option>
-                    <option value="tengu">Tengu</option>
-                    
-                    <option value="bakemono">Bakemono</option>
-
-                    <optgroup label="Human">
-                        <option value="human" selected>Human</option>
-                        <option value="ulm">Ulm</option>
-                        <option value="colossi">Colossi</option>
-                        
-                    </optgroup>
-                    <optgroup label="Agarthians">
-                        <option value="paleone">Pale One</option>
-                        <option value="oldpaleone">Ancient Pale One</option>
-                        
-                    </optgroup>
-                    <optgroup label="Pangeans">
-                        <option value="harpy">Harpy</option>
-                        <option value="satyr">Satyr</option>
-                        <option value="dryad">Dryad</option>
-                        <option value="centaur">Centaur</option>
-                        <option value="mino">Minotaur</option>
-                    </optgroup>
-                    <optgroup label="Nemedians">
-                            <option value="firbolg">Fir Bolg</option>
-                            <option value="tuatha">Tuatha</option>
-                    </optgroup>
-                    <optgroup label="Altantians">
-                            <option value="altantian">Altantian</option>
-                            <option value="shambler">Shambler</option>
-                    </optgroup>
-                    <optgroup label="Vanara">
-                            <option value="markata">Markata</option>
-                            <option value="atavi">Atavi</option>
-                            <option value="bandar">Bandar</option>
-                            <option value="whiteone">White One</option>
-                    </optgroup>
-                    <optgroup label="Aquatic">
-                            <option value="merman">Merman</option>
-                            <option value="triton">Triton</option>
-                    </optgroup>
-
-                </select>
-            </p>
-            <button 
-            onclick="applyTemplate(document.getElementById('racialtemplates').value)">Apply Template</button>
+            
             <h3>Clearing & Copying</h3>
             <fieldset>
                 <legend>Clearing Data</legend>
@@ -346,6 +287,69 @@
                 <input type="number" name="#ressize" value="0" id="#ressize" min="0" max="6" class="cost">
             </p>
             <h3>Basic Attributes</h3>
+            <p>
+                Sets the units steal to at least 10 if less then 10, and set's its commanding ability to zero.
+                <br>
+                <button onclick="setAsScout()">Set Unit as Scout</button>
+
+            </p>
+            <p>
+                <label for="racialtemplates">Racial Templates</label>
+                <select name="racialtemplates" id="racialtemplates">
+                    <option value="abysian">Abysian</option>
+                    <option value="caelian">Caelian</option>
+                    <option value="ctis">C'tis</option>
+                    <option value="van">Van</option>
+                    <option value="jotun">Jotun</option>
+                    <option value="naga">Naga</option>
+                    <option value="tengu">Tengu</option>
+                    
+                    <option value="bakemono">Bakemono</option>
+
+                    <optgroup label="Human">
+                        <option value="human" selected>Human</option>
+                        <option value="ulm">Ulm</option>
+                        <option value="colossi">Colossi</option>
+                        
+                    </optgroup>
+                    <optgroup label="Agarthians">
+                        <option value="paleone">Pale One</option>
+                        <option value="oldpaleone">Ancient Pale One</option>
+                        
+                    </optgroup>
+                    <optgroup label="Pangeans">
+                        <option value="harpy">Harpy</option>
+                        <option value="satyr">Satyr</option>
+                        <option value="dryad">Dryad</option>
+                        <option value="centaur">Centaur</option>
+                        <option value="mino">Minotaur</option>
+                    </optgroup>
+                    <optgroup label="Nemedians">
+                            <option value="firbolg">Fir Bolg</option>
+                            <option value="tuatha">Tuatha</option>
+                    </optgroup>
+                    <optgroup label="Altantians">
+                            <option value="altantian">Altantian</option>
+                            <option value="shambler">Shambler</option>
+                    </optgroup>
+                    <optgroup label="Vanara">
+                            <option value="markata">Markata</option>
+                            <option value="atavi">Atavi</option>
+                            <option value="bandar">Bandar</option>
+                            <option value="whiteone">White One</option>
+                    </optgroup>
+                    <optgroup label="Aquatic">
+                            <option value="merman">Merman</option>
+                            <option value="triton">Triton</option>
+                    </optgroup>
+
+                </select>
+                <br>
+
+                <button 
+                onclick="applyTemplate(document.getElementById('racialtemplates').value)">Apply Template</button>
+    
+            </p>
             <label for="#hp">Hit Points:</label>
             <input type="number" name="#hp" value="10" id="#hp" min="1" class="atributes">
             <br>
@@ -700,16 +704,16 @@
                 <legend>Enviromental Survival</legend>
                 Units with these tags have do not suffer a map movement penalty when moveing across the assocated terrain.
                 <br>
-                <input type="checkbox" name="#forestsurvival" value="#forestsurvival" class="survival">
+                <input type="checkbox" id="#forestsurvival" value="#forestsurvival" class="survival">
                 <label for="#forestsurvival">Forest Survival</label>
                 <br>
-                <input type="checkbox" name="#mountainsurvival" value="#mountainsurvival" class="survival">
+                <input type="checkbox" id="#mountainsurvival" value="#mountainsurvival" class="survival">
                 <label for="#mountainsurvival">Mountain Survival</label>
                 <br>
-                <input type="checkbox" name="#swampsurvival" value="#swampsurvival" class="survival">
+                <input type="checkbox" id="#swampsurvival" value="#swampsurvival" class="survival">
                 <label for="#swampsurvival">Swamp Survival</label>
                 <br>
-                <input type="checkbox" name="#wastesurvival" value="#wastesurvival" class="survival">
+                <input type="checkbox" id="#wastesurvival" value="#wastesurvival" class="survival">
                 <label for="#wastesurvival">Wasteland Survival</label>
             </fieldset>
             <fieldset>
@@ -790,26 +794,26 @@
                     a nearby friendly provence.
                     <br>
                     <label for="#seduce">Seduction ability:</label>
-                    <input type="number" id="#seduce" name="#seduce" min="0" value="0" class="reqStealth" disabled>
+                    <input type="number" id="#seduce" name="#seduce" min="0" value="0" class="reqStealth seduce" disabled>
                 </p>
                 <p>
                     If the unit suceeds in seducing an enemy commander, then it and the commander will be transported to 
                     the nations capitol.
                     <br>                    
                     <label for="#succubus">Seduction ability:</label>
-                    <input type="number" id="#succubus" name="#succubus" min="0" value="0" class="reqStealth" disabled>
+                    <input type="number" id="#succubus" name="#succubus" min="0" value="0" class="reqStealth seduce" disabled>
                 </p>
                 <p>
                         Ability of monster lure enemy commanders to their death when in a costal provence.
                         <br>
                     <label for="#beckon">Lure:</label>
-                    <input type="number" id="#beckon" name="#beckon" min="0" value="0" class="reqStealth" disabled>
+                    <input type="number" id="#beckon" name="#beckon" min="0" value="0" class="reqStealth seduce" disabled>
 
                 </p>
                 <p>
                         Monster can assassinate enemy commanders.
                         <br>
-                        <input type="checkbox" id="#assassin" value="#assassin" disabled
+                        <input type="checkbox" id="#assassin" value="#assassin" disabled class="stealthbool"
                         onchange="enableOrDisable(document.getElementById('#assassin').checked, 'reqAssassin', '')">
                         <label for="#assassin">Assassin</label>
     
@@ -1133,6 +1137,11 @@
                 <br>
                 <label for="#regeneration">Regeneration:</label>
                 <input type="number" id="#regeneration" value="0" min="0" class="resnum">
+                <br>
+                <label for="#reincarnation">reincarnation:</label>
+                <input type="number" name="#reincarnation" id="#reincarnation" min="0" max="100" value="0" class="resnum">
+
+
                 <fieldset>
                     <legend>Elemental Resistance</legend>
                     <label for="#coldres">Cold Resistance:</label>
@@ -1942,12 +1951,12 @@
 
             <label for="leadership">Number of magic beings</label>
             <select class="leadership" id="leadership">
-                <option value="#noleader" >Cannot command magic beings</option>
-                <option value="#poorleader">Can command 10 magic beings</option>
-                <option value="#okleader" selected>Can command 40 magic beings</option>
-                <option value="#goodleader">Can command 80 magic beings</option>
-                <option value="#expertleader">Can command 120 magic beings</option>
-                <option value="#superiorleader">Can command 160 magic beings</option>
+                <option value="#noleader" >Cannot command units</option>
+                <option value="#poorleader">Can command 10 units</option>
+                <option value="#okleader" selected>Can command 40 units</option>
+                <option value="#goodleader">Can command 80 units</option>
+                <option value="#expertleader">Can command 120 units</option>
+                <option value="#superiorleader">Can command 160 units</option>
             </select>
             <br>
 
@@ -2340,7 +2349,7 @@
                 <br>
 
                 <label for="deathbanish0">N/A</label>
-                <input type="radio" name="#deathbanish" id="deathbanish0" value="0" class="#deathbanish">
+                <input type="radio" name="#deathbanish" id="deathbanish0" value="0" class="#deathbanish" checked>
                 <br>
                 <label for="deathbanish1">The Void</label>
                 <input type="radio" name="#deathbanish" id="deathbanish1" value="-11" class="#deathbanish">
